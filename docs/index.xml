@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>The Dyer Laboratory</title>
+    <link>https://dyerlab.github.io/DLabWebsite</link>
+    <atom:link href="https://dyerlab.github.io/DLabWebsite/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Research on the spatial distribution of population and landscape genetic variation. 
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>DLab Swift</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift</guid>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift/logo.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Welcome to The Dyer Laboratory</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/welcome</link>
+      <description>Welcome to the new format of the the Dyer Laboratory online website.  It was getting time to clean things up and streamline the ability to post materials online. So here it is, now in cleaner RMarkdown than before.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/welcome</guid>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

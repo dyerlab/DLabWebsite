@@ -18,11 +18,9 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "People"
-      href: people.html
     - text: "Manuscripts"
       href: manuscripts.html 
-    - text: "About"
+    - text: "People"
       href: about.html
     - icon: fa fa-rss
       href: index.xml

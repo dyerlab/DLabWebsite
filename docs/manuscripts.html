@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
+  <link rel="alternate" type="application/rss+xml" href="https://dyerlab.github.io/DLabWebsite/manuscripts.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -87,26 +88,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>The Dyer Laboratory: Dyer Lab Members</title>
+  <title>The Dyer Laboratory: Manuscripts</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="The Dyer Laboratory: Dyer Lab Members"/>
+  <meta property="og:title" content="The Dyer Laboratory: Manuscripts"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="The Dyer Laboratory"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="The Dyer Laboratory: Dyer Lab Members"/>
+  <meta property="twitter:title" content="The Dyer Laboratory: Manuscripts"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Dyer Lab Members"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Manuscripts"]},{"type":"character","attributes":{},"value":["manuscripts"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2368,12 +2369,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 </head>
 
-<body>
+<body class="layout-listing">
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Dyer Lab Members","authors":[]}
+{"title":"Manuscripts","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2398,9 +2399,176 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
+<!--radix_placeholder_article_listing-->
+
+
+<script type="application/javascript">
+
+function init_posts_list() {
+
+  function load_image(img) {
+    var src = $(img).attr('data-src');
+    if (src) {
+      $(img).attr('src', src);
+      $(img).on("load", function() {
+        img.removeAttribute('data-src');
+      });
+    }
+  }
+
+  function set_posts_visible(posts, visible) {
+    if (visible) {
+
+      // show bottom border by default
+      $(posts).removeClass('post-preview-last');
+
+      // apply limits if need be
+      var max_posts = 25;
+      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
+      if (apply_limits && posts.length > max_posts) {
+        posts = $(posts).slice(0, max_posts);
+      } else {
+        $('.posts-more a').addClass('hidden');
+      }
+
+      // apply last style
+      $(posts.slice(-1)[0]).addClass('post-preview-last');
+
+      $(posts).removeClass('hidden');
+      $(posts).find('img[data-src]').each(function(i, img) {
+        load_image(img);
+      });
+    } else {
+      $(posts).addClass('hidden');
+    }
+  }
+
+  function apply_hash_filter() {
+
+    // clear active state
+    $('.categories .active').removeClass('active');
+
+    // mark all posts invisible to start
+    set_posts_visible($('.posts-list').children('a'), false);
+
+    // if we have a hash filter
+    if (window.location.hash && window.location.hash.startsWith("#category:")) {
+
+      // mark posts that match the category visible
+      var page_category = window.location.hash.replace(/^#category:/, "");
+      page_category = decodeURIComponent(page_category)
+      var posts = $('.post-metadata').map(function(idx, script) {
+        var metadata = $.parseJSON($(script).html());
+        var post = null;
+        $.each(metadata.categories, function(idx, category) {
+          category = category.replace(/ /g,"_");
+          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
+            post = $(script).parent().get();
+            return false;
+          }
+        });
+        return post;
+      });
+      set_posts_visible(posts, true);
+
+      // mark the hash active
+      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
+
+      // update the list_caption
+      var list_caption = $('.posts-list-caption');
+      var caption = (page_category || '').toLowerCase() === "articles"
+        ? list_caption.attr('data-caption')
+        : ('Category: ' + page_category.replace(/_/g," "));
+      list_caption.text(caption);
+
+    } else {
+
+      // no hash filter, make all posts visible (subject to max display)
+      set_posts_visible($('.posts-list').children(), true);
+
+      // reset list caption
+      var list_caption = $('.posts-list-caption');
+      list_caption.text(list_caption.attr('data-caption'));
+
+
+    }
+  }
+
+  // more articles
+  function apply_post_limits(apply) {
+    if (apply) {
+      $('.posts-container').addClass('posts-apply-limit');
+      $('.posts-more a').removeClass('hidden');
+    } else {
+      $('.posts-container').removeClass('posts-apply-limit');
+      $('.posts-more a').addClass('hidden');
+    }
+  }
+
+  // click handling for tags
+  $('.dt-tag').click(function(ev) {
+    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
+    return false;
+  })
+
+  // hash filter handling
+  apply_hash_filter();
+  $(window).on('hashchange',function() {
+    apply_post_limits(true);
+    apply_hash_filter();
+  });
+
+  // more articles link
+  $('.posts-more a').click(function(e) {
+    e.preventDefault();
+    apply_post_limits(false);
+    apply_hash_filter();
+    return false;
+  });
+
+}
+
+</script>
+
+
+
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
+<div class="posts-list">
+<h1 class="posts-list-caption" data-caption="Manuscripts">Manuscripts</h1>
+<a href="manuscripts/2021-12-12-test-manuscript/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 12, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Rodney Dyer</div>
+</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>test-manuscript</h2>
+<div class="dt-tags"></div>
+<p>A short description of the post.</p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div><div class="sidebar-section custom">
+  <h3>About</h3>
+  Developing tools for the spatial analysis of population
+  and landscape genetic structure.
+</div>
+</div>
+</div>
+<div class="posts-more">
+<a href="#">More articles &raquo;</a>
+</div>
+</div>
+<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Dyer Lab Members</h1>
+<h1>Manuscripts</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2408,59 +2576,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
-<p>Research in the Dyer Laboratory focuses on understanding how landscape features influence genetic connectivity and movement in native and introduced species.</p>
-<table>
-<tr>
-<td>
-<img src="https://live.staticflickr.com/65535/51278950913_17e0f63c25_w_d.jpg" class="roundedImg" width="200px">
-</td>
-<td>
-<h3 id="rodney-j.-dyer-phd"><a href="dyerProfile/dyerProfile.html">Rodney J. Dyer, PhD</a></h3>
-Principal Investigator
-</td>
-</tr>
-<tr>
-<td>
-<img src="https://live.staticflickr.com/65535/51742489450_98b3788b6f_o_d.jpg" class="roundedImg"  width="200px">
-</td>
-<td>
-<h3 id="jane-remfert"><a href="">Jane Remfert</a></h3>
-Doctoral Candidate
-</td>
-</tr>
-<tr>
-<td>
-<img src="https://live.staticflickr.com/65535/51740785322_0ea8e8c066_w_d.jpg" class="roundedImg" width="200px">
-</td>
-<td>
-<h3 id="madison-whitehurst"><a href="">Madison Whitehurst</a></h3>
-Masters Candidate
-</td>
-</tr>
-</table>
-<h1 id="previous-laboratory-members">Previous Laboratory Members</h1>
-<ul>
-<li><p><strong>Rebekha Archibald-Shaw</strong> Thesis: Seed dispersal and subsequent recruitment of the mid-canopy forest tree, <em>Cornus florida</em>. Supported in part by the Rice Center. MS, Environmental Sciences, Virginia Commonwealth University 2009.</p></li>
-<li><p><strong>Stephen Baker</strong> Thesis: Invasion genetic of the invasive grass, <em>Microstegium vimineum</em> (Poaceae). Supported in part by the Rice Center. MS, Biology, Virginia Commonwealth University 2009.</p></li>
-<li><p><strong>Dan Carr</strong> Thesis: Pollination biology of the understory tree, <em>Cornus florida</em> L. Supported in part by the Rice Center and National Science Foundation research grant DEB-0640803. MS, Biology, Virginia Commonwealth University, 2010.</p></li>
-<li><p><strong>Stephanie Crouch-Burgess</strong> Thesis: Spatial genetic structure of the mole salamander, <em>Ambystoma opacum</em> (Gravenhorst). Supported in part by the Rice Center. MS, Biology, Virginia Commonwealth University, 2008. Currently pursuing her PhD at OleMiss with Dr. Ryan Garrick.</p></li>
-<li><p><strong>Matthew DeSaix</strong> Thesis: Patterns of population structure and migratory connectivity revealed in a songbird of conservation concern. Supported in part by funding by the Department of Defense, the Rice Center, and the Center for Environmental Studies. MS, Environmental STudies, Virginia Commonwealth University, 2018.</p></li>
-<li><p><strong>Candace Dillion</strong> Thesis: Assessment of pre-PCR whole genome amplification of single pollen grains in flowering dogwood (<em>Cornus florida</em> L.). Supported in part by the Rice Center and National Science Foundation research grant DEB-0640803. MS, Biology, Virginia Commonwealth University 2009.</p></li>
-<li><p><strong>Vicki Gardiakos</strong> Thesis: Investigating patterns of pollen-mediated gene dispersal in the flowering dogwood, <em>Cornus florida</em> L. Supported in part by NSF DEB-0640803. Supported in part by National Science Foundation research grant DEB-0640803. MS, Biology, Virginia Commonwealth University 2009.</p></li>
-<li><p><strong>Dr. Ryan Garrick</strong> Dr. Garrick was a post-doctoral researcher in the laboratory from 2007-2009 under National Science Foundation Research Grant DEB-0543102. Currently Dr. Garrick is an Assistant Professor in Biology at the University of Mississippi.</p></li>
-<li><p><strong>Morgan Gostel</strong> Thesis: Evolutionary relationships in Afro-Malagasy Schefflera based on nuclear and chloroplast markers. MS, Biology, Virginia Commonwealth University, 2010.</p></li>
-<li><p><strong>Catherine Heidrich</strong> MS Thesis Project: Who’s your daddy? Extra-pair copulation of Prothonotary warblers (<em>Protonotaria citrea</em>). Supported in part by the Rice Center. MS, Biology, Virginia Commonwealth University 2012.</p></li>
-<li><p><strong>Jameson Hinkle</strong> MS Thesis Project: Proof-of-concept of environmental DNA tools for Atlantic Sturgeon management. MS Center for Environmental Studies, Virginia Commonwealth University, 2015.</p></li>
-<li><p><strong>Megan Kuechle</strong> Thesis: Influence of environmental features on spermatophore placement and male fecundity in spotted salamanders (Ambystoma maculatum). MS, Center for Environmental Studies, Virginia Commonwealth University, 2020.</p></li>
-<li><p><strong>Olivia Latham</strong> Thesis: Bee functional trait analysis in shale barren pollinator networks. MS, Center for Environmental Studies, Virginia Commonwealth University, 2020.</p></li>
-<li><p><strong>Crystal Meadows</strong> Thesis: Determining impediments to gene flow in a natural population of <em>Cornus florida</em> L. Cornaceae, using integrative landscape genetic techniques. MS, Biology, Virginia Commonwealth University, 2010.</p></li>
-<li><p><strong>Angela Redwine</strong> Thesis: Reproductive dynamics in flowering dogwood along an urban landscape gradient. MS, Environmental Sciences, Virginia Commonwealth University, 2012.</p></li>
-<li><p><strong>Bonnie Roderique</strong> Thesis: Improving the conservation of a cryptic endangered freshwater mussel (<em>Parvaspina collina</em>) through the use of environmental DNA and species distribution modeling. This project was supported in part by funding from the Virginia Transportation Research Council (VTRC) and the Rice Center. MS, Environmental Studies, Virginia Commonwealth University, 2018.</p></li>
-<li><p><strong>Chitra Seshadri</strong> Thesis: Genome wide analysis of sequence and epigenetic variance in <em>Araptus attenuatus</em>, the Sonoran Desert bark beetle. MS, Environmental Sciences, 2016.</p></li>
-<li><p><strong>Anna Tucker</strong> Thesis: Fitness cost of conspecific brood parasitism in a cavity-nesting warbler. MS, Biology, Virginia Commonwealth University, 2014.</p></li>
-<li><p><strong>Dr. Cathy Viverette</strong> Thesis: Influence of historic landscapes and contemporary species management on Chesapeake Bay Bald Eagles and Osprey. PhD, Integrated Life Sciences, 2016.</p></li>
-<li><p><strong>Abby Wright</strong> Undergraduate researchers. 2019-2020.</p></li>
-</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
