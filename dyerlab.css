@@ -72,11 +72,12 @@ d-appendix {
   --bkgd-color:       #14213d; 
 }
 
+
 .distill-site-footer {
   --text-color:       rgba(255, 255, 255, 0.8);
   --text-size:        15px;
   --hover-color:      white;
-  --bkgd-color:       #162a26; /* 0F2E3D;*/
+  --bkgd-color:       #14213d; /* 0F2E3D;*/
 }
 
 /*-- Additional custom styles --*/
@@ -96,3 +97,10 @@ d-title h1 {
 d-article h2 { 
   --header-color: #e64a19;
 }
+
+
+.post-list .metadata { 
+  --text-color: rgba(1,0,0,0.5)
+}
+
+
