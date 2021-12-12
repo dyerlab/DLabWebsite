@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>The Dyer Laboratory</title>
+    <link>https://dyerlab.org</link>
+    <atom:link href="https://dyerlab.org/manuscripts.xml" rel="self" type="application/rss+xml"/>
+    <description>Research on the spatial distribution of population and landscape genetic variation. 
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>test-manuscript</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.org/manuscripts/2021-12-12-test-manuscript</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.org/manuscripts/2021-12-12-test-manuscript</guid>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,15 @@
+---
+title: "DLab Swift"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2021-12-12
+preview: logo.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+

@@ -1,0 +1,26 @@
+---
+title: "DLabGenetic Swift Package"
+description: |
+  A swift packages for locus-specific population genetic anslyee.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+categories:
+  - swift
+date: 2021-12-12
+preview: images/DLabGenetic.png
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

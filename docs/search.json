@@ -1,0 +1,27 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this blog",
+      "description": "Some additional details about the blog",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-12-12T09:20:17-05:00"
+    },
+    {
+      "path": "index.html",
+      "title": "",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-12-12T09:20:17-05:00"
+    },
+    {
+      "path": "manuscripts.html",
+      "title": "Manuscripts",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-12-12T09:20:18-05:00"
+    }
+  ],
+  "collections": ["posts/posts.json", "manuscripts/manuscripts.json"]
+}

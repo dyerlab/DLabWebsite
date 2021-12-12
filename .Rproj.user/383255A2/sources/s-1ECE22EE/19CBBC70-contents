@@ -1,0 +1,29 @@
+name: "DLabWebsite"
+title: "The Dyer Laboratory"
+description: |
+  Research on the spatial distribution of population and landscape genetic variation. 
+output_dir: "docs"
+theme: dyerlab.css
+base_url: https://dyerlab.org 
+collections: 
+  posts:
+    share: [twitter, linkedin, facebook]
+    custom: _custom.html
+    categories: true
+  manuscripts:
+    share: [twitter, linkedin, facebook]
+    custom: _custom.html
+    categories: true
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "People"
+      href: people.html
+    - text: "Manuscripts"
+      href: manuscripts.html 
+    - text: "About"
+      href: about.html
+    - icon: fa fa-rss
+      href: index.xml
+output: distill::distill_article

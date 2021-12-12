@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>The Dyer Laboratory</title>
+    <link>https://dyerlab.org</link>
+    <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Research on the spatial distribution of population and landscape genetic variation. 
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>DLab Swift</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.org/posts/2021-12-12-dlab-swift</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.org/posts/2021-12-12-dlab-swift</guid>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.org/posts/2021-12-12-dlab-swift/logo.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Welcome to The Dyer Laboratory</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.org/posts/welcome</link>
+      <description>Welcome to our new blog, The Dyer Laboratory. We hope you enjoy 
+reading what we have to say!</description>
+      <guid>https://dyerlab.org/posts/welcome</guid>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
