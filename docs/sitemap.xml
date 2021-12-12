@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
-    <loc>https://dyerlab.org/about.html</loc>
-    <lastmod>2021-12-12T07:13:29-05:00</lastmod>
+    <loc>https://dyerlab.github.io/DLabWebsite/about.html</loc>
+    <lastmod>2021-12-12T10:42:52-05:00</lastmod>
   </url>
   <url>
-    <loc>https://dyerlab.org/</loc>
-    <lastmod>2021-12-12T07:36:59-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.org/manuscripts.html</loc>
-    <lastmod>2021-12-12T07:40:37-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.org/posts/2021-12-12-dlab-swift/</loc>
+    <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift/</loc>
     <lastmod>2021-12-12T09:18:33-05:00</lastmod>
   </url>
   <url>
-    <loc>https://dyerlab.org/posts/welcome/</loc>
-    <lastmod>2021-12-12T09:39:53-05:00</lastmod>
+    <loc>https://dyerlab.github.io/DLabWebsite/posts/welcome/</loc>
+    <lastmod>2021-12-12T09:42:22-05:00</lastmod>
   </url>
   <url>
-    <loc>https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/</loc>
+    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/</loc>
     <lastmod>2021-12-12T07:42:15-05:00</lastmod>
   </url>
 </urlset>

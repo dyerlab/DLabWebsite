@@ -1,0 +1,31 @@
+---
+title: "Rodney J. Dyer"
+image: https://live.staticflickr.com/65535/51278950913_17e0f63c25_w_d.jpg
+links:
+  - label: LinkedIn
+    url: "https://linkedin.com/RodneyDyer"
+  - label: Twitter
+    url: "https://twitter.com/RodneyDyer"
+  - label: GitHub
+    url: "https://github.com/dyerlab"
+  - label: Email
+    url: "mailto:rjdyer@vcu.edu"
+  - label: Google Scholar
+    url: "http://scholar.google.com/citations?user=R75bxRMAAAAJ"
+output:
+  postcards::trestles
+---
+ 
+## Bio
+
+Rodney Dyer is currently serving as the Director of the [Center for Environmental Studies](https://ces.vcu.edu) at [Virginia Commonwealth University](https://vcu.edu).  His research laboratory focuses on developing tools to better understand how the physical configuration of natural and modified landscapes impact genetic connectivity for native and introduced species. 
+
+## Education
+
+2002 - PhD Biology - University of Missouri Saint Louis
+1998 - MS Biology - University of Missouri Saint Louis
+1996 - BS Biology - Western Washington University
+1994 - AA General - Seattle Central Community College
+
+
+

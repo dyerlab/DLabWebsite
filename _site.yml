@@ -4,7 +4,7 @@ description: |
   Research on the spatial distribution of population and landscape genetic variation. 
 output_dir: "docs"
 theme: dyerlab.css
-base_url: https://dyerlab.org 
+base_url: https://dyerlab.github.io/DLabWebsite
 collections: 
   posts:
     share: [twitter, linkedin, facebook]

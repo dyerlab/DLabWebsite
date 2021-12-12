@@ -91,7 +91,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <meta property="description" itemprop="description" content="A short description of the post."/>
 
-<link rel="canonical" href="https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/"/>
+<link rel="canonical" href="https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/"/>
 
 <!--  https://schema.org/Article -->
 <meta property="article:published" itemprop="datePublished" content="2021-12-12"/>
@@ -102,7 +102,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:title" content="The Dyer Laboratory: test-manuscript"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="A short description of the post."/>
-<meta property="og:url" content="https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/"/>
+<meta property="og:url" content="https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="The Dyer Laboratory"/>
 
@@ -110,11 +110,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="twitter:card" content="summary"/>
 <meta property="twitter:title" content="The Dyer Laboratory: test-manuscript"/>
 <meta property="twitter:description" content="A short description of the post."/>
-<meta property="twitter:url" content="https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/"/>
+<meta property="twitter:url" content="https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
 <meta name="citation_title" content="The Dyer Laboratory: test-manuscript"/>
-<meta name="citation_fulltext_html_url" content="https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/"/>
+<meta name="citation_fulltext_html_url" content="https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/"/>
 <meta name="citation_online_date" content="2021/12/12"/>
 <meta name="citation_publication_date" content="2021/12/12"/>
 <meta name="citation_author" content="Rodney Dyer"/>
@@ -122,7 +122,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["test-manuscript"]},{"type":"character","attributes":{},"value":["A short description of the post."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Rodney Dyer"]}]}]},{"type":"character","attributes":{},"value":["2021-12-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/"]},{"type":"character","attributes":{},"value":["https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["test-manuscript"]},{"type":"character","attributes":{},"value":["A short description of the post."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Rodney Dyer"]}]}]},{"type":"character","attributes":{},"value":["2021-12-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/"]},{"type":"character","attributes":{},"value":["https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2143,7 +2143,13 @@ d-appendix {
 
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
+/*
+@import url('https://fonts.googleapis.com/css2?family=Amiri');
+@import url('https://fonts.googleapis.com/css2?family=Bitter');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono');
+*/
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap')
 
 
 html {
@@ -2160,10 +2166,10 @@ html {
   --aside-color:     rgba(0, 0, 0, 0.6);
   --fig-cap-color:   rgba(0, 0, 0, 0.6);
   /*-- Specify custom fonts ~~~ must be imported above   --*/
-  --heading-font:    sans-serif;
+  --heading-font:    'Source Sans Pro', sans-serif;
   --mono-font:       monospace;
-  --body-font:       sans-serif;
-  --navbar-font:     sans-serif;  /* websites + blogs only */
+  --body-font:       'Source Sans Pro', sans-serif;
+  --navbar-font:     'Source Sans Pro', sans-serif;  /* websites + blogs only */
 }
 
 /*-- ARTICLE METADATA --*/
@@ -2192,7 +2198,7 @@ d-appendix {
 /* These properties only apply to Distill sites and blogs  */
 
 .distill-site-header {
-  --title-size:       18px;
+  --title-size:       24px;
   --text-color:       rgba(255, 255, 255, 0.8);
   --text-size:        15px;
   --hover-color:      white;
@@ -2208,7 +2214,10 @@ d-appendix {
 
 /*-- Additional custom styles --*/
 /* Add any additional CSS rules below                      */
-</style>
+
+.roundedImg { 
+  border-radius: .25rem!important;
+}</style>
 <style type="text/css">
 /* base style */
 
@@ -2434,13 +2443,13 @@ d-appendix d-footnote-list a.footnote-backlink {
   <p class="social_footer">
     <span class="article-sharing">
       Share: &nbsp;
-      <a href="https://twitter.com/share?text=test-manuscript&amp;url=https%3A%2F%2Fdyerlab.org%2Fmanuscripts%2F2021-12-12-test-manuscript%2F">
+      <a href="https://twitter.com/share?text=test-manuscript&amp;url=https%3A%2F%2Fdyerlab.github.io%2FDLabWebsite%2Fmanuscripts%2F2021-12-12-test-manuscript%2F">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fdyerlab.org%2Fmanuscripts%2F2021-12-12-test-manuscript%2F&amp;title=test-manuscript">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fdyerlab.github.io%2FDLabWebsite%2Fmanuscripts%2F2021-12-12-test-manuscript%2F&amp;title=test-manuscript">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fdyerlab.org%2Fmanuscripts%2F2021-12-12-test-manuscript%2F">
+      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fdyerlab.github.io%2FDLabWebsite%2Fmanuscripts%2F2021-12-12-test-manuscript%2F">
         <i class="fab fa-facebook"></i>
       </a>
     </span>
@@ -2459,12 +2468,12 @@ d-appendix d-footnote-list a.footnote-backlink {
 <div class="appendix-bottom">
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Dyer (2021, Dec. 12). The Dyer Laboratory: test-manuscript. Retrieved from https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/</pre>
+  <pre class="citation-appendix short">Dyer (2021, Dec. 12). The Dyer Laboratory: test-manuscript. Retrieved from https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/</pre>
   <p>BibTeX citation</p>
   <pre class="citation-appendix long">@misc{dyer2021test-manuscript,
   author = {Dyer, Rodney},
   title = {The Dyer Laboratory: test-manuscript},
-  url = {https://dyerlab.org/manuscripts/2021-12-12-test-manuscript/},
+  url = {https://dyerlab.github.io/DLabWebsite/manuscripts/2021-12-12-test-manuscript/},
   year = {2021}
 }</pre>
 </div>

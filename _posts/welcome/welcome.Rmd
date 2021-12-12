@@ -9,6 +9,7 @@ author:
     affiliation_url: https://ces.vcu.edu
 date: 12-12-2021
 respository_url: https://github.com/dyerlab/DLabWebsite
+creative_commons: CC BY-SA
 output:
   distill::distill_article:
     self_contained: false
@@ -18,3 +19,5 @@ output:
 It is time to update the old blog and move platforms.  In the past, I had been using [Hugo](https://gohugo.io) as my site generator but starting in 2022, I will now be working using [distill](https://rstudio.github.io/distill).  I had played around a bit with John Sundell's excellent [Publish](https://github.com/JohnSundell/Publish) but there are just too many things I do in `R` that would increase the difficulty in deploying outside of RMarkdown.
 
 Without further ado, here it is.  I am going to try to bring over older posts if I can figure out how to do that and I'll be documenting it all here for those of you who are moving from hugo to distill.  
+
+
