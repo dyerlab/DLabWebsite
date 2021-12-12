@@ -19,7 +19,7 @@
   {
     "path": "posts/welcome/",
     "title": "Welcome to The Dyer Laboratory",
-    "description": "Welcome to our new blog, The Dyer Laboratory. We hope you enjoy \nreading what we have to say!",
+    "description": "Welcome to the new format of the the Dyer Laboratory online website.  It was getting time to clean things up and streamline the ability to post materials online. So here it is, now in cleaner RMarkdown than before.",
     "author": [
       {
         "name": "Rodney Dyer",
@@ -30,7 +30,7 @@
     "categories": [],
     "contents": "\nIt is time to update the old blog and move platforms. In the past, I had been using Hugo as my site generator but starting in 2022, I will now be working using distill. I had played around a bit with John Sundell’s excellent Publish but there are just too many things I do in R that would increase the difficulty in deploying outside of RMarkdown.\nWithout further ado, here it is. I am going to try to bring over older posts if I can figure out how to do that and I’ll be documenting it all here for those of you who are moving from hugo to distill.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-12-12T09:26:33-05:00",
-    "input_file": "welcome.knit.md"
+    "last_modified": "2021-12-12T09:39:53-05:00",
+    "input_file": {}
   }
 ]

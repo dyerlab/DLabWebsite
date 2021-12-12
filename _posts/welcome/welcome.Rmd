@@ -8,6 +8,7 @@ author:
     affiliation: Center for Environmental Studies
     affiliation_url: https://ces.vcu.edu
 date: 12-12-2021
+respository_url: https://github.com/dyerlab/DLabWebsite
 output:
   distill::distill_article:
     self_contained: false

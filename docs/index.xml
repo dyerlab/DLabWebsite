@@ -21,8 +21,7 @@
       <title>Welcome to The Dyer Laboratory</title>
       <dc:creator>Rodney Dyer</dc:creator>
       <link>https://dyerlab.org/posts/welcome</link>
-      <description>Welcome to our new blog, The Dyer Laboratory. We hope you enjoy 
-reading what we have to say!</description>
+      <description>Welcome to the new format of the the Dyer Laboratory online website.  It was getting time to clean things up and streamline the ability to post materials online. So here it is, now in cleaner RMarkdown than before.</description>
       <guid>https://dyerlab.org/posts/welcome</guid>
       <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
     </item>
