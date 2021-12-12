@@ -1,0 +1,19 @@
+[
+  {
+    "path": "manuscripts/2021-12-12-test-manuscript/",
+    "title": "test-manuscript",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": {}
+      }
+    ],
+    "date": "2021-12-12",
+    "categories": [],
+    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-12T07:42:15-05:00",
+    "input_file": {}
+  }
+]
