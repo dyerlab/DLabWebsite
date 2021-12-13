@@ -9,7 +9,7 @@ description: "Landscape genetics is a burgeoning field of interest that focuses 
 publication: MOLECULAR ECOLOGY
 categories: 
   - gene flow
-  - genetic  covariance
+  - genetic ovariance
   - landscape genetics
 doi: "10.1111/j.1365-294X.2010.04748.x"
 url_pdf: "https://drive.google.com/open?id=0B0T81CzLjtfPSWtYRVZFajZITms"
