@@ -1,0 +1,20 @@
+---
+title: "RVA Urban Dogwood"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2015-08-25
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Here is a map of the dogwood we've sampled in the Fan region of Richmond Virginia.
+ 
+ 
+ 

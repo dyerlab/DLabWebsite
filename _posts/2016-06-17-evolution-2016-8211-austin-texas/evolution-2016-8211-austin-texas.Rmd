@@ -1,0 +1,20 @@
+---
+title: "Evolution 2016 8211 Austin Texas"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-06-17
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+And it starts!  Going to be a great meeting with a huge VCU contingent!
+ 
+ 
+ 

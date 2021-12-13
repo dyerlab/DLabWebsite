@@ -1,0 +1,22 @@
+---
+title: "Jane Remfert Doctoral Candidate"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2018-12-06
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Jane Remfert has successfully completed the necessary steps to proceed to Doctoral Candidate by completing her written and oral defense and submitting her research proposal.  Thank you to Drs. Eckert, Gough, Johnson, and Keyghobadi for their insightful comments and expertise in helping to shape a dynamic and exciting research project.
+
+Now, you just have to do it!
+ 
+ 
+ 

@@ -1,0 +1,20 @@
+---
+title: "Basic graphics in R"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2015-08-24
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Here is a short (39 minute) video of some basic graphics approaches in R I use in a class on population genetics.
+ 
+ 
+ 

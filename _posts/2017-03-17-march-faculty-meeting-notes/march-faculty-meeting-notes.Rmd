@@ -1,0 +1,24 @@
+---
+title: "March Faculty Meeting Notes"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2017-03-17
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Here are the notes for the [March CES Faculty Meeting](https://www.evernote.com/l/ALpMv84PRLRPWYANBjSXRcOJeHzZiyT6w1E).
+
+&nbsp;
+
+&nbsp;
+ 
+ 
+ 

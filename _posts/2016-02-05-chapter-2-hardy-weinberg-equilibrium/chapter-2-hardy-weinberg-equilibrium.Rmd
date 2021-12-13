@@ -1,0 +1,22 @@
+---
+title: "Chapter 2 Hardy Weinberg Equilibrium"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-02-05
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Here are the online presentations for Chapter 2: Hardy Weinberg Equilibrium from the upcoming text, _Applied Population Genetics_.  More information on this text can be found [here](http://dyerlab.bio.vcu.edu/applied-population-genetics/).
+
+<!--more-->
+ 
+ 
+ 

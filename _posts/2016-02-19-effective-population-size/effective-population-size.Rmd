@@ -1,0 +1,22 @@
+---
+title: "Effective Population Size"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-02-19
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+How big is the data set you are analyzing?  Apparently it depends on how you count&#8230;
+
+<!--more-->
+ 
+ 
+ 

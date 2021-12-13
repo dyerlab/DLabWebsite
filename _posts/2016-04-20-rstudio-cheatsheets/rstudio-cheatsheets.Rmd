@@ -1,0 +1,30 @@
+---
+title: "RStudio Cheatsheets"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-04-20
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Here are some very useful cheat sheets put out by RStudio. A great resource of information!
+
+<blockquote class="wp-embedded-content" data-secret="gDWwrH7M4G">
+  <p>
+    <a href="https://www.rstudio.com/resources/cheatsheets/">Cheatsheets</a>
+  </p>
+</blockquote>
+
+
+
+&nbsp;
+ 
+ 
+ 

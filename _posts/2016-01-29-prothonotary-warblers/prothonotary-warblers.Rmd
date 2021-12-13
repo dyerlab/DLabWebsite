@@ -1,0 +1,20 @@
+---
+title: "Prothonotary Warblers"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-01-29
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Way to go [Dr. Bulluck](http://rampages.us/bullucklab/)!  A cool overview of some research that we've been associated with over the years.
+ 
+ 
+ 

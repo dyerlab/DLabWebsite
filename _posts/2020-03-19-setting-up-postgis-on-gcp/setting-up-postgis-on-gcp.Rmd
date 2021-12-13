@@ -1,0 +1,16 @@
+---
+title: "Setting up PostGIS on GCP"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2020-03-19
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+

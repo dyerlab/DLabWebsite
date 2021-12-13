@@ -1,0 +1,21 @@
+---
+title: "The Enigmatic Seedlings Data File"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2019-03-29
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+
+[Here](https://drive.google.com/file/d/1_SMPw4yij0ySdR2XRvaZqXXUduzbwuwg/view?usp=sharing) is the seedlings file.
+ 
+ 
+ 

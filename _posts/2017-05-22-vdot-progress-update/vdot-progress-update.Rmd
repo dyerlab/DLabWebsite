@@ -1,0 +1,22 @@
+---
+title: "VDOT Progress Update"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2017-05-22
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+This is a short presentation on the progress for the VDOT eDNA project.
+
+&nbsp;
+ 
+ 
+ 

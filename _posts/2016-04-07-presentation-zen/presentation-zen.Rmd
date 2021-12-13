@@ -1,0 +1,22 @@
+---
+title: "Presentation Zen"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-04-07
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Here it is, time for student presentations all around!  I thought it would be nice to send this presentation around again to remind everyone what make good (and sucky) presentations.  More below the fold.
+
+<!--more-->
+ 
+ 
+ 

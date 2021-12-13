@@ -1,0 +1,26 @@
+---
+title: "Bayesian Models"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2017-02-28
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+A three-part introduction to Bayesian Data Analysis by Rasmus Bååth.
+
+<!--more-->
+
+
+
+&nbsp;
+ 
+ 
+ 

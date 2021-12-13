@@ -1,0 +1,18 @@
+---
+title: "Spring 2021 Landscape Genetics Workshop"
+description: |
+  This spring, my Landscape Genetics Workshop will need to be held virtually via zoom.  While that provides a set of unique challenges, it looks like this is facilitating a more diverse group of attendees, which is always beneficial. All course content is hosted on this site under Courses.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2021-05-23
+preview: featured.png
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+This spring, my Landscape Genetics Workshop will need to be held virtually via zoom.  While that provides a set of unique challenges, it looks like this is facilitating a more diverse group of attendees, which is always beneficial. All course content is hosted on this site under Courses [link](../../courses/landscapegenetics/).
+
+Can't wait to start!
+

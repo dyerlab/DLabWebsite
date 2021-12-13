@@ -1,0 +1,23 @@
+---
+title: "Evolution 2016 Youtube Channel"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-07-10
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+A large subset of the talks given at this year's Evolution meeting are now available on Youtube.
+
+  * The playlist is [here](https://docs.google.com/spreadsheets/d/1L1UgGMAVzVzwKsuznXq9ngf_qFQWAqRGD4EqvAu2waM/edit#gid=0) as a Google Docs spreadsheet.
+  * The channel is [here](https://www.youtube.com/channel/UCLbk92wFKK32tphMS0saI7Q/videos) on Youtube.
+ 
+ 
+ 

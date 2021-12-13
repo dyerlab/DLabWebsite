@@ -1,0 +1,24 @@
+---
+title: "Landscape Epigenetics"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-06-19
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+Here is my talk for the Evolution 2016 meeting
+
+Here is a link to the [PDF](https://drive.google.com/file/d/0B0T81CzLjtfPaTIxUHVKT3BNU0k/view?usp=sharing).
+
+&nbsp;
+ 
+ 
+ 

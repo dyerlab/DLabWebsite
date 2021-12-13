@@ -1,0 +1,31 @@
+---
+title: "New URLs"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2017-03-02
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+This web page is now available as through the following URL's
+
+http://dyerlab.org  
+http://dyerlab.com
+
+because the longer URL is too long and confusing.
+
+http://dyerlab.ces.vcu.edu
+
+&nbsp;
+
+&nbsp;
+ 
+ 
+ 

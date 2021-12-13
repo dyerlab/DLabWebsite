@@ -1,0 +1,26 @@
+---
+title: "Remferts Dogwood Presentation at the Research Showcase"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2020-02-27
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+
+[Jane Remfert](https://dyerlab.org/authors/jane/) opened the Integrative Life Sciences Research Symposium this year with her presentation on Cultivar Gene Escape.
+
+
+
+
+
+ 
+ 
+ 

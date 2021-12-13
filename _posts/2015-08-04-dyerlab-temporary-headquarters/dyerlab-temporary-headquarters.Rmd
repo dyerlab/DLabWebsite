@@ -1,0 +1,25 @@
+---
+title: "Dyerlab Temporary Headquarters"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2015-08-04
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+
+Two NSF grants submitted!  Taking a bit of time out for some programming and to set up Dyerlab South (in the vicinity of 24.9515812,-80.5807652)&#8230;
+
+&nbsp;
+
+&nbsp;
+ 
+ 
+ 

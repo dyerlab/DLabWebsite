@@ -1,0 +1,20 @@
+---
+title: "Welcome to the Lab Bonnie"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2016-03-11
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+As part of a collaboration with VDOT, I am pleased to announce that [Ms. Bonnie Roderique](http://dyerlab.bio.vcu.edu/people/) has just joined the Dyer laboratory to work on a project around the endangered James River Spinymussel (_Pleurobema collina_).  Not a plant, but at least not a vertebrate!
+ 
+ 
+ 

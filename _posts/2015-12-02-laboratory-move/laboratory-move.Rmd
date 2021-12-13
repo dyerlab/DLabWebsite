@@ -1,0 +1,20 @@
+---
+title: "Laboratory Move"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2015-12-02
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+The Dyer laboratory is moving!  I don not know the final destination, but it has been verified that the current space is unusable.  After 31 months of not having a functional laboratory&#8230;
+ 
+ 
+ 

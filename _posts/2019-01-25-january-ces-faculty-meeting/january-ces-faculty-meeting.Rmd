@@ -1,0 +1,19 @@
+---
+title: "January CES Faculty Meeting"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2019-01-25
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+
+ 
+ 
+ 
