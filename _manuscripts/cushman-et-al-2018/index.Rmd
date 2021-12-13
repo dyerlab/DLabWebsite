@@ -1,27 +1,36 @@
 ---
-title: "Editorial: The Least Cost Path From Landscape Genetics to Landscape Genomics: Challenges and Opportunities to Explore NGS Data in a Spatially Explicit Context"
-date: 2018-06-01
-authors: 
-- Samuel A. Cushman
-- Andrew J. Shirk
-- Glenn T. Howe
-- Melanie A. Murphy
-- Rodney J. Dyer
-- Stephane Joost
-description: ""
-publication: FRONTIERS IN GENETICS
+title: 'Editorial: The Least Cost Path From Landscape Genetics to Landscape Genomics: Challenges
+  and Opportunities to Explore NGS Data in a Spatially Explicit Context'
+date: '2018-06-01'
+authors:
+- name: Samuel A. Cushman
+- name: Andrew J. Shirk
+- name: Glenn T. Howe
+- name: Melanie A. Murphy
+- name: Rodney J. Dyer
+- name: Stephane Joost
+description: |
+    FRONTIERS IN GENETICS. 2018.  
 categories: 
-  - landscape genetics
-  - landscape genomics
-  - next generation sequencing
-  - spatial genetics
-  - ecological genetics
-doi: "10.3389/fgene.2018.00215"
-url_pdf: "https://drive.google.com/open?id=1Or90Qth4ONT-jjWvRl3yKSkLdlGvxBOq"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- landscape genetics
+- landscape genomics
+- next generation sequencing
+- spatial genetics
+- ecological genetics
+preview: featured.png
+journal:  FRONTIERS IN GENETICS
+doi:  10.3389/fgene.2018.00215
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
+
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=1Or90Qth4ONT-jjWvRl3yKSkLdlGvxBOq) [![ DOI 10.3389/fgene.2018.00215](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.3389/fgene.2018.00215)
+
+![]( featured.png )
+
+## Abstract
+
 

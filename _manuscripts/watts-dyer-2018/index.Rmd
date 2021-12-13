@@ -1,23 +1,32 @@
 ---
-title: "Structure and Resilience of Bald Eagle Roost Networks"
-date: 2018-06-01
+title: Structure and Resilience of Bald Eagle Roost Networks
+date: '2018-06-01'
 authors:
-  - Bryan D. Watts
-  - Rodney J. Dyer
-description: "The recognition that communal roosts are important elements within the life cycle of bald eagles (Haliaeetus leucocephalus) led to their protection under the ``disturb″ clause of the Bald and Golden Eagle Protection Act. The regular roost-switching movements of bald eagles imply that roosts are part of an interactive network where roosts represent nodes linked by birds moving between them. Network analysis holds promise for informing management decisions by assessing the effect of roost removal on the resilience of the broader network. We tracked nonbreeding bald eagles (n = 56) within the upper Chesapeake Bay (2008-2013), USA, to evaluate roost characteristics and network structure. We used midnight locations (n = 14,464) to assess the use of communal roosts (n = 212) and movement of birds among roosts (n = 2,634) on successive roost nights to evaluate the pattern and strength of connections. We performed a sensitivity analysis to assess the response of the roost network to roost loss. Structure of the roost network approximated that of a scale-free network where the distribution of connections follows a power law of the form P(k)=Ak(-gamma) and gamma = 1.1. Unlike random networks, connections within scale-free networks are concentrated within a few highly connected nodes (hubs). These hub roosts serve as bridges between large numbers of other roosts, have the shortest travel times to other roosts and greatest overall influence on network functioning. The effect of roost removal on overall network function was directly proportional to the connectivity of the roost being removed. The targeted removal of the majority (>90%) of roosts had very little effect on the network. Network sensitivity was high in response to the loss of roosts within the highest 10% of connectivity. This small (n = 18) subset of roosts makes a disproportionate contribution to network function and the protection of these roosts should be a stated management objective with high priority. Network analysis represents a powerful tool with the potential to inform management decisions. (C) 2018 The Wildlife Society."
-publication: WILDLIFE SOCIETY BULLETIN
+- name: Bryan D. Watts
+- name: Rodney J. Dyer
+description: |
+    WILDLIFE SOCIETY BULLETIN. 2018.  
 categories: 
-  - bald eagle
-  - Chesapeake Bay
-  - communal roost
-  - Haliaeetus leucocephalus
-  - networks
-  - resiliency
-doi: "10.1002/wsb.865"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- bald eagle
+- chesapeake bay
+- communal roost
+- haliaeetus leucocephalus
+- networks
+- resiliency
+preview: featured.png
+journal:  WILDLIFE SOCIETY BULLETIN
+doi:  10.1002/wsb.865
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
 
+ [![ DOI 10.1002/wsb.865](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1002/wsb.865)
+
+![]( featured.png )
+
+## Abstract
+
+The recognition that communal roosts are important elements within the life cycle of bald eagles (Haliaeetus leucocephalus) led to their protection under the ``disturb″ clause of the Bald and Golden Eagle Protection Act. The regular roost-switching movements of bald eagles imply that roosts are part of an interactive network where roosts represent nodes linked by birds moving between them. Network analysis holds promise for informing management decisions by assessing the effect of roost removal on the resilience of the broader network. We tracked nonbreeding bald eagles (n = 56) within the upper Chesapeake Bay (2008-2013), USA, to evaluate roost characteristics and network structure. We used midnight locations (n = 14,464) to assess the use of communal roosts (n = 212) and movement of birds among roosts (n = 2,634) on successive roost nights to evaluate the pattern and strength of connections. We performed a sensitivity analysis to assess the response of the roost network to roost loss. Structure of the roost network approximated that of a scale-free network where the distribution of connections follows a power law of the form P(k)=Ak(-gamma) and gamma = 1.1. Unlike random networks, connections within scale-free networks are concentrated within a few highly connected nodes (hubs). These hub roosts serve as bridges between large numbers of other roosts, have the shortest travel times to other roosts and greatest overall influence on network functioning. The effect of roost removal on overall network function was directly proportional to the connectivity of the roost being removed. The targeted removal of the majority (>90%) of roosts had very little effect on the network. Network sensitivity was high in response to the loss of roosts within the highest 10% of connectivity. This small (n = 18) subset of roosts makes a disproportionate contribution to network function and the protection of these roosts should be a stated management objective with high priority. Network analysis represents a powerful tool with the potential to inform management decisions. (C) 2018 The Wildlife Society.

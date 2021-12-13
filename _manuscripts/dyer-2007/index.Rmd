@@ -1,17 +1,25 @@
 ---
-title: "Powers of discerning: challenges to understanding dispersal processes in natural populations"
-date: 2007-12-01
+title: 'Powers of discerning: challenges to understanding dispersal processes in natural
+  populations'
+date: '2007-12-01'
 authors:
-- Rodney J. Dyer
-description: "In this issue of Molecular Ecology, authors Robledo-Arnuncio & Garcia present a compelling approach for quantifying seed dispersal in plant populations. Building upon methods previously used for quantification of pollen dispersal, the authors not only examine the behaviour of the model with respect to sample sizes, dispersal distance, and the kurtosis of the dispersal function but also provide an empirical example using Prunus mahaleb."
-publication: MOLECULAR ECOLOGY
-doi: "10.1111/j.1365-294X.2007.03581.x"
-url_pdf: "https://drive.google.com/open?id=0B0T81CzLjtfPNzRrVERCOTRRQlk"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- name: Rodney J. Dyer
+description: |
+    MOLECULAR ECOLOGY. 2007.  
+preview: featured.png
+journal:  MOLECULAR ECOLOGY
+doi:  10.1111/j.1365-294X.2007.03581.x
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
 
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPNzRrVERCOTRRQlk) [![ DOI 10.1111/j.1365-294X.2007.03581.x](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1365-294X.2007.03581.x)
 
+![]( featured.png )
+
+## Abstract
+
+In this issue of Molecular Ecology, authors Robledo-Arnuncio & Garcia present a compelling approach for quantifying seed dispersal in plant populations. Building upon methods previously used for quantification of pollen dispersal, the authors not only examine the behaviour of the model with respect to sample sizes, dispersal distance, and the kurtosis of the dispersal function but also provide an empirical example using Prunus mahaleb.

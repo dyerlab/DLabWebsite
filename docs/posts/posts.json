@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2021-12-12-moving-manuscripts-from-hugo/",
+    "title": "Moving Manuscripts from Hugo",
+    "description": "The use of Markdown for your site is very helpful but not alll markdown formats are the same.  Here is how I moved from Hugo to rstudio::distill for the manuscripts section of the lab webpage.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://dyerlab.org"
+      }
+    ],
+    "date": "2021-12-13",
+    "categories": [],
+    "contents": "\nAs part of moving over from Hugo to Distill, I need to move over all my manuscripts. While putting everything into Markdown is a good idea for portability, there does not seem to be a very quick way to translate YAML. IN this case, the old YAML looked like this (n.b., they are all .md files, not .Rmd files like distill likes so the syntax hightlighting will not look right):\nOldYAMLWhich will need to be translated into the new YAML to resemble:\nNewYAMLThis may not be that big of an deal but at the end of the day, I’ve got a ton of folders that each represent each manuscript I’ve published. I was able to get a lot of it done using some quick perl like this:\nperl -pi -e s/name =/name:/g file.md\nHowever, there is going to be a lot of pain associated with some of it (authors & categories sections). For that, I’ll have to run some R code. Here is how I did it.\n\n\nfiles <- list.files(path=\"../../_manuscripts\", \n                    recursive = TRUE,\n                    full.names = TRUE,\n                    pattern = \"index.md\")\n\n\n\nSo, for each of these files, I need to:\nLoad markdown file\nSave as Rmd\nUse some terminal magic to convert over yaml formatting.\nSo here it goes:\n\n\nfor( file in files ) { \n  newfile <- gsub(\".md\", \".Rmd\", file,perl = TRUE)\n  cmd <- paste(\"mv\",file, newfile )\n  system( cmd )\n}\n\n\n\nOK, so that was sufficient for me to get things good enough to compile. And it looks… meh.\nNailed it!I put all the manuscripts in its own category and subfolder but it has all the abstract shoved into the description. However, that causes some issues because some of the abstracts are long and it makes for an unreasonable view of the manuscripts.\n\nand none of the images are showing. Now we’ll have to go through it all and futz around to make it look good. Here is the whole salchicha.\n\n\nlibrary( yaml )\nfiles <- list.files(path=\"../../_manuscripts\", \n                    recursive = TRUE,\n                    full.names = TRUE,\n                    pattern = \"index.Rmd\")\n\nfor( file in files ) { \n  print(file)\n  # load in the YAML\n  old <- read_yaml( file )\n  \n  # Make the new file contents\n  new <- c(\"---\",\n           paste(\"title:\", as.yaml(old$title)),\n           paste(\"date:\", as.yaml(old$date ) ) )\n  # put authors, year and publication here.\n  authors <- paste(\"  \", paste(unlist(old$authors), collapse=\", \"))\n  year <- strsplit(old$date, \"-\",fixed = TRUE)[[1]][1]\n  pub <- paste(  \"<i>\", old$publication, \"<\/i>\", sep=\"\" )\n  \n  \n  \n  description <- paste(\"description: |\")\n  \n  # put in links to PDF and doi if presnt\n  links <- \"<br />\"\n  if( \"url_pdf\" %in% names( old ) ) { \n    url <- old$url_pdf \n    val <- paste( \"[![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](\", url, \")\", sep=\"\")\n    links <- paste( links, val)\n  }\n  \n  if( \"doi\" %in% names( old ) ) { \n    url <- paste(\"https://doi.org\",old$doi, sep=\"/\")\n    val <- paste( \"[![ DOI \", \n                  old$doi, \n                  \"](http://img.shields.io/badge/DOI-474747.svg)](\",\n                  url,\n                  \")\", sep=\"\") \n    links <- paste( links, val )\n  }\n  description <- paste( authors, year, pub,\" \", sep=\". \")\n  description <- paste( description, links)\n  new <- c(new,\n           \"description: |\",\n           description)\n  \n  # clean up the categories\n  if( \"categories\" %in% names(old) ) { \n    categories <- gsub( \"\\\"\", \"\", old$categories )\n    new <- c(new, \n             \"categories: \",\n             unlist( lapply( categories, \n                             FUN = function(x) { return(paste(\"-\", x))})))\n  }\n  \n  \n  \n  \n  # put in the Journal \n  if( length( old$publication) > 0 ) { \n    new <- c(new,\n             paste(\"journal: \", old$publication))\n  }\n  \n  if( \"doi\" %in% names( old ) ) { \n    new <- c(new,\n             paste(\"doi: \", old$doi ))\n  }\n  \n  \n  # if there is a bib\n  bibs <- list.files( dirname(file), \n                      pattern = \"*.bib\",\n                      full.names = TRUE)\n  if( length(bibs) == 1 ) { \n    new <- c(new,\n             paste(\"bibliography:\", basename(bibs[1]) ))\n  }\n  \n  \n  \n  #add end stuff\n  if( \"respository_url\" %in% names( old ) ) { \n    new <- c(new, \n             paste(\"repository_url:\",as.yaml(old$respository_url ) ) )\n  }\n  new <- c( new, \n            paste(\"output:\\n\",as.yaml(old$output)),\n            \"---\",\n            \"\")\n  new <- gsub(\"\\n\\n\", \"\\n\", paste( new, collapse=\"\\n\") ) \n  \n  # Add image if present\n  if( \"featured\" %in% names( old ) ) { \n    img <- paste(\"![](\",old$featured,\")\")\n    new <- c( new, \n              \"\",\n              img )\n  }\n  \n  if( \"description\" %in% names( old ) ) { \n    new <- c(new,\n             \"\",\n             \"## Abstract\",\n             \"\",\n             old$description )\n  }\n  \n  #  Previously, I saved to a different file so as to not overwrite the important stuff.\n  #   Once it worked, then write over the old one.\n  # newfile <- paste( dirname(file), \"/manuscript.Rmd\", sep=\"\")\n  write(new, file=file)\n  \n}\n\n\n\nNow, I’ve just got to go clean up the old temporary files using something like:\nfind _manuscripts -iname manuscrip* -delete\nSo after doing that, it appears that the index.Rmd files are not automatically knt again, so I’ll have to go through them and, once again, cycle through the files and knit each of them.\n\n\nfor( file in files) { \n  rmarkdown::render(file)\n}\n\n\n\nThe End\n\n\n",
+    "preview": "posts/2021-12-12-moving-manuscripts-from-hugo/NewYAML.png",
+    "last_modified": "2021-12-13T14:23:58-05:00",
+    "input_file": {},
+    "preview_width": 692,
+    "preview_height": 189
+  },
+  {
     "path": "posts/2021-12-12-dlab-swift/",
     "title": "DLab Swift",
     "description": "A short description of the post.",
@@ -17,23 +36,6 @@
     "input_file": {}
   },
   {
-    "path": "posts/2021-12-12-moving-manuscripts-from-hugo/",
-    "title": "Moving Manuscripts from Hugo",
-    "description": "A short description of the post.",
-    "author": [
-      {
-        "name": "Rodney Dyer",
-        "url": "https://dyerlab.org"
-      }
-    ],
-    "date": "2021-12-12",
-    "categories": [],
-    "contents": "\nAs part of moving over from Hugo to Distill, I need to move over all my manuscripts. While putting everything into Markdown is a good idea for portability, there does not seem to be a very quick way to translate YAML. IN this case, the old YAML looked like this (n.b., they are all .md files, not .Rmd files like distill likes so the syntax hightlighting will not look right):\nOldYAMLWhich will need to be translated into the new YAML to resemble:\nNewYAMLThis may not be that big of an deal but at the end of the day, I’ve got a ton of folders that each represent each manuscript I’ve published. I was able to get a lot of it done using some quick perl like this:\nperl -pi -e s/name =/name:/g file.md\nHowever, there is going to be a lot of pain associated with the authors sections. For that, I’ll have to run some R code. Here is how I did it.\n\n\nfiles <- list.files(path=\"../../_manuscripts\", \n                    recursive = TRUE,\n                    full.names = TRUE,\n                    pattern = \"index.*\")\nlength( files ) \n\n\n[1] 42\n\nSo, for each of these files, I need to:\nLoad it in to memory\nParse the yaml that has the author\nConvert it to the format above\nInsert new content\nWhile I’m in there, I may as well through in the repository url as well.\nSave as a Rmd file and delete the md version\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-12-12T20:42:17-05:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/welcome/",
     "title": "Welcome to The Dyer Laboratory",
     "description": "Welcome to the new format of the the Dyer Laboratory online website.  It was getting time to clean things up and streamline the ability to post materials online. So here it is, now in cleaner RMarkdown than before.",
@@ -48,6 +50,23 @@
     "contents": "\nIt is time to update the old blog and move platforms. In the past, I had been using Hugo as my site generator but starting in 2022, I will now be working using distill. I had played around a bit with John Sundell’s excellent Publish but there are just too many things I do in R that would increase the difficulty in deploying outside of RMarkdown.\nWithout further ado, here it is. I am going to try to bring over older posts if I can figure out how to do that and I’ll be documenting it all here for those of you who are moving from hugo to distill.\n\n\n\n",
     "preview": {},
     "last_modified": "2021-12-12T11:37:43-05:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/2021-06-11-moving-from-hugo-to-distill/",
+    "title": "Moving from HUGO to distill",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2021-06-11",
+    "categories": [],
+    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-11-17T19:55:37-05:00",
     "input_file": {}
   }
 ]

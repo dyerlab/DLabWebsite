@@ -1,0 +1,55 @@
+---
+title: Mermaid Diagrams in RMarkdown
+author: rodney
+date: '2021-03-30'
+slug: mermaid-diagrams-in-rmarkdown
+categories:
+  - Programming
+  - Visualization
+  - R
+tags:
+  - tips
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-03-30T06:32:46-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index.en_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index.en_files/d3/d3.min.js"></script>
+<script src="{{< blogdown/postref >}}index.en_files/dagre/dagre-d3.min.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/mermaid/dist/mermaid.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/mermaid/dist/mermaid.slim.min.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/DiagrammeR-styles/styles.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/chromatography/chromatography.js"></script>
+<script src="{{< blogdown/postref >}}index.en_files/DiagrammeR-binding/DiagrammeR.js"></script>
+
+
+<p>A nice tool to have at your disposal is a method for quickly making a connected graph diagram in your markdown. It may be a workflow you are trying to show or something an org chart or whatever. One thing that I’ve recently learned to through <a href="https:://obsidian.md">Obsidian</a> as I develop my second brain (I call it my <em>brainforest</em>) is that you can easily insert mermaid charts into markdown and have them render properly. In R, it is the same, though we have a few tricks we need to use so that it looks nice.</p>
+<pre class="r"><code>library(DiagrammeR)</code></pre>
+<p>A <code>mermaid</code> chart is a simple textual representation of nodes and connections denoted as a string. There is a top down graph-like flowchart.</p>
+<pre class="r"><code>mermaid(&quot;graph TD; 
+    A[Start] --&gt; B{Is it?}; 
+    B -- Yes --&gt; C[OK]; 
+    C --&gt; D[Rethink]; 
+    D --&gt; B; 
+    B -- No --&gt; E[End];&quot;)</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"diagram":"graph TD; \n\tA[Start] --> B{Is it?}; \n\tB -- Yes --> C[OK]; \n\tC --> D[Rethink]; \n\tD --> B; \n\tB -- No --> E[End];"},"evals":[],"jsHooks":[]}</script>
+<p>The thing that I find a bit of a pain (in RMarkdown though apparently not here in blogdown) is that the box around the plot in RMarkdown is a bit too large. To correct for that, we need to add to the function call that the diagram needs to take up 100% of the space.</p>
+<pre class="r"><code>mermaid(&quot;graph LR; 
+A(Process 1)--&gt;B(Process 2);
+B--&gt;C(Analysis);
+C--&gt;D(Visualization);
+D--&gt;E(QA/QC);&quot;,
+        width=&quot;100%&quot;,height=&quot;100%&quot;)</code></pre>
+<div id="htmlwidget-2" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"diagram":"graph LR; \nA(Process 1)-->B(Process 2);\nB-->C(Analysis);\nC-->D(Visualization);\nD-->E(QA/QC);"},"evals":[],"jsHooks":[]}</script>
+<p>So that it all fits together.</p>

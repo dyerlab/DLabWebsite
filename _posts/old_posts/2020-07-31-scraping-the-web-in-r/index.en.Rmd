@@ -1,0 +1,127 @@
+---
+title: Scraping the Web in R
+author: rodney Dyer
+date: '2020-07-31'
+slug: scraping-the-web-in-r
+categories:
+  - R
+tags:
+  - code
+subtitle: ''
+summary: ''
+authors: ['rodney']
+lastmod: '2020-07-31T11:19:14-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+---
+title: "Scraping Websites"
+output: 
+  html_notebook:
+    css: "envs543-styles.css"
+---
+
+There are times when we need to scrape some data from a website to use in our analyses.  In a perfect world, the provider of the data would provide a csv or json download but let's face it... we do not live in a perfect world and often data that is posted to the internet is done by people who really do not care about subseqent use by others (else they would have made it easy to use rather than just showing it).
+
+Here is a quick tutorial on one method I use to do this.
+
+
+## Necessary Resources
+
+For this example, I'm going to use the `rvest` and `dplyr` libraries to scrape a USDA page for county FIPS codes[^1] for all the counties in Virginia.   
+
+```{r}
+if( !("dplyr" %in% installed.packages()) ) {
+  install.packages("tidyverse")
+}
+if( !("rvest" %in% installed.packages() )  ) {
+  install.packages("rvest")
+}
+
+library( rvest )
+library( tidyverse ) 
+```
+
+
+To start, grab the URL of the page you are intending to scrape.  This one is a pretty straight forward structure.
+
+![USDA Website](https://live.staticflickr.com/65535/50173355466_75306bb456_c_d.jpg)
+
+```{r}
+url <- "https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013697" 
+page <- read_html(url)
+page
+```
+
+Now we can use some tidy methods to get to the components.  We will go through the nodes and grab the "body" component then show the children in the body.
+
+```{r}
+page %>% 
+  html_node("body") %>%
+  html_children()
+```
+
+The page has broken up into compoennts, of which we can search.  To figure out what parts we are going to grab data from, we need to look at the raw code in the document.  Your browser can do this and you'll have to manually look through the components.  Here is what this page looks like.
+
+![HTML Content](https://live.staticflickr.com/65535/50172897858_dbec94c20c_c_d.jpg)
+
+Here you notice that the table that contains the data we are interested in looking at has a class equal to `data`.  We can grab all the `table` components from the page and look to see which one we are interested in.
+
+```{r}
+page %>% 
+  xml_find_all(".//table") 
+```
+
+There are 26 total tables on this page!  But it looks like the first 20 do not contain the table of interest. Here are the last ones.
+
+```{r}
+page %>% 
+  xml_find_all(".//table") %>%
+  tail()
+```
+
+And we see that the data table is the one with `class="data"`, that differentiates it from the rest.  We can use this to pull out just the table with the attribute `class = "data"` using xml search techniques.  The syntax is a bit odd as it is based upon xml search syntax but you can get the notion.
+
+```{r}
+page %>% 
+  xml_find_all(".//table") %>% 
+  xml_find_all("//table[contains(@class, 'data')]")
+```
+
+Now we can turn that table into a `data.frame` and format the columns appropriately[^2]
+
+
+```{r}
+page %>% 
+  xml_find_all(".//table") %>% 
+  xml_find_all("//table[contains(@class, 'data')]") %>% 
+  html_table( fill = TRUE ) %>% 
+  .[[1]] %>%
+  mutate( Name = factor(Name), State = factor(State) ) -> raw_data
+
+summary( raw_data)
+```
+
+**PERFECT!!**  Now, to pull the parts that are relevant to us, the ones from Virginia.
+
+```{r}
+raw_data %>% 
+  filter( State == "VA" ) %>%
+  select(Name, FIPS) %>%
+  droplevels()
+```
+
+And there you go.
+
+
+
+
+
+[^1]: Federal Information Processing Standards (FIPS), now known as Federal Information Processing Series, are numeric codes assigned by the National Institute of Standards and Technology (NIST). Typically, FIPS codes deal with US states and counties. US states are identified by a 2-digit number, while US counties are identified by a 3-digit number. For example, a FIPS code of 51159, represents Virginia (51-) and Richomnd City -159.
+
+[^2]: The `.[[1]]` part is how we grab just the first row from the list that is returned. 

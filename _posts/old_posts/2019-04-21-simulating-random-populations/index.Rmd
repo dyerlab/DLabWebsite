@@ -1,0 +1,109 @@
+---
+title: Simulating Random Populations
+date: '2019-04-21'
+slug: simulating-random-populations
+categories:
+  - Applied Population Genetics
+tags:
+  - R
+  - gstudio
+  - simulation
+  
+---
+
+The `gstudio` package has routines that can be used to simulate random populations.  I've added these to facilitate more exploratory data analysis.  Here is how you can use them.
+
+If you have not updated the `gstudio` and `popgraph` packages in a while, you probably should.  Here is how (if it asks if you would like to update the other packages, it is probably a good idea to say yes).
+
+```{r eval=FALSE}
+devtools::install_github("dyerlab/popgraph")
+devtools::install_github("dyerlab/gstudio")
+```
+
+Then load it in as:
+
+```{r}
+library(gstudio)
+```
+
+I'm going to start with the enigmatic bark beetle data set.  
+
+```{r}
+data(arapat)
+summary(arapat)
+```
+
+To simulate random data sets we need to start off by determining what allele frequencies you may want.  I'm going to use the stratum-level frequencies from the example data set.  Here is what these look like.
+
+```{r}
+suppressPackageStartupMessages( library(tidyverse) )
+library(DT)
+freqs <- frequencies(arapat, stratum="Population")
+head(freqs)
+```
+
+though the whole data set has `r nrow(freqs)` rows!
+
+What I'm going to do is to create a random dataset from these frequencides.  This dataset will have 20 populations (I'll just grab the first 20 `Stratum` from this frequency matrix).
+
+```{r}
+freqs %>%
+  filter( Stratum %in% unique(freqs$Stratum)[1:20] ) -> sim_freqs
+summary(sim_freqs)
+```
+
+
+And we can take a quick look at the frequencies across populations for, say *MP20* as:
+
+```{r}
+sim_freqs %>%
+  filter( Locus == "MP20", Stratum %in% unique(Stratum)[1:5] ) %>% 
+  ggplot( aes(Allele,Frequency)) + 
+  geom_bar( stat="identity", position="dodge" )  + 
+  facet_grid( Stratum ~ .) + 
+  theme_bw()
+```
+
+
+OK.  Now, lets take a look at how we can make a random population.  The `make_population()` function takes a frequency matrix and creates random ikndividuals. Here is an example.
+
+```{r}
+fake101 <- make_population( sim_freqs %>% filter(Stratum=="101"), N=100 )
+head(fake101)
+```
+
+
+The frequencies should be pretty close to the real ones.  Compare the `LTRS` locus allele frequencies from the simualted data
+
+```{r}
+frequencies( fake101,loci = "LTRS") 
+```
+
+and the real data
+
+```{r}
+sim_freqs %>% filter(Locus=="LTRS", Stratum=="101")
+```
+
+Pretty close.  So using this approach, we can make all kinds of allele random populations.  You just need to figure out the allele frequency matrix and then pass that to the appropriate functions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

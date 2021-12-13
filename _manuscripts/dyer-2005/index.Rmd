@@ -1,20 +1,28 @@
 ---
-title: "GENER: a server-based analysis of pollen pool structure"
-date: 2005-12-01
+title: 'GENER: a server-based analysis of pollen pool structure'
+date: '2005-12-01'
 authors:
-- Rodney Dyer
-description: "The server-based program GENER performs the two-generation analysis of pollen flow for data consisting of mother/offspring arrays using genetic markers. The GENER program decomposes the genetic variance sampled by maternal individuals within and among pollen pool components of genetic variance and is accessible from http://dyerlab.bio.vcu.edu. These estimates are used to construct the test statistic, Phi(FT), whose significance is tested via permutation. The Phi(FT) statistic can subsequently be used to quantify genetic effective pollen donor population size (N-ep), effective mating area and dispersal distance. Furthermore, the GENER program can calculate Phi(FT) values for all pairs of substrata within the data set."
-publication: MOLECULAR ECOLOGY NOTES
+- name: Rodney Dyer
+description: |
+    MOLECULAR ECOLOGY NOTES. 2005.  
 categories: 
-  - gene flow
-  - pollen structure
-  - two-generation analysis
-doi: "10.1111/j.1471-8286.2005.01113.x"
-url_pdf: "https://drive.google.com/open?id=0B0T81CzLjtfPSHBzeW5YMGdjMXc"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- gene flow
+- pollen structure
+- two-generation analysis
+preview: featured.png
+journal:  MOLECULAR ECOLOGY NOTES
+doi:  10.1111/j.1471-8286.2005.01113.x
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
 
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPSHBzeW5YMGdjMXc) [![ DOI 10.1111/j.1471-8286.2005.01113.x](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1471-8286.2005.01113.x)
+
+![]( featured.png )
+
+## Abstract
+
+The server-based program GENER performs the two-generation analysis of pollen flow for data consisting of mother/offspring arrays using genetic markers. The GENER program decomposes the genetic variance sampled by maternal individuals within and among pollen pool components of genetic variance and is accessible from http://dyerlab.bio.vcu.edu. These estimates are used to construct the test statistic, Phi(FT), whose significance is tested via permutation. The Phi(FT) statistic can subsequently be used to quantify genetic effective pollen donor population size (N-ep), effective mating area and dispersal distance. Furthermore, the GENER program can calculate Phi(FT) values for all pairs of substrata within the data set.

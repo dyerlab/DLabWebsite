@@ -1,23 +1,32 @@
 ---
-title: "Invasion genetics of Microstegium vimineum (Poaceae) within the James River Basin of Virginia, USA"
-date: 2011-06-01
+title: Invasion genetics of Microstegium vimineum (Poaceae) within the James River Basin
+  of Virginia, USA
+date: '2011-06-01'
 authors:
-  - name: Stephen A. Baker
-  - name: Rodney J. Dyer
-description: "Patterns of spatial genetic structure produced following the expansion of an invasive species into novel habitats reflect demographic processes that have shaped the genetic structure we see today. We examined 359 individuals from 23 populations over 370 km within the James River Basin of Virginia, USA as well as four populations outside of the basin. Population diversity levels and genetic structure was quantified using several analyses. Within the James River Basin there was evidence for three separate introductions and a zone of secondary contact between two distinct lineages suggesting a relatively recent expansion within the basin. Microstegium vimineum possesses a mixed-mating system advantageous to invasion and populations with low diversity were found suggesting a recent founder event and self-fertilization. However, surprisingly high levels of diversity were found in some populations suggesting that out-crossing does occur. Understanding how invasive species spread and the genetic consequences following expansion may provide insights into the cause of invasiveness and can ultimately lead to better management strategies for control and eradication."
-publication: CONSERVATION GENETICS
+- name: Stephen A. Baker
+- name: Rodney J. Dyer
+description: |
+    CONSERVATION GENETICS. 2011.  
 categories: 
-  - Microstegium vimineum
-  - Invasive species
-  - genetic structure
-  - Founder effects
-  - Secondary contact"
-doi: "10.1007/s10592-011-0186-0"
-url_pdf: "https://drive.google.com/open?id=0B0T81CzLjtfPbC1SNXltTkxYcmM"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- microstegium vimineum
+- invasive species
+- genetic structure
+- founder effects
+- secondary contact
+preview: featured.png
+journal:  CONSERVATION GENETICS
+doi:  10.1007/s10592-011-0186-0
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
 
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPbC1SNXltTkxYcmM) [![ DOI 10.1007/s10592-011-0186-0](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1007/s10592-011-0186-0)
+
+![]( featured.png )
+
+## Abstract
+
+Patterns of spatial genetic structure produced following the expansion of an invasive species into novel habitats reflect demographic processes that have shaped the genetic structure we see today. We examined 359 individuals from 23 populations over 370 km within the James River Basin of Virginia, USA as well as four populations outside of the basin. Population diversity levels and genetic structure was quantified using several analyses. Within the James River Basin there was evidence for three separate introductions and a zone of secondary contact between two distinct lineages suggesting a relatively recent expansion within the basin. Microstegium vimineum possesses a mixed-mating system advantageous to invasion and populations with low diversity were found suggesting a recent founder event and self-fertilization. However, surprisingly high levels of diversity were found in some populations suggesting that out-crossing does occur. Understanding how invasive species spread and the genetic consequences following expansion may provide insights into the cause of invasiveness and can ultimately lead to better management strategies for control and eradication.

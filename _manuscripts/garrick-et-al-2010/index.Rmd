@@ -1,19 +1,27 @@
 ---
-title: "Nuclear gene phylogeography using PHASE: dealing with unresolved genotypes, lost alleles, and systematic bias in parameter estimation"
-date: 2010-04-01
+title: 'Nuclear gene phylogeography using PHASE: dealing with unresolved genotypes, lost
+  alleles, and systematic bias in parameter estimation'
+date: '2010-04-01'
 authors:
-  - Ryan C. Garrick
-  - Paul Sunnucks
-  - Rodney J. Dyer
-description: "Background: A widely-used approach for screening nuclear DNA markers is to obtain sequence data and use bioinformatic algorithms to estimate which two alleles are present in heterozygous individuals. It is common practice to omit unresolved genotypes from downstream analyses, but the implications of this have not been investigated. We evaluated the haplotype reconstruction method implemented by PHASE in the context of phylogeographic applications. Empirical sequence datasets from five non-coding nuclear loci with gametic phase ascribed by molecular approaches were coupled with simulated datasets to investigate three key issues: (1) haplotype reconstruction error rates and the nature of inference errors, (2) dataset features and genotypic configurations that drive haplotype reconstruction uncertainty, and (3) impacts of omitting unresolved genotypes on levels of observed phylogenetic diversity and the accuracy of downstream phylogeographic analyses. Results: We found that PHASE usually had very low false-positives (i.e., a low rate of confidently inferring haplotype pairs that were incorrect). The majority of genotypes that could not be resolved with high confidence included an allele occurring only once in a dataset, and genotypic configurations involving two low-frequency alleles were disproportionately represented in the pool of unresolved genotypes. The standard practice of omitting unresolved genotypes from downstream analyses can lead to considerable reductions in overall phylogenetic diversity that is skewed towards the loss of alleles with larger-than-average pairwise sequence divergences, and in turn, this causes systematic bias in estimates of important population genetic parameters. Conclusions: A combination of experimental and computational approaches for resolving phase of segregating sites in phylogeographic applications is essential. We outline practical approaches to mitigating potential impacts of computational haplotype reconstruction on phylogeographic inferences. With targeted application of laboratory procedures that enable unambiguous phase determination via physical isolation of alleles from diploid PCR products, relatively little investment of time and effort is needed to overcome the observed biases."
-publication: BMC EVOLUTIONARY BIOLOGY
-doi: "10.1186/1471-2148-10-118"
-url_pdf: "https://drive.google.com/open?id=0B0T81CzLjtfPYWg0SXl2VHN6cGs"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- name: Ryan C. Garrick
+- name: Paul Sunnucks
+- name: Rodney J. Dyer
+description: |
+    BMC EVOLUTIONARY BIOLOGY. 2010.  
+preview: featured.png
+journal:  BMC EVOLUTIONARY BIOLOGY
+doi:  10.1186/1471-2148-10-118
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
 
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPYWg0SXl2VHN6cGs) [![ DOI 10.1186/1471-2148-10-118](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1186/1471-2148-10-118)
 
+![]( featured.png )
+
+## Abstract
+
+Background: A widely-used approach for screening nuclear DNA markers is to obtain sequence data and use bioinformatic algorithms to estimate which two alleles are present in heterozygous individuals. It is common practice to omit unresolved genotypes from downstream analyses, but the implications of this have not been investigated. We evaluated the haplotype reconstruction method implemented by PHASE in the context of phylogeographic applications. Empirical sequence datasets from five non-coding nuclear loci with gametic phase ascribed by molecular approaches were coupled with simulated datasets to investigate three key issues: (1) haplotype reconstruction error rates and the nature of inference errors, (2) dataset features and genotypic configurations that drive haplotype reconstruction uncertainty, and (3) impacts of omitting unresolved genotypes on levels of observed phylogenetic diversity and the accuracy of downstream phylogeographic analyses. Results: We found that PHASE usually had very low false-positives (i.e., a low rate of confidently inferring haplotype pairs that were incorrect). The majority of genotypes that could not be resolved with high confidence included an allele occurring only once in a dataset, and genotypic configurations involving two low-frequency alleles were disproportionately represented in the pool of unresolved genotypes. The standard practice of omitting unresolved genotypes from downstream analyses can lead to considerable reductions in overall phylogenetic diversity that is skewed towards the loss of alleles with larger-than-average pairwise sequence divergences, and in turn, this causes systematic bias in estimates of important population genetic parameters. Conclusions: A combination of experimental and computational approaches for resolving phase of segregating sites in phylogeographic applications is essential. We outline practical approaches to mitigating potential impacts of computational haplotype reconstruction on phylogeographic inferences. With targeted application of laboratory procedures that enable unambiguous phase determination via physical isolation of alleles from diploid PCR products, relatively little investment of time and effort is needed to overcome the observed biases.

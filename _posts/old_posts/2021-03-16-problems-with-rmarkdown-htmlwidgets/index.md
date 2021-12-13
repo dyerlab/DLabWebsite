@@ -1,0 +1,33 @@
+---
+title: Problems with RMarkdown & HTMLWidgets
+date: 2021-03-16T21:52:36.019Z
+draft: false
+featured: false
+authors:
+  - rodney
+tags:
+  - R
+  - Markdown
+  - ""
+categories:
+  - Programming
+image:
+  filename: featured
+  focal_point: Smart
+  preview_only: false
+---
+OK, so in working on various RMarkdown stuff, I‘ve just run across a problem with it no longer rendering HTMLWidget stuff in the recent upgrade.  So if you use something like `mermaid` or `leaflet` in your `xaringan` presentation, it will show you the raw
+
+```html
+<div></div>
+```
+
+output instead of the actual widget.   This is not an easy one to track down online because the [RMarkdown](https://github.com/rstudio/rmarkdown) & [Xaringan](https://github.com/yihui/xaringan) Github sites do not address it.  So I thought I would insert a thing here so I can find it next time I need it.
+
+As it turns out, we need to set an option in the setup chunck as follows:
+
+```r
+options(htmltools.preserve.raw = FALSE)
+```
+
+This will fix things until RStudio fixes the markdown problems and the world can get back to normal.

@@ -1,25 +1,35 @@
 ---
-title: "Variable nuclear markers for a Sonoran Desert bark beetle, Araptus attenuatus Wood (Curculionidae: Scolytinae), with applications to related genera"
-date: 2009-08-01
+title: 'Variable nuclear markers for a Sonoran Desert bark beetle, Araptus attenuatus Wood
+  (Curculionidae: Scolytinae), with applications to related genera'
+date: '2009-08-01'
 authors:
-  - Ryan C. Garrick
-  - Crystal A. Meadows
-  - John D. Nason
-  - Anthony I. Cognato
-  - Rodney J. Dyer
-description: "We report eight new co-dominant nuclear markers for population genetics of the bark beetle Araptus attenuatus Wood. Several loci include introns from low-copy genes, and four cross-amplify in one or more related genera. The markers show moderate levels of polymorphism (2-19 alleles per locus), and no loci showed significant deviations from Hardy-Weinberg or linkage equilibrium across both of the two populations examined, consistent with Mendelian inheritance patterns."
-publication: CONSERVATION GENETICS
+- name: Ryan C. Garrick
+- name: Crystal A. Meadows
+- name: John D. Nason
+- name: Anthony I. Cognato
+- name: Rodney J. Dyer
+description: |
+    CONSERVATION GENETICS. 2009.  
 categories: 
-  - Baja California
-  - Codominant loci
-  - Coleoptera
-  - Introns
-  - Population structure
-doi: "10.1007/s10592-008-9738-3"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- baja california
+- codominant loci
+- coleoptera
+- introns
+- population structure
+preview: featured.png
+journal:  CONSERVATION GENETICS
+doi:  10.1007/s10592-008-9738-3
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
 
+ [![ DOI 10.1007/s10592-008-9738-3](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1007/s10592-008-9738-3)
+
+![]( featured.png )
+
+## Abstract
+
+We report eight new co-dominant nuclear markers for population genetics of the bark beetle Araptus attenuatus Wood. Several loci include introns from low-copy genes, and four cross-amplify in one or more related genera. The markers show moderate levels of polymorphism (2-19 alleles per locus), and no loci showed significant deviations from Hardy-Weinberg or linkage equilibrium across both of the two populations examined, consistent with Mendelian inheritance patterns.

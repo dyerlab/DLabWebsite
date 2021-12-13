@@ -1,0 +1,24 @@
+---
+title: Population Graph Stability
+date: '2019-04-22'
+slug: population-graph-stability
+categories:
+  - Population Genetics
+  - Tutorials
+tags:
+  - population graphs
+---
+
+A population graph is a network structure based upon inter-stratum conditional genetic covariance (see [Dyer & Nason 2004](/publication/dyer-nason-2004/index.html) for a more complete discussion). In this context, it is often of interest to know the statistical stability of your loci in determining the topology you see in the popgraph.  Here is a way to subsample the loci you have and identify the extent to which you are asymptotically estimating a stable topology.  Basically we are going to:  
+1. Sample a subset of your loci randomly (without replacement) of a particular size (e.g., 10 loci).  
+2. Estimate a topology.  
+3. Measure some characteristic (or characteristics) on that topology.  
+4. GoTo #1 a large number of times (say 100).  
+5. Increment the number of loci being used.  
+
+
+
+
+
+
+

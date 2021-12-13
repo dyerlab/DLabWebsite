@@ -7,7 +7,16 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Moving Manuscripts from Hugo</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</link>
+      <description>The use of Markdown for your site is very helpful but not alll markdown formats are the same.  Here is how I moved from Hugo to rstudio::distill for the manuscripts section of the lab webpage.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</guid>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo/NewYAML.png" medium="image" type="image/png" width="692" height="189"/>
+    </item>
     <item>
       <title>DLab Swift</title>
       <dc:creator>Rodney Dyer</dc:creator>
@@ -18,20 +27,20 @@
       <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift/logo.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
-      <title>Moving Manuscripts from Hugo</title>
-      <dc:creator>Rodney Dyer</dc:creator>
-      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</link>
-      <description>A short description of the post.</description>
-      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</guid>
-      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
-    </item>
-    <item>
       <title>Welcome to The Dyer Laboratory</title>
       <dc:creator>Rodney Dyer</dc:creator>
       <link>https://dyerlab.github.io/DLabWebsite/posts/welcome</link>
       <description>Welcome to the new format of the the Dyer Laboratory online website.  It was getting time to clean things up and streamline the ability to post materials online. So here it is, now in cleaner RMarkdown than before.</description>
       <guid>https://dyerlab.github.io/DLabWebsite/posts/welcome</guid>
       <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Moving from HUGO to distill</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-06-11-moving-from-hugo-to-distill</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-06-11-moving-from-hugo-to-distill</guid>
+      <pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

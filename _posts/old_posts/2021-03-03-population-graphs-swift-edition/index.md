@@ -1,0 +1,32 @@
+---
+title: "Population Graphs - Swift Edition"
+subtitle: ""
+summary: "Setting a roadmap for the development of the population graphs family of analyses."
+authors: ["rodney"]
+tags: ["popgraph", "swift"]
+categories: ["Programming", "Population Graphs"]
+date: 2021-03-03T09:16:40-05:00
+lastmod: 2021-03-03T09:16:40-05:00
+featured: false
+draft: false
+projects: []
+---
+
+So this spring, I’m going to make a large push at porting over the population graphs analyses ([Dyer & Nason 2004](https://drive.google.com/file/d/0B0T81CzLjtfPVGR5dFZuSF9oclU/view?usp=sharing)) that I have in R to a version that runs as a native app on iOS/MacOS.  The long-term goals here are to leverage the upcoming advances in Augmented Reality and LiDAR at the phone/glasses level that I suspect will be more mainstream by 2023 or so.
+
+### Big Picture
+
+So, in the long run, I’m looking to have a set of software that can do the following:
+
+- Estimate a population graph from genotype data.
+   - [ ] Write custom SVD routines linked with [Accelerate](https://developer.apple.com/documentation/accelerate).
+   - [ ] Wrap in [GeneticStudio](craftdocs://open?blockId=D1B89492-9912-42FC-A789-D957E1FEF4C9&spaceId=07b940d2-163d-ebd5-c7c7-647f9d1cfbd1) interface for Genotype & Project CRUD.
+- Visualize the graph in either 2D ([SpriteKit](https://developer.apple.com/documentation/spritekit/)), 3D ([SceneKit](https://developer.apple.com/documentation/scenekit/)), or in AR ([ARKit](https://developer.apple.com/documentation/arkit)).
+   - [ ] Force directed estimation of location in 2-space
+   - [ ] Expand to 3-space
+   - [ ] Develop individual physics models for dynamical system in SpriteKit & SceneKit
+- Comprehensive set of network-based analytical output for local (node- and edge- centric) as well as global parameters.
+- Overlay spatial network on GeoTiff for prevalence/avoidance of features.
+- Chromosome walking - Use engine to analyze how population covariance changes along stretches of chromosomes from SNP-like data.
+- Population Simulation - Develop stochastic simulation background that is visualized using dynamical population graphs for hypothesis testing, where we specify a model and
+

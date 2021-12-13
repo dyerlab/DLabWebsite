@@ -1,28 +1,37 @@
 ---
-title: "Putting the landscape into the genomics of trees: approaches for understanding local adaptation and population responses to changing climate"
-date: 2013-08-01
+title: 'Putting the landscape into the genomics of trees: approaches for understanding local
+  adaptation and population responses to changing climate'
+date: '2013-08-01'
 authors:
-  - Victoria L. Sork
-  - Sally N. Aitken
-  - Rodney J. Dyer
-  - Andrew J. Eckert
-  - Pierre Legendre
-  - Dave B. Neale
-description: "The Forest ecosystem genomics Research: supporTing Transatlantic Cooperation project (FoResTTraC, http://www.foresttrac.eu/) sponsored a workshop in August 2010 to evaluate the potential for using a landscape genomics approach for studying plant adaptation to the environment and the potential of local populations for coping with changing climate. This paper summarizes our discussions and articulates a vision of how we believe forest trees offer an unparalleled opportunity to address fundamental biological questions, as well as how the application of landscape genomic methods complement to traditional forest genetic approaches that provide critical information needed for natural resource management. In this paper, we will cover four topics. First, we begin by defining landscape genomics and briefly reviewing the unique situation for tree species in the application of this approach toward understanding plant adaptation to the environment. Second, we review traditional approaches in forest genetics for studying local adaptation and identifying loci underlying locally adapted phenotypes. Third, we present existing and emerging methods available for landscape genomic analyses. Finally, we briefly touch on how these approaches can aid in understanding practical topics such as management of tree populations facing climate change."
-publication: TREE GENETICS & GENOMES
+- name: Victoria L. Sork
+- name: Sally N. Aitken
+- name: Rodney J. Dyer
+- name: Andrew J. Eckert
+- name: Pierre Legendre
+- name: Dave B. Neale
+description: |
+    TREE GENETICS & GENOMES. 2013.  
 categories: 
-  - Adaptive genetic variation
-  - Climate change
-  - Environmental association
-  - Forest genetics
-  - Genomics
-  - landscape genetics
-doi: "10.1007/s11295-013-0596-x"
-url_pdf: "https://drive.google.com/open?id=0B0T81CzLjtfPMjBUb2ZlTHdPdVU"
-featured: featured.png
-respository_url: https://github.com/dyerlab/DLabWebsite
+- adaptive genetic variation
+- climate change
+- environmental association
+- forest genetics
+- genomics
+- landscape genetics
+preview: featured.png
+journal:  TREE GENETICS & GENOMES
+doi:  10.1007/s11295-013-0596-x
+bibliography: bibliography.bib
+repository_url: https://github.com/dyerlab/DLabWebsite
 output:
-  distill::distill_article:
-    self_contained: false
+ distill::distill_article:
+  self_contained: no
 ---
 
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPMjBUb2ZlTHdPdVU) [![ DOI 10.1007/s11295-013-0596-x](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1007/s11295-013-0596-x)
+
+![]( featured.png )
+
+## Abstract
+
+The Forest ecosystem genomics Research: supporTing Transatlantic Cooperation project (FoResTTraC, http://www.foresttrac.eu/) sponsored a workshop in August 2010 to evaluate the potential for using a landscape genomics approach for studying plant adaptation to the environment and the potential of local populations for coping with changing climate. This paper summarizes our discussions and articulates a vision of how we believe forest trees offer an unparalleled opportunity to address fundamental biological questions, as well as how the application of landscape genomic methods complement to traditional forest genetic approaches that provide critical information needed for natural resource management. In this paper, we will cover four topics. First, we begin by defining landscape genomics and briefly reviewing the unique situation for tree species in the application of this approach toward understanding plant adaptation to the environment. Second, we review traditional approaches in forest genetics for studying local adaptation and identifying loci underlying locally adapted phenotypes. Third, we present existing and emerging methods available for landscape genomic analyses. Finally, we briefly touch on how these approaches can aid in understanding practical topics such as management of tree populations facing climate change.

@@ -1,0 +1,283 @@
+---
+title: Scraping the Web in R
+author: rodney Dyer
+date: '2020-07-31'
+slug: scraping-the-web-in-r
+categories:
+  - R
+tags:
+  - code
+subtitle: ''
+summary: ''
+authors: ['rodney']
+lastmod: '2020-07-31T11:19:14-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<p>There are times when we need to scrape some data from a website to use in our analyses. In a perfect world, the provider of the data would provide a csv or json download but let’s face it… we do not live in a perfect world and often data that is posted to the internet is done by people who really do not care about subseqent use by others (else they would have made it easy to use rather than just showing it).</p>
+<p>Here is a quick tutorial on one method I use to do this.</p>
+<div id="necessary-resources" class="section level2">
+<h2>Necessary Resources</h2>
+<p>For this example, I’m going to use the <code>rvest</code> and <code>dplyr</code> libraries to scrape a USDA page for county FIPS codes<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> for all the counties in Virginia.</p>
+<pre class="r"><code>if( !(&quot;dplyr&quot; %in% installed.packages()) ) {
+  install.packages(&quot;tidyverse&quot;)
+}
+if( !(&quot;rvest&quot; %in% installed.packages() )  ) {
+  install.packages(&quot;rvest&quot;)
+}
+
+library( rvest )</code></pre>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre class="r"><code>library( tidyverse ) </code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.0.6     ✓ dplyr   1.0.4
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter()         masks stats::filter()
+## x readr::guess_encoding() masks rvest::guess_encoding()
+## x dplyr::lag()            masks stats::lag()
+## x purrr::pluck()          masks rvest::pluck()</code></pre>
+<p>To start, grab the URL of the page you are intending to scrape. This one is a pretty straight forward structure.</p>
+<div class="figure">
+<img src="https://live.staticflickr.com/65535/50173355466_75306bb456_c_d.jpg" alt="" />
+<p class="caption">USDA Website</p>
+</div>
+<pre class="r"><code>url &lt;- &quot;https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?cid=nrcs143_013697&quot; 
+page &lt;- read_html(url)
+page</code></pre>
+<pre><code>## {html_document}
+## &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;en&quot;&gt;
+## [1] &lt;head&gt;\n&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;\n&lt; ...
+## [2] &lt;body style=&quot;&quot;&gt;\t\t \t\t           \r\n&lt;a href=&quot;#actualContent&quot; accesskey ...</code></pre>
+<p>Now we can use some tidy methods to get to the components. We will go through the nodes and grab the “body” component then show the children in the body.</p>
+<pre class="r"><code>page %&gt;% 
+  html_node(&quot;body&quot;) %&gt;%
+  html_children()</code></pre>
+<pre><code>## {xml_nodeset (2)}
+## [1] &lt;a href=&quot;#actualContent&quot; accesskey=&quot;c&quot; style=&quot;position:absolute;color:#9B ...
+## [2] &lt;table id=&quot;wptheme_pageArea&quot; summary=&quot;This table is used for page layout&quot; ...</code></pre>
+<p>The page has broken up into compoennts, of which we can search. To figure out what parts we are going to grab data from, we need to look at the raw code in the document. Your browser can do this and you’ll have to manually look through the components. Here is what this page looks like.</p>
+<div class="figure">
+<img src="https://live.staticflickr.com/65535/50172897858_dbec94c20c_c_d.jpg" alt="" />
+<p class="caption">HTML Content</p>
+</div>
+<p>Here you notice that the table that contains the data we are interested in looking at has a class equal to <code>data</code>. We can grab all the <code>table</code> components from the page and look to see which one we are interested in.</p>
+<pre class="r"><code>page %&gt;% 
+  xml_find_all(&quot;.//table&quot;) </code></pre>
+<pre><code>## {xml_nodeset (26)}
+##  [1] &lt;table id=&quot;wptheme_pageArea&quot; summary=&quot;This table is used for page layout ...
+##  [2] &lt;table class=&quot;layoutRow&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;&lt;t ...
+##  [3] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; b ...
+##  [4] &lt;table class=&quot;layoutRow&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;&lt;t ...
+##  [5] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+##  [6] &lt;table class=&quot;layoutRow&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;&lt;t ...
+##  [7] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; b ...
+##  [8] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+##  [9] &lt;table class=&quot;layoutRow&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;&lt;t ...
+## [10] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; b ...
+## [11] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## [12] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## [13] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## [14] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## [15] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## [16] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## [17] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## [18] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; b ...
+## [19] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; b ...
+## [20] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border= ...
+## ...</code></pre>
+<p>There are 26 total tables on this page! But it looks like the first 20 do not contain the table of interest. Here are the last ones.</p>
+<pre class="r"><code>page %&gt;% 
+  xml_find_all(&quot;.//table&quot;) %&gt;%
+  tail()</code></pre>
+<pre><code>## {xml_nodeset (6)}
+## [1] &lt;table border=&quot;0&quot; cellpadding=&quot;6&quot; cellspacing=&quot;1&quot; class=&quot;data&quot;&gt;&lt;tbody&gt;\n&lt; ...
+## [2] &lt;table class=&quot;layoutRow&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;&lt;tr ...
+## [3] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; bo ...
+## [4] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; bo ...
+## [5] &lt;table summary=&quot;This table is used for page layout&quot; width=&quot;100%&quot; border=&quot; ...
+## [6] &lt;table summary=&quot;This table is used for page layout&quot; class=&quot;themetable&quot; bo ...</code></pre>
+<p>And we see that the data table is the one with <code>class="data"</code>, that differentiates it from the rest. We can use this to pull out just the table with the attribute <code>class = "data"</code> using xml search techniques. The syntax is a bit odd as it is based upon xml search syntax but you can get the notion.</p>
+<pre class="r"><code>page %&gt;% 
+  xml_find_all(&quot;.//table&quot;) %&gt;% 
+  xml_find_all(&quot;//table[contains(@class, &#39;data&#39;)]&quot;)</code></pre>
+<pre><code>## {xml_nodeset (1)}
+## [1] &lt;table border=&quot;0&quot; cellpadding=&quot;6&quot; cellspacing=&quot;1&quot; class=&quot;data&quot;&gt;&lt;tbody&gt;\n&lt; ...</code></pre>
+<p>Now we can turn that table into a <code>data.frame</code> and format the columns appropriately<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<pre class="r"><code>page %&gt;% 
+  xml_find_all(&quot;.//table&quot;) %&gt;% 
+  xml_find_all(&quot;//table[contains(@class, &#39;data&#39;)]&quot;) %&gt;% 
+  html_table( fill = TRUE ) %&gt;% 
+  .[[1]] %&gt;%
+  mutate( Name = factor(Name), State = factor(State) ) -&gt; raw_data
+
+summary( raw_data)</code></pre>
+<pre><code>##       FIPS               Name          State     
+##  Min.   : 1001   Washington:  32   TX     : 254  
+##  1st Qu.:19046   Jefferson :  26   GA     : 159  
+##  Median :30044   Franklin  :  25   VA     : 136  
+##  Mean   :31573   Jackson   :  24   KY     : 120  
+##  3rd Qu.:46136   Lincoln   :  24   MO     : 115  
+##  Max.   :78030   Madison   :  20   KS     : 105  
+##                  (Other)   :3081   (Other):2343</code></pre>
+<p><strong>PERFECT!!</strong> Now, to pull the parts that are relevant to us, the ones from Virginia.</p>
+<pre class="r"><code>raw_data %&gt;% 
+  filter( State == &quot;VA&quot; ) %&gt;%
+  select(Name, FIPS) %&gt;%
+  droplevels()</code></pre>
+<pre><code>##                     Name  FIPS
+## 1               Accomack 51001
+## 2              Albemarle 51003
+## 3              Alleghany 51005
+## 4                 Amelia 51007
+## 5                Amherst 51009
+## 6             Appomattox 51011
+## 7              Arlington 51013
+## 8                Augusta 51015
+## 9                   Bath 51017
+## 10               Bedford 51019
+## 11                 Bland 51021
+## 12             Botetourt 51023
+## 13             Brunswick 51025
+## 14              Buchanan 51027
+## 15            Buckingham 51029
+## 16              Campbell 51031
+## 17              Caroline 51033
+## 18               Carroll 51035
+## 19          Charles City 51036
+## 20             Charlotte 51037
+## 21          Chesterfield 51041
+## 22                Clarke 51043
+## 23                 Craig 51045
+## 24              Culpeper 51047
+## 25            Cumberland 51049
+## 26             Dickenson 51051
+## 27             Dinwiddie 51053
+## 28                 Essex 51057
+## 29               Fairfax 51059
+## 30              Fauquier 51061
+## 31                 Floyd 51063
+## 32              Fluvanna 51065
+## 33              Franklin 51067
+## 34             Frederick 51069
+## 35                 Giles 51071
+## 36            Gloucester 51073
+## 37             Goochland 51075
+## 38               Grayson 51077
+## 39                Greene 51079
+## 40           Greensville 51081
+## 41               Halifax 51083
+## 42               Hanover 51085
+## 43               Henrico 51087
+## 44                 Henry 51089
+## 45              Highland 51091
+## 46         Isle of Wight 51093
+## 47            James City 51095
+## 48        King and Queen 51097
+## 49           King George 51099
+## 50          King William 51101
+## 51             Lancaster 51103
+## 52                   Lee 51105
+## 53               Loudoun 51107
+## 54                Louisa 51109
+## 55             Lunenburg 51111
+## 56               Madison 51113
+## 57               Mathews 51115
+## 58           Mecklenburg 51117
+## 59             Middlesex 51119
+## 60            Montgomery 51121
+## 61                Nelson 51125
+## 62              New Kent 51127
+## 63           Northampton 51131
+## 64        Northumberland 51133
+## 65              Nottoway 51135
+## 66                Orange 51137
+## 67                  Page 51139
+## 68               Patrick 51141
+## 69          Pittsylvania 51143
+## 70              Powhatan 51145
+## 71         Prince Edward 51147
+## 72         Prince George 51149
+## 73        Prince William 51153
+## 74               Pulaski 51155
+## 75          Rappahannock 51157
+## 76              Richmond 51159
+## 77               Roanoke 51161
+## 78            Rockbridge 51163
+## 79            Rockingham 51165
+## 80               Russell 51167
+## 81                 Scott 51169
+## 82            Shenandoah 51171
+## 83                 Smyth 51173
+## 84           Southampton 51175
+## 85          Spotsylvania 51177
+## 86              Stafford 51179
+## 87                 Surry 51181
+## 88                Sussex 51183
+## 89              Tazewell 51185
+## 90                Warren 51187
+## 91            Washington 51191
+## 92          Westmoreland 51193
+## 93                  Wise 51195
+## 94                 Wythe 51197
+## 95                  York 51199
+## 96       Alexandria City 51510
+## 97          Bedford City 51515
+## 98          Bristol City 51520
+## 99      Buena Vista City 51530
+## 100 Charlottesville City 51540
+## 101      Chesapeake City 51550
+## 102   Clifton Forge City 51560
+## 103 Colonial Heights Cit 51570
+## 104       Covington City 51580
+## 105        Danville City 51590
+## 106         Emporia City 51595
+## 107         Fairfax City 51600
+## 108    Falls Church City 51610
+## 109        Franklin City 51620
+## 110  Fredericksburg City 51630
+## 111           Galax City 51640
+## 112         Hampton City 51650
+## 113    Harrisonburg City 51660
+## 114        Hopewell City 51670
+## 115       Lexington City 51678
+## 116       Lynchburg City 51680
+## 117        Manassas City 51683
+## 118   Manassas Park City 51685
+## 119    Martinsville City 51690
+## 120    Newport News City 51700
+## 121         Norfolk City 51710
+## 122          Norton City 51720
+## 123      Petersburg City 51730
+## 124        Poquoson City 51735
+## 125      Portsmouth City 51740
+## 126         Radford City 51750
+## 127        Richmond City 51760
+## 128         Roanoke City 51770
+## 129           Salem City 51775
+## 130    South Boston City 51780
+## 131        Staunton City 51790
+## 132         Suffolk City 51800
+## 133  Virginia Beach City 51810
+## 134      Waynesboro City 51820
+## 135    Williamsburg City 51830
+## 136      Winchester City 51840</code></pre>
+<p>And there you go.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Federal Information Processing Standards (FIPS), now known as Federal Information Processing Series, are numeric codes assigned by the National Institute of Standards and Technology (NIST). Typically, FIPS codes deal with US states and counties. US states are identified by a 2-digit number, while US counties are identified by a 3-digit number. For example, a FIPS code of 51159, represents Virginia (51-) and Richomnd City -159.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The <code>.[[1]]</code> part is how we grab just the first row from the list that is returned.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
