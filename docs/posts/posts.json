@@ -17,6 +17,23 @@
     "input_file": {}
   },
   {
+    "path": "posts/2021-12-12-moving-manuscripts-from-hugo/",
+    "title": "Moving Manuscripts from Hugo",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://dyerlab.org"
+      }
+    ],
+    "date": "2021-12-12",
+    "categories": [],
+    "contents": "\nAs part of moving over from Hugo to Distill, I need to move over all my manuscripts. While putting everything into Markdown is a good idea for portability, there does not seem to be a very quick way to translate YAML. IN this case, the old YAML looked like this (n.b., they are all .md files, not .Rmd files like distill likes so the syntax hightlighting will not look right):\nOldYAMLWhich will need to be translated into the new YAML to resemble:\nNewYAMLThis may not be that big of an deal but at the end of the day, I’ve got a ton of folders that each represent each manuscript I’ve published. I was able to get a lot of it done using some quick perl like this:\nperl -pi -e s/name =/name:/g file.md\nHowever, there is going to be a lot of pain associated with the authors sections. For that, I’ll have to run some R code. Here is how I did it.\n\n\nfiles <- list.files(path=\"../../_manuscripts\", \n                    recursive = TRUE,\n                    full.names = TRUE,\n                    pattern = \"index.*\")\nlength( files ) \n\n\n[1] 42\n\nSo, for each of these files, I need to:\nLoad it in to memory\nParse the yaml that has the author\nConvert it to the format above\nInsert new content\nWhile I’m in there, I may as well through in the repository url as well.\nSave as a Rmd file and delete the md version\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-12-12T20:42:17-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/welcome/",
     "title": "Welcome to The Dyer Laboratory",
     "description": "Welcome to the new format of the the Dyer Laboratory online website.  It was getting time to clean things up and streamline the ability to post materials online. So here it is, now in cleaner RMarkdown than before.",

@@ -18,6 +18,14 @@
       <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift/logo.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
+      <title>Moving Manuscripts from Hugo</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</guid>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Welcome to The Dyer Laboratory</title>
       <dc:creator>Rodney Dyer</dc:creator>
       <link>https://dyerlab.github.io/DLabWebsite/posts/welcome</link>

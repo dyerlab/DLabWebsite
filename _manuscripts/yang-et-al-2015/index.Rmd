@@ -1,0 +1,23 @@
+---
+title: "Genetic structure of Pinus henryi and Pinus tabuliformis: Natural landscapes as significant barriers to gene flow among populations"
+date: 2015-08-01
+authors:
+  - Lu Yang
+  - Zhan-Lin Liu
+  - Jianfang Li
+  - Rodney J. Dyer
+description: "Mountains as natural barriers often have important effects on intraspecific genetic structure through restraining gene flow and enhancing differentiation among populations. While the Qinling and Daba mountains are considered significant geographic barriers, dividing China into temperate and subtropical regions, little is known about how this barrier influences the genetic patterns of sister species represented in distinct habitats. In this study, we analyzed genetic differentiation and the geographic boundary between Pinus henryi and Pinus tabuliformis using chloroplast microsatellite markers. Our data show high levels of among-population differentiation, consistent with the effects of historical demographic bottlenecks, local adaptation and climate effects. Three main geographic boundaries coinciding with mountain systems indicate natural landscapes, such as large rivers, and habitat loss caused by anthropogenic deforestation, are significant barriers to genetic exchange among populations. The divergence between populations in the eastern and western Qinling Mountains populations may possibly be ascribed to fragmentation driven by climate change. The genetic boundary of P. henryi and P. tabuliformis generally coincides with the previous morphological dividing line based on the unweighted pair group method using arithmetic averages and on spatial analysis of molecular variance. (C) 2015 Elsevier Ltd. All rights reserved."
+publication: BIOCHEMICAL SYSTEMATICS AND ECOLOGY
+categories: 
+  - cpSSR
+  - genetic structure
+  - Geographical boundary
+  - Pinus henryi
+  - Pinus tabuliformis
+doi: "10.1016/j.bse.2015.06.003"
+url_pdf: "https://drive.google.com/file/d/0B0T81CzLjtfPR01iZzJtVGFsZ28/view?usp=sharing"
+respository_url: https://github.com/dyerlab/DLabWebsite
+output:
+  distill::distill_article:
+    self_contained: false
+---

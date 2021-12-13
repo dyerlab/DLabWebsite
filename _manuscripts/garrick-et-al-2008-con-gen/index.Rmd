@@ -1,0 +1,26 @@
+---
+title: "A set of polymorphic nuclear intron markers for conservation genetics and phylogeography of Euphorbia species (Pedilanthus clade)"
+date: 2008-12-01
+authors:
+  - Ryan C. Garrick
+  - Crystal A. Meadows
+  - Antoine N. Nicolas
+  - John D. Nason
+  - Rodney J. Dyer
+description: "We developed seven nuclear intron markers for Euphorbia lomelii. New exon-primed intron-crossing (EPIC) oligonucleotides were used for initial amplification and sequencing, then locus-specific primers and restriction-fragment-length polymorphism genotyping assays were designed. Loci showed no significant deviation from Hardy-Weinberg and linkage equilibrium, and they cross-amplify in at least three congeneric species."
+publication: CONSERVATION GENETICS
+categories: 
+  - Codominant loci
+  - Euphorbiaceae
+  - Population structure
+  - Phylogeny
+  - Sonoran Desert
+doi: "10.1007/s10592-008-9521-5"
+url_pdf: "https://drive.google.com/open?id=0B0T81CzLjtfPSUZXWlloMDZEUW8"
+featured: featured.png
+respository_url: https://github.com/dyerlab/DLabWebsite
+output:
+  distill::distill_article:
+    self_contained: false
+---
+

@@ -1,0 +1,71 @@
+---
+title: "Moving Manuscripts from Hugo"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+date: 12-12-2021
+respository_url: https://github.com/dyerlab/DLabWebsite
+creative_commons: CC BY-SA
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+library( readr )
+```
+
+As part of moving over from [Hugo](https://gohugo.io) to [Distill](https://rstudio.github.io/distill/), I need to move over all my manuscripts.  While putting everything into Markdown is a good idea for portability, there does not seem to be a very quick way to translate YAML.  IN this case, the old YAML looked like this (n.b., they are all .md files, not .Rmd files like distill likes so the syntax hightlighting will not look right):
+
+![OldYAML](OldYAML.png)
+
+Which will need to be translated into the new YAML to resemble:
+
+![NewYAML](NewYAML.png)
+
+This may not be that big of an deal but at the end of the day, I've got a ton of folders that each represent each manuscript I've published.  I was able to get a lot of it done using some quick perl like this:
+
+```
+perl -pi -e s/name =/name:/g file.md
+```
+
+However, there is going to be a lot of pain associated with the authors sections.  For that, I'll have to run some `R` code.  Here is how I did it.
+
+
+```{r}
+files <- list.files(path="../../_manuscripts", 
+                    recursive = TRUE,
+                    full.names = TRUE,
+                    pattern = "index.*")
+length( files ) 
+```
+
+So, for each of these files, I need to:  
+
+1. Load it in to memory.  
+2. Parse the yaml that has the author
+3. Convert it to the format above
+4. Insert new content
+5. While I'm in there, I may as well through in the repository url as well.
+6. Save as a Rmd file and delete the md version (I'll do this afterwards so as to not mess things up.)
+
+So here it goes:
+
+
+```{r eval=FALSE}
+for( file in files ) { 
+  newfile <- gsub(".md", ".Rmd", file,perl = TRUE)
+  cmd <- paste("mv",file, newfile )
+  system( cmd )
+}
+```
+
+
+
+
+
