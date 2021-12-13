@@ -170,7 +170,7 @@
       "functional connectivity",
       "landscape genetics",
       "Merriam's kangaroo rat",
-      "resistance surfaces\""
+      "resistance surfaces"
     ],
     "contents": "\nSampling Scheme\nFigure 1: Study site and sampling locations for Dipodomys merriami individuals on the Mapimí Biosphere Reserve, Mexico. Black triangles correspond to the trapping webs (most external points), which are projected on a grayscale aerial picture of the study site, where gray shades are vegetation patches. The three vegetation transects are depicted, separated by approximately 200 m, where we placed five trapping webs per transect, separated 50 m from each other. Each web consisted of four 25‐m lines radiating from a central point (often a Dipodomys merriami burrow). The dominant vegetation per transect is depicted with different colors and a corresponding photograph (at the bottom). For more detail, see Supporting Information Figure S1 in Supplementary Information\n\n\n",
     "preview": {},
@@ -236,7 +236,7 @@
       "popgraph",
       "social network",
       "spider",
-      "urban facilitation\""
+      "urban facilitation"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -266,7 +266,7 @@
       "urbanization",
       "genetic connectivity",
       "population genetics",
-      "urban pest\""
+      "urban pest"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -299,7 +299,7 @@
         "url": {}
       },
       {
-        "name": "Stephane Joost\"",
+        "name": "Stephane Joost",
         "url": {}
       }
     ],
@@ -309,7 +309,7 @@
       "landscape genomics",
       "next generation sequencing",
       "spatial genetics",
-      "ecological genetics\""
+      "ecological genetics"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -376,7 +376,7 @@
       "Pekania pennanti",
       "population graph",
       "sex-biased dispersal",
-      "sex-specific graphs\""
+      "sex-specific graphs"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -406,7 +406,7 @@
       "gene flow",
       "agent based modelling",
       "correlated random walk",
-      "pollen\""
+      "pollen"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -440,7 +440,7 @@
       "breeding ecology",
       "cavity nesters",
       "conspecific brood parasitism",
-      "Protonotaria citrea\""
+      "Protonotaria citrea"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -462,7 +462,7 @@
       "landscape genetics",
       "population graphs",
       "spatial structure",
-      "connectivity\""
+      "connectivity"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -497,7 +497,7 @@
       "Genetic structure",
       "Geographical boundary",
       "Pinus henryi",
-      "Pinus tabuliformis\""
+      "Pinus tabuliformis"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -518,7 +518,7 @@
     "categories": [
       "landscape genetics",
       "landscape ecology",
-      "population genetics\""
+      "population genetics"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -598,7 +598,7 @@
       "gene flow",
       "gravity models",
       "landscape genetics",
-      "population graphs\""
+      "population graphs"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -642,7 +642,7 @@
       "Environmental association",
       "Forest genetics",
       "Genomics",
-      "Landscape genetics\""
+      "Landscape genetics"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -705,7 +705,7 @@
       "conifers",
       "fitness landscape",
       "genome-wide association",
-      "serotiny\""
+      "serotiny"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -730,7 +730,7 @@
         "url": {}
       },
       {
-        "name": "Crystal A. Meadows\"",
+        "name": "Crystal A. Meadows",
         "url": {}
       }
     ],
@@ -740,7 +740,7 @@
       "Connectivity",
       "Conditional genetic distance",
       "Gene flow",
-      "Cornus florida\""
+      "Cornus florida"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -772,7 +772,7 @@
       "Isolation-by-distance",
       "Isolation-by-altitude",
       "Landscape connectivity",
-      "Null alleles\""
+      "Null alleles"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -799,7 +799,7 @@
       "Invasive species",
       "Genetic structure",
       "Founder effects",
-      "Secondary contact\""
+      "Secondary contact"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -828,7 +828,7 @@
     "categories": [
       "gene flow",
       "genetic  covariance",
-      "landscape genetics\""
+      "landscape genetics"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -927,7 +927,7 @@
       "Euphorbia",
       "landscape history",
       "population structure",
-      "statistical phylogeography\""
+      "statistical phylogeography"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -940,7 +940,7 @@
     "description": "The analysis of genetic marker data is increasingly being conducted in the context of the spatial arrangement of strata (e.g. populations) necessitating a more flexible set of analysis tools. GeneticStudio consists of four interacting programs: (i) Geno a spreadsheet-like interface for the analysis of spatially explicit marker-based genetic variation; (ii) Graph software for the analysis of Population Graph and network topologies, (iii) Manteller, a general purpose for matrix analysis program; and (iv) SNPFinder, a program for identifying single nucleotide polymorphisms. The GeneticStudio suite is available as source code as well as binaries for OSX and Windows and is distributed under the GNU General Public License.",
     "author": [
       {
-        "name": "Rodney J. Dyer\"",
+        "name": "Rodney J. Dyer",
         "url": {}
       }
     ],
@@ -948,7 +948,7 @@
     "categories": [
       "genetic structure",
       "population graphs",
-      "spatial structure\""
+      "spatial structure"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -987,7 +987,7 @@
       "Euphorbiaceae",
       "Population structure",
       "Phylogeny",
-      "Sonoran Desert\""
+      "Sonoran Desert"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1021,7 +1021,7 @@
       "cross-validation",
       "hypothesis testing",
       "integrative analyses",
-      "multiple loci\""
+      "multiple loci"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1062,7 +1062,7 @@
       "isolation by distance",
       "graph theory",
       "centrality",
-      "graph diameter\""
+      "graph diameter"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1117,7 +1117,7 @@
     "categories": [
       "gene flow",
       "pollen structure",
-      "two-generation analysis\""
+      "two-generation analysis"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1159,7 +1159,7 @@
       "landscape change",
       "pollen movement",
       "silvicultural treatment",
-      "2GENER\""
+      "2GENER"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1185,7 +1185,7 @@
       "genetic structure",
       "graph theory",
       "networks",
-      "phylogeography\""
+      "phylogeography"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1210,7 +1210,7 @@
         "url": {}
       },
       {
-        "name": "PE Smouse\"",
+        "name": "PE Smouse",
         "url": {}
       }
     ],
@@ -1219,7 +1219,7 @@
       "pollen movement",
       "TWOGENER",
       "gene flow",
-      "StAMOVA\""
+      "StAMOVA"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1266,7 +1266,7 @@
       "genetic isolation",
       "pollen flow",
       "Quercus lobata",
-      "twogener\""
+      "twogener"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1293,7 +1293,7 @@
       "individual-based population models",
       "inflorescence-feeding insects",
       "iteroparous perennial",
-      "population growth rate\""
+      "population growth rate"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1346,7 +1346,7 @@
       "genetic",
       "Pinus",
       "pollen",
-      "structure\""
+      "structure"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
@@ -1384,7 +1384,7 @@
       "Phi statistics",
       "pollen movement",
       "Quercus alba",
-      "TwoGener\""
+      "TwoGener"
     ],
     "contents": "\n\n\n\n",
     "preview": {},
