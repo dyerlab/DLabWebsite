@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2021-12-14-moving-old-markdown-posts/",
+    "title": "Moving Old Markdown Posts",
+    "description": "Another take at moving **old** markdown content to a *new* platform.   While markdown is supposed to be universal, the kinds of meta data assocaited with it in certain systems is a bit wonky and forces us to do some magic.  Here I take a less retentive approach than what I did moving manuscript entries over since I do not have to maintain as much meta-data about each post.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://dyerlab.org"
+      }
+    ],
+    "date": "2021-12-14",
+    "categories": [],
+    "contents": "\n\nOK, now that I have moved over most of the manuscripts from the previous site, it comes time to move over some of the older posts. Many of these posts are important as there is code and data associated with them that I’d like to have access to going forward.\nLike before, however, there is some futzing around that needs to be done. However, this time, I took a different appraoch. I was less concerned about keeping the category information and all of them were authored by myself, so what I did was:\nPick out a set of 100 or so entries to keep.\nMove them into a top-level folder called old_posts.\nRead them in, one at a time, and extracted the title and date.\nCreated a new post using distill::create_post() using that date and title.\nPasted the contents of the markdown (skipping all the YAML crazyness) on the end of the new post (n.b., did you know that you could use cat() to concatenate onto the end of a file on the filesystem? I didn’t!).\nSo here is the basic code I used for it.\n\n\nrm(list = ls())\nlibrary( distill )\nlibrary( stringr )\n\nfiles <- list.files(\n  path = \"old_posts\",\n  pattern = \"index.Rmd\",\n  recursive = TRUE,\n  full.names = TRUE\n)\n\nfor (file in files) {\n  print(file)\n  lines <- readLines(file)\n  \n  # find the date \n  idx <- grep( \"date: \", lines, fixed = TRUE)\n  date <- \"\"\n  \n  if (length(idx) == 1) {\n    date <- str_sub( lines[idx], 7, 16)\n  }\n  \n  # Find the second --- and put in the output type\n  idx <- grep(\"---\", lines, fixed = TRUE)\n  content <- \"\"\n  lines <- c(lines, \" \", \" \", \" \")\n  if (length(idx) == 2) {\n    content <- paste( lines[ (idx[2]+1):length(lines) ] , \n                      collapse = \"\\n\")\n  }\n  \n  # find the title\n  idx <- grep(\"title: \", lines, fixed=TRUE )\n  title <- \"No Title\"\n  if( length(idx)>0 ) { \n    title <- str_trim( gsub('[[:punct:] ]+', \n                            \" \", \n                            str_remove(lines[idx], \"title: \")))\n  }\n  \n  ofile <- str_replace_all( tolower(title),  \n                            pattern=\" \", \n                            replacement = \"-\" ) \n  nfile <- paste(date, ofile, sep=\"-\") \n  path <- paste(\"_posts/\",\n                nfile,\n                \"/\", \n                ofile, \n                \".Rmd\", sep=\"\")\n\n  if( !file.exists(path) ) { \n\n    distill::create_post( title[1], \n                          collection=\"posts\", \n                          date = date, \n                          date_prefix=date, \n                          edit = FALSE)\n    cat( content, \n         file = path, \n         append=TRUE, \n         sep=\"\\n\")  \n  }\n}\n\n\n\nBut the problem is that when we use distill::createpost(), it puts in the following default content into the markdown. And then I just appended the original content onto the end of it.\nDefault distill post contentSo I did a quick global search and replace using my favorite TextMate and then ran the following code to render it all out and looking good.\n\n\nfor( file in list.files(path=\"_posts/\", \n                        pattern = \"*.Rmd\",\n                        recursive = TRUE,\n                        full.names = TRUE) ) { \n  \n  rmarkdown::render( file )  \n}\n\n\n\nQuestions?\nPeter Sellers\n\n\n",
+    "preview": "posts/2021-12-14-moving-old-markdown-posts/featured.png",
+    "last_modified": "2021-12-14T07:24:17-05:00",
+    "input_file": {},
+    "preview_width": 293,
+    "preview_height": 395
+  },
+  {
     "path": "posts/2021-12-12-moving-manuscripts-from-hugo/",
     "title": "Moving Manuscripts from Hugo",
     "description": "The use of Markdown for your site is very helpful but not alll markdown formats are the same.  Here is how I moved from Hugo to rstudio::distill for the manuscripts section of the lab webpage.",
@@ -1898,23 +1917,6 @@
     "date": "2015-01-21",
     "categories": [],
     "contents": "\nThis quick tutorial is for how you set up your site to make it able to syndicate to a class site. I am using the BIOL310 Genetics Online course as an example. You are going to need the following:\nA category given to you by the professor to use on your site to indicate which posts should be sent over to the class site.\nA blog. Here I am running WordPress as it is the supported one from VCU. Others are available if you already have a blog going, if not got to rampages.us and sign up as a VCU student and make one. Consider it a digital portfolio for all your work.\nSend your professor the address of your blog.\nBelow is a video of the process. It is pretty easy to do.\nThat should be it. Once your professor has the link and sets up syndication, your posts (when the category is applied to them) will show up on the site.\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-12-13T17:44:10-05:00",
-    "input_file": {}
-  },
-  {
-    "path": "posts/2014-05-09-dileo-mf-siu-jc-rhodes-mk-lpez-villalobos-a-redwine-a-ksiazek-k-dyer-rj-2014-the-gravity-of-pollination-integrating-at-site-features-into-spatial-analysis-of-contemporary-pollen-movement-molecular-ecology-23-2973-2982/",
-    "title": "DiLeo MF, Siu JC, Rhodes MK, López-Villalobos A, Redwine A, Ksiazek K, Dyer RJ. 2014. The gravity of pollination: integrating at-site features into spatial analysis of contemporary pollen movement. Molecular Ecology, 23, 2973-2982.",
-    "description": "A short description of the post.",
-    "author": [
-      {
-        "name": "Rodney Dyer",
-        "url": "https://dyerlab.org"
-      }
-    ],
-    "date": "2014-05-09",
-    "categories": [],
-    "contents": "\n\n\n\n",
     "preview": {},
     "last_modified": "2021-12-13T17:44:10-05:00",
     "input_file": {}

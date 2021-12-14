@@ -7,7 +7,16 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Moving Old Markdown Posts</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts</link>
+      <description>Another take at moving **old** markdown content to a *new* platform.   While markdown is supposed to be universal, the kinds of meta data assocaited with it in certain systems is a bit wonky and forces us to do some magic.  Here I take a less retentive approach than what I did moving manuscript entries over since I do not have to maintain as much meta-data about each post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts</guid>
+      <pubDate>Tue, 14 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts/featured.png" medium="image" type="image/png" width="293" height="395"/>
+    </item>
     <item>
       <title>Moving Manuscripts from Hugo</title>
       <dc:creator>Rodney Dyer</dc:creator>
@@ -906,14 +915,6 @@
       <description>A short description of the post.</description>
       <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-01-21-setting-up-your-site-for-syndication</guid>
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>DiLeo MF, Siu JC, Rhodes MK, López-Villalobos A, Redwine A, Ksiazek K, Dyer RJ. 2014. The gravity of pollination: integrating at-site features into spatial analysis of contemporary pollen movement. Molecular Ecology, 23, 2973-2982.</title>
-      <dc:creator>Rodney Dyer</dc:creator>
-      <link>https://dyerlab.github.io/DLabWebsite/posts/2014-05-09-dileo-mf-siu-jc-rhodes-mk-lpez-villalobos-a-redwine-a-ksiazek-k-dyer-rj-2014-the-gravity-of-pollination-integrating-at-site-features-into-spatial-analysis-of-contemporary-pollen-movement-molecular-ecology-23-2973-2982</link>
-      <description>A short description of the post.</description>
-      <guid>https://dyerlab.github.io/DLabWebsite/posts/2014-05-09-dileo-mf-siu-jc-rhodes-mk-lpez-villalobos-a-redwine-a-ksiazek-k-dyer-rj-2014-the-gravity-of-pollination-integrating-at-site-features-into-spatial-analysis-of-contemporary-pollen-movement-molecular-ecology-23-2973-2982</guid>
-      <pubDate>Fri, 09 May 2014 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Unix Basics</title>

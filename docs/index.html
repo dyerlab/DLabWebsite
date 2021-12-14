@@ -88,26 +88,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>The Dyer Laboratory:  </title>
+  <title>The Dyer Laboratory: Articles</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="The Dyer Laboratory:  "/>
+  <meta property="og:title" content="The Dyer Laboratory: Articles"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="The Dyer Laboratory"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="The Dyer Laboratory:  "/>
+  <meta property="twitter:title" content="The Dyer Laboratory: Articles"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":[" "]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Articles"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2209,6 +2209,134 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     --text-color: rgba(1,0,0,0.5)
   }
 
+
+
+
+
+  /*-- CSS FOR NEWS BOX --*/
+
+  /*--
+  body {
+    font-family: "Open Sans";
+    font-size: 100%;
+    color: #333;
+    line-height: 1.4;
+    margin: 0;
+  }
+  --*/
+
+  .wrapper {
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+
+
+  .hero-news {
+    display: grid;
+    grid-gap: 1px;
+  }
+
+  .hero-news > article {
+    padding: 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: calc(66vw - 2rem);
+    box-sizing: border-box;
+  }
+
+  .hero-news__item:first-child {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_163672817.jpg?10000);
+      border-radius: 5px;
+  }
+
+  .hero-news__item:nth-child(2) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_google-cardboard-wearable-virtual-reality-headset.jpg?10000);
+    border-radius: 5px;
+  }
+
+  .hero-news__item:nth-child(3) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_screenshot2017-02-23at4.29.08pm.png?31903);
+    border-radius: 5px;
+  }
+
+  .hero-news__item-title {
+    margin: auto 0 4px;
+    font-size: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .hero-news__item:first-child .hero-news__item-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-news2 .hero-news__item-title {
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .hero-news2 .hero-news__item-date {
+    order: 1;
+    margin-top: auto;
+    margin-bottom: 4px;
+  }
+
+  .hero-news__item-tag {}
+
+  @media (min-width:767px) {
+    
+    .full-width {
+      margin-left: calc(-100vw / 2 + 767px / 2);
+      margin-right: calc(-100vw / 2 + 767px / 2);
+    }
+    
+    .hero-news1 {
+      grid-template-columns: 2fr 1fr;
+    }
+    .hero-news1 .hero-news__item:first-child {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      height: auto;
+    }
+    .hero-news1 .hero-news__item:nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+      height: calc(25vw - 2rem);
+      max-height: 300px;
+    }
+    .hero-news1 .hero-news__item:nth-child(3) {
+      grid-column: 2;
+      grid-row: 2;
+      height: calc(25vw - 2rem);
+      max-height: 300px;
+    }
+    .hero-news2 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .hero-news2 .hero-news__item:first-child {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      height: calc(50vw - 2rem);
+      max-height: 600px;
+    }
+    .hero-news2 .hero-news__item:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+      height: calc(33vw - 2rem);
+      max-height: 300px;
+    }
+    .hero-news2 .hero-news__item:nth-child(3) {
+      grid-column: 2;
+      grid-row: 2;
+      height: calc(33vw - 2rem);
+      max-height: 300px;
+    }
+  }
   </style>
   <style type="text/css">
   /* base style */
@@ -2385,7 +2513,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":" ","authors":[]}
+{"title":"Articles","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2544,7 +2672,24 @@ function init_posts_list() {
 
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
-<h1 class="posts-list-caption" data-caption=" "> </h1>
+<h1 class="posts-list-caption" data-caption="Articles">Articles</h1>
+<a href="posts/2021-12-14-moving-old-markdown-posts/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 14, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Rodney Dyer</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-12-14-moving-old-markdown-posts/featured.png"/>
+</div>
+<div class="description">
+<h2>Moving Old Markdown Posts</h2>
+<div class="dt-tags"></div>
+<p>Another take at moving **old** markdown content to a *new* platform.   While markdown is supposed to be universal, the kinds of meta data assocaited with it in certain systems is a bit wonky and forces us to do some magic.  Here I take a less retentive approach than what I did moving manuscript entries over since I do not have to maintain as much meta-data about each post.</p>
+</div>
+</a>
 <a href="posts/2021-12-12-moving-manuscripts-from-hugo/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":[]}</script>
 <div class="metadata">
@@ -2622,7 +2767,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="posts/2021-05-23-spring-2021-landscape-genetics-workshop/featured.png"/>
+<img data-src="posts/2021-05-23-spring-2021-landscape-genetics-workshop/featured.png"/>
 </div>
 <div class="description">
 <h2>Spring 2021 Landscape Genetics Workshop</h2>
@@ -4432,23 +4577,6 @@ function init_posts_list() {
 <p>A short description of the post.</p>
 </div>
 </a>
-<a href="posts/2014-05-09-dileo-mf-siu-jc-rhodes-mk-lpez-villalobos-a-redwine-a-ksiazek-k-dyer-rj-2014-the-gravity-of-pollination-integrating-at-site-features-into-spatial-analysis-of-contemporary-pollen-movement-molecular-ecology-23-2973-2982/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">May 9, 2014</div>
-<div class="dt-authors">
-<div class="dt-author">Rodney Dyer</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>DiLeo MF, Siu JC, Rhodes MK, López-Villalobos A, Redwine A, Ksiazek K, Dyer RJ. 2014. The gravity of pollination: integrating at-site features into spatial analysis of contemporary pollen movement. Molecular Ecology, 23, 2973-2982.</h2>
-<div class="dt-tags"></div>
-<p>A short description of the post.</p>
-</div>
-</a>
 <a href="posts/2013-10-10-unix-basics/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":[]}</script>
 <div class="metadata">
@@ -4557,6 +4685,11 @@ function init_posts_list() {
   <h3>About</h3>
   Developing tools for the spatial analysis of population
   and landscape genetic structure.
+  
+  <h3>&nbsp;</h3>
+  
+  <p><a class="twitter-timeline" data-height="3000" href="https://twitter.com/RodneyDyer?ref_src=twsrc%5Etfw">@RodneyDyer</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+  
 </div>
 </div>
 </div>
@@ -4567,7 +4700,7 @@ function init_posts_list() {
 <!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>index.knit</h1>
+<h1>Articles</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -4575,7 +4708,86 @@ function init_posts_list() {
 
 
 <div class="d-article">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<style>
+    .parallax { 
+    
+        /* Set the background image */
+        background-image: url("book.jpg");
+    
+        /* Use the full viewscreen height as height */
+        height: 100vh; 
+        
+        /* Set the background to create the parallax scrolling */
+        /* this does not work on iOS mobile devices */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .welcome {
+      position: absolute;
+      left: 0;
+      top: 35vh;
+      width: 100vw;
+      text-align: center;
+      color: #000;
+    }
+    
+    .welcome span.title {
+      font-family: 'Bitter', serif;
+      font-weight: bold;
+      color: #000;
+      font-size: 42px;
+      letter-spacing: 10px;
+      line-height: 1.6;
+    }
+    
+    .welcome span.surrounding {
+      font-family: 'Bitter', serif;
+      color: #000;
+      font-size: 20px;
+      letter-spacing: 5px;
+    }
+    
+    .welcome span.downarrow {
+      font-size: 42px;
+    }
+    
+    
+    .downbutton {
+      background: rgba(0,0,0,0);
+      border: none;
+      outline: none;
+      color: #1BC7DC;
+      -moz-opacity: 0.75;
+      -khtml-opacity: 0.75;
+      opacity: 0.75;
+      text-align: center;
+      font-size: 42px;
+    }
+
+</style>
+<!-- Here comes the actual HTML content:  https://distillery.rbind.io/posts/2021-08-14-new-additions/ -->
+<div class="parallax l-screen">
+<div class="welcome">
+<pre><code>&lt;span class=&quot;surrounding&quot;&gt;Welcome to the&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;span class=&quot;title&quot;&gt;Dyer Laboratory&lt;/span&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;span class=&quot;downarrow&quot;&gt;
+
+  &lt;!-- The script provided in the onclick attribute allows to click the down button and triggers a smooth scroll down to the posts listing. --&gt;
+  
+  &lt;button class=&quot;downbutton&quot; onclick=&quot;window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: &#39;smooth&#39; });&quot;&gt;
+    &lt;img src=&quot;arrow.png&quot; width=&quot;100px&quot;&gt;
+  &lt;/button&gt;
+  
+&lt;/span&gt;</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

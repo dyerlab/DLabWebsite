@@ -1,5 +1,91 @@
 ---
-title: " "
+title: "Articles"
 site: distill::distill_website
 listing: posts
 ---
+
+
+
+<style>
+    .parallax { 
+    
+        /* Set the background image */
+        background-image: url("book.jpg");
+    
+        /* Use the full viewscreen height as height */
+        height: 100vh; 
+        
+        /* Set the background to create the parallax scrolling */
+        /* this does not work on iOS mobile devices */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .welcome {
+      position: absolute;
+      left: 0;
+      top: 35vh;
+      width: 100vw;
+      text-align: center;
+      color: #000;
+    }
+    
+    .welcome span.title {
+      font-family: 'Bitter', serif;
+      font-weight: bold;
+      color: #000;
+      font-size: 42px;
+      letter-spacing: 10px;
+      line-height: 1.6;
+    }
+    
+    .welcome span.surrounding {
+      font-family: 'Bitter', serif;
+      color: #000;
+      font-size: 20px;
+      letter-spacing: 5px;
+    }
+    
+    .welcome span.downarrow {
+      font-size: 42px;
+    }
+    
+    
+    .downbutton {
+      background: rgba(0,0,0,0);
+      border: none;
+      outline: none;
+      color: #1BC7DC;
+      -moz-opacity: 0.75;
+      -khtml-opacity: 0.75;
+      opacity: 0.75;
+      text-align: center;
+      font-size: 42px;
+    }
+
+</style>
+
+<!-- Here comes the actual HTML content:  https://distillery.rbind.io/posts/2021-08-14-new-additions/ -->
+
+<div class="parallax l-screen">
+
+  <div class="welcome">
+  
+    <span class="surrounding">Welcome to the</span>
+    <br><br><br>
+    <span class="title">Dyer Laboratory</span>
+    <br><br><br>
+    
+    <span class="downarrow">
+    
+      <!-- The script provided in the onclick attribute allows to click the down button and triggers a smooth scroll down to the posts listing. -->
+      
+      <button class="downbutton" onclick="window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: 'smooth' });">
+        <img src="arrow.png" width="100px">
+      </button>
+      
+    </span>
+  </div>
+</div>

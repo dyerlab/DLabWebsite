@@ -2237,6 +2237,134 @@ d-article h2 {
   --text-color: rgba(1,0,0,0.5)
 }
 
+
+
+
+
+/*-- CSS FOR NEWS BOX --*/
+
+/*--
+body {
+  font-family: "Open Sans";
+  font-size: 100%;
+  color: #333;
+  line-height: 1.4;
+  margin: 0;
+}
+--*/
+
+.wrapper {
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+
+.hero-news {
+  display: grid;
+  grid-gap: 1px;
+}
+
+.hero-news > article {
+  padding: 1rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: calc(66vw - 2rem);
+  box-sizing: border-box;
+}
+
+.hero-news__item:first-child {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_163672817.jpg?10000);
+    border-radius: 5px;
+}
+
+.hero-news__item:nth-child(2) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_google-cardboard-wearable-virtual-reality-headset.jpg?10000);
+  border-radius: 5px;
+}
+
+.hero-news__item:nth-child(3) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_screenshot2017-02-23at4.29.08pm.png?31903);
+  border-radius: 5px;
+}
+
+.hero-news__item-title {
+  margin: auto 0 4px;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+
+.hero-news__item:first-child .hero-news__item-title {
+  font-size: 1.75rem;
+}
+
+.hero-news2 .hero-news__item-title {
+  order: 2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero-news2 .hero-news__item-date {
+  order: 1;
+  margin-top: auto;
+  margin-bottom: 4px;
+}
+
+.hero-news__item-tag {}
+
+@media (min-width:767px) {
+  
+  .full-width {
+    margin-left: calc(-100vw / 2 + 767px / 2);
+    margin-right: calc(-100vw / 2 + 767px / 2);
+  }
+  
+  .hero-news1 {
+    grid-template-columns: 2fr 1fr;
+  }
+  .hero-news1 .hero-news__item:first-child {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: auto;
+  }
+  .hero-news1 .hero-news__item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    height: calc(25vw - 2rem);
+    max-height: 300px;
+  }
+  .hero-news1 .hero-news__item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    height: calc(25vw - 2rem);
+    max-height: 300px;
+  }
+  .hero-news2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-news2 .hero-news__item:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    height: calc(50vw - 2rem);
+    max-height: 600px;
+  }
+  .hero-news2 .hero-news__item:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+    height: calc(33vw - 2rem);
+    max-height: 300px;
+  }
+  .hero-news2 .hero-news__item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    height: calc(33vw - 2rem);
+    max-height: 300px;
+  }
+}
 </style>
 <style type="text/css">
 /* base style */

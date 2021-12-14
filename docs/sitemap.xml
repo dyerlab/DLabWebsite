@@ -2,15 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/</loc>
-    <lastmod>2021-12-12T11:05:44-05:00</lastmod>
+    <lastmod>2021-12-14T07:49:04-05:00</lastmod>
   </url>
   <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts.html</loc>
-    <lastmod>2021-12-12T07:40:37-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/people.html</loc>
-    <lastmod>2021-12-12T10:42:52-05:00</lastmod>
+    <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts/</loc>
+    <lastmod>2021-12-14T07:24:17-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo/</loc>
@@ -457,10 +453,6 @@
     <lastmod>2021-12-13T17:44:10-05:00</lastmod>
   </url>
   <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/posts/2014-05-09-dileo-mf-siu-jc-rhodes-mk-lpez-villalobos-a-redwine-a-ksiazek-k-dyer-rj-2014-the-gravity-of-pollination-integrating-at-site-features-into-spatial-analysis-of-contemporary-pollen-movement-molecular-ecology-23-2973-2982/</loc>
-    <lastmod>2021-12-13T17:44:10-05:00</lastmod>
-  </url>
-  <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2013-10-10-unix-basics/</loc>
     <lastmod>2021-12-13T17:44:06-05:00</lastmod>
   </url>
@@ -483,173 +475,5 @@
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2011-07-23-hello-r-markdown/</loc>
     <lastmod>2021-12-13T17:43:49-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/desaix-2019/</loc>
-    <lastmod>2021-12-13T15:23:05-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/ritchie-et-al-2019/</loc>
-    <lastmod>2021-12-13T15:21:44-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/friedline-et-al-2019/</loc>
-    <lastmod>2021-12-13T15:23:23-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/flores-manzanero-et-al-2019/</loc>
-    <lastmod>2021-12-13T15:29:52-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/chan-lee-dyer-2018/</loc>
-    <lastmod>2021-12-13T15:20:40-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2018-mol-ecol/</loc>
-    <lastmod>2021-12-13T15:21:38-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2019-proc-roy-soc/</loc>
-    <lastmod>2021-12-13T15:21:40-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/cushman-et-al-2018/</loc>
-    <lastmod>2021-12-13T15:20:42-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/watts-dyer-2018/</loc>
-    <lastmod>2021-12-13T15:21:59-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/bertrand-et-al-2017/</loc>
-    <lastmod>2021-12-13T15:20:38-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/foster-chan-dyer-2016/</loc>
-    <lastmod>2021-12-13T15:21:14-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/tucker-et-al-2016/</loc>
-    <lastmod>2021-12-13T15:21:57-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015-AREES/</loc>
-    <lastmod>2021-12-13T15:20:56-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/yang-et-al-2015/</loc>
-    <lastmod>2021-12-13T15:22:01-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015/</loc>
-    <lastmod>2021-12-13T15:20:58-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2015/</loc>
-    <lastmod>2021-12-13T15:21:30-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/di-leo-et-al-2014/</loc>
-    <lastmod>2021-12-13T15:20:46-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2013/</loc>
-    <lastmod>2021-12-13T15:21:55-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2013/</loc>
-    <lastmod>2021-12-13T15:21:28-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/eckert-dyer-2012/</loc>
-    <lastmod>2021-12-13T15:21:10-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2012/</loc>
-    <lastmod>2021-12-13T15:21:04-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/kluetsch-dyer-misof-2012/</loc>
-    <lastmod>2021-12-13T15:21:36-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/baker-dyer-2011/</loc>
-    <lastmod>2021-12-13T15:20:36-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2010/</loc>
-    <lastmod>2021-12-13T15:21:02-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2010/</loc>
-    <lastmod>2021-12-13T15:21:26-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2010-con-gen/</loc>
-    <lastmod>2021-12-13T15:21:24-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2009-mol-ecol/</loc>
-    <lastmod>2021-12-13T15:26:49-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2009/</loc>
-    <lastmod>2021-12-13T15:20:54-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2008-con-gen/</loc>
-    <lastmod>2021-12-13T15:21:18-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2008-mol-ecol/</loc>
-    <lastmod>2021-12-13T15:21:20-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2007/</loc>
-    <lastmod>2021-12-13T15:20:52-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2007-tpb/</loc>
-    <lastmod>2021-12-13T15:20:50-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/gonzales-et-al-2006/</loc>
-    <lastmod>2021-12-13T15:21:32-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2005/</loc>
-    <lastmod>2021-12-13T15:20:48-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2005/</loc>
-    <lastmod>2021-12-13T15:21:53-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-nason-2004/</loc>
-    <lastmod>2021-12-13T15:21:06-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2004/</loc>
-    <lastmod>2021-12-13T15:21:00-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2002/</loc>
-    <lastmod>2021-12-13T15:21:51-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/kelly-dyer-2002/</loc>
-    <lastmod>2021-12-13T15:28:45-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/apsit-et-al-2002/</loc>
-    <lastmod>2021-12-13T15:20:34-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-sork-2001/</loc>
-    <lastmod>2021-12-13T15:21:08-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/smouse-et-al-2001/</loc>
-    <lastmod>2021-12-13T15:29:21-05:00</lastmod>
   </url>
 </urlset>
