@@ -4,6 +4,10 @@ title: 'Powers of discerning: challenges to understanding dispersal processes in
 date: '2007-12-01'
 authors:
 - name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
 description: |
     MOLECULAR ECOLOGY. 2007.  
 preview: featured.png

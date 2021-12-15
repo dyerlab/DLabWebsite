@@ -6,6 +6,10 @@ authors:
 - name: Alejandro Flores-Manzanero
 - name: Madisson A. Luna-Barcenas
 - name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
 - name: Ella Vazquez-Dominguez
 description: |
     ECOLOGY AND EVOLUTION. 2019.  

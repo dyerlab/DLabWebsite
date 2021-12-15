@@ -7,6 +7,10 @@ authors:
 - name: Benjamin D. Collins
 - name: Rachel N. Yi
 - name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
 - name: Chaz Hyseni
 description: |
     INSECTS. 2015.  

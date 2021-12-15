@@ -4,6 +4,10 @@ title: 'Landscape modelling of gene flow: improved power using conditional genet
 date: '2010-09-01'
 authors:
 - name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
 - name: John D. Nason
 - name: Ryan C. Garrick
 description: |

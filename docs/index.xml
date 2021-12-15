@@ -7,7 +7,17 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 14 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Smoothing rasters</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-smoothing-rasters</link>
+      <description>Sometimes it is helpful for visualization purposes (or when making a nice graphic), to smooth out a raster image.  Here are some cheap and quick methods.</description>
+      <category>raster</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-smoothing-rasters</guid>
+      <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-smoothing-rasters/smoothing-rasters_files/figure-html5/unnamed-chunk-1-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Moving Old Markdown Posts</title>
       <dc:creator>Rodney Dyer</dc:creator>

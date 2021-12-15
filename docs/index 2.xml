@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>The Dyer Laboratory</title>
+    <link>https://dyerlab.github.io/DLabWebsite</link>
+    <atom:link href="https://dyerlab.github.io/DLabWebsite/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Research on the spatial distribution of population and landscape genetic variation. 
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Tue, 14 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Moving Old Markdown Posts</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts</link>
+      <description>Another take at moving **old** markdown content to a *new* platform.   While markdown is supposed to be universal, the kinds of meta data assocaited with it in certain systems is a bit wonky and forces us to do some magic.  Here I take a less retentive approach than what I did moving manuscript entries over since I do not have to maintain as much meta-data about each post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts</guid>
+      <pubDate>Tue, 14 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts/featured.png" medium="image" type="image/png" width="293" height="395"/>
+    </item>
+    <item>
+      <title>Moving Manuscripts from Hugo</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</link>
+      <description>The use of Markdown for your site is very helpful but not alll markdown formats are the same.  Here is how I moved from Hugo to rstudio::distill for the manuscripts section of the lab webpage.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo</guid>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-moving-manuscripts-from-hugo/NewYAML.png" medium="image" type="image/png" width="692" height="189"/>
+    </item>
+    <item>
+      <title>DLab Swift</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift</guid>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift/logo.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Moving from HUGO to distill</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-06-11-moving-from-hugo-to-distill</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-06-11-moving-from-hugo-to-distill</guid>
+      <pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>MacOS Monterey beta</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-06-09-macos-monterey-beta</link>
+      <description>Apple has released the developers version of all its operating systems to be released in the fall.  Here is a quick dive into one of them—MacOS Monterey.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-06-09-macos-monterey-beta</guid>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-06-09-macos-monterey-beta/featured.png" medium="image" type="image/png" width="583" height="275"/>
+    </item>
+    <item>
+      <title>Spring 2021 Landscape Genetics Workshop</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-05-23-spring-2021-landscape-genetics-workshop</link>
+      <description>This spring, my Landscape Genetics Workshop will need to be held virtually via zoom.  While that provides a set of unique challenges, it looks like this is facilitating a more diverse group of attendees, which is always beneficial. All course content is hosted on this site under Courses.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-05-23-spring-2021-landscape-genetics-workshop</guid>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-05-23-spring-2021-landscape-genetics-workshop/featured.png" medium="image" type="image/png" width="939" height="325"/>
+    </item>
+    <item>
+      <title>Mermaid Diagrams in RMarkdown</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-03-30-mermaid-diagrams-in-rmarkdown</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-03-30-mermaid-diagrams-in-rmarkdown</guid>
+      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-03-30-mermaid-diagrams-in-rmarkdown/featured.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Problems with RMarkdown HTMLWidgets</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-03-16-problems-with-rmarkdown-htmlwidgets</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-03-16-problems-with-rmarkdown-htmlwidgets</guid>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Obsidian mobile</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-03-13-obsidian-mobile</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-03-13-obsidian-mobile</guid>
+      <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-03-13-obsidian-mobile/featured.png" medium="image" type="image/png" width="666" height="525"/>
+    </item>
+    <item>
+      <title>Population Graphs Swift Edition</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-03-03-population-graphs-swift-edition</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-03-03-population-graphs-swift-edition</guid>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-03-03-population-graphs-swift-edition/featured.png" medium="image" type="image/png" width="1790" height="1192"/>
+    </item>
+    <item>
+      <title>dplyr summarize Warnings</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-02-09-dplyr-summarize-warnings</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-02-09-dplyr-summarize-warnings</guid>
+      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-02-09-dplyr-summarize-warnings/featured.png" medium="image" type="image/png" width="642" height="129"/>
+    </item>
+    <item>
+      <title>Spring 2020 ERAC Meeting Slides</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2020-05-12-spring-2020-erac-meeting-slides</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2020-05-12-spring-2020-erac-meeting-slides</guid>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Setting up PostGIS on GCP</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2020-03-19-setting-up-postgis-on-gcp</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2020-03-19-setting-up-postgis-on-gcp</guid>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Setting up Postgresql on mac</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2020-03-12-setting-up-postgresql-on-mac</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2020-03-12-setting-up-postgresql-on-mac</guid>
+      <pubDate>Thu, 12 Mar 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Remferts Dogwood Presentation at the Research Showcase</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2020-02-27-remferts-dogwood-presentation-at-the-research-showcase</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2020-02-27-remferts-dogwood-presentation-at-the-research-showcase</guid>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Population Graph Stability</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-04-22-population-graph-stability</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-04-22-population-graph-stability</guid>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Simulating Random Populations</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-04-21-simulating-random-populations</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-04-21-simulating-random-populations</guid>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2019-04-21-simulating-random-populations/simulating-random-populations_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>The Enigmatic Seedlings Data File</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-03-29-the-enigmatic-seedlings-data-file</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-03-29-the-enigmatic-seedlings-data-file</guid>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>get map Problems w o Google API</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-03-25-get-map-problems-w-o-google-api</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-03-25-get-map-problems-w-o-google-api</guid>
+      <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Landscape Genetics Workshop 2019</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-03-24-landscape-genetics-workshop-2019</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-03-24-landscape-genetics-workshop-2019</guid>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>RStudio Server on Ubuntu</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-03-08-rstudio-server-on-ubuntu</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-03-08-rstudio-server-on-ubuntu</guid>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>UVa Center for Public Health Genomics</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-02-13-uva-center-for-public-health-genomics</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-02-13-uva-center-for-public-health-genomics</guid>
+      <pubDate>Wed, 13 Feb 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>January CES Faculty Meeting</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2019-01-25-january-ces-faculty-meeting</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2019-01-25-january-ces-faculty-meeting</guid>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Jane Remfert Doctoral Candidate</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-12-06-jane-remfert-doctoral-candidate</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-12-06-jane-remfert-doctoral-candidate</guid>
+      <pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Setting up Atom for Pweave Or What the what</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-07-23-setting-up-atom-for-pweave-or-what-the-what</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-07-23-setting-up-atom-for-pweave-or-what-the-what</guid>
+      <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Poisonous Plants in the Commonwealth</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-07-19-poisonous-plants-in-the-commonwealth</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-07-19-poisonous-plants-in-the-commonwealth</guid>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Using Google Drive as an R Data Repository</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-07-19-using-google-drive-as-an-r-data-repository</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-07-19-using-google-drive-as-an-r-data-repository</guid>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Atom Editor</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-06-20-the-atom-editor</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-06-20-the-atom-editor</guid>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://locker.ifttt.com/v2/6471854/1529502098516-7188915696ef52db/b4eb36ac38277ba03d724b9255d610d0490c0037bbab93a0d59e2ba8987154d4/285507c1-07ef-4cb0-b0fa-4bfb29559dd0?sharing_key=cb9e9fcf4c6fa73363e076a3fdefe1dc" medium="image" type="text/plain"/>
+    </item>
+    <item>
+      <title>CES Curriculum Meeting</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-03-23-ces-curriculum-meeting</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-03-23-ces-curriculum-meeting</guid>
+      <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>CSBC Faculty Meeting</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-01-31-csbc-faculty-meeting</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-01-31-csbc-faculty-meeting</guid>
+      <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>CES Faculty Meeting</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2018-01-29-ces-faculty-meeting</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2018-01-29-ces-faculty-meeting</guid>
+      <pubDate>Mon, 29 Jan 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ENVS 601 Lecture</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-10-23-envs-601-lecture</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-10-23-envs-601-lecture</guid>
+      <pubDate>Mon, 23 Oct 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ENVS Welcome Slides</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-10-07-envs-welcome-slides</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-10-07-envs-welcome-slides</guid>
+      <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Capturing contents within Curly Brackets</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-10-05-capturing-contents-within-curly-brackets</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-10-05-capturing-contents-within-curly-brackets</guid>
+      <pubDate>Thu, 05 Oct 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>CES Fall Semester Faculty Meeting</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-09-01-ces-fall-semester-faculty-meeting</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-09-01-ces-fall-semester-faculty-meeting</guid>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Per Hour Population Growth</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-05-22-per-hour-population-growth</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-05-22-per-hour-population-growth</guid>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>VDOT Progress Update</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-05-22-vdot-progress-update</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-05-22-vdot-progress-update</guid>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thanks Research Gate</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-04-17-thanks-research-gate</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-04-17-thanks-research-gate</guid>
+      <pubDate>Mon, 17 Apr 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>March Faculty Meeting Notes</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-03-17-march-faculty-meeting-notes</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-03-17-march-faculty-meeting-notes</guid>
+      <pubDate>Fri, 17 Mar 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ggproblems</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-03-14-ggproblems</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-03-14-ggproblems</guid>
+      <pubDate>Tue, 14 Mar 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>New sequencer</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-03-09-new-sequencer</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-03-09-new-sequencer</guid>
+      <pubDate>Thu, 09 Mar 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>New URLs</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-03-02-new-urls</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-03-02-new-urls</guid>
+      <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Bayesian Models</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-02-28-bayesian-models</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-02-28-bayesian-models</guid>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>R Post of the Day</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-02-20-r-post-of-the-day</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-02-20-r-post-of-the-day</guid>
+      <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Job</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2017-01-10-new-job</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2017-01-10-new-job</guid>
+      <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Life Sciences Graduation</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-12-10-life-sciences-graduation</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-12-10-life-sciences-graduation</guid>
+      <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Talk at Temple</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-11-13-talk-at-temple</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-11-13-talk-at-temple</guid>
+      <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Spatial Data Sources</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-10-06-spatial-data-sources</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-10-06-spatial-data-sources</guid>
+      <pubDate>Thu, 06 Oct 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Dyer ENVS Research Talk</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-10-03-dyer-envs-research-talk</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-10-03-dyer-envs-research-talk</guid>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ENVS Faculty Meeting</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-09-16-envs-faculty-meeting</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-09-16-envs-faculty-meeting</guid>
+      <pubDate>Fri, 16 Sep 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Applied Environmental Statistics</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-08-29-applied-environmental-statistics</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-08-29-applied-environmental-statistics</guid>
+      <pubDate>Mon, 29 Aug 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Evolution 2016 Youtube Channel</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-07-10-evolution-2016-youtube-channel</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-07-10-evolution-2016-youtube-channel</guid>
+      <pubDate>Sun, 10 Jul 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Collab Slack R</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-07-08-collab-slack-r</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-07-08-collab-slack-r</guid>
+      <pubDate>Fri, 08 Jul 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Earth Pro 8211 Now Free</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-06-25-google-earth-pro-8211-now-free</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-06-25-google-earth-pro-8211-now-free</guid>
+      <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Google Drive 038 Git</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-06-22-google-drive-038-git</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-06-22-google-drive-038-git</guid>
+      <pubDate>Wed, 22 Jun 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Landscape Epigenetics</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-06-19-landscape-epigenetics</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-06-19-landscape-epigenetics</guid>
+      <pubDate>Sun, 19 Jun 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Evolution 2016 8211 Austin Texas</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-06-17-evolution-2016-8211-austin-texas</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-06-17-evolution-2016-8211-austin-texas</guid>
+      <pubDate>Fri, 17 Jun 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PCR Gods</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-06-07-pcr-gods</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-06-07-pcr-gods</guid>
+      <pubDate>Tue, 07 Jun 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Intalling Shiny Server on Ubuntu 14 LTS</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-06-05-intalling-shiny-server-on-ubuntu-14-lts</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-06-05-intalling-shiny-server-on-ubuntu-14-lts</guid>
+      <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Life Sciences Graduation</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-05-14-life-sciences-graduation</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-05-14-life-sciences-graduation</guid>
+      <pubDate>Sat, 14 May 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Congratulations to Dr Viverette</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-22-congratulations-to-dr-viverette</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-22-congratulations-to-dr-viverette</guid>
+      <pubDate>Fri, 22 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Layered Maps in R Using GGPlot of course 8230</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-20-layered-maps-in-r-using-ggplot-of-course-8230</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-20-layered-maps-in-r-using-ggplot-of-course-8230</guid>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>RStudio Cheatsheets</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-20-rstudio-cheatsheets</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-20-rstudio-cheatsheets</guid>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Package 8211 dlab</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-15-new-package-8211-dlab</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-15-new-package-8211-dlab</guid>
+      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Point And Click Theme Editing for ggplot</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-12-point-and-click-theme-editing-for-ggplot</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-12-point-and-click-theme-editing-for-ggplot</guid>
+      <pubDate>Tue, 12 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Congratulations Chitra</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-11-congratulations-chitra</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-11-congratulations-chitra</guid>
+      <pubDate>Mon, 11 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Volume 0 8211 On iBooks Store</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-08-volume-0-8211-on-ibooks-store</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-08-volume-0-8211-on-ibooks-store</guid>
+      <pubDate>Fri, 08 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Presentation Zen</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-07-presentation-zen</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-07-presentation-zen</guid>
+      <pubDate>Thu, 07 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>STRUCTURE on OSX</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-04-05-structure-on-osx</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-04-05-structure-on-osx</guid>
+      <pubDate>Tue, 05 Apr 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cropping Rasters</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-03-18-cropping-rasters</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-03-18-cropping-rasters</guid>
+      <pubDate>Fri, 18 Mar 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Raster Plotting</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-03-18-raster-plotting</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-03-18-raster-plotting</guid>
+      <pubDate>Fri, 18 Mar 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Welcome to the Lab Bonnie</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-03-11-welcome-to-the-lab-bonnie</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-03-11-welcome-to-the-lab-bonnie</guid>
+      <pubDate>Fri, 11 Mar 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Denver Talk</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-02-21-denver-talk</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-02-21-denver-talk</guid>
+      <pubDate>Sun, 21 Feb 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>ENVS Orientation</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-02-20-envs-orientation</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-02-20-envs-orientation</guid>
+      <pubDate>Sat, 20 Feb 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Effective Population Size</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-02-19-effective-population-size</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-02-19-effective-population-size</guid>
+      <pubDate>Fri, 19 Feb 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Chapter 2 Hardy Weinberg Equilibrium</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-02-05-chapter-2-hardy-weinberg-equilibrium</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-02-05-chapter-2-hardy-weinberg-equilibrium</guid>
+      <pubDate>Fri, 05 Feb 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Environmental Studies Orientation</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-02-03-environmental-studies-orientation</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-02-03-environmental-studies-orientation</guid>
+      <pubDate>Wed, 03 Feb 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Prothonotary Warblers</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-01-29-prothonotary-warblers</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-01-29-prothonotary-warblers</guid>
+      <pubDate>Fri, 29 Jan 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Chapter 1 Learning R</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-01-15-chapter-1-learning-r</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-01-15-chapter-1-learning-r</guid>
+      <pubDate>Fri, 15 Jan 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Semester</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-01-11-new-semester</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-01-11-new-semester</guid>
+      <pubDate>Mon, 11 Jan 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Congratulations Anna Tucker</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2016-01-08-congratulations-anna-tucker</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2016-01-08-congratulations-anna-tucker</guid>
+      <pubDate>Fri, 08 Jan 2016 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Applied Population Genetics Textbook Release</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-12-17-applied-population-genetics-textbook-release</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-12-17-applied-population-genetics-textbook-release</guid>
+      <pubDate>Thu, 17 Dec 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Life Sciences Graduation</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-12-12-life-sciences-graduation</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-12-12-life-sciences-graduation</guid>
+      <pubDate>Sat, 12 Dec 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Laboratory Move</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-12-02-laboratory-move</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-12-02-laboratory-move</guid>
+      <pubDate>Wed, 02 Dec 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>NSF Grant Recommended for Funding</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-11-18-nsf-grant-recommended-for-funding</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-11-18-nsf-grant-recommended-for-funding</guid>
+      <pubDate>Wed, 18 Nov 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Taxonomy of Academic Sustainability</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-10-29-the-taxonomy-of-academic-sustainability</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-10-29-the-taxonomy-of-academic-sustainability</guid>
+      <pubDate>Thu, 29 Oct 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Eyes on Climate</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-09-28-eyes-on-climate</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-09-28-eyes-on-climate</guid>
+      <pubDate>Mon, 28 Sep 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>A talk at the University of Paris Sud</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-09-24-a-talk-at-the-university-of-paris-sud</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-09-24-a-talk-at-the-university-of-paris-sud</guid>
+      <pubDate>Thu, 24 Sep 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Research Talk Chaire Éco conception</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-09-22-research-talk-chaire-co-conception</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-09-22-research-talk-chaire-co-conception</guid>
+      <pubDate>Tue, 22 Sep 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Research Talk Chaire EcoConception</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-09-22-research-talk-chaire-ecoconception</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-09-22-research-talk-chaire-ecoconception</guid>
+      <pubDate>Tue, 22 Sep 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Methylation Structure</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-09-16-methylation-structure</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-09-16-methylation-structure</guid>
+      <pubDate>Wed, 16 Sep 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Installing Gitbook on OSX</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-09-04-installing-gitbook-on-osx</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-09-04-installing-gitbook-on-osx</guid>
+      <pubDate>Fri, 04 Sep 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Paris 2015</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-09-04-paris-2015</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-09-04-paris-2015</guid>
+      <pubDate>Fri, 04 Sep 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Compiling RGDAL on OSX 8211 Why do you hate me</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-08-27-compiling-rgdal-on-osx-8211-why-do-you-hate-me</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-08-27-compiling-rgdal-on-osx-8211-why-do-you-hate-me</guid>
+      <pubDate>Thu, 27 Aug 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Merging data frames</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-08-27-merging-data-frames</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-08-27-merging-data-frames</guid>
+      <pubDate>Thu, 27 Aug 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Loading in Rasters</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-08-26-loading-in-rasters</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-08-26-loading-in-rasters</guid>
+      <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>RVA Urban Dogwood</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-08-25-rva-urban-dogwood</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-08-25-rva-urban-dogwood</guid>
+      <pubDate>Tue, 25 Aug 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Basic graphics in R</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-08-24-basic-graphics-in-r</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-08-24-basic-graphics-in-r</guid>
+      <pubDate>Mon, 24 Aug 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Welcome Jane Remfert</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-08-19-welcome-jane-remfert</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-08-19-welcome-jane-remfert</guid>
+      <pubDate>Wed, 19 Aug 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Dyerlab Temporary Headquarters</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-08-04-dyerlab-temporary-headquarters</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-08-04-dyerlab-temporary-headquarters</guid>
+      <pubDate>Tue, 04 Aug 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Installing R packages from github</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-07-30-installing-r-packages-from-github</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-07-30-installing-r-packages-from-github</guid>
+      <pubDate>Thu, 30 Jul 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Compiling the GSL Library for OSX</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-07-29-compiling-the-gsl-library-for-osx</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-07-29-compiling-the-gsl-library-for-osx</guid>
+      <pubDate>Wed, 29 Jul 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Congratulations to Jameson Hinkle</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-07-28-congratulations-to-jameson-hinkle</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-07-28-congratulations-to-jameson-hinkle</guid>
+      <pubDate>Tue, 28 Jul 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hello R Markdown</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-07-23-hello-r-markdown</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-07-23-hello-r-markdown</guid>
+      <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2015-07-23-hello-r-markdown/hello-r-markdown_files/figure-html5/pie-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Making better presentations</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-04-29-making-better-presentations</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-04-29-making-better-presentations</guid>
+      <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Position</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-04-16-new-position</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-04-16-new-position</guid>
+      <pubDate>Thu, 16 Apr 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Install rgeos on OSX</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-03-31-install-rgeos-on-osx</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-03-31-install-rgeos-on-osx</guid>
+      <pubDate>Tue, 31 Mar 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Color palettes in ggpairs</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-03-26-color-palettes-in-ggpairs</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-03-26-color-palettes-in-ggpairs</guid>
+      <pubDate>Thu, 26 Mar 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>New Lab Member</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-03-26-new-lab-member</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-03-26-new-lab-member</guid>
+      <pubDate>Thu, 26 Mar 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>A terrible loss for VCU</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-02-05-a-terrible-loss-for-vcu</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-02-05-a-terrible-loss-for-vcu</guid>
+      <pubDate>Thu, 05 Feb 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Turning In Assignments via Google Sharing</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-01-23-turning-in-assignments-via-google-sharing</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-01-23-turning-in-assignments-via-google-sharing</guid>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Setting Up Your Site for Syndication</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2015-01-21-setting-up-your-site-for-syndication</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2015-01-21-setting-up-your-site-for-syndication</guid>
+      <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unix Basics</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2013-10-10-unix-basics</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2013-10-10-unix-basics</guid>
+      <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Diluting Primers</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2013-09-14-diluting-primers</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2013-09-14-diluting-primers</guid>
+      <pubDate>Sat, 14 Sep 2013 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Compiling r-devel</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2013-06-03-compiling-r-devel</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2013-06-03-compiling-r-devel</guid>
+      <pubDate>Mon, 03 Jun 2013 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Updating R and With Current Libraries</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2013-06-03-updating-r-and-with-current-libraries</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2013-06-03-updating-r-and-with-current-libraries</guid>
+      <pubDate>Mon, 03 Jun 2013 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Restriction Enzymes for AFLPs</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2013-02-01-restriction-enzymes-for-aflps</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2013-02-01-restriction-enzymes-for-aflps</guid>
+      <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hello R Markdown</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2011-07-23-hello-r-markdown</link>
+      <description>A short description of the post.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2011-07-23-hello-r-markdown</guid>
+      <pubDate>Sat, 23 Jul 2011 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2011-07-23-hello-r-markdown/hello-r-markdown_files/figure-html5/pie-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+  </channel>
+</rss>

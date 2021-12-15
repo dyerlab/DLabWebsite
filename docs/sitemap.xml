@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/</loc>
-    <lastmod>2021-12-14T07:49:04-05:00</lastmod>
+    <lastmod>2021-12-15T05:12:39-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-smoothing-rasters/</loc>
+    <lastmod>2021-12-15T08:03:49-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts/</loc>
@@ -14,466 +18,466 @@
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-12-dlab-swift/</loc>
-    <lastmod>2021-12-13T17:51:46-05:00</lastmod>
+    <lastmod>2021-12-15T05:44:00-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-06-11-moving-from-hugo-to-distill/</loc>
-    <lastmod>2021-12-13T17:51:44-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:58-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-06-09-macos-monterey-beta/</loc>
-    <lastmod>2021-12-13T18:01:23-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:57-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-05-23-spring-2021-landscape-genetics-workshop/</loc>
-    <lastmod>2021-12-13T18:01:04-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:55-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-03-30-mermaid-diagrams-in-rmarkdown/</loc>
-    <lastmod>2021-12-13T18:00:40-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:53-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-03-16-problems-with-rmarkdown-htmlwidgets/</loc>
-    <lastmod>2021-12-13T17:51:19-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:51-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-03-13-obsidian-mobile/</loc>
-    <lastmod>2021-12-13T18:01:38-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:49-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-03-03-population-graphs-swift-edition/</loc>
-    <lastmod>2021-12-13T18:01:58-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:46-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-02-09-dplyr-summarize-warnings/</loc>
-    <lastmod>2021-12-13T18:02:30-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:44-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2020-05-12-spring-2020-erac-meeting-slides/</loc>
-    <lastmod>2021-12-13T17:50:57-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:43-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2020-03-19-setting-up-postgis-on-gcp/</loc>
-    <lastmod>2021-12-13T17:50:52-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2020-03-12-setting-up-postgresql-on-mac/</loc>
-    <lastmod>2021-12-13T17:50:47-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:39-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2020-02-27-remferts-dogwood-presentation-at-the-research-showcase/</loc>
-    <lastmod>2021-12-13T17:50:42-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:36-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-04-22-population-graph-stability/</loc>
-    <lastmod>2021-12-13T17:50:37-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:35-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-04-21-simulating-random-populations/</loc>
-    <lastmod>2021-12-13T17:50:29-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:33-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-03-29-the-enigmatic-seedlings-data-file/</loc>
-    <lastmod>2021-12-13T17:50:16-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:22-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-03-25-get-map-problems-w-o-google-api/</loc>
-    <lastmod>2021-12-13T17:50:12-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:21-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-03-24-landscape-genetics-workshop-2019/</loc>
-    <lastmod>2021-12-13T17:50:07-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:18-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-03-08-rstudio-server-on-ubuntu/</loc>
-    <lastmod>2021-12-13T17:50:03-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:15-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-02-13-uva-center-for-public-health-genomics/</loc>
-    <lastmod>2021-12-13T17:49:59-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:13-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2019-01-25-january-ces-faculty-meeting/</loc>
-    <lastmod>2021-12-13T17:49:55-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:11-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-12-06-jane-remfert-doctoral-candidate/</loc>
-    <lastmod>2021-12-13T17:49:47-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:09-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-07-23-setting-up-atom-for-pweave-or-what-the-what/</loc>
-    <lastmod>2021-12-13T17:49:43-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:07-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-07-19-poisonous-plants-in-the-commonwealth/</loc>
-    <lastmod>2021-12-13T17:49:35-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:03-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-07-19-using-google-drive-as-an-r-data-repository/</loc>
-    <lastmod>2021-12-13T17:49:39-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:06-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-06-20-the-atom-editor/</loc>
-    <lastmod>2021-12-13T17:49:30-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:02-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-03-23-ces-curriculum-meeting/</loc>
-    <lastmod>2021-12-13T17:49:26-05:00</lastmod>
+    <lastmod>2021-12-15T05:43:00-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-01-31-csbc-faculty-meeting/</loc>
-    <lastmod>2021-12-13T17:49:22-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:58-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2018-01-29-ces-faculty-meeting/</loc>
-    <lastmod>2021-12-13T17:49:18-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:57-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-10-23-envs-601-lecture/</loc>
-    <lastmod>2021-12-13T17:49:13-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:55-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-10-07-envs-welcome-slides/</loc>
-    <lastmod>2021-12-13T17:49:09-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:53-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-10-05-capturing-contents-within-curly-brackets/</loc>
-    <lastmod>2021-12-13T17:49:05-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:51-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-09-01-ces-fall-semester-faculty-meeting/</loc>
-    <lastmod>2021-12-13T17:49:01-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:49-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-05-22-per-hour-population-growth/</loc>
-    <lastmod>2021-12-13T17:48:53-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:46-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-05-22-vdot-progress-update/</loc>
-    <lastmod>2021-12-13T17:48:57-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:47-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-04-17-thanks-research-gate/</loc>
-    <lastmod>2021-12-13T17:48:49-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:44-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-03-17-march-faculty-meeting-notes/</loc>
-    <lastmod>2021-12-13T17:48:44-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:42-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-03-14-ggproblems/</loc>
-    <lastmod>2021-12-13T17:48:41-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:40-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-03-09-new-sequencer/</loc>
-    <lastmod>2021-12-13T17:48:36-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:38-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-03-02-new-urls/</loc>
-    <lastmod>2021-12-13T17:48:32-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:36-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-02-28-bayesian-models/</loc>
-    <lastmod>2021-12-13T17:48:28-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:34-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-02-20-r-post-of-the-day/</loc>
-    <lastmod>2021-12-13T17:48:24-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:32-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2017-01-10-new-job/</loc>
-    <lastmod>2021-12-13T17:48:20-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:31-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-12-10-life-sciences-graduation/</loc>
-    <lastmod>2021-12-13T17:48:16-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:29-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-11-13-talk-at-temple/</loc>
-    <lastmod>2021-12-13T17:48:12-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:27-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-10-06-spatial-data-sources/</loc>
-    <lastmod>2021-12-13T17:48:08-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:26-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-10-03-dyer-envs-research-talk/</loc>
-    <lastmod>2021-12-13T17:48:04-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:23-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-09-16-envs-faculty-meeting/</loc>
-    <lastmod>2021-12-13T17:48:00-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:22-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-08-29-applied-environmental-statistics/</loc>
-    <lastmod>2021-12-13T17:47:56-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:20-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-07-10-evolution-2016-youtube-channel/</loc>
-    <lastmod>2021-12-13T17:47:52-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:18-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-07-08-collab-slack-r/</loc>
-    <lastmod>2021-12-13T17:47:48-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:16-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-06-25-google-earth-pro-8211-now-free/</loc>
-    <lastmod>2021-12-13T17:47:44-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:14-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-06-22-google-drive-038-git/</loc>
-    <lastmod>2021-12-13T17:47:40-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:13-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-06-19-landscape-epigenetics/</loc>
-    <lastmod>2021-12-13T17:47:36-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:11-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-06-17-evolution-2016-8211-austin-texas/</loc>
-    <lastmod>2021-12-13T17:47:32-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:09-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-06-07-pcr-gods/</loc>
-    <lastmod>2021-12-13T17:47:28-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:07-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-06-05-intalling-shiny-server-on-ubuntu-14-lts/</loc>
-    <lastmod>2021-12-13T17:47:24-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:05-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-05-14-life-sciences-graduation/</loc>
-    <lastmod>2021-12-13T17:47:20-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:04-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-22-congratulations-to-dr-viverette/</loc>
-    <lastmod>2021-12-13T17:47:16-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:02-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-20-layered-maps-in-r-using-ggplot-of-course-8230/</loc>
-    <lastmod>2021-12-13T17:47:09-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:58-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-20-rstudio-cheatsheets/</loc>
-    <lastmod>2021-12-13T17:47:10-05:00</lastmod>
+    <lastmod>2021-12-15T05:42:00-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-15-new-package-8211-dlab/</loc>
-    <lastmod>2021-12-13T17:47:05-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:57-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-12-point-and-click-theme-editing-for-ggplot/</loc>
-    <lastmod>2021-12-13T17:47:01-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:55-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-11-congratulations-chitra/</loc>
-    <lastmod>2021-12-13T17:46:57-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:53-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-08-volume-0-8211-on-ibooks-store/</loc>
-    <lastmod>2021-12-13T17:46:53-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:51-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-07-presentation-zen/</loc>
-    <lastmod>2021-12-13T17:46:47-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:49-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-04-05-structure-on-osx/</loc>
-    <lastmod>2021-12-13T17:46:46-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:47-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-03-18-cropping-rasters/</loc>
-    <lastmod>2021-12-13T17:46:38-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:41-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-03-18-raster-plotting/</loc>
-    <lastmod>2021-12-13T17:46:42-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:44-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-03-11-welcome-to-the-lab-bonnie/</loc>
-    <lastmod>2021-12-13T17:46:34-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:38-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-02-21-denver-talk/</loc>
-    <lastmod>2021-12-13T17:46:31-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:36-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-02-20-envs-orientation/</loc>
-    <lastmod>2021-12-13T17:46:24-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:34-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-02-19-effective-population-size/</loc>
-    <lastmod>2021-12-13T17:46:23-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:33-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-02-05-chapter-2-hardy-weinberg-equilibrium/</loc>
-    <lastmod>2021-12-13T17:46:19-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:31-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-02-03-environmental-studies-orientation/</loc>
-    <lastmod>2021-12-13T17:46:15-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:29-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-01-29-prothonotary-warblers/</loc>
-    <lastmod>2021-12-13T17:46:10-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:27-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-01-15-chapter-1-learning-r/</loc>
-    <lastmod>2021-12-13T17:46:09-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:25-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-01-11-new-semester/</loc>
-    <lastmod>2021-12-13T17:46:05-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:23-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2016-01-08-congratulations-anna-tucker/</loc>
-    <lastmod>2021-12-13T17:46:01-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:22-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-12-17-applied-population-genetics-textbook-release/</loc>
-    <lastmod>2021-12-13T17:45:57-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:20-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-12-12-life-sciences-graduation/</loc>
-    <lastmod>2021-12-13T17:45:51-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:18-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-12-02-laboratory-move/</loc>
-    <lastmod>2021-12-13T17:45:51-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:16-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-11-18-nsf-grant-recommended-for-funding/</loc>
-    <lastmod>2021-12-13T17:45:47-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:14-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-10-29-the-taxonomy-of-academic-sustainability/</loc>
-    <lastmod>2021-12-13T17:45:43-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:13-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-09-28-eyes-on-climate/</loc>
-    <lastmod>2021-12-13T17:45:40-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:11-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-09-24-a-talk-at-the-university-of-paris-sud/</loc>
-    <lastmod>2021-12-13T17:45:34-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:09-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-09-22-research-talk-chaire-co-conception/</loc>
-    <lastmod>2021-12-13T17:45:29-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:05-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-09-22-research-talk-chaire-ecoconception/</loc>
-    <lastmod>2021-12-13T17:45:33-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:07-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-09-16-methylation-structure/</loc>
-    <lastmod>2021-12-13T17:45:23-05:00</lastmod>
+    <lastmod>2021-12-15T05:41:02-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-09-04-installing-gitbook-on-osx/</loc>
-    <lastmod>2021-12-13T17:45:19-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:57-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-09-04-paris-2015/</loc>
-    <lastmod>2021-12-13T17:45:23-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:59-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-08-27-compiling-rgdal-on-osx-8211-why-do-you-hate-me/</loc>
-    <lastmod>2021-12-13T17:45:11-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:53-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-08-27-merging-data-frames/</loc>
-    <lastmod>2021-12-13T17:45:15-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:55-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-08-26-loading-in-rasters/</loc>
-    <lastmod>2021-12-13T17:45:06-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:52-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-08-25-rva-urban-dogwood/</loc>
-    <lastmod>2021-12-13T17:45:05-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:50-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-08-24-basic-graphics-in-r/</loc>
-    <lastmod>2021-12-13T17:45:01-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:47-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-08-19-welcome-jane-remfert/</loc>
-    <lastmod>2021-12-13T17:44:55-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:46-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-08-04-dyerlab-temporary-headquarters/</loc>
-    <lastmod>2021-12-13T17:44:55-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:44-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-07-30-installing-r-packages-from-github/</loc>
-    <lastmod>2021-12-13T17:44:51-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:42-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-07-29-compiling-the-gsl-library-for-osx/</loc>
-    <lastmod>2021-12-13T17:44:45-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:40-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-07-28-congratulations-to-jameson-hinkle/</loc>
-    <lastmod>2021-12-13T17:44:45-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:39-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-07-23-hello-r-markdown/</loc>
-    <lastmod>2021-12-13T17:44:41-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:37-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-04-29-making-better-presentations/</loc>
-    <lastmod>2021-12-13T17:44:37-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:35-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-04-16-new-position/</loc>
-    <lastmod>2021-12-13T17:44:31-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:33-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-03-31-install-rgeos-on-osx/</loc>
-    <lastmod>2021-12-13T17:44:30-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:31-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-03-26-color-palettes-in-ggpairs/</loc>
-    <lastmod>2021-12-13T17:44:20-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:28-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-03-26-new-lab-member/</loc>
-    <lastmod>2021-12-13T17:44:26-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:29-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-02-05-a-terrible-loss-for-vcu/</loc>
-    <lastmod>2021-12-13T17:44:20-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:25-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-01-23-turning-in-assignments-via-google-sharing/</loc>
-    <lastmod>2021-12-13T17:44:16-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:24-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2015-01-21-setting-up-your-site-for-syndication/</loc>
-    <lastmod>2021-12-13T17:44:10-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:22-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2013-10-10-unix-basics/</loc>
-    <lastmod>2021-12-13T17:44:06-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:20-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2013-09-14-diluting-primers/</loc>
-    <lastmod>2021-12-13T17:44:00-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:18-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2013-06-03-compiling-r-devel/</loc>
-    <lastmod>2021-12-13T17:43:56-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:14-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2013-06-03-updating-r-and-with-current-libraries/</loc>
-    <lastmod>2021-12-13T17:44:00-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:17-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2013-02-01-restriction-enzymes-for-aflps/</loc>
-    <lastmod>2021-12-13T17:43:53-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:13-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2011-07-23-hello-r-markdown/</loc>
-    <lastmod>2021-12-13T17:43:49-05:00</lastmod>
+    <lastmod>2021-12-15T05:40:11-05:00</lastmod>
   </url>
 </urlset>
