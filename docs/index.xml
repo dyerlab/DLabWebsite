@@ -19,6 +19,16 @@
       <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-smoothing-rasters/featured.png" medium="image" type="image/png" width="798" height="392"/>
     </item>
     <item>
+      <title>3-D topographies in R</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-threeD-topographies-in-r</link>
+      <description>A short description of the post.</description>
+      <category>rayshader</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-threeD-topographies-in-r</guid>
+      <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-threeD-topographies-in-r/featured.png" medium="image" type="image/png" width="591" height="472"/>
+    </item>
+    <item>
       <title>Moving Old Markdown Posts</title>
       <dc:creator>Rodney Dyer</dc:creator>
       <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-14-moving-old-markdown-posts</link>
