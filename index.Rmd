@@ -6,8 +6,8 @@ listing: posts
 
 <div class="parallax l-screen">
   <div class="welcome">
-  <button class="downbutton" onclick="window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: 'smooth' });">
-        <img src="resources/DLabWebpageWelcome1.png" width="400px">
+  <button class="downbutton" onclick="window.scroll({ top: window.innerHeight+25,  left: 0,  behavior: 'smooth' });">
+        <img src="resources/DLabWebpageWelcome2.png" width="400px">
   </button>
   </div>
 </div>
