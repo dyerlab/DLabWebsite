@@ -1,0 +1,223 @@
+---
+title: "3-D topographies in R"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+date: 2021-12-15
+draft: TRUE
+preview: featured.png
+categories:
+  - rayshader
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+![](featured.png)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo = TRUE,
+                       message = FALSE,
+                       error = FALSE)
+library( tidyverse )
+```
+
+
+This is going to require the `rayshader` library to get some orthorgraphic imagery of topologies.  This will be a quick 
+
+
+## Install Packages If Necessary
+
+```{r eval=FALSE}
+for( lib in c("rayshader","magick") ) { 
+  if( !require(lib) ) { 
+    install.packages(lib)
+  }
+}
+
+if( !require(webshot2 ) ) { 
+  remotes::install_github("rstudio/webshot2")
+}
+```
+
+
+
+
+## The Data
+
+For this example, I'm going to use a section of Baja California, in the vacinity of the town of Loreto, BCS.
+
+
+```{r}
+knitr::include_graphics("https://live.staticflickr.com/65535/51747403237_94a3f1f029_o_d.jpg")
+```
+
+```{r}
+library( rayshader )
+library( raster )
+```
+
+I have a raster up on github for my [teaching](https://dyerlab.github.io/ENVS-Lectures) site that we'll use.
+
+
+
+```{r cache=TRUE}
+url <- "https://github.com/dyerlab/ENVS-Lectures/raw/master/data/alt_22.tif"
+raster( url ) %>%
+  crop(extent( -112, -110.5, 25, 26.5) ) -> baja_california
+plot( baja_california ) 
+```
+
+Now, we should probably reproject the raster.  Right now, the datum for it is defined as:
+
+```{r}
+crs( baja_california )
+```
+
+Which is great.  However, the x- and y- coordinates in this are defined by degrees, whereas the values in it, the z-axis for us below, is defined in the unit of meters.  
+
+Let's reproject this raster (see [lecture here](https://dyerlab.github.io/ENVS-Lectures/spatial/rasters/slides.html#1) if you want to know more about rasters) to a datum whose units are also in meters.  I grabbed the proj.4 definition of [epsg = 6366](https://epsg.io/6366), which covers Mexico west of -114 degrees in zone 11N.
+
+```{r}
+baja_utm <- raster::projectRaster(baja_california, crs="+proj=utm +zone=11 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ")
+baja_utm 
+```
+
+Before I move on, I'm going to smooth out the jaggedness of this a bit [exmaple here](../2021-12-15-smoothing-rasters/smoothing-rasters.html).  
+
+```{r}
+smooth_utm <- focal( baja_utm, 
+                       w = matrix(1, 3, 3), 
+                       fun = mean, 
+                       na.rm=TRUE)
+par( mfrow =c(1,2) ) 
+plot( baja_utm, legend=FALSE )
+plot( smooth_utm, legend=FALSE ) 
+par( mfrow=c(1,1) )
+```
+
+Just taking the 'edge' off, so to speak.
+
+
+
+
+
+
+To do this kind of stuff, we need to have the data within a matrix (for some reason one of the islands has elevations that are negative...  
+
+```{r}
+baja_matrix <- abs( raster_to_matrix( smooth_utm ) )
+```
+
+And then clean it up.  This elevation raster was originally provided by [WorldClim](https://worldclim.org), which ignores elevations in the water.  So there is a *ton* of `NA` values for where the Pacific Ocean and Sea of Cortéz is located.  I'm going to replace all the `NA` with `0`
+
+```{r}
+sum( is.na( baja_matrix )  )
+```
+
+```{r}
+baja_matrix[ is.na(baja_matrix)] <- 0
+```
+
+
+
+
+
+```{r message=FALSE}
+baja_matrix %>%
+  sphere_shade( texture="bw" ) %>%
+  plot_map() 
+```
+
+*texture*
+> Default 'imhof1'. Either a square matrix indicating the spherical texture mapping, or a string indicating one of the built-in palettes ('imhof1','imhof2','imhof3','imhof4','desert', 'bw', and 'unicorn').
+
+
+```{r}
+baja_matrix %>%
+  sphere_shade( texture = "desert" )  %>% 
+  plot_map() 
+```
+
+
+
+```{r}
+baja_matrix %>%
+  sphere_shade( texture = "imhof2",
+                sunangle = 45 ) %>%
+  plot_map() 
+```
+
+
+
+
+```{r}
+baja_matrix %>%
+  sphere_shade( texture = "imhof2",
+                sunangle = 45 ) %>%
+  add_water( detect_water( baja_matrix), color = "imhof3") %>% 
+  plot_map() 
+```
+
+
+
+
+```{r}
+baja_matrix %>%
+  sphere_shade( texture = "imhof2",
+                sunangle = 45 ) %>%
+  add_water( detect_water( baja_matrix ), color = "imhof3") %>% 
+  add_shadow( ray_shade( baja_matrix, 
+                         sunangle=82,
+                         sunaltitude = 85), 0.5) %>%
+  add_shadow( ambient_shade( baja_matrix), 0 ) -> baja_topology
+
+baja_topology %>%
+  plot_map() 
+```
+
+
+
+
+## Rendering in 3-Space
+
+The following steps will require that you can plot `rgl` content.  Depending upon your platform, you may need to download a few things.  For example, on OSX, you need to download XQuartz (google it).  I have no idea what you'll need on Windows or Linux.
+
+
+
+```{r}
+baja_topology %>%
+  plot_3d( baja_matrix/5, 
+           zscale=10,
+           fov=0,
+           theta = 135,
+           zoom = 1, 
+           phi = 45, 
+           windowsize = c(1000,800))
+```
+- *zscale:* scaling in the z-axis. 
+- *fov:* Field of View.
+- *theta:* Rotation of the landscape.
+- *zoom:*  Zoom  
+- *phi:* Angle at which camera is looking at the landscape
+
+You'll just have to play around with these to get them to look proper for the landscape you are using.
+
+
+```{r}
+baja_topology %>%
+  plot_3d( baja_matrix/5, 
+           zscale=10,
+           fov=0,
+           theta = 150,
+           zoom = 0.45, 
+           phi = 20, 
+           windowsize = c(1000,800))
+```
+
+

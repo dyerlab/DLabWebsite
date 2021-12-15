@@ -3,7 +3,7 @@ title: "The Dyer Laboratory"
 description: |
   Research on the spatial distribution of population and landscape genetic variation. 
 output_dir: "docs"
-theme: dyerlab.css
+theme: resources/dyerlab.css
 base_url: https://dyerlab.github.io/DLabWebsite
 collections: 
   posts:

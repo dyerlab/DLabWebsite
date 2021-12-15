@@ -2120,7 +2120,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
      for each row; values shown are the CSS defaults.
      To return any property to the default,
      you may set its value to: unset
-     All rows must end with a semi-colon.                      */
+     All rows must end with a semi-colon.         
+  */
 
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap')
 
@@ -2215,128 +2216,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   /*-- CSS FOR NEWS BOX --*/
 
-  /*--
-  body {
-    font-family: "Open Sans";
-    font-size: 100%;
-    color: #333;
-    line-height: 1.4;
-    margin: 0;
-  }
-  --*/
-
-  .wrapper {
-    box-sizing: border-box;
-    background-color: #fff;
-  }
-
-
-  .hero-news {
-    display: grid;
-    grid-gap: 1px;
-  }
-
-  .hero-news > article {
-    padding: 1rem;
+  .parallax { 
+    background-image: url("resources/frontpage.png");
+    height: 100vh; 
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    height: calc(66vw - 2rem);
-    box-sizing: border-box;
   }
 
-  .hero-news__item:first-child {
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_163672817.jpg?10000);
-      border-radius: 5px;
+  .welcome {
+    position: absolute;
+    left: 0;
+    top: 35vh;
+    width: 100vw;
+    text-align: center;
+    color: #000;
   }
 
-  .hero-news__item:nth-child(2) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_google-cardboard-wearable-virtual-reality-headset.jpg?10000);
-    border-radius: 5px;
+
+  .downbutton {
+    background: rgba(0,0,0,0);
+    border: none;
+    outline: none;
+    color: #1BC7DC;
+    -moz-opacity: 0.75;
+    -khtml-opacity: 0.75;
+    opacity: 0.75;
+    text-align: center;
+    font-size: 42px;
   }
 
-  .hero-news__item:nth-child(3) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url(http://content.presspage.com/uploads/63/1920_screenshot2017-02-23at4.29.08pm.png?31903);
-    border-radius: 5px;
-  }
 
-  .hero-news__item-title {
-    margin: auto 0 4px;
-    font-size: 1.25rem;
-    line-height: 1.1;
-  }
 
-  .hero-news__item:first-child .hero-news__item-title {
-    font-size: 1.75rem;
-  }
-
-  .hero-news2 .hero-news__item-title {
-    order: 2;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .hero-news2 .hero-news__item-date {
-    order: 1;
-    margin-top: auto;
-    margin-bottom: 4px;
-  }
-
-  .hero-news__item-tag {}
-
-  @media (min-width:767px) {
-    
-    .full-width {
-      margin-left: calc(-100vw / 2 + 767px / 2);
-      margin-right: calc(-100vw / 2 + 767px / 2);
-    }
-    
-    .hero-news1 {
-      grid-template-columns: 2fr 1fr;
-    }
-    .hero-news1 .hero-news__item:first-child {
-      grid-column: 1;
-      grid-row: 1 / 3;
-      height: auto;
-    }
-    .hero-news1 .hero-news__item:nth-child(2) {
-      grid-column: 2;
-      grid-row: 1;
-      height: calc(25vw - 2rem);
-      max-height: 300px;
-    }
-    .hero-news1 .hero-news__item:nth-child(3) {
-      grid-column: 2;
-      grid-row: 2;
-      height: calc(25vw - 2rem);
-      max-height: 300px;
-    }
-    .hero-news2 {
-      grid-template-columns: 1fr 1fr;
-    }
-    .hero-news2 .hero-news__item:first-child {
-      grid-column: 1 / 3;
-      grid-row: 1;
-      height: calc(50vw - 2rem);
-      max-height: 600px;
-    }
-    .hero-news2 .hero-news__item:nth-child(2) {
-      grid-column: 1;
-      grid-row: 2;
-      height: calc(33vw - 2rem);
-      max-height: 300px;
-    }
-    .hero-news2 .hero-news__item:nth-child(3) {
-      grid-column: 2;
-      grid-row: 2;
-      height: calc(33vw - 2rem);
-      max-height: 300px;
-    }
-  }
   </style>
   <style type="text/css">
   /* base style */
@@ -2682,7 +2594,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="posts/2021-12-15-smoothing-rasters/smoothing-rasters_files/figure-html5/unnamed-chunk-1-1.png"/>
+<img src="posts/2021-12-15-smoothing-rasters/featured.png"/>
 </div>
 <div class="description">
 <h2>Smoothing rasters</h2>
@@ -4740,86 +4652,12 @@ function init_posts_list() {
 
 
 <div class="d-article">
-<style>
-    .parallax { 
-    
-        /* Set the background image */
-        background-image: url("book.jpg");
-    
-        /* Use the full viewscreen height as height */
-        height: 100vh; 
-        
-        /* Set the background to create the parallax scrolling */
-        /* this does not work on iOS mobile devices */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    
-    .welcome {
-      position: absolute;
-      left: 0;
-      top: 35vh;
-      width: 100vw;
-      text-align: center;
-      color: #000;
-    }
-    
-    .welcome span.title {
-      font-family: 'Bitter', serif;
-      font-weight: bold;
-      color: #000;
-      font-size: 42px;
-      letter-spacing: 10px;
-      line-height: 1.6;
-    }
-    
-    .welcome span.surrounding {
-      font-family: 'Bitter', serif;
-      color: #000;
-      font-size: 20px;
-      letter-spacing: 5px;
-    }
-    
-    .welcome span.downarrow {
-      font-size: 42px;
-    }
-    
-    
-    .downbutton {
-      background: rgba(0,0,0,0);
-      border: none;
-      outline: none;
-      color: #1BC7DC;
-      -moz-opacity: 0.75;
-      -khtml-opacity: 0.75;
-      opacity: 0.75;
-      text-align: center;
-      font-size: 42px;
-    }
-
-</style>
-<!-- Here comes the actual HTML content:  https://distillery.rbind.io/posts/2021-08-14-new-additions/ -->
 <div class="parallax l-screen">
 <div class="welcome">
-<pre><code>&lt;span class=&quot;surrounding&quot;&gt;Welcome to the&lt;/span&gt;
-&lt;br&gt;&lt;br&gt;&lt;br&gt;
-&lt;span class=&quot;title&quot;&gt;Dyer Laboratory&lt;/span&gt;
-&lt;br&gt;&lt;br&gt;&lt;br&gt;
-
-&lt;span class=&quot;downarrow&quot;&gt;
-
-  &lt;!-- The script provided in the onclick attribute allows to click the down button and triggers a smooth scroll down to the posts listing. --&gt;
-  
-  &lt;button class=&quot;downbutton&quot; onclick=&quot;window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: &#39;smooth&#39; });&quot;&gt;
-    &lt;img src=&quot;arrow.png&quot; width=&quot;100px&quot;&gt;
-  &lt;/button&gt;
-  
-&lt;/span&gt;</code></pre>
+<button class="downbutton" onclick="window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: 'smooth' });"> <img src="resources/DLabWebpageWelcome1.png" width="400px"> </button>
 </div>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

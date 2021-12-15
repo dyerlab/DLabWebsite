@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>The Dyer Laboratory</title>
+    <link>https://dyerlab.github.io/DLabWebsite</link>
+    <atom:link href="https://dyerlab.github.io/DLabWebsite/manuscripts.xml" rel="self" type="application/rss+xml"/>
+    <description>Research on the spatial distribution of population and landscape genetic variation. 
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Fri, 14 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Population assignment reveals low migratory connectivity in a weakly structured songbird</title>
+      <dc:creator>Matthew DeSaix</dc:creator>
+      <dc:creator>Lesley Bulluck</dc:creator>
+      <dc:creator>Andrew Eckert</dc:creator>
+      <dc:creator>Catherine Viverette</dc:creator>
+      <dc:creator>Than Boves</dc:creator>
+      <dc:creator>Jessica Reese</dc:creator>
+      <dc:creator>Chrisotpher Tonra</dc:creator>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/desaix-2019</link>
+      <description>Molecular Ecology. 2020.</description>
+      <category>population genetics</category>
+      <category>ddradseq</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/desaix-2019</guid>
+      <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/desaix-2019/featured.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Wide outcrossing provides functional connectivity for new and old Banksia populations within a fragmented landscape</title>
+      <dc:creator>Alison Ritchie</dc:creator>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <dc:creator>Paul Nevill</dc:creator>
+      <dc:creator>Elizabeth Sinclair</dc:creator>
+      <dc:creator>Siegfried Krauss</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/ritchie-et-al-2019</link>
+      <description>Oecologia. 2019.</description>
+      <category>population genetics</category>
+      <category>gene flow</category>
+      <category>genetic structure</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/ritchie-et-al-2019</guid>
+      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/ritchie-et-al-2019/featured.png" medium="image" type="image/png" width="785" height="726"/>
+    </item>
+    <item>
+      <title>Evolutionary genomics of gypsy moth populations sampled along a latitudinal gradient</title>
+      <dc:creator>Christopher Friedline</dc:creator>
+      <dc:creator>Trevor Faske</dc:creator>
+      <dc:creator>Brandon Lind</dc:creator>
+      <dc:creator>Erin Hobson</dc:creator>
+      <dc:creator>Dylan Parry</dc:creator>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <dc:creator>Derek Johson</dc:creator>
+      <dc:creator>Lilly Thompson</dc:creator>
+      <dc:creator>Kristine Grayson</dc:creator>
+      <dc:creator>Andrew Eckert</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/friedline-et-al-2019</link>
+      <description>Molecular Ecology. 2019.</description>
+      <category>population genetics</category>
+      <category>ddradseq</category>
+      <category>gypsy moth</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/friedline-et-al-2019</guid>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/friedline-et-al-2019/featured.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Functional connectivity and home range inferred at a microgeographic landscape genetics scale in a desert-dwelling rodent</title>
+      <dc:creator>Alejandro Flores-Manzanero</dc:creator>
+      <dc:creator>Madisson A. Luna-Barcenas</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Ella Vazquez-Dominguez</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/flores-manzanero-et-al-2019</link>
+      <description>ECOLOGY AND EVOLUTION. 2019.</description>
+      <category>desert ecosystems</category>
+      <category>dipodomys merriami</category>
+      <category>functional connectivity</category>
+      <category>landscape genetics</category>
+      <category>merriam's kangaroo rat</category>
+      <category>resistance surfaces</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/flores-manzanero-et-al-2019</guid>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/flores-manzanero-et-al-2019/featured.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Comparison of Pollination Graphs</title>
+      <dc:creator>James H. Lee</dc:creator>
+      <dc:creator>David M. Chan</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/chan-lee-dyer-2018</link>
+      <description>MOLECULAR ECOLOGY. 2018.</description>
+      <category>pollination network</category>
+      <category>correlated random walk</category>
+      <category>agent-based model</category>
+      <category>pollen carryover</category>
+      <category>tree density</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/chan-lee-dyer-2018</guid>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/chan-lee-dyer-2018/featured.png" medium="image" type="image/png" width="768" height="468"/>
+    </item>
+    <item>
+      <title>Urbanization as a facilitator of gene flow in a human health pest</title>
+      <dc:creator>Lindsay S. Miles</dc:creator>
+      <dc:creator>J. Chadwick Johnson</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Brian C. Verrelli</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2018-mol-ecol</link>
+      <description>MOLECULAR ECOLOGY. 2018.</description>
+      <category>pest</category>
+      <category>popgraph</category>
+      <category>social network</category>
+      <category>spider</category>
+      <category>urban facilitation</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2018-mol-ecol</guid>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2018-mol-ecol/featured.png" medium="image" type="image/png" width="768" height="477"/>
+    </item>
+    <item>
+      <title>Urban hubs of connectivity: contrasting patterns of gene flow within and among cities in the western black widow spider</title>
+      <dc:creator>Lindsay S. Miles</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Brian C. Verrelli</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2019-proc-roy-soc</link>
+      <description>PROCEEDINGS OF THE ROYAL SOCIETY B-BIOLOGICAL SCIENCES. 2018.</description>
+      <category>urbanization</category>
+      <category>genetic connectivity</category>
+      <category>population genetics</category>
+      <category>urban pest</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2019-proc-roy-soc</guid>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/miles-et-al-2019-proc-roy-soc/featured.png" medium="image" type="image/png" width="300" height="272"/>
+    </item>
+    <item>
+      <title>Editorial: The Least Cost Path From Landscape Genetics to Landscape Genomics: Challenges and Opportunities to Explore NGS Data in a Spatially Explicit Context</title>
+      <dc:creator>Samuel A. Cushman</dc:creator>
+      <dc:creator>Andrew J. Shirk</dc:creator>
+      <dc:creator>Glenn T. Howe</dc:creator>
+      <dc:creator>Melanie A. Murphy</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Stephane Joost</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/cushman-et-al-2018</link>
+      <description>FRONTIERS IN GENETICS. 2018.</description>
+      <category>landscape genetics</category>
+      <category>landscape genomics</category>
+      <category>next generation sequencing</category>
+      <category>spatial genetics</category>
+      <category>ecological genetics</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/cushman-et-al-2018</guid>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Structure and Resilience of Bald Eagle Roost Networks</title>
+      <dc:creator>Bryan D. Watts</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/watts-dyer-2018</link>
+      <description>WILDLIFE SOCIETY BULLETIN. 2018.</description>
+      <category>bald eagle</category>
+      <category>chesapeake bay</category>
+      <category>communal roost</category>
+      <category>haliaeetus leucocephalus</category>
+      <category>networks</category>
+      <category>resiliency</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/watts-dyer-2018</guid>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/watts-dyer-2018/featured.png" medium="image" type="image/png" width="768" height="593"/>
+    </item>
+    <item>
+      <title>Sex-specific graphs: Relating group-specific topology to demographic and landscape data</title>
+      <dc:creator>Philip Bertrand</dc:creator>
+      <dc:creator>Jeff Bowman</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Micheline Manseau</dc:creator>
+      <dc:creator>Paul J. Wilson</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/bertrand-et-al-2017</link>
+      <description>MOLECULAR ECOLOGY. 2017.</description>
+      <category>genetic network</category>
+      <category>pekania pennanti</category>
+      <category>population graph</category>
+      <category>sex-biased dispersal</category>
+      <category>sex-specific graphs</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/bertrand-et-al-2017</guid>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/bertrand-et-al-2017/featured.png" medium="image" type="image/png" width="370" height="730"/>
+    </item>
+    <item>
+      <title>Model Comparison for Abiotic versus Biotic Pollen Dispersal</title>
+      <dc:creator>Erich L. Foster</dc:creator>
+      <dc:creator>David M. Chan</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/foster-chan-dyer-2016</link>
+      <description>NONLINEAR DYNAMICS PSYCHOLOGY AND LIFE SCIENCES. 2016.</description>
+      <category>gene flow</category>
+      <category>agent based modelling</category>
+      <category>correlated random walk</category>
+      <category>pollen</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/foster-chan-dyer-2016</guid>
+      <pubDate>Sat, 01 Oct 2016 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/foster-chan-dyer-2016/featured.png" medium="image" type="image/png" width="300" height="257"/>
+    </item>
+    <item>
+      <title>Opportunistic conspecific brood parasitism in a box-nesting population of Prothonotary Warblers (Protonotaria citrea)</title>
+      <dc:creator>Anna M. Tucker</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Sarah K. Huber</dc:creator>
+      <dc:creator>Lesley P. Bulluck</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/tucker-et-al-2016</link>
+      <description>AUK. 2016.</description>
+      <category>breeding ecology</category>
+      <category>cavity nesters</category>
+      <category>conspecific brood parasitism</category>
+      <category>protonotaria citrea</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/tucker-et-al-2016</guid>
+      <pubDate>Fri, 01 Apr 2016 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/tucker-et-al-2016/featured.png" medium="image" type="image/png" width="641" height="818"/>
+    </item>
+    <item>
+      <title>Population Graphs and Landscape Genetics</title>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015-AREES</link>
+      <description>ANNUAL REVIEW OF ECOLOGY, EVOLUTION, AND SYSTEMATICS. 2015.</description>
+      <category>landscape genetics</category>
+      <category>population graphs</category>
+      <category>spatial structure</category>
+      <category>connectivity</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015-AREES</guid>
+      <pubDate>Tue, 06 Oct 2015 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015-AREES/featured.png" medium="image" type="image/png" width="300" height="209"/>
+    </item>
+    <item>
+      <title>Genetic structure of Pinus henryi and Pinus tabuliformis: Natural landscapes as significant barriers to gene flow among populations</title>
+      <dc:creator>Lu Yang</dc:creator>
+      <dc:creator>Zhan-Lin Liu</dc:creator>
+      <dc:creator>Jianfang Li</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/yang-et-al-2015</link>
+      <description>BIOCHEMICAL SYSTEMATICS AND ECOLOGY. 2015.</description>
+      <category>cpssr</category>
+      <category>genetic structure</category>
+      <category>geographical boundary</category>
+      <category>pinus henryi</category>
+      <category>pinus tabuliformis</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/yang-et-al-2015</guid>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/yang-et-al-2015/featured.png" medium="image" type="image/png" width="768" height="474"/>
+    </item>
+    <item>
+      <title>Is there such a thing as landscape genetics?</title>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015</link>
+      <description>MOLECULAR ECOLOGY. 2015.</description>
+      <category>landscape genetics</category>
+      <category>landscape ecology</category>
+      <category>population genetics</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015</guid>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2015/featured.png" medium="image" type="image/png" width="300" height="242"/>
+    </item>
+    <item>
+      <title>Identification of Eastern United States Reticulitermes Termite Species via PCR-RFLP, Assessed Using Training and Test Data</title>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <dc:creator>Benjamin D. Collins</dc:creator>
+      <dc:creator>Rachel N. Yi</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Chaz Hyseni</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2015</link>
+      <description>INSECTS. 2015.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2015</guid>
+      <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2015/featured.png" medium="image" type="image/png" width="666" height="871"/>
+    </item>
+    <item>
+      <title>The gravity of pollination: integrating at-site features into spatial analysis of contemporary pollen movement</title>
+      <dc:creator>Michelle F. Dileo</dc:creator>
+      <dc:creator>Jenna C. Siu</dc:creator>
+      <dc:creator>Matthew K. Rhodes</dc:creator>
+      <dc:creator>Adriana Lopez-Villalobos</dc:creator>
+      <dc:creator>Angela Redwine</dc:creator>
+      <dc:creator>Kelly Ksiazek</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/di-leo-et-al-2014</link>
+      <description>MOLECULAR ECOLOGY. 2014.</description>
+      <category>cornus florida</category>
+      <category>gene flow</category>
+      <category>gravity models</category>
+      <category>landscape genetics</category>
+      <category>population graphs</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/di-leo-et-al-2014</guid>
+      <pubDate>Fri, 01 Aug 2014 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Putting the landscape into the genomics of trees: approaches for understanding local adaptation and population responses to changing climate</title>
+      <dc:creator>Victoria L. Sork</dc:creator>
+      <dc:creator>Sally N. Aitken</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>Andrew J. Eckert</dc:creator>
+      <dc:creator>Pierre Legendre</dc:creator>
+      <dc:creator>Dave B. Neale</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2013</link>
+      <description>TREE GENETICS &amp; GENOMES. 2013.</description>
+      <category>adaptive genetic variation</category>
+      <category>climate change</category>
+      <category>environmental association</category>
+      <category>forest genetics</category>
+      <category>genomics</category>
+      <category>landscape genetics</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2013</guid>
+      <pubDate>Thu, 01 Aug 2013 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ecological coassociations influence species' responses to past climatic change: an example from a Sonoran Desert bark beetle</title>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <dc:creator>John D. Nason</dc:creator>
+      <dc:creator>Juan F. Fernandez-Manjarres</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2013</link>
+      <description>MOLECULAR ECOLOGY. 2013.</description>
+      <category>baja california</category>
+      <category>coleoptera</category>
+      <category>landscape history</category>
+      <category>population genetics</category>
+      <category>range expansion</category>
+      <category>vicariance</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2013</guid>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2013/featured.png" medium="image" type="image/png" width="539" height="612"/>
+    </item>
+    <item>
+      <title>Defining the landscape of adaptive genetic diversity</title>
+      <dc:creator>Andrew J. Eckert</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/eckert-dyer-2012</link>
+      <description>MOLECULAR ECOLOGY. 2012.</description>
+      <category>adaptive traits</category>
+      <category>conifers</category>
+      <category>fitness landscape</category>
+      <category>genome-wide association</category>
+      <category>serotiny</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/eckert-dyer-2012</guid>
+      <pubDate>Fri, 01 Jun 2012 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/eckert-dyer-2012/featured.png" medium="image" type="image/png" width="314" height="237"/>
+    </item>
+    <item>
+      <title>Pollination graphs: quantifying pollen pool covariance networks and the influence of intervening landscape on genetic connectivity in the North American understory tree, Cornus florida L.</title>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>David M. Chan</dc:creator>
+      <dc:creator>Vicki A. Gardiakos</dc:creator>
+      <dc:creator>Crystal A. Meadows</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2012</link>
+      <description>LANDSCAPE ECOLOGY. 2012.</description>
+      <category>pollination graph</category>
+      <category>connectivity</category>
+      <category>conditional genetic distance</category>
+      <category>gene flow</category>
+      <category>cornus florida</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2012</guid>
+      <pubDate>Wed, 01 Feb 2012 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Combining multiple analytical approaches for the identification of population structure and genetic delineation of two subspecies of the endemic Arabian burnet moth Reissita simonyi (Zygaenidae; Lepidoptera)</title>
+      <dc:creator>Cornelya F.C. Kluetsch</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>B. Misof</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/kluetsch-dyer-misof-2012</link>
+      <description>CONSERVATION GENETICS. 2012.</description>
+      <category>reissita simonyi</category>
+      <category>microsatellites</category>
+      <category>isolatuion by distance</category>
+      <category>isolatuion by altitude</category>
+      <category>landscape connectivity</category>
+      <category>null alleles</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/kluetsch-dyer-misof-2012</guid>
+      <pubDate>Wed, 01 Feb 2012 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/kluetsch-dyer-misof-2012/featured.png" medium="image" type="image/png" width="501" height="482"/>
+    </item>
+    <item>
+      <title>Invasion genetics of Microstegium vimineum (Poaceae) within the James River Basin of Virginia, USA</title>
+      <dc:creator>Stephen A. Baker</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/baker-dyer-2011</link>
+      <description>CONSERVATION GENETICS. 2011.</description>
+      <category>microstegium vimineum</category>
+      <category>invasive species</category>
+      <category>genetic structure</category>
+      <category>founder effects</category>
+      <category>secondary contact</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/baker-dyer-2011</guid>
+      <pubDate>Wed, 01 Jun 2011 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/baker-dyer-2011/featured.png" medium="image" type="image/png" width="582" height="470"/>
+    </item>
+    <item>
+      <title>Landscape modelling of gene flow: improved power using conditional genetic distance derived from the topology of population networks</title>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>John D. Nason</dc:creator>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2010</link>
+      <description>MOLECULAR ECOLOGY. 2010.</description>
+      <category>gene flow</category>
+      <category>genetic ovariance</category>
+      <category>landscape genetics</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2010</guid>
+      <pubDate>Wed, 01 Sep 2010 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2010/featured.png" medium="image" type="image/png" width="422" height="541"/>
+    </item>
+    <item>
+      <title>Nuclear gene phylogeography using PHASE: dealing with unresolved genotypes, lost alleles, and systematic bias in parameter estimation</title>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <dc:creator>Paul Sunnucks</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2010</link>
+      <description>BMC EVOLUTIONARY BIOLOGY. 2010.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2010</guid>
+      <pubDate>Thu, 01 Apr 2010 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Variable nuclear markers for a Sonoran Desert bark beetle, Araptus attenuatus Wood (Curculionidae: Scolytinae), with applications to related genera</title>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <dc:creator>Crystal A. Meadows</dc:creator>
+      <dc:creator>John D. Nason</dc:creator>
+      <dc:creator>Anthony I. Cognato</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2010-con-gen</link>
+      <description>CONSERVATION GENETICS. 2009.</description>
+      <category>baja california</category>
+      <category>codominant loci</category>
+      <category>coleoptera</category>
+      <category>introns</category>
+      <category>population structure</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2010-con-gen</guid>
+      <pubDate>Sat, 01 Aug 2009 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Not just vicariance: phylogeography of a Sonoran Desert euphorb indicates a major role of range expansion along the Baja peninsula</title>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <dc:creator>John D. Nason</dc:creator>
+      <dc:creator>Crystal A. Meadows</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2009-mol-ecol</link>
+      <description>MOLECULAR ECOLOGY. 2009.</description>
+      <category>baja california</category>
+      <category>euphorbia</category>
+      <category>landscape history</category>
+      <category>population structure</category>
+      <category>statistical phylogeography</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2009-mol-ecol</guid>
+      <pubDate>Fri, 01 May 2009 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2009-mol-ecol/featured.png" medium="image" type="image/png" width="329" height="512"/>
+    </item>
+    <item>
+      <title>GeneticStudio: a suite of programs for spatial analysis of genetic-marker data</title>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2009</link>
+      <description>MOLECULAR ECOLOGY RESOURCES. 2009.</description>
+      <category>genetic structure</category>
+      <category>population graphs</category>
+      <category>spatial structure</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2009</guid>
+      <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>A set of polymorphic nuclear intron markers for conservation genetics and phylogeography of Euphorbia species (Pedilanthus clade)</title>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <dc:creator>Crystal A. Meadows</dc:creator>
+      <dc:creator>Antoine N. Nicolas</dc:creator>
+      <dc:creator>John D. Nason</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2008-con-gen</link>
+      <description>CONSERVATION GENETICS. 2008.</description>
+      <category>codominant loci</category>
+      <category>euphorbiaceae</category>
+      <category>population structure</category>
+      <category>phylogeny</category>
+      <category>sonoran desert</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2008-con-gen</guid>
+      <pubDate>Mon, 01 Dec 2008 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Babies and bathwater: a comment on the premature obituary for nested clade phylogeographical analysis</title>
+      <dc:creator>Ryan C. Garrick</dc:creator>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <dc:creator>LB. Beheregaray</dc:creator>
+      <dc:creator>Paul Sunnucks</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2008-mol-ecol</link>
+      <description>MOLECULAR ECOLOGY. 2008.</description>
+      <category>cross-validation</category>
+      <category>hypothesis testing</category>
+      <category>integrative analyses</category>
+      <category>multiple loci</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/garrick-et-al-2008-mol-ecol</guid>
+      <pubDate>Sat, 01 Mar 2008 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Powers of discerning: challenges to understanding dispersal processes in natural populations</title>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2007</link>
+      <description>MOLECULAR ECOLOGY. 2007.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2007</guid>
+      <pubDate>Sat, 01 Dec 2007 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The evolution of genetic topologies</title>
+      <dc:creator>Rodney J. Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2007-tpb</link>
+      <description>THEORETICAL POPULATION BIOLOGY. 2007.</description>
+      <category>population graphs</category>
+      <category>genetic structure</category>
+      <category>isolation by distance</category>
+      <category>graph theory</category>
+      <category>centrality</category>
+      <category>graph diameter</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2007-tpb</guid>
+      <pubDate>Thu, 01 Feb 2007 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2007-tpb/featured.png" medium="image" type="image/png" width="1732" height="1356"/>
+    </item>
+    <item>
+      <title>Pollen-mediated gene dispersal within continuous and fragmented populations of a forest understorey species, Trillium cuneatum</title>
+      <dc:creator>Eva Gonzales</dc:creator>
+      <dc:creator>James L Hamrick</dc:creator>
+      <dc:creator>Peter E Smouse</dc:creator>
+      <dc:creator>Rodney J Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/gonzales-et-al-2006</link>
+      <description>MOLECULAR ECOLOGY. 2006.</description>
+      <category>fragmentation</category>
+      <category>pollen gene flow</category>
+      <category>trillium</category>
+      <category>twogener</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/gonzales-et-al-2006</guid>
+      <pubDate>Sat, 01 Jul 2006 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>GENER: a server-based analysis of pollen pool structure</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2005</link>
+      <description>MOLECULAR ECOLOGY NOTES. 2005.</description>
+      <category>gene flow</category>
+      <category>pollen structure</category>
+      <category>two-generation analysis</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-2005</guid>
+      <pubDate>Thu, 01 Dec 2005 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>A two-generation analysis of pollen pool genetic structure in flowering dogwood, Cornus florida (Cornaceae), in the Missouri Ozarks</title>
+      <dc:creator>Victoria L Sork</dc:creator>
+      <dc:creator>Peter E Smouse</dc:creator>
+      <dc:creator>Victoria J Apsit</dc:creator>
+      <dc:creator>Rodney J Dyer</dc:creator>
+      <dc:creator>Robert D Westfall</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2005</link>
+      <description>AMERICAN JOURNAL OF BOTANY. 2005.</description>
+      <category>california</category>
+      <category>cornaceae</category>
+      <category>gene flown</category>
+      <category>genetic structure</category>
+      <category>landscape change</category>
+      <category>pollen movement</category>
+      <category>silvicultural treatment</category>
+      <category>2gener</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2005</guid>
+      <pubDate>Tue, 01 Feb 2005 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Population Graphs: the graph theoretic shape of genetic structure</title>
+      <dc:creator>RJ Dyer</dc:creator>
+      <dc:creator>JD Nason</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-nason-2004</link>
+      <description>MOLECULAR ECOLOGY. 2004.</description>
+      <category>genetic structure</category>
+      <category>graph theory</category>
+      <category>networks</category>
+      <category>phylogeography</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-nason-2004</guid>
+      <pubDate>Thu, 01 Jul 2004 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-nason-2004/featured.png" medium="image" type="image/png" width="768" height="451"/>
+    </item>
+    <item>
+      <title>Two-generation analysis of pollen flow across a landscape V: a stepwise approach for extracting factors contributing to pollen structure</title>
+      <dc:creator>RJ Dyer</dc:creator>
+      <dc:creator>RD Westfall</dc:creator>
+      <dc:creator>VL Sork</dc:creator>
+      <dc:creator>PE Smouse</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2004</link>
+      <description>HEREDITY. 2004.</description>
+      <category>pollen movement</category>
+      <category>2gener</category>
+      <category>gene flow</category>
+      <category>stamova</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2004</guid>
+      <pubDate>Mon, 01 Mar 2004 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-et-al-2004/featured.png" medium="image" type="image/png" width="676" height="380"/>
+    </item>
+    <item>
+      <title>Pollen movement in declining populations of California Valley oak, Quercus lobata: where have all the fathers gone?</title>
+      <dc:creator>Victoria L Sork</dc:creator>
+      <dc:creator>Frank W Davis</dc:creator>
+      <dc:creator>Peter E Smouse</dc:creator>
+      <dc:creator>Victoria J Apsit</dc:creator>
+      <dc:creator>Rodney J Dyer</dc:creator>
+      <dc:creator>Juan F Fernandez</dc:creator>
+      <dc:creator>B Kuhn</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2002</link>
+      <description>MOLECULAR ECOLOGY. 2002.</description>
+      <category>california valley oak</category>
+      <category>genetic isolation</category>
+      <category>pollen flow</category>
+      <category>quercus lobata</category>
+      <category>2gener</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2002</guid>
+      <pubDate>Sun, 01 Sep 2002 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Demographic consequences of inflorescence-feeding insects for Liatris cylindracea, an iteroparous perennial</title>
+      <dc:creator>Carol A Kelly</dc:creator>
+      <dc:creator>Rodney J Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/kelly-dyer-2002</link>
+      <description>OECOLOGIA. 2002.</description>
+      <category>experimental insect exclusion</category>
+      <category>individual-based population models</category>
+      <category>inflorescence-feeding insects</category>
+      <category>iteroparous perennial</category>
+      <category>population growth rate</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/kelly-dyer-2002</guid>
+      <pubDate>Thu, 01 Aug 2002 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/kelly-dyer-2002/featured.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Patterns of mating in an insect-pollinated tree species in the Missouri Ozark Forest Ecosystem Project</title>
+      <dc:creator>Victoria Apsit</dc:creator>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <dc:creator>Victoria Sork</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/apsit-et-al-2002</link>
+      <description>PROCEEDINGS OF THE SECOND MISSOURI OZARK FOREST ECOSYSTEM PROJECT SYMPOSIUM - POST-TREATMENT RESULTS OF THE LANDSCAPE EXPERIMENT. 2002.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/apsit-et-al-2002</guid>
+      <pubDate>Tue, 01 Jan 2002 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Pollen pool heterogeneity in shortleaf pine, Pinus echinata Mill.</title>
+      <dc:creator>Rodney J Dyer</dc:creator>
+      <dc:creator>Victoria L Sork</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-sork-2001</link>
+      <description>MOLECULAR ECOLOGY. 2001.</description>
+      <category>cpssr</category>
+      <category>density</category>
+      <category>genetic</category>
+      <category>pinus</category>
+      <category>pollen</category>
+      <category>structure</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-sork-2001</guid>
+      <pubDate>Sun, 01 Apr 2001 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/dyer-sork-2001/featured.png" medium="image" type="image/png" width="1700" height="1128"/>
+    </item>
+    <item>
+      <title>Two-generation analysis of pollen flow across a landscape. I. Male gamete heterogeneity among females</title>
+      <dc:creator>Peter E Smouse</dc:creator>
+      <dc:creator>Rodney J Dyer</dc:creator>
+      <dc:creator>Robert D Westfall</dc:creator>
+      <dc:creator>Victoria L Sork</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/smouse-et-al-2001</link>
+      <description>EVOLUTION. 2001.</description>
+      <category>amova</category>
+      <category>gene flow</category>
+      <category>genetic structure</category>
+      <category>parentage analysis</category>
+      <category>phi statistics</category>
+      <category>pollen movement</category>
+      <category>quercus alba</category>
+      <category>2gener</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/smouse-et-al-2001</guid>
+      <pubDate>Thu, 01 Feb 2001 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/smouse-et-al-2001/featured.jpg" medium="image" type="image/jpeg"/>
+    </item>
+  </channel>
+</rss>

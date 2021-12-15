@@ -8,7 +8,8 @@ author:
     affiliation: Center for Environmental Studies
     affiliation_url: https://ces.vcu.edu
     orcid_id: 0000-0003-4707-3453
-date: 2021-12-14
+date: 2021-12-15
+preview: featured.png
 categories:
   - raster
 output:
@@ -16,9 +17,10 @@ output:
     self_contained: false
 ---
 
+![](featured.png)
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 library( raster )
 library( magrittr )
 ```
