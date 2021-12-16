@@ -7,7 +7,41 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 14 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Evolutionary stability, landscape heterogeneity, and human land-usage shape population genetic connectivity in the Cape Floristic Region biodiversity hotspot.</title>
+      <dc:creator>Erica Tassone</dc:creator>
+      <dc:creator>Lindsay Miles</dc:creator>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <dc:creator>Michael Rosenberg</dc:creator>
+      <dc:creator>Richard Cowling</dc:creator>
+      <dc:creator>Brian Verrelli</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/tassone-et-al-2020</link>
+      <description>Evolutionary Applications.  2021, 14: 1109-1123.</description>
+      <category>gene flow</category>
+      <category>urbanization</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/tassone-et-al-2020</guid>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/tassone-et-al-2020/featured.jpeg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Genetic Diversity and Connectivity in Plant Species Differing in Clonality and Dispersal Mechanisms in Wetland Island Habitats</title>
+      <dc:creator>Sissi Lozada-Gobilard</dc:creator>
+      <dc:creator>Christian Schwarzer</dc:creator>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <dc:creator>Ralph Tiedemann</dc:creator>
+      <dc:creator>Jasmin Joshi</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/manuscripts/lozada-gobilard-et-al-2021</link>
+      <description>Journal of Heredity.  112, 108-121.</description>
+      <category>dispersal</category>
+      <category>clonal growth</category>
+      <category>metapopulation</category>
+      <category>genetic divergence</category>
+      <category>genetic diversity</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/manuscripts/lozada-gobilard-et-al-2021</guid>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/manuscripts/lozada-gobilard-et-al-2021/featured.png" medium="image" type="image/png" width="518" height="374"/>
+    </item>
     <item>
       <title>Population assignment reveals low migratory connectivity in a weakly structured songbird</title>
       <dc:creator>Matthew DeSaix</dc:creator>

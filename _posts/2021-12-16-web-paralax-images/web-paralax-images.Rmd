@@ -1,0 +1,92 @@
+---
+title: "Web Paralax Images"
+description: |
+  A short description of the post.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+date: 2021-12-16
+draft: TRUE 
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+
+## Baja Part
+
+```{r eval=FALSE}
+library( rayshader )
+library( raster )
+url <- "https://github.com/dyerlab/ENVS-Lectures/raw/master/data/alt_22.tif"
+
+
+raster( url ) %>%
+  crop(extent(-116, -109, 22, 30) ) -> baja
+plot( baja )
+  
+baja_mat <- raster_to_matrix( baja )
+baja_mat <- baja_mat / 10
+
+baja_mat %>%
+  sphere_shade( texture = "imhof4" ) %>%
+  add_water( detect_water( baja_mat ), color = "imhof4") %>% 
+  add_shadow( ray_shade( baja_mat ), 0.5) %>%
+  add_shadow( ambient_shade( baja_mat), 0 ) -> baja_imhof4
+
+baja_imhof4 %>%
+  plot_map() 
+```
+
+
+```{r}
+baja_mat %>%
+  sphere_shade( texture = "desert" ) %>%
+  add_water( detect_water( baja_mat ), color = "imhof4") %>% 
+  add_shadow( ray_shade( baja_mat, 
+                         sunangle=82,
+                         sunaltitude = 85), 0.5) %>%
+  add_shadow( ambient_shade( baja_mat), 0 ) %>%
+  render_snapshot( clear = TRUE )
+```
+
+
+```{r eval=FALSE}
+baja_imhof4 %>%
+  plot_3d( baja_mat, 
+           zscale=10,
+           fov=0,
+           theta = 0,
+           zoom = 1, 
+           phi = 45, 
+           windowsize = c(2000,1600))
+Sys.sleep(0.4)
+render_highquality( samples=200, 
+                    clear=TRUE
+                    )
+```
+
+
+
+## Graph Part
+
+```{r}
+library( tidyverse)
+beetle_url <- "https://raw.githubusercontent.com/dyerlab/ENVS-Lectures/master/data/Araptus_Disperal_Bias.csv"
+beetles <- read_csv( beetle_url )
+summary( beetles )
+```
+
+
+
+```{r}
+beetles %>%
+  mutate( tot = Males + Females) %>%
+ggplot() + 
+  geom_point( aes(Suitability, MFRatio, color=tot) ) 
+```
+

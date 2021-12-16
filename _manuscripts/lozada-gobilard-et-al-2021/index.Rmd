@@ -1,0 +1,31 @@
+---
+title: Genetic Diversity and Connectivity in Plant Species Differing in Clonality and Dispersal Mechanisms in Wetland Island Habitats
+description: |
+  Journal of Heredity.  112, 108-121.
+author:
+  - name: Sissi Lozada-Gobilard
+  - name: Christian Schwarzer
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+  - name: Ralph Tiedemann
+  - name: Jasmin Joshi
+date: 2021-02-08
+preview: featured.png
+doi: 10.1093/jhered/esaa059
+journal: Journal of Heredity
+volume: 112
+pages: 108-121
+categories: 
+ - dispersal
+ - clonal growth
+ - metapopulation
+ - genetic divergence
+ - genetic diversity
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+![Figure 2: Genetic parameters of the analyzed populations of Oenanthe aquatica, Lycopus europaeus, Typha latifolia, and Phragmites australis. Genetic diversity measured as allelic richness.](featured.png)
+
+In plants, long-distance dispersal is both attenuated and directed by specific movement vectors, including animals, wind, and/or water. Hence, movement vectors partly shape metapopulation genetic patterns that are, however, also influenced by other life-history traits such as clonal growth. We studied the relationship between area, isolation, plant-species richness, reproduction, and dispersal mechanisms with genetic diversity and divergence in 4 widespread wetland plant-species in a total of 20 island-like kettle-hole habitats surrounded by an intensive agricultural landscape. Our results showed that genetic parameters reflect the reproduction strategies with the highest genetic diversity being observed in the non-clonal, outcrossing *Oenanthe aquatica* compared to the clonal *Lycopus europaeus*, *Typha latifolia*, and *Phragmites australis*. Lycopus showed a positive relationship between genetic diversity and kettle-hole area, but a negative relationship with the number of neighboring kettle holes (less isolation). Genetic diversity increased with plant-species richness in the clonal species Phragmites and Lycopus; while it decreased in the non-clonal Oenanthe. Finally, genetic divergence and, therefore, connectivity differed between alternative dispersal strategies, where wind-dispersed Typha and Phragmites had a higher gene flow between the analyzed kettle holes compared with the insect-pollinated, hydrochorous Lycopus and Oenanthe. Our study provides information on genetic patterns related to reproduction and dispersal mechanisms of 4 common wetland species contributing to the understanding of the functioning of plant metacommunities occurring in kettle holes embedded in agricultural landscapes.
