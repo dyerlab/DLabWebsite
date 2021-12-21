@@ -7,7 +7,25 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 15 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title> Craft.app + rstudio::distill = blogging </title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-app-rstudio-distill-blogging</link>
+      <description>As part of my switch from using Hugo + RMarkdown to make my own blogs to using rstudio::distill to increase some of the simplicity that happens in my life—Hugo was just too much complexity and fragility and at times would just break.  However, distill is something that I can use to directly integrate into my workflows as well as capture the raw manuscripts I'm working on (distill manuscripts are quite nice and can serve as a pre-print option as well).</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-app-rstudio-distill-blogging</guid>
+      <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-app-rstudio-distill-blogging/featured.png" medium="image" type="image/png" width="1146" height="653"/>
+    </item>
+    <item>
+      <title>Craft + RStudio + Distill = Post </title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-rstudio-distill-post</link>
+      <description>This is the R side of the Craft -&gt; Website through RStudio and Distill.  I've set up a workflow here to take posts exported in markdown from Craft to be imported into this site's workflow.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-rstudio-distill-post</guid>
+      <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-rstudio-distill-post/emily-reimer-W3RjW1rnHN0-unsplash.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>Smoothing rasters</title>
       <dc:creator>Rodney Dyer</dc:creator>

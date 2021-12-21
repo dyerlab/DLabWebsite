@@ -1,0 +1,101 @@
+---
+title: "Craft + RStudio + Distill = Post "
+description: |
+  This is the R side of the Craft -> Website through RStudio and Distill.  I've set up a workflow here to take posts exported in markdown from Craft to be imported into this site's workflow.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+date: 2021-12-21
+preview: emily-reimer-W3RjW1rnHN0-unsplash.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+So the first thing to do was to set up a staging place to save raw markdown files.  Once I had that, I moved the rendering of this website from the "push the button on the build pane in RStudio to "run this script."  
+
+This script is in the rood directory of the site and does the following steps:
+
+1. finds all markdown files in the `_toImport` folder.  For each file it:
+  - Loads in the file
+  - Uses the first line as the metadata `title:`
+  - Use the first paragraph as the metadata `description:` 
+  - Creates a new `distill::create_post()` with title and modification date for the markdown file.
+  - Removes boilerplate stuff form new post and puts in content from the markdown file.
+  - Adds content to the metadata (extended author info and featured image components).
+  - Renames post to `index.Rmd` to make it easier to link in (I wish this was an option in distill).
+  - Renders the markdown.
+  - Deletes original markdown file.
+2. After finishing up, it then renders the entire site.
+
+Here is the script.
+
+```{r}
+#' This file is how I'll build the site.
+#' 
+rm( list=ls() )
+
+
+# load in and convert any of the markdown stuff in _toImport into 
+#  distill articles.
+for( file in list.files("_toImport", pattern = "*.md", full.names = TRUE) ) { 
+  
+  # find previous stuff
+  raw <- readLines( file )
+  date <- stringr::str_split( file.info(file)$mtime , 
+                              " ", 
+                              simplify = TRUE)[,1] 
+  title <- stringr::str_remove( raw[1], "# ") 
+  description <- raw[3]
+  contents <- paste( raw[ -1 ], collapse="\n")
+  
+  # make new post  will create 
+  filetitle <- gsub("[[:punct:][:blank:]]+", "-", title ) 
+  filetitle <- tolower(filetitle)
+  orig_title <- paste( "_posts/", 
+                       date, "-", 
+                       filetitle, "/", 
+                       filetitle,".Rmd", 
+                       sep="" )
+  
+  distill::create_post( filetitle, 
+                        date = date,
+                        edit = FALSE )
+  
+  raw_post <- readLines( orig_title )
+  raw_post[2] <- paste( "title: \"", title, "\"" )
+  raw_post[4] <- paste( "  ", description, sep=" ")
+  raw_post[7] <- "    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453"
+  raw_post[8] <- paste( raw_post[8], "preview: featured.png", sep="\n")
+  raw_post <- c( raw_post[1:13], contents ) 
+  raw_post_output <- paste( raw_post, collapse="\n")
+  
+  new_file <- paste( "_posts/", 
+                     date, "-", 
+                     filetitle, "/", 
+                     "index.Rmd", sep="" )
+  writeLines( raw_post_output, 
+              con = new_file )
+  
+  # clean up the posts
+  unlink( orig_title )
+  unlink( file ) 
+  
+  rmarkdown::render( new_file )
+}
+
+# clean up any of the crap on the site and render the whole thing.
+system( "find . -type f -iname '.DS_Store' -delete")
+rmarkdown::render_site(".")
+```
+
+
+What I do not do is push through all the git actions to upload it.  I think I'll just do that manually.
+
+[Here](../2021-12-21-craft-app-rstudio-distill-blogging/) is an example of the first Craft $\to$ Distill posting.
+

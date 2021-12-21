@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/</loc>
-    <lastmod>2021-12-21T07:06:14-05:00</lastmod>
+    <lastmod>2021-12-21T12:32:21-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/manuscripts.html</loc>
@@ -11,6 +11,14 @@
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/people.html</loc>
     <lastmod>2021-12-12T10:42:52-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-app-rstudio-distill-blogging/</loc>
+    <lastmod>2021-12-21T11:15:02-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-rstudio-distill-post/</loc>
+    <lastmod>2021-12-21T11:12:27-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-smoothing-rasters/</loc>

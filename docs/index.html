@@ -2216,15 +2216,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     border-top: 0.5px solid #eee;
   }
 
+
   /*-- CSS FOR NEWS BOX --*/
 
   .parallax { 
-    background-image: url("resources/frontpage.png");
-    height: 90vh; 
+    background-image: url("resources/featured_sm.png");
+    height: 400px;
     background-attachment: fixed;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: fill;
   }
 
   .welcome {
@@ -2587,6 +2588,40 @@ function init_posts_list() {
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Articles">Articles</h1>
+<a href="posts/2021-12-21-craft-app-rstudio-distill-blogging/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 21, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Rodney Dyer</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-12-21-craft-app-rstudio-distill-blogging/featured.png"/>
+</div>
+<div class="description">
+<h2> Craft.app + rstudio::distill = blogging </h2>
+<div class="dt-tags"></div>
+<p>As part of my switch from using Hugo + RMarkdown to make my own blogs to using rstudio::distill to increase some of the simplicity that happens in my life—Hugo was just too much complexity and fragility and at times would just break.  However, distill is something that I can use to directly integrate into my workflows as well as capture the raw manuscripts I'm working on (distill manuscripts are quite nice and can serve as a pre-print option as well).</p>
+</div>
+</a>
+<a href="posts/2021-12-21-craft-rstudio-distill-post/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 21, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Rodney Dyer</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-12-21-craft-rstudio-distill-post/emily-reimer-W3RjW1rnHN0-unsplash.jpg"/>
+</div>
+<div class="description">
+<h2>Craft + RStudio + Distill = Post </h2>
+<div class="dt-tags"></div>
+<p>This is the R side of the Craft -&gt; Website through RStudio and Distill.  I've set up a workflow here to take posts exported in markdown from Craft to be imported into this site's workflow.</p>
+</div>
+</a>
 <a href="posts/2021-12-15-smoothing-rasters/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["raster"]}</script>
 <div class="metadata">
@@ -2651,7 +2686,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="posts/2021-12-12-moving-manuscripts-from-hugo/NewYAML.png"/>
+<img data-src="posts/2021-12-12-moving-manuscripts-from-hugo/NewYAML.png"/>
 </div>
 <div class="description">
 <h2>Moving Manuscripts from Hugo</h2>
@@ -2668,7 +2703,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="posts/2021-12-12-dlab-swift/logo.jpg"/>
+<img data-src="posts/2021-12-12-dlab-swift/logo.jpg"/>
 </div>
 <div class="description">
 <h2>DLab Swift</h2>
@@ -4649,7 +4684,7 @@ function init_posts_list() {
 <ul>
 <li>
 <a href="#category:articles">articles</a>
-<span class="category-count">(120)</span>
+<span class="category-count">(122)</span>
 </li>
 <li>
 <a href="#category:raster">raster</a>
@@ -4677,13 +4712,8 @@ function init_posts_list() {
 
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
 <div class="parallax l-screen">
-<div class="welcome">
-<button class="downbutton" onclick="window.scroll({ top: window.innerHeight+25,  left: 0,  behavior: 'smooth' });"> <img src="resources/DLabWebpageWelcome2.png" width="400px"> </button>
-</div>
+
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

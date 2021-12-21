@@ -1,5 +1,41 @@
 [
   {
+    "path": "posts/2021-12-21-craft-app-rstudio-distill-blogging/",
+    "title": " Craft.app + rstudio::distill = blogging ",
+    "description": "As part of my switch from using Hugo + RMarkdown to make my own blogs to using rstudio::distill to increase some of the simplicity that happens in my life—Hugo was just too much complexity and fragility and at times would just break.  However, distill is something that I can use to directly integrate into my workflows as well as capture the raw manuscripts I'm working on (distill manuscripts are quite nice and can serve as a pre-print option as well).",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://dyerlab.org"
+      }
+    ],
+    "date": "2021-12-21",
+    "categories": [],
+    "contents": "\nHowever, not everything I do is strictly R related so I thought it would be cool to see if I can hook up Craft.do to serve as a secondary route for creating and integrating posts into my laboratory website.\nThe overall roadmap is as follows:\nWrite 1-paged (with cover image and internal images) posts in Craft.do.\nExport as some type (currently supported types include Markdown & TextBundle as options.\nCopy the folder over to the root directory of the DLabWebsite.\nWrite some custom R script to make a new distill blog post\nTrigger a build + git add + git commit + push action.\nLet’s see how this can be done.\nExported File Types\nTextBundle\nA TextBundle is a different thing entirely. It is apparently ya single document bundle that contains two files:\nA info.json bundle\nA text.markdown text file.\nThere does not appear to be any tangible reason why a textBundle would be preferred over a single markdown file, so I’ll not consider it from here on.\nMarkdown\nYou can specify the flavor of markdown and the built-in types include Github. There is a nice interface here to select certain options on it and the ability to put it into a single markdown file.\nScreen Shot 2021-12-21 at 08.06.28.pngOne of the other things that I didn’t quite appreciate was that for images, like the one inserted above,\nImage.pngCraft will include an online reference to it on their craft servers. This does allow me to not have to upload everything to my flickr account, which is both nice (less steps) but troubling (what would happen if the craft servers go down or craft goes away (i no longer have all my stuff in one place). I suppose I could easily suck down all the images and relink them in the markdown if necessary. For now, I’ll call that a win.\nMarkdown 2 Distill\nFor this one, I think I’ll make a cheap and quick R solution to this. For that I’ll pick up in the next installment, and do it from the R side.\nFor this, I will enforce the following general rules.\nI’ll have to configure a featured image separate from this file (there is no opportunity for finding the location of the Cover Image at the top.).\nThe title will be moved form H1 to markdown metadata title.\nThe first paragraph will be taken and used as the description for the markdown metadata description.\nSave the raw markdown to a _toImport folder in the git repository for the site. The next time the site is built, it will convert the raw markdown into a distill::article object and inserted in the appropriate place.\nOnce I get it all up and running, then I can wrap it all up in a shortcut.\n\n\n\n",
+    "preview": "posts/2021-12-21-craft-app-rstudio-distill-blogging/featured.png",
+    "last_modified": "2021-12-21T11:15:02-05:00",
+    "input_file": {},
+    "preview_width": 1146,
+    "preview_height": 653
+  },
+  {
+    "path": "posts/2021-12-21-craft-rstudio-distill-post/",
+    "title": "Craft + RStudio + Distill = Post ",
+    "description": "This is the R side of the Craft -> Website through RStudio and Distill.  I've set up a workflow here to take posts exported in markdown from Craft to be imported into this site's workflow.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://dyerlab.org"
+      }
+    ],
+    "date": "2021-12-21",
+    "categories": [],
+    "contents": "\nSo the first thing to do was to set up a staging place to save raw markdown files. Once I had that, I moved the rendering of this website from the “push the button on the build pane in RStudio to”run this script.\"\nThis script is in the rood directory of the site and does the following steps:\nfinds all markdown files in the _toImport folder. For each file it:\nLoads in the file\nUses the first line as the metadata title:\nUse the first paragraph as the metadata description:\nCreates a new distill::create_post() with title and modification date for the markdown file.\nRemoves boilerplate stuff form new post and puts in content from the markdown file.\nAdds content to the metadata (extended author info and featured image components).\nRenames post to index.Rmd to make it easier to link in (I wish this was an option in distill).\nRenders the markdown.\nDeletes original markdown file.\nAfter finishing up, it then renders the entire site.\nHere is the script.\n\n\n#' This file is how I'll build the site.\n#' \nrm( list=ls() )\n\n\n# load in and convert any of the markdown stuff in _toImport into \n#  distill articles.\nfor( file in list.files(\"_toImport\", pattern = \"*.md\", full.names = TRUE) ) { \n  \n  # find previous stuff\n  raw <- readLines( file )\n  date <- stringr::str_split( file.info(file)$mtime , \n                              \" \", \n                              simplify = TRUE)[,1] \n  title <- stringr::str_remove( raw[1], \"# \") \n  description <- raw[3]\n  contents <- paste( raw[ -1 ], collapse=\"\\n\")\n  \n  # make new post  will create \n  filetitle <- gsub(\"[[:punct:][:blank:]]+\", \"-\", title ) \n  filetitle <- tolower(filetitle)\n  orig_title <- paste( \"_posts/\", \n                       date, \"-\", \n                       filetitle, \"/\", \n                       filetitle,\".Rmd\", \n                       sep=\"\" )\n  \n  distill::create_post( filetitle, \n                        date = date,\n                        edit = FALSE )\n  \n  raw_post <- readLines( orig_title )\n  raw_post[2] <- paste( \"title: \\\"\", title, \"\\\"\" )\n  raw_post[4] <- paste( \"  \", description, sep=\" \")\n  raw_post[7] <- \"    url: https://dyerlab.org\\n    affiliation: Center for Environmental Studies\\n    affiliation_url: https://ces.vcu.edu\\n    orcid_id: 0000-0003-4707-3453\"\n  raw_post[8] <- paste( raw_post[8], \"preview: featured.png\", sep=\"\\n\")\n  raw_post <- c( raw_post[1:13], contents ) \n  raw_post_output <- paste( raw_post, collapse=\"\\n\")\n  \n  new_file <- paste( \"_posts/\", \n                     date, \"-\", \n                     filetitle, \"/\", \n                     \"index.Rmd\", sep=\"\" )\n  writeLines( raw_post_output, \n              con = new_file )\n  \n  # clean up the posts\n  unlink( orig_title )\n  unlink( file ) \n  \n  rmarkdown::render( new_file )\n}\n\n# clean up any of the crap on the site and render the whole thing.\nsystem( \"find . -type f -iname '.DS_Store' -delete\")\nrmarkdown::render_site(\".\")\n\n\n\nWhat I do not do is push through all the git actions to upload it. I think I’ll just do that manually.\nHere is an example of the first Craft \\(\\to\\) Distill posting.\n\n\n\n",
+    "preview": "posts/2021-12-21-craft-rstudio-distill-post/emily-reimer-W3RjW1rnHN0-unsplash.jpg",
+    "last_modified": "2021-12-21T11:12:27-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-12-15-smoothing-rasters/",
     "title": "Smoothing rasters",
     "description": "Sometimes it is helpful for visualization purposes (or when making a nice graphic), to smooth out a raster image.  Here are some cheap and quick methods.",
