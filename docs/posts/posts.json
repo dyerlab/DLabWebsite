@@ -217,11 +217,9 @@
     "date": "2021-03-03",
     "categories": [],
     "contents": "\nSo this spring, I’m going to make a large push at porting over the population graphs analyses (Dyer & Nason 2004) that I have in R to a version that runs as a native app on iOS/MacOS. The long-term goals here are to leverage the upcoming advances in Augmented Reality and LiDAR at the phone/glasses level that I suspect will be more mainstream by 2023 or so.\nBig Picture\nSo, in the long run, I’m looking to have a set of software that can do the following:\nEstimate a population graph from genotype data.\n\nWrite custom SVD routines linked with Accelerate.\n\nWrap in GeneticStudio interface for Genotype & Project CRUD.\n\nVisualize the graph in either 2D (SpriteKit), 3D (SceneKit), or in AR (ARKit).\n\nForce directed estimation of location in 2-space\n\nExpand to 3-space\n\nDevelop individual physics models for dynamical system in SpriteKit & SceneKit\n\nComprehensive set of network-based analytical output for local (node- and edge- centric) as well as global parameters.\nOverlay spatial network on GeoTiff for prevalence/avoidance of features.\nChromosome walking - Use engine to analyze how population covariance changes along stretches of chromosomes from SNP-like data.\nPopulation Simulation - Develop stochastic simulation background that is visualized using dynamical population graphs for hypothesis testing, where we specify a model and\n\n\n\n",
-    "preview": "posts/2021-03-03-population-graphs-swift-edition/featured.png",
+    "preview": {},
     "last_modified": "2021-12-15T05:43:48-05:00",
-    "input_file": {},
-    "preview_width": 1790,
-    "preview_height": 1192
+    "input_file": {}
   },
   {
     "path": "posts/2021-02-09-dplyr-summarize-warnings/",

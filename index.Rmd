@@ -4,6 +4,22 @@ site: distill::distill_website
 listing: posts
 ---
 
+```{r echo=FALSE}
+# clean up some file system stuff
+folders <- c("_manuscripts","_posts", "docs")
+files <- c(".DS_Store","* 2.html", "* 2.png","* 2.jpeg", "* 2.jpeg", "* 2.Rmd", "*.icloud")
+
+for( folder in folders ) { 
+  for( file in files ) { 
+    cmd <- paste( "find ", folder, " -type f -iname ", "'", file,"' -delete", sep="" )
+    system( cmd )
+  }
+}
+```
+
+
+
+
 <div class="parallax l-screen">
   <div class="welcome">
   <button class="downbutton" onclick="window.scroll({ top: window.innerHeight+25,  left: 0,  behavior: 'smooth' });">

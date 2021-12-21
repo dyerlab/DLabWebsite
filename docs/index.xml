@@ -114,7 +114,6 @@
       <description>A short description of the post.</description>
       <guid>https://dyerlab.github.io/DLabWebsite/posts/2021-03-03-population-graphs-swift-edition</guid>
       <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2021-03-03-population-graphs-swift-edition/featured.png" medium="image" type="image/png" width="1790" height="1192"/>
     </item>
     <item>
       <title>dplyr summarize Warnings</title>
