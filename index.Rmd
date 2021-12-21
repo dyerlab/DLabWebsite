@@ -7,7 +7,13 @@ listing: posts
 ```{r echo=FALSE}
 # clean up some file system stuff
 folders <- c("_manuscripts","_posts", "docs")
-files <- c(".DS_Store","* 2.html", "* 2.png","* 2.jpeg", "* 2.jpeg", "* 2.Rmd", "*.icloud")
+files <- c(".DS_Store", 
+           "* 2.html", 
+           "* 2.png",
+           "* 2.jpeg", 
+           "* 2.js", "* 3.js", "* 4.js",
+           "* 2.Rmd", 
+           "*.icloud")
 
 for( folder in folders ) { 
   for( file in files ) { 
