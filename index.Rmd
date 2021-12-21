@@ -12,7 +12,8 @@ files <- c(".DS_Store",
            "* 2.png",
            "* 2.jpeg", 
            "* 2.js", "* 3.js", "* 4.js",
-           "* 2.Rmd", 
+           "* 2.Rmd",
+           "* 2.bib",
            "*.icloud")
 
 for( folder in folders ) { 
