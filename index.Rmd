@@ -8,12 +8,14 @@ listing: posts
 # clean up some file system stuff
 folders <- c("_manuscripts","_posts", "docs")
 files <- c(".DS_Store", 
-           "* 2.html", 
-           "* 2.png",
-           "* 2.jpeg", 
+           "* 2.html", "* 3.html", "* 4.html",
+           "* 2.png", "* 3.png", "* 4.png",
+           "* 2.jpeg", "* 3.jpeg", "* 4.jpeg",
+           "* 2.jpg", "* 3.jpg", "* 4.jpg",
            "* 2.js", "* 3.js", "* 4.js",
-           "* 2.Rmd",
-           "* 2.bib",
+           "* 2.Rmd", "* 3.Rmd", "* 4.Rmd",
+           "* 2.bib", "* 3.bib", "* 4.bib",
+           "* 2.css", "* 3.css", "* 4.css",
            "*.icloud")
 
 for( folder in folders ) { 
