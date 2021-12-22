@@ -14,6 +14,9 @@ collections:
     share: [twitter, linkedin, facebook]
     custom: _custom.html
     categories: true
+  software:
+    share: [twitter, linkedin, facebook]
+    categories: true
 navbar:
   right:
     - text: "People"
