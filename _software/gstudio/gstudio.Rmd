@@ -1,0 +1,24 @@
+---
+title: "R::gstudio"
+description: |
+  An R package for the analysis of population genetic data in the R computing environment.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+date: 2021-05-28
+categories:
+  - R
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r echo=FALSE, results='asis'}
+url <- "https://raw.githubusercontent.com/dyerlab/gstudio/master/README.md"
+content = readLines( url )
+cat( paste(content, collapse="\n") )
+```

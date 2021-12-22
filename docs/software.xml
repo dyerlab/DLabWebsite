@@ -8,5 +8,50 @@
 </description>
     <generator>Distill</generator>
     <lastBuildDate>Wed, 22 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>DLabMatrix</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-dlabmatrix</link>
+      <description>A swift library package for matrix algebra related to landscape and population genetic analyses.</description>
+      <category>Swift</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-dlabmatrix</guid>
+      <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>DLabSpatial</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-dlabspatial</link>
+      <description>A swift library package for the analysis and display of spatial data for analytical software targeting iOS and MacOS platforms.</description>
+      <category>Swift</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-dlabspatial</guid>
+      <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>R::gstudio</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-gstudio</link>
+      <description>An R package for the analysis of population genetic data in the R computing environment.</description>
+      <category>R</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-gstudio</guid>
+      <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>R::popgraph</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-popgraph</link>
+      <description>An R package for the creation and analysis of population graph objects after Dyer &amp; Nason (2004).</description>
+      <category>R</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/software/2021-12-22-popgraph</guid>
+      <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>DLabGenetics</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/software/dlabgenetics</link>
+      <description>A swift library package for collection, maintainence, manipulation, and analysis of genetic data.</description>
+      <category>Swift</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/software/dlabgenetics</guid>
+      <pubDate>Wed, 22 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
   </channel>
 </rss>

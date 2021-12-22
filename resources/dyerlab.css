@@ -121,3 +121,11 @@ d-article h2 {
   background-repeat: no-repeat;
   background-size: fill;
 }
+
+
+.sidebar-section.categories > ul > li:first-child {
+  display: none;
+}
+
+
+

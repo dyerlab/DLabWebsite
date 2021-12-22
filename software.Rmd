@@ -1,9 +1,8 @@
 ---
 title: Software Projects
-listing: software
+listings: software
 ---
 
-```{r}
-repos = c("")
-```
+<p>&nbsp;</p>
 
+The following listings relate to developmental libraries and programs I have written in support of research in the laboratory.
