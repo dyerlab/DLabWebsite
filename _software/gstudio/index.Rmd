@@ -1,0 +1,26 @@
+---
+author:
+- name: Rodney Dyer
+  affiliation: Center for Environmental Studies
+  email: rjdyer@vcu.edu
+  url: https://dyerlab.org
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
+title: gstudio R Library Package
+categories: R
+output:
+  distill::distill_article:
+    self_contained: false
+date: '2019-05-19'
+description: An R package designed to allow the analysis of population genetic data
+  as a native R data type, fully integrated with tidy data paradigms.
+---
+
+```{r echo=FALSE, results='asis'}
+url <- 'https://raw.githubusercontent.com/dyerlab/gstudio/master/README.md'
+content = readLines( url )
+cat( paste(content, collapse="
+") )
+```
+
+
