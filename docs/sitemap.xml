@@ -2,15 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/</loc>
-    <lastmod>2021-12-21T12:32:21-05:00</lastmod>
+    <lastmod>2021-12-22T05:15:43-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/manuscripts.html</loc>
-    <lastmod>2021-12-12T07:40:37-05:00</lastmod>
+    <lastmod>2021-12-22T05:28:10-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/people.html</loc>
     <lastmod>2021-12-12T10:42:52-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dyerlab.github.io/DLabWebsite/software.html</loc>
+    <lastmod>2021-12-22T05:39:25-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-app-rstudio-distill-blogging/</loc>
@@ -574,7 +578,7 @@
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/di-leo-et-al-2014/</loc>
-    <lastmod>2021-12-15T06:08:04-05:00</lastmod>
+    <lastmod>2021-12-22T04:47:14-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2013/</loc>

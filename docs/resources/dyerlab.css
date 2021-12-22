@@ -15,10 +15,10 @@
 html {
   /*-- Main font sizes --*/
   --title-size:      50px;
-  --body-size:       1.06rem;
-  --code-size:       14px;
-  --aside-size:      12px;
-  --fig-cap-size:    13px;
+  --body-size:       1rem;
+  --code-size:       12px;
+  --aside-size:      11px;
+  --fig-cap-size:    12px;
   /*-- Main font colors --*/
   --title-color:     #000000;
   --header-color:    #e64a19; 
@@ -42,13 +42,13 @@ d-byline {
 
 /*-- ARTICLE TABLE OF CONTENTS --*/
 .d-contents {
-  --heading-size:    18px;
-  --contents-size:   13px;
+  --heading-size:    16px;
+  --contents-size:   12px;
 }
 
 /*-- ARTICLE APPENDIX --*/
 d-appendix {
-  --heading-size:    15px;
+  --heading-size:    14px;
   --heading-color:   #FF6D00; /* rgba(0, 0, 0, 0.65); */
   --text-size:       0.8em;
   --text-color:      rgba(0, 0, 0, 0.5);
@@ -77,9 +77,17 @@ d-appendix {
 /* Add any additional CSS rules below                      */
 
 .roundedImg { 
-  border-radius: .25rem!important;
+  border-radius: 8px;
 }
 
+
+.logo { 
+  border-radius: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
 
 
 
@@ -106,36 +114,10 @@ d-article h2 {
 /*-- CSS FOR NEWS BOX --*/
 
 .parallax { 
-  background-image: url("resources/featured_sm.png");
+  background-image: url("resources/featured.png");
   height: 400px;
   background-attachment: fixed;
   background-position: top;
   background-repeat: no-repeat;
   background-size: fill;
 }
-
-.welcome {
-  position: absolute;
-  left: 0;
-  top: 10vh;
-  width: 100vw;
-  text-align: center;
-  color: #000;
-}
-
-
-.downbutton {
-  background: rgba(0,0,0,0);
-  border: none;
-  outline: none;
-  color: #1BC7DC;
-  -moz-opacity: 0.75;
-  -khtml-opacity: 0.75;
-  opacity: 0.75;
-  text-align: center;
-  font-size: 42px;
-}
-
-
-
-

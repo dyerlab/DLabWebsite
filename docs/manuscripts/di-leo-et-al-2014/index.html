@@ -143,7 +143,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["bibliography.bib","index_files/anchor-4.2.2/anchor.min 2.js","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min 2.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2 2.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.11/header-attrs 2.js","index_files/header-attrs-2.11/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0 2.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min 2.js","index_files/jquery-3.6.0/jquery-3.6.0.min 2.map","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min 2.js","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy 2.css","index_files/tippy-6.2.7/tippy-bundle.umd.min 2.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border 2.css","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min 2.js","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents 2.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["bibliography.bib","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.11/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min 3.map","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2164,10 +2164,10 @@ d-appendix {
 html {
   /*-- Main font sizes --*/
   --title-size:      50px;
-  --body-size:       1.06rem;
-  --code-size:       14px;
-  --aside-size:      12px;
-  --fig-cap-size:    13px;
+  --body-size:       1rem;
+  --code-size:       12px;
+  --aside-size:      11px;
+  --fig-cap-size:    12px;
   /*-- Main font colors --*/
   --title-color:     #000000;
   --header-color:    #e64a19; 
@@ -2191,13 +2191,13 @@ d-byline {
 
 /*-- ARTICLE TABLE OF CONTENTS --*/
 .d-contents {
-  --heading-size:    18px;
-  --contents-size:   13px;
+  --heading-size:    16px;
+  --contents-size:   12px;
 }
 
 /*-- ARTICLE APPENDIX --*/
 d-appendix {
-  --heading-size:    15px;
+  --heading-size:    14px;
   --heading-color:   #FF6D00; /* rgba(0, 0, 0, 0.65); */
   --text-size:       0.8em;
   --text-color:      rgba(0, 0, 0, 0.5);
@@ -2226,9 +2226,17 @@ d-appendix {
 /* Add any additional CSS rules below                      */
 
 .roundedImg { 
-  border-radius: .25rem!important;
+  border-radius: 8px;
 }
 
+
+.logo { 
+  border-radius: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
 
 
 
@@ -2255,39 +2263,13 @@ d-article h2 {
 /*-- CSS FOR NEWS BOX --*/
 
 .parallax { 
-  background-image: url("resources/featured_sm.png");
+  background-image: url("resources/featured.png");
   height: 400px;
   background-attachment: fixed;
   background-position: top;
   background-repeat: no-repeat;
   background-size: fill;
-}
-
-.welcome {
-  position: absolute;
-  left: 0;
-  top: 10vh;
-  width: 100vw;
-  text-align: center;
-  color: #000;
-}
-
-
-.downbutton {
-  background: rgba(0,0,0,0);
-  border: none;
-  outline: none;
-  color: #1BC7DC;
-  -moz-opacity: 0.75;
-  -khtml-opacity: 0.75;
-  opacity: 0.75;
-  text-align: center;
-  font-size: 42px;
-}
-
-
-
-</style>
+}</style>
 <style type="text/css">
 /* base style */
 
@@ -2476,8 +2458,10 @@ d-appendix d-footnote-list a.footnote-backlink {
 <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
-<a href="../../manuscripts.html">Manuscripts</a>
 <a href="../../people.html">People</a>
+<a href="../../manuscripts.html">Papers</a>
+<a href="../../software.html">Software</a>
+<a href="https://dyerlab.github.io/ENVS-Lectures/">Teaching</a>
 <a href="../../index.xml">
 <i class="fa fa-rss" aria-hidden="true"></i>
 </a>
@@ -2506,7 +2490,6 @@ d-appendix d-footnote-list a.footnote-backlink {
 
 <div class="d-article">
 <p><a href="https://drive.google.com/open?id=0B0T81CzLjtfPbkQ4bkN5M1J5ZFU"><img src="https://img.shields.io/badge/PDF-21B02C.svg" alt="PDF Download" /></a> <a href="https://doi.org/10.1111/mec.12839"><img src="http://img.shields.io/badge/DOI-474747.svg" alt="DOI 10.1111/mec.12839" /></a></p>
-<p><img src="featured.png" /></p>
 <h2 id="abstract">Abstract</h2>
 <p>Pollen-mediated gene flow is a major driver of spatial genetic structure in plant populations. Both individual plant characteristics and site-specific features of the landscape can modify the perceived attractiveness of plants to their pollinators and thus play an important role in shaping spatial genetic variation. Most studies of landscape-level genetic connectivity in plants have focused on the effects of interindividual distance using spatial and increasingly ecological separation, yet have not incorporated individual plant characteristics or other at-site ecological variables. Using spatially explicit simulations, we first tested the extent to which the inclusion of at-site variables influencing local pollination success improved the statistical characterization of genetic connectivity based upon examination of pollen pool genetic structure. The addition of at-site characteristics provided better models than those that only considered interindividual spatial distance (e.g. IBD). Models parameterized using conditional genetic covariance (e.g. population graphs) also outperformed those assuming panmixia. In a natural population of Cornus florida L. (Cornaceae), we showed that the addition of at-site characteristics (clumping of primary canopy opening above each maternal tree and maternal tree floral output) provided significantly better models describing gene flow than models including only between-site spatial (IBD) and ecological (isolation by resistance) variables. Overall, our results show that including interindividual and local ecological variation greatly aids in characterizing landscape-level measures of contemporary gene flow.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
@@ -2559,7 +2542,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <!--radix_placeholder_navigation_after_body--><html><body>
 <div class="distill-site-nav distill-site-footer">
-<p><a href="mailto:rjdyer@vcu.edu">Rodney J. Dyer</a></p>
+<p>Maintained &amp; Deployed by <a href="mailto:rjdyer@vcu.edu">Dr. Rodney J. Dyer</a></p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 </body></html>

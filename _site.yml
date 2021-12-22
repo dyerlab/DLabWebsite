@@ -16,10 +16,14 @@ collections:
     categories: true
 navbar:
   right:
-    - text: "Manuscripts"
-      href: manuscripts.html 
     - text: "People"
       href: people.html
+    - text: "Papers"
+      href: manuscripts.html 
+    - text: "Software"
+      href: software.html
+    - text: "Teaching"
+      href: https://dyerlab.github.io/ENVS-Lectures/
     - icon: fa fa-rss
       href: index.xml
 output: distill::distill_article

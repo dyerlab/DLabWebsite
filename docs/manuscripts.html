@@ -2129,10 +2129,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   html {
     /*-- Main font sizes --*/
     --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
+    --body-size:       1rem;
+    --code-size:       12px;
+    --aside-size:      11px;
+    --fig-cap-size:    12px;
     /*-- Main font colors --*/
     --title-color:     #000000;
     --header-color:    #e64a19; 
@@ -2156,13 +2156,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   /*-- ARTICLE TABLE OF CONTENTS --*/
   .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
+    --heading-size:    16px;
+    --contents-size:   12px;
   }
 
   /*-- ARTICLE APPENDIX --*/
   d-appendix {
-    --heading-size:    15px;
+    --heading-size:    14px;
     --heading-color:   #FF6D00; /* rgba(0, 0, 0, 0.65); */
     --text-size:       0.8em;
     --text-color:      rgba(0, 0, 0, 0.5);
@@ -2191,9 +2191,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /* Add any additional CSS rules below                      */
 
   .roundedImg { 
-    border-radius: .25rem!important;
+    border-radius: 8px;
   }
 
+
+  .logo { 
+    border-radius: 6px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+  }
 
 
 
@@ -2220,39 +2228,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   /*-- CSS FOR NEWS BOX --*/
 
   .parallax { 
-    background-image: url("resources/featured_sm.png");
+    background-image: url("resources/featured.png");
     height: 400px;
     background-attachment: fixed;
     background-position: top;
     background-repeat: no-repeat;
     background-size: fill;
-  }
-
-  .welcome {
-    position: absolute;
-    left: 0;
-    top: 10vh;
-    width: 100vw;
-    text-align: center;
-    color: #000;
-  }
-
-
-  .downbutton {
-    background: rgba(0,0,0,0);
-    border: none;
-    outline: none;
-    color: #1BC7DC;
-    -moz-opacity: 0.75;
-    -khtml-opacity: 0.75;
-    opacity: 0.75;
-    text-align: center;
-    font-size: 42px;
-  }
-
-
-
-  </style>
+  }</style>
   <style type="text/css">
   /* base style */
 
@@ -2440,8 +2422,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
-<a href="manuscripts.html">Manuscripts</a>
 <a href="people.html">People</a>
+<a href="manuscripts.html">Papers</a>
+<a href="software.html">Software</a>
+<a href="https://dyerlab.github.io/ENVS-Lectures/">Teaching</a>
 <a href="index.xml">
 <i class="fa fa-rss" aria-hidden="true"></i>
 </a>
@@ -3690,9 +3674,14 @@ function init_posts_list() {
 </div>
 <div class="posts-sidebar">
 <div><div class="sidebar-section custom">
+
   <h3>About</h3>
-  Developing tools for the spatial analysis of population
-  and landscape genetic structure.
+  Reseach in the Dyer Laboratory focues on developing tools for the spatial analysis of population
+  and landscape genetic structure.  
+  
+  <p>&nbsp;</p>
+  
+  <img class="logo" src="resources/dyerlab_logo.jpg" alt="dyerlab logo" />
   
   <h3>&nbsp;</h3>
   
@@ -4285,7 +4274,7 @@ function init_posts_list() {
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
-<p><a href="mailto:rjdyer@vcu.edu">Rodney J. Dyer</a></p>
+<p>Maintained &amp; Deployed by <a href="mailto:rjdyer@vcu.edu">Dr. Rodney J. Dyer</a></p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 
