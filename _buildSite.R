@@ -142,4 +142,13 @@ for( i in 1:length( repositories ) ) {
 
 # clean up any of the crap on the site and render the whole thing.
 system( "find . -type f -iname '.DS_Store' -delete")
+system( "find docs -iname '* 2.html' -delete")
+system( "find docs -iname '* 3.html' -delete")
+system( "find docs -iname '* 4.html' -delete")
+system( "find docs -iname '* 5.html' -delete")
+system( "find docs -iname '* 6.html' -delete")
+system( "find docs -iname 'LICENSE 2' -delete")
+
+# find . -type f -name "* *"
+
 rmarkdown::render_site(".")
