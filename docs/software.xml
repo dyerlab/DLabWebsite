@@ -7,7 +7,16 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 20 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>DLabGenetic Swift Package</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic</link>
+      <description>A swift library package for the analyiss of marker and SNP relevant data types for landscape and population genetic analyses on the iOS and MacOS platforms.</description>
+      <category>Swift</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic</guid>
+      <pubDate>Thu, 23 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>DLabMatrix Swift Package</title>
       <dc:creator>Rodney Dyer</dc:creator>
@@ -25,15 +34,6 @@
       <category>Swift</category>
       <guid>https://dyerlab.github.io/DLabWebsite/software/DLabSpatial</guid>
       <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>DLabGenetic Swift Package</title>
-      <dc:creator>Rodney Dyer</dc:creator>
-      <link>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic</link>
-      <description>A swift library package for the analyiss of marker and SNP relevant data types for landscape and population genetic analyses on the iOS and MacOS platforms.</description>
-      <category>Swift</category>
-      <guid>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic</guid>
-      <pubDate>Mon, 06 Dec 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>popgraph R Library Package</title>

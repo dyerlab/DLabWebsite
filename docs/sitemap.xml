@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/</loc>
-    <lastmod>2021-12-22T09:56:28-05:00</lastmod>
+    <lastmod>2021-12-22T05:15:43-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/manuscripts.html</loc>
-    <lastmod>2021-12-22T09:56:28-05:00</lastmod>
+    <lastmod>2021-12-22T05:28:10-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/people.html</loc>
@@ -14,15 +14,15 @@
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/software.html</loc>
-    <lastmod>2021-12-22T09:56:28-05:00</lastmod>
+    <lastmod>2021-12-22T08:49:56-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-app-rstudio-distill-blogging/</loc>
-    <lastmod>2021-12-22T09:56:28-05:00</lastmod>
+    <lastmod>2021-12-21T11:15:02-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-21-craft-rstudio-distill-post/</loc>
-    <lastmod>2021-12-22T09:56:28-05:00</lastmod>
+    <lastmod>2021-12-21T11:12:27-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/posts/2021-12-15-smoothing-rasters/</loc>
@@ -578,7 +578,7 @@
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/di-leo-et-al-2014/</loc>
-    <lastmod>2021-12-22T09:56:28-05:00</lastmod>
+    <lastmod>2021-12-22T04:47:14-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/manuscripts/sork-et-al-2013/</loc>
@@ -681,23 +681,23 @@
     <lastmod>2021-12-15T06:09:03-05:00</lastmod>
   </url>
   <url>
+    <loc>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic/</loc>
+    <lastmod>2021-12-23T05:25:05-05:00</lastmod>
+  </url>
+  <url>
     <loc>https://dyerlab.github.io/DLabWebsite/software/DLabMatrix/</loc>
-    <lastmod>2021-12-22T14:11:38-05:00</lastmod>
+    <lastmod>2021-12-23T04:53:27-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/software/DLabSpatial/</loc>
-    <lastmod>2021-12-22T14:11:31-05:00</lastmod>
-  </url>
-  <url>
-    <loc>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic/</loc>
-    <lastmod>2021-12-22T14:11:48-05:00</lastmod>
+    <lastmod>2021-12-23T04:53:27-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/software/popgraph/</loc>
-    <lastmod>2021-12-22T14:11:58-05:00</lastmod>
+    <lastmod>2021-12-23T04:53:27-05:00</lastmod>
   </url>
   <url>
     <loc>https://dyerlab.github.io/DLabWebsite/software/gstudio/</loc>
-    <lastmod>2021-12-22T14:11:51-05:00</lastmod>
+    <lastmod>2021-12-23T04:53:27-05:00</lastmod>
   </url>
 </urlset>
