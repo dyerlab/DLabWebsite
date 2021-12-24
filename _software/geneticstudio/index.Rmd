@@ -6,18 +6,18 @@ author:
   url: https://dyerlab.org
   affiliation_url: https://ces.vcu.edu
   orcid_id: 0000-0003-4707-3453
-title: DLabSpatial Swift Package
+title: geneticstudio
 categories: Swift
 output:
   distill::distill_article:
     self_contained: false
 date: '2021-12-24'
-description: A swift library package for the analysis and display of spatial data
-  for analytical software targeting iOS and MacOS platforms.
+description: iOS and MacOS stand-alone application for the maintenance, archiving,
+  analysis, and communication of landscape and population genetic data.
 ---
 
 ```{r echo=FALSE, results='asis'}
-url <- 'https://raw.githubusercontent.com/dyerlab/DLabSpatial/main/README.md'
+url <- 'https://raw.githubusercontent.com/dyerlab/geneticstudio/master/README.md'
 content = readLines( url )
 cat( paste(content, collapse="
 ") )

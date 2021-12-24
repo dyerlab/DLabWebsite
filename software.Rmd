@@ -5,4 +5,8 @@ listings: software
 
 <p>&nbsp;</p>
 
-The following listings relate to developmental libraries and programs I have written in support of research in the laboratory.
+[![DyerLab's GitHub stats](https://github-readme-stats.vercel.app/api?username=dyerlab&count_private=true&show_icons=true&hide_title=false&hide=contribs)](https://github.com/anuraghazra/github-readme-stats)
+
+
+
+
