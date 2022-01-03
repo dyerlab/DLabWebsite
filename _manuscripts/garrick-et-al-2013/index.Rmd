@@ -30,7 +30,7 @@ output:
   self_contained: no
 ---
 
- [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPb3RmYTR6WVRsMWM) [![ DOI 10.1111/mec.12318](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/mec.12318)
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPb3RmYTR6WVRsMWM) [![ DOI 10.1111/mec.12318](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/mec.12318)
 
 ![]( featured.png )
 

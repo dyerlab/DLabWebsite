@@ -24,7 +24,7 @@ output:
   self_contained: no
 ---
 
- [![ DOI 10.1111/j.1365-294X.2006.02913.x](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1365-294X.2006.02913.x)
+ [![ DOI 10.1111/j.1365-294X.2006.02913.x](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1365-294X.2006.02913.x)
 
 ![]( featured.png )
 

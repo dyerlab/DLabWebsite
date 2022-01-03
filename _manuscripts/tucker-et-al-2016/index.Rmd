@@ -28,7 +28,7 @@ output:
   self_contained: no
 ---
 
- [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPR3BiR25JeFJHeG8) [![ DOI 10.1642/AUK-15-161.1](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1642/AUK-15-161.1)
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPR3BiR25JeFJHeG8) [![ DOI 10.1642/AUK-15-161.1](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1642/AUK-15-161.1)
 
 ![]( featured.png )
 

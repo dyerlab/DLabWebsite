@@ -3,7 +3,7 @@ title: 'Genetic structure of Pinus henryi and Pinus tabuliformis: Natural landsc
   barriers to gene flow among populations'
 date: '2015-08-01'
 description: |
-   Lu Yang, Zhan-Lin Liu, Jianfang Li, Rodney J. Dyer. 2015. <i>BIOCHEMICAL SYSTEMATICS AND ECOLOGY</i>.   <br /> [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/0B0T81CzLjtfPR01iZzJtVGFsZ28/view?usp=sharing) [![ DOI 10.1016/j.bse.2015.06.003](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1016/j.bse.2015.06.003)
+   Lu Yang, Zhan-Lin Liu, Jianfang Li, Rodney J. Dyer. 2015. <i>BIOCHEMICAL SYSTEMATICS AND ECOLOGY</i>.   <br /> [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/0B0T81CzLjtfPR01iZzJtVGFsZ28/view?usp=sharing) [![ DOI 10.1016/j.bse.2015.06.003](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1016/j.bse.2015.06.003)
 categories: 
 - cpSSR
 - genetic structure

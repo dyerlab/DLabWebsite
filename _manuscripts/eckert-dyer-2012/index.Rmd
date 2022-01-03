@@ -26,7 +26,7 @@ output:
   self_contained: no
 ---
 
- [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPTHJJSHI1dlJJVU0) [![ DOI 10.1111/j.1365-294X.2012.05615.x](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1365-294X.2012.05615.x)
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPTHJJSHI1dlJJVU0) [![ DOI 10.1111/j.1365-294X.2012.05615.x](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1365-294X.2012.05615.x)
 
 ![]( featured.png )
 

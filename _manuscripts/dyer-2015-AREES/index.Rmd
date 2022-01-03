@@ -24,7 +24,7 @@ output:
   self_contained: no
 ---
 
- [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/0B0T81CzLjtfPVGR5dFZuSF9oclU/view?usp=sharing) [![ DOI 10.1146/annurev-ecolsys-112414-054150](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1146/annurev-ecolsys-112414-054150)
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/0B0T81CzLjtfPVGR5dFZuSF9oclU/view?usp=sharing) [![ DOI 10.1146/annurev-ecolsys-112414-054150](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1146/annurev-ecolsys-112414-054150)
 
 ![]( featured.png )
 

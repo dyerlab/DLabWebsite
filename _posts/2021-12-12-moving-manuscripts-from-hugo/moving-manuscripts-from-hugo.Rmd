@@ -174,7 +174,7 @@ for( file in files ) {
     url <- paste("https://doi.org",old$doi, sep="/")
     val <- paste( "[![ DOI ", 
                   old$doi, 
-                  "](http://img.shields.io/badge/DOI-474747.svg)](",
+                  "](https://img.shields.io/badge/DOI-474747.svg)](",
                   url,
                   ")", sep="") 
     links <- paste( links, val )

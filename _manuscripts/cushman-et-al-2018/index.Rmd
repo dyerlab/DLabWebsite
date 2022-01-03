@@ -31,7 +31,7 @@ output:
   self_contained: no
 ---
 
- [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=1Or90Qth4ONT-jjWvRl3yKSkLdlGvxBOq) [![ DOI 10.3389/fgene.2018.00215](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.3389/fgene.2018.00215)
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=1Or90Qth4ONT-jjWvRl3yKSkLdlGvxBOq) [![ DOI 10.3389/fgene.2018.00215](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.3389/fgene.2018.00215)
 
 ![]( featured.png )
 

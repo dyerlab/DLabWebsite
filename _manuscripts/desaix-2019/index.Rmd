@@ -25,7 +25,7 @@ output:
   self_contained: no
 ---
 
- [![ DOI 10.1111/mec.15083](http://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/mec.15083)
+ [![ DOI 10.1111/mec.15083](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/mec.15083)
 
 ![]( featured.jpg )
 
