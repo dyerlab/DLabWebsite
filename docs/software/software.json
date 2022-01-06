@@ -9,13 +9,13 @@
         "url": "https://dyerlab.org"
       }
     ],
-    "date": "2021-12-24",
+    "date": "2022-01-03",
     "categories": [
       "Swift"
     ],
     "contents": "\nDLabGenetic\n\nCurrent Version: \nThis package is the foundation layer for all genetic data analysis objects and routines needed in software developed for the iOS and OSX platforms from the DyerLab.\n # Installation\nSwift Package Manager (XCode 13)\nSelect File > Swift Packages > Add Package Dependency… from the File menu.\nPaste https://github.com/dyerlab/DLabGenetic.git in the dialog box.\nFollow the Xcode’s instruction to complete the installation.\n\nWhy not CocoaPods, or Carthage, or blank?\n\nSupporting multiple dependency managers makes maintaining a library exponentially more complicated and time consuming. Since, the Swift Package Manager is integrated with Xcode 11 (and greater), it’s the easiest choice to support going further.\nThis package defines the following base model objects:\nLocus: A base class for genetic loci\nIndividual: A spatially referenced, multilocus sample.\nStratum: A heirarchical (tree-based data structure) collection of individuals.\nOn this, the following items may be extracted:\nAlleleFrequencies\nDiversity Statistics\nAMOVA\nPCA\nPopulation Graph\nThis package depends upon the DLMatrix Swift Package for underlying vector and matrix representations.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-12-24T08:50:32-05:00",
+    "last_modified": "2022-01-06T14:27:16-05:00",
     "input_file": {}
   },
   {

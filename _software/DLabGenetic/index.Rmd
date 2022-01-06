@@ -11,7 +11,7 @@ categories: Swift
 output:
   distill::distill_article:
     self_contained: false
-date: '2021-12-24'
+date: '2022-01-03'
 description: A swift library package for the analyiss of marker and SNP relevant data
   types for landscape and population genetic analyses on the iOS and MacOS platforms.
 ---

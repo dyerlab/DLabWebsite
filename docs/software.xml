@@ -7,7 +7,7 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 24 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate>
     <item>
       <title>DLabGenetic Swift Package</title>
       <dc:creator>Rodney Dyer</dc:creator>
@@ -15,7 +15,7 @@
       <description>A swift library package for the analyiss of marker and SNP relevant data types for landscape and population genetic analyses on the iOS and MacOS platforms.</description>
       <category>Swift</category>
       <guid>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic</guid>
-      <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>DLabMatrix Swift Package</title>

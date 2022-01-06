@@ -14,6 +14,8 @@ links:
     url: "http://scholar.google.com/citations?user=R75bxRMAAAAJ"
   - label: Curriculum Vitae
     url: "https://docs.google.com/document/d/1B5DopW1PR12KhL3yiWiGf_YZCIXn1b77Er87mxqgShg/edit?usp=sharing"
+  - label: Webpage
+    url: "https://rodneydyer.com"
 output:
   postcards::trestles
 ---
@@ -24,10 +26,23 @@ Rodney Dyer is currently serving as the Director of the [Center for Environmenta
 
 ## Education
 
-2002 - PhD Biology - University of Missouri Saint Louis
-1998 - MS Biology - University of Missouri Saint Louis
-1996 - BS Biology - Western Washington University
-1994 - AA General - Seattle Central Community College
+2002 - PhD Biology - University of Missouri Saint Louis  
+1998 - MS Biology - University of Missouri Saint Louis  
+1996 - BS Biology - Western Washington University  
+1994 - AA General - Seattle Central Community College  
+
+## Professional Experience
+
+
+
+2017 - Present: Full Professor, [VCU](https://vcu.edu)  
+2017 - Present: Director, [CES](https::/ces.vcu.edu)  
+2017 - 2018: Interim Director, [CSBC](https://cbds.vcu.edu)  
+2010 - 2017: Associate Professor, [VCU](https://vcu.edu)  
+2004 - 2010: Assistant Professor, [VCU](https://vcu.edu)  
+2002 - 2004: Postdoctoral Researcher, [ISU](https://eeob.iastate.edu)  
+1995 - 1995: Howard Hughes Research Fellow, [UW](https://biology.washington.edu)  
+
 
 
 
