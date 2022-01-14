@@ -7,7 +7,7 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Jan 2022 00:00:00 +0000</lastBuildDate>
     <item>
       <title>DLabGenetic Swift Package</title>
       <dc:creator>Rodney Dyer</dc:creator>
@@ -15,7 +15,16 @@
       <description>A swift library package for the analyiss of marker and SNP relevant data types for landscape and population genetic analyses on the iOS and MacOS platforms.</description>
       <category>Swift</category>
       <guid>https://dyerlab.github.io/DLabWebsite/software/DLabGenetic</guid>
-      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>geneticstudio</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/software/geneticstudio</link>
+      <description>iOS and MacOS stand-alone application for the maintenance, archiving, analysis, and communication of landscape and population genetic data.</description>
+      <category>Swift</category>
+      <guid>https://dyerlab.github.io/DLabWebsite/software/geneticstudio</guid>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>DLabMatrix Swift Package</title>
@@ -33,15 +42,6 @@
       <description>A swift library package for the analysis and display of spatial data for analytical software targeting iOS and MacOS platforms.</description>
       <category>Swift</category>
       <guid>https://dyerlab.github.io/DLabWebsite/software/DLabSpatial</guid>
-      <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>geneticstudio</title>
-      <dc:creator>Rodney Dyer</dc:creator>
-      <link>https://dyerlab.github.io/DLabWebsite/software/geneticstudio</link>
-      <description>iOS and MacOS stand-alone application for the maintenance, archiving, analysis, and communication of landscape and population genetic data.</description>
-      <category>Swift</category>
-      <guid>https://dyerlab.github.io/DLabWebsite/software/geneticstudio</guid>
       <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
     </item>
     <item>

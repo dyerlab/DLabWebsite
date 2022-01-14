@@ -11,7 +11,7 @@ categories: Swift
 output:
   distill::distill_article:
     self_contained: false
-date: '2021-12-24'
+date: '2022-01-12'
 description: iOS and MacOS stand-alone application for the maintenance, archiving,
   analysis, and communication of landscape and population genetic data.
 ---
