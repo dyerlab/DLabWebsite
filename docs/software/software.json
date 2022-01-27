@@ -19,6 +19,25 @@
     "input_file": {}
   },
   {
+    "path": "software/PopulationGraphs/",
+    "title": "PopulationGraphs",
+    "description": "Visualization software for population graph structures.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://dyerlab.org"
+      }
+    ],
+    "date": "2022-01-27",
+    "categories": [
+      "Swift"
+    ],
+    "contents": "\nPopulation Graphs\n\nPopulation genetic software that doesn’t suck.\n\n\nCurrent Version: \nThis repository contains the code for the GeneticStudio application, an iOS and MacOS application for the maintenance, archiving, analysis, and communication of landscape and population genetic data created in support of the research conducted in the DyerLab.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-01-27T09:06:21-05:00",
+    "input_file": {}
+  },
+  {
     "path": "software/DLabGenetic/",
     "title": "DLabGenetic Swift Package",
     "description": "A swift library package for the analyiss of marker and SNP relevant data types for landscape and population genetic analyses on the iOS and MacOS platforms.",
