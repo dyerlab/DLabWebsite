@@ -58,15 +58,16 @@ repositories <- c("DLabSpatial",
                   "DLabGenetic",
                   "gstudio",
                   "popgraph",
-                  "geneticstudio")
+                  "geneticstudio",
+                  "PopulationGraphs")
 
 readmes <- c( rep("/main/README.md", 3),
-              rep("/master/README.md", 3 ) )
+              rep("/master/README.md", 4 ) )
 
 titles <- paste( repositories, 
                  c( rep(" Swift Package", 3), 
                     rep(" R Library Package", 2),
-                    ""),
+                    "", ""),
                  sep="")
 
 descriptions <- c("A swift library package for the analysis and display of spatial data for analytical software targeting iOS and MacOS platforms.",
@@ -74,11 +75,12 @@ descriptions <- c("A swift library package for the analysis and display of spati
                   "A swift library package for the analyiss of marker and SNP relevant data types for landscape and population genetic analyses on the iOS and MacOS platforms.",
                   "An R package designed to allow the analysis of population genetic data as a native R data type, fully integrated with tidy data paradigms.",
                   "An R package for estimation, anslysis, and visualization of Population Graph objects after Dyer & Nason (2014).",
-                  "iOS and MacOS stand-alone application for the maintenance, archiving, analysis, and communication of landscape and population genetic data.")
+                  "iOS and MacOS stand-alone application for the maintenance, archiving, analysis, and communication of landscape and population genetic data.",
+                  "Visualization software for population graph structures.")
 
 categories <- c( "Swift", "Swift", "Swift", 
                  "R", "R",
-                 "Swift") 
+                 "Swift", "Swift") 
 
 
 # make each of the repos if necessary
