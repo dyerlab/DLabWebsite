@@ -7,7 +7,16 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 21 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Unneceessary Output by dplyr</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2022-02-01-unneceessary-output-by-ttdplyrtt</link>
+      <description>I love tidyverse but cannot understand how the authors disregard meaningless output so poorly.  Here is how to quiet some of that extra cruft when you load in tidyverse</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2022-02-01-unneceessary-output-by-ttdplyrtt</guid>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2022-02-01-unneceessary-output-by-ttdplyrtt/featured.png" medium="image" type="image/png" width="1003" height="300"/>
+    </item>
     <item>
       <title> Craft.app + rstudio::distill = blogging </title>
       <dc:creator>Rodney Dyer</dc:creator>
