@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2022-02-15-guest-lecture-in-envs102/",
+    "title": "Guest Lecture in ENVS102",
+    "description": "Today I delivered a guest lecture to the students in ENVS102: Introduction to Environmental Studies II about my career path, what my reserach is about, and some larger picture issues for the Environmental Studies program.",
+    "author": [
+      {
+        "name": "Rodney Dyer",
+        "url": "https://dyerlab.org"
+      }
+    ],
+    "date": "2022-02-15",
+    "categories": [],
+    "contents": "\n\nA link to the slides can be found here.\n\n\n\n",
+    "preview": "posts/2022-02-15-guest-lecture-in-envs102/featured.png",
+    "last_modified": "2022-02-15T13:40:14-05:00",
+    "input_file": {},
+    "preview_width": 970,
+    "preview_height": 731
+  },
+  {
     "path": "posts/2022-02-01-unneceessary-output-by-ttdplyrtt/",
     "title": "Unneceessary Output by dplyr",
     "description": "I love tidyverse but cannot understand how the authors disregard meaningless output so poorly.  Here is how to quiet some of that extra cruft when you load in tidyverse",

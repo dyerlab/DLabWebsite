@@ -7,7 +7,16 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Guest Lecture in ENVS102</title>
+      <dc:creator>Rodney Dyer</dc:creator>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2022-02-15-guest-lecture-in-envs102</link>
+      <description>Today I delivered a guest lecture to the students in ENVS102: Introduction to Environmental Studies II about my career path, what my reserach is about, and some larger picture issues for the Environmental Studies program.</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2022-02-15-guest-lecture-in-envs102</guid>
+      <pubDate>Tue, 15 Feb 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2022-02-15-guest-lecture-in-envs102/featured.png" medium="image" type="image/png" width="970" height="731"/>
+    </item>
     <item>
       <title>Unneceessary Output by dplyr</title>
       <dc:creator>Rodney Dyer</dc:creator>

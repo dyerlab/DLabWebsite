@@ -1,0 +1,24 @@
+---
+title: "Guest Lecture in ENVS102"
+description: |
+  Today I delivered a guest lecture to the students in ENVS102: Introduction to Environmental Studies II about my career path, what my reserach is about, and some larger picture issues for the Environmental Studies program.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+date: 2022-02-15
+preview: featured.png
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+[![First Slide](./featured.png)](https://dyerlab.github.io/ENVS-Lectures/guest/ENVS-102/Dyer.html#1)
+
+
+
+
+
+A link to the slides can be found [here](https://dyerlab.github.io/ENVS-Lectures/guest/ENVS-102/Dyer.html#1).
