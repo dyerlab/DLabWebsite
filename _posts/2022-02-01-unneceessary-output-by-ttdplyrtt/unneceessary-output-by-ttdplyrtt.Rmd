@@ -1,5 +1,5 @@
 ---
-title: "Unneceessary Output by dplyr"
+title: "Unnecessary Output by dplyr"
 description: |
   I love tidyverse but cannot understand how the authors disregard meaningless output so poorly.  Here is how to quiet some of that extra cruft when you load in tidyverse
 author:
@@ -18,14 +18,13 @@ output:
 ```{r setup, include=FALSE}
 library( tidyverse )
 options( tidyverse.quiet=FALSE)
-
 ```
 
 
 
 I love to use tidyverse when working on data but there is a bad habit that the authors have by spamming your output with messages they thing are informative.  We need to have some basic ways to turn off this output if we are to use things link `distil` to publish actual manuscripts directly instead of just simple markdown documents.
 
-For example, consider the case when you load in the library `tidyverse`.  You get all this cruft which 99% of the time is just annoyring.
+For example, consider the case when you load in the library `tidyverse`.  You get all this cruft which 99% of the time is just annoying.
 
 ```{r eval=FALSE}
 library( tidyverse )
