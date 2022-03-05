@@ -1,0 +1,44 @@
+---
+title: "Workshop on R Data Literacy"
+description: |
+  The first day of a 2-day workshop focused on building data skills in R.
+draft: true
+preview: venti-views-2zKt6Zcc1UU-unsplash.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+![Venti Views Image from Unspalsh](venti-views-2zKt6Zcc1UU-unsplash.jpg)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Workshop Logistics
+
+
+&nbsp; | &nbsp;
+---------|------------------------  
+*When:*  | March 7-8, 2022  
+*Where:* | 1111 East Main Street, Richmond Virginia [37.5367, -77.4350](https://www.google.com/maps/place/1111+E+Main+St,+Richmond,+VA+23219/@37.5365814,-77.4372005,17z/data=!3m1!4b1!4m5!3m4!1s0x89b111183eed8707:0x24b3c78b6da63e39!8m2!3d37.5365772!4d-77.4350118)  
+*Impetus:*|   Build internal capacity at for using R as an analysis platform to increase efficiency of data management.  
+*Instructor:* | [![Rodney Dyer](https://live.staticflickr.com/65535/51278950913_17e0f63c25_w_d.jpg)](https://dyerlab.org/dyerprofile/dyerprofile)  
+*Data Sets*: | 
+
+
+
+## Day One
+
+- [Introduction to the R Environment & RStudio](): Learning about R, the Console, Files, and the RStudio GUI.
+- [Data Types & Containers](): Numeric, Character, Factor, and Date Data Types as well as Vectors, Lists, & the old DataFrame (tibble).
+- [Advanced Data Manipulations](): Welcome to the `tidyverse`!
+- [Visualizations in GGPlot](): Basic and GGPlot Graphics.
+
+## Day Two 
+
+- [Programming Logic](): If's, For's, and Functions (though we will `apply` more commonly)
+- [Quick Mapping](): Leaflet Maps
+- [GIS in R](): Vector and Raster Data
+- [Markdown](): The one language that will rule them all.
