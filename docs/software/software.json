@@ -15,7 +15,7 @@
     ],
     "contents": "\nGeneticStudio\n\nPopulation genetic software that doesn’t suck.\n\n\nCurrent Version: \nThis repository contains the code for the GeneticStudio application, an iOS and MacOS application for the maintenance, archiving, analysis, and communication of landscape and population genetic data created in support of the research conducted in the DyerLab.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2022-01-27T08:45:05-05:00",
     "input_file": {}
   },
   {
@@ -34,7 +34,7 @@
     ],
     "contents": "\nPopulation Graphs\n\nPopulation genetic software that doesn’t suck.\n\n\nCurrent Version: \nThis repository contains the code for the GeneticStudio application, an iOS and MacOS application for the maintenance, archiving, analysis, and communication of landscape and population genetic data created in support of the research conducted in the DyerLab.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2022-01-27T09:06:21-05:00",
     "input_file": {}
   },
   {
@@ -53,7 +53,7 @@
     ],
     "contents": "\nDLabGenetic\n\nCurrent Version: \nThis package is the foundation layer for all genetic data analysis objects and routines needed in software developed for the iOS and OSX platforms from the DyerLab.\n # Installation\nSwift Package Manager (XCode 13)\nSelect File > Swift Packages > Add Package Dependency… from the File menu.\nPaste https://github.com/dyerlab/DLabGenetic.git in the dialog box.\nFollow the Xcode’s instruction to complete the installation.\n\nWhy not CocoaPods, or Carthage, or blank?\n\nSupporting multiple dependency managers makes maintaining a library exponentially more complicated and time consuming. Since, the Swift Package Manager is integrated with Xcode 11 (and greater), it’s the easiest choice to support going further.\nThis package defines the following base model objects:\nLocus: A base class for genetic loci\nIndividual: A spatially referenced, multilocus sample.\nStratum: A heirarchical (tree-based data structure) collection of individuals.\nOn this, the following items may be extracted:\nAlleleFrequencies\nDiversity Statistics\nAMOVA\nPCA\nPopulation Graph\nThis package depends upon the DLMatrix Swift Package for underlying vector and matrix representations.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2022-01-13T20:24:37-05:00",
     "input_file": {}
   },
   {
@@ -72,7 +72,7 @@
     ],
     "contents": "\n\nDLabMatrix\n\nCurrent Version: \nThis package is the foundation layer for all matrix algebra routines needed in software developed for the iOS and OSX platforms from the DyerLab. The motivation herenotion here is to provide an abstraction layer relying as much upon the Swift Accelerate framework to allow population genetic and spatial analytic routines to be easily added to any deliverable product.\n ## Installation\nSwift Package Manager (XCode 13)\nSelect File > Swift Packages > Add Package Dependency… from the File menu.\nPaste https://github.com/dyerlab/DLabMatrix.git in the dialog box.\nFollow the Xcode’s instruction to complete the installation.\n\nWhy not CocoaPods, or Carthage, or blank?\n\nSupporting multiple dependency managers makes maintaining a library exponentially more complicated and time consuming. Since, the Swift Package Manager is integrated with Xcode 11 (and greater), it’s the easiest choice to support going further.\nThis package defines the following two objects:\nVector A Double vector object representing a single numerical vector.\nMatrix A 2-dimensional matrix object that holds Double types.\nRandom Range Enumerator A quick enumerator to define the range of random numbers to estimate.\nThis packages defines the following general functions:\nGeneralizedInverse() A generalized matrix inverse.\nPCRotation() A principal component analysis function.\nSingularValueDecomposition() An implementation of a Singular Value Decomposition.\n ### Vector Objects\nA Vector object is simple [Double] useable for normal algebraic operations. The\nInstance Variables:\nsum: Double\nmagnitude:Vector The vector length.\nx:Double & y:Double (for length >1 vectors)\nnormal:Vector Normalize vector for length = 1.0\nasCGPoint:CGPoint Quick conversion to CGPoint\nasSCNVector3:SCNVector3 Quick conversion to SCNVector3\nasCovariance: Matrix Converts (presumably) instance of distance to covariance.\nasDistance: Matrix Converts (presumably) instance of covariance matrix to distance.\nStatic Constructors\nzeros(_ length: Int) -> Vector Make a new vector with zeros.\nrandom( length: Int, type: RangeEnum = .uniform_0_1) -> Vector Make a\nInstance Functions\n.distance(other: Vector) -> Double Distance separating two vectors.\n.smallest(other: Vector) -> Vector Returns a Vector with minimal values from each.\n.largest(other: Vector) -> Vector Returns a Vector with maximal values from each.\n.constrain(minimum: Double, maximum: Double) -> Vector Returns vector with values bound on the range [minimum ... maximum]\n.limitAnnealingMagnitude( temp: Double) -> Vector Limits movement vector distance for simulated annealing functions.\nStatic Functions - .designMatrix( strata: [String] ) -> Matrix Returns (N x K) design matrix. - .idempotentHatMatrix( strata: [String] ) -> Matrix Returns N x N idempotent Hat matrix, H.\nOperator Overloads\nThe following operators are defined for the Vector object v:\nv + scalar\nv - scalar\nv * scalar\nv / scalar Scaling of a vector\nv + v Vector elementwise addition\nv - v Vector elementwise subtraction\nv * v Vector elementwise multiplication\nv .* v Vector Multiplication (scalar result)\nv == v Equality\nProtocols\nThe Vector object defines the protocol VectorConvertable which defined the required function asVector() -> Vector to advertise that they can yield a Vector object.\n ### Matrix Objects\nA matrix object is a class that represents a 2-dimensional representation of type Double’s. A Matrix has the following instance variables:\n.rows: Int The number of rows in the matrix.\n.cols: Int The number of columns in the matrix.\nrowNames:[String] Labels for rows in the matrix.\ncolNames:[String] Labels for columns in the matrix.\ndiagonal:Vector The diagonal of the matrix (get, set)\ntrace:Double The trace of the matrix.\nsum:Double The sum of the values in the Matrix.\ntranspose:Matrix Return the transposed version of this matrix.\ndescription:String Conforms to CustomStringConvertible\nConstructors - Matrix(r,c,Vector) Creates a new Matrix with r rows and c columns with values from Vector. - Matrix(r,c,ClosedRange) Creates a new Matrix with r rows and c whose falues are equally spaced along a ClosedRange<Double>. - Matrix(r,c,rowNames,colNames) Creates a new Matrix with r rows and c columns with values set to 0.0 but with the row and column names set by the vectors rowNames and colNames of length r and c (respectively).\nThe following operators are overloaded for an object of type Matrix:\n[row,col]: Double Overload of the subscript operator to access elements withing the Matrix. Asking for values outside the size of the Matrix return Double.nan and setting those outside the size do nothing.\n== Conforms to Equatable\nM + scalar Shift values of a matrix\nM - scalar Shift values of a matrix\nM * scalar Scaling of a matrix\nM / scalar Scaling of a matrix\nM + M Matrix elementwise addition\nM - M Matrix elementwise addition\nM * M Matrix elementwise multiplication\nM .* M Matrix Multiplication\nM / M Matrix elementwise division\nThe following functions are available for Matrix objects: - .center() Centers the values of the matrix to 0.0 - .submatrix([rows],[cols]) -> Matrix Returns submatrix defined by the integer arrays [rows] and [cols]. -\nProtocols\nThe Matrix object defines the protocol MatrixConvertable that defines a required function asMatrix() -> Matrix is to advertise that they can yield a Matrix object.\n ### RangeEnum\nA simple enum defining the following values: - uniform_0_1 A uniform distribution bound to [0.0 ... 1.0]. - uniform_neg1_1 A uniform distribution bound on [-1.0 ... 1.0]. - normal_0_1 A value from the normal probability density function bound on [0 ... 1].\nThis enum conforms to the following protocols: - Int - CaseIterable - Comoparable Defines < operator.\nAlgebraic Functions\n\nGeneralizedInverse( X: Matrix ) -> Matrix\nThis returns a generalized inverse of the original matrix.\n\nPCRotation(X: Matrix) -> (d: Vector, V: Matrix, X: Matrix)?\nPerforms a principal component rotation on the original data matrix X returning the eigenvalues in d, the loadings in V and the predicted projections of the original data in X. If the original matrix was not factorable, no values are returned.\n\nSingularValueDecomposition(A: Matrix) -> (U: Matrix, d: Vector, V: Matrix)?\nPerforms a singular value spectral decomposition on the matrix A resulting in left and right eigenvalues (U and V) as well as eigenvalues in d. If the original matrix was not factorable, no values are returned.\nVersions Highlights\n1.0.3 - Refactoring some stuff.\n1.0.2 - added designMatrix, idepotentHatMatrix, asCovariance, asDistance, rowMatrix\n1.0.1 - Added Unit tests.\n1.0.0 - Intial Import\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-24T08:50:30-05:00",
     "input_file": {}
   },
   {
@@ -91,7 +91,7 @@
     ],
     "contents": "\nDLabSpatial\n\nCurrent Version: \nA package that has all the components for mapping and map overlays used in software created in the Dyer Laboratory for the spatial analysis of genetic structure.\n # Installation\nSwift Package Manager (XCode 13)\nSelect File > Swift Packages > Add Package Dependency… from the File menu.\nPaste https://github.com/dyerlab/DLabSpatial.git in the dialog box.\nFollow the Xcode’s instruction to complete the installation.\n\nWhy not CocoaPods, or Carthage, or blank?\n\nSupporting multiple dependency managers makes maintaining a library exponentially more complicated and time consuming. Since, the Swift Package Manager is integrated with Xcode 11 (and greater), it’s the easiest choice to support going further.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-24T08:50:28-05:00",
     "input_file": {}
   },
   {
@@ -110,7 +110,7 @@
     ],
     "contents": "\npopgraph 1.5\nReleased to CRAN 8 May 2017.\nThis is an R package for creating and manipulating population graph objects useful for spatial landscape and population genetic analyses of genetic marker data. This statistical method is based conditional genetic covariance and has been applied primarily to genetic marker data. Routines in this package integrate the popgraph network objects into spatial objects using the igraph and sp packages.\nFor a complete overview of the package, see the full documentation at http://dyerlab.github.io/popgraph/\nTo install the most recent version of this package,\nrequire(devtools)install_github(\"dyerlab/popgraph\")\nIf you would like to contribute to this package or have any questions regarding its construction, use, or additional functionalities, please contact Rodney J. Dyer or visit his lab page http://dyerlab.org\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-23T04:53:27-05:00",
     "input_file": {}
   },
   {
@@ -129,7 +129,7 @@
     ],
     "contents": "\ngstudio\nThis is an R package for the spatial analysis of population genetic data.\nFor a complete overview of the package, see the full documentation at http://dyerlab.github.io/gstudio/\nTo install these packages from this repository, fire up R and\ninstall.packages( c(\"RgoogleMaps\",\n                    \"geosphere\",\n                    \"proto\",\n                    \"sampling\",\n                    \"seqinr\",\n                    \"spacetime\",\n                    \"spdep\"), \n                  dependencies=TRUE )\n\nlibrary(devtools)\ninstall_github(\"dyerlab/popgraph\")\ninstall_github(\"dyerlab/gstudio\")\nIf you would like to contribute to this package or have any questions regarding its construction, use, or additional functionalities, please contact Rodney J. Dyer or visit his lab page http://dyerlab.org\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-23T04:53:27-05:00",
     "input_file": {}
   }
 ]

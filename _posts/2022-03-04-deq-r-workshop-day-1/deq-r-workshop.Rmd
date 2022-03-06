@@ -1,0 +1,118 @@
+---
+title: "Workshop on R Data Literacy"
+description: |
+  The lecture content from a 2-day workshop I delivered for individuals working at the Virginia Department of Environmental Quality tht focused on building a foundation of data analysis using R.
+preview: venti-views-2zKt6Zcc1UU-unsplash.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+![Venti Views Image from Unspalsh](venti-views-2zKt6Zcc1UU-unsplash.jpg)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Workshop Logistics
+
+
+&nbsp; | &nbsp;
+---------|------------------------  
+*When:*  | March 7-8, 2022  
+*Where:* | 1111 East Main Street, Richmond Virginia [37.5367, -77.4350](https://www.google.com/maps/place/1111+E+Main+St,+Richmond,+VA+23219/@37.5365814,-77.4372005,17z/data=!3m1!4b1!4m5!3m4!1s0x89b111183eed8707:0x24b3c78b6da63e39!8m2!3d37.5365772!4d-77.4350118)  
+*Impetus:*|   Build internal capacity at for using R as an analysis platform to increase efficiency of data management.  
+*Instructor:* | [![Rodney Dyer](https://live.staticflickr.com/65535/51278950913_17e0f63c25_w_d.jpg)](https://dyerlab.org/dyerprofile/dyerprofile)  
+*Data Sets*: | 
+
+
+### Introduction to R and RStudio
+
+[![](https://live.staticflickr.com/65535/51918328672_a036cccc64_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/1_r_environment/slides.html#1)    
+
+Learning Objectives:  
+  - Learning about the R environment,  
+  - Understand differences between coding to the Console versus making scripts,   
+  - Use a Project to organize code, data, analyses, & narratives,  
+  - Personalize the RStudio GUI for success.  
+
+---
+
+### Character Data and Basic Function Usage
+[![](https://live.staticflickr.com/65535/51920091958_05b2b3d335_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/2_functions_strings/slides.html#1)
+
+Learning Objectives:
+  - Learn about basic function structure,
+  - Explore the built-in help system,
+  - Practice operations using the fundamental data type `character`,
+  - Manipulate data in `vector` formats,
+  - Perform textual analyses using the `stringr` library.
+ 
+---
+
+### Numeric Data and Data Frames
+
+[![](https://live.staticflickr.com/65535/51920323369_e11f07482c_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/3_numeric_dataframes/slides.html#1)
+
+Learning Objectives:
+  - Explore numeric data and mathematical operations.
+  - Create and manipulate data within `data.frame` objects.
+ 
+
+---
+
+### Basic Data Manipulation - Tidyverse
+[![](https://live.staticflickr.com/65535/51920874490_ffbe78cd17_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/4_data_manipulations/slides.html#1)
+
+Learning Objectives:
+  - Understand data manipulation verbs,   
+  - Pipe data through several modifier functions to derive inferences,
+  - Filter and select subsets of a larger data set,
+  - Group and summarize measurements to derive summary parameters
+  
+
+---
+  
+  
+### Non-Character Character Data
+[![](https://live.staticflickr.com/65535/51919286977_d51edafdcd_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/5_dates_factors/slides.html#1)
+
+Learning Objectives:    
+  - Apply the `mutate` operator to create derived data columns.    
+  - Demonstrate the use of unordered and unordered factor data.  
+  - Convert textual represenations of dates and times into date objects.  
+  - Derive temporal inferences from date objects  
+  
+---
+
+
+### Visualizing Data - Basic & GGPlot
+[![](https://live.staticflickr.com/65535/51921177672_fc98325ac5_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/6_visualizations/slides.html#1)
+
+Learning Objectives:  
+  - Develop your first function for consistent data formatting prior to visualization.    
+  - Understand and implement basic plotting routines provided in `R::graphics`  
+  - Convert raw data into high-quality graphical output using a variety of  `ggplot2` routines.  
+
+---
+
+
+### Interactive Mapping 
+[![](https://live.staticflickr.com/65535/51922384318_7e0579398d_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/7_mapping/slides.html#1)
+
+Learning Objectives:  
+  - Understand how to create a viable map display.  
+  - Apply differential tile providers to an interactive map.  
+  - Create markers on a map representing data found within the data frame.  
+
+---
+
+### Markdown 
+[![](https://live.staticflickr.com/65535/51921199347_3ec6b4e7c5_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/9_markdown/slides.html#1)
+
+Learning Objectives:   
+  - Understand basic markup to represent common textual components.  
+  - Insert graphical output (figures, maps, etc) into a markdown document.  
+  - Inject components of statistical inferences into the text of a markdown document.  
+

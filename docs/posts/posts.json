@@ -1,5 +1,17 @@
 [
   {
+    "path": "posts/2022-03-04-deq-r-workshop-day-1/",
+    "title": "Workshop on R Data Literacy",
+    "description": "The lecture content from a 2-day workshop I delivered for individuals working at the Virginia Department of Environmental Quality tht focused on building a foundation of data analysis using R.",
+    "author": [],
+    "date": "2022-03-06",
+    "categories": [],
+    "contents": "\nVenti Views Image from\nUnspalshWorkshop Logistics\n \n \nWhen:\nMarch 7-8, 2022\nWhere:\n1111 East Main Street, Richmond Virginia 37.5367,\n-77.4350\nImpetus:\nBuild internal capacity at for using R as an analysis platform to\nincrease efficiency of data management.\nInstructor:\n\nData Sets:\n\nIntroduction to R and\nRStudio\n\nLearning Objectives:\n- Learning about the R environment,\n- Understand differences between coding to the Console versus making\nscripts,\n- Use a Project to organize code, data, analyses, &\nnarratives,\n- Personalize the RStudio GUI for success.\nCharacter Data and\nBasic Function Usage\n\nLearning Objectives: - Learn about basic function structure, -\nExplore the built-in help system, - Practice operations using the\nfundamental data type character, - Manipulate data in\nvector formats, - Perform textual analyses using the\nstringr library.\nNumeric Data and Data Frames\n\nLearning Objectives: - Explore numeric data and mathematical\noperations. - Create and manipulate data within data.frame\nobjects.\nBasic Data Manipulation -\nTidyverse\n\nLearning Objectives: - Understand data manipulation verbs,\n- Pipe data through several modifier functions to derive inferences, -\nFilter and select subsets of a larger data set, - Group and summarize\nmeasurements to derive summary parameters\nNon-Character Character Data\n\nLearning Objectives:\n- Apply the mutate operator to create derived data\ncolumns.\n- Demonstrate the use of unordered and unordered factor data.\n- Convert textual represenations of dates and times into date\nobjects.\n- Derive temporal inferences from date objects\nVisualizing Data - Basic &\nGGPlot\n\nLearning Objectives:\n- Develop your first function for consistent data formatting prior to\nvisualization.\n- Understand and implement basic plotting routines provided in\nR::graphics\n- Convert raw data into high-quality graphical output using a variety of\nggplot2 routines.\nInteractive Mapping\n\nLearning Objectives:\n- Understand how to create a viable map display.\n- Apply differential tile providers to an interactive map.\n- Create markers on a map representing data found within the data\nframe.\nMarkdown\n\nLearning Objectives:\n- Understand basic markup to represent common textual components.\n- Insert graphical output (figures, maps, etc) into a markdown\ndocument.\n- Inject components of statistical inferences into the text of a\nmarkdown document.\n\n\n\n",
+    "preview": "posts/2022-03-04-deq-r-workshop-day-1/venti-views-2zKt6Zcc1UU-unsplash.jpg",
+    "last_modified": "2022-03-06T16:01:02-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2022-02-15-guest-lecture-in-envs102/",
     "title": "Guest Lecture in ENVS102",
     "description": "Today I delivered a guest lecture to the students in ENVS102: Introduction to Environmental Studies II about my career path, what my reserach is about, and some larger picture issues for the Environmental Studies program.",
@@ -13,7 +25,7 @@
     "categories": [],
     "contents": "\n\nA link to the slides can be found here.\n\n\n\n",
     "preview": "posts/2022-02-15-guest-lecture-in-envs102/featured.png",
-    "last_modified": "2022-02-15T13:40:14-05:00",
+    "last_modified": "2022-03-05T07:17:58-05:00",
     "input_file": {},
     "preview_width": 970,
     "preview_height": 731
@@ -32,7 +44,7 @@
     "categories": [],
     "contents": "\nI love to use tidyverse when working on data but there is a bad habit that the authors have by spamming your output with messages they thing are informative. We need to have some basic ways to turn off this output if we are to use things link distil to publish actual manuscripts directly instead of just simple markdown documents.\nFor example, consider the case when you load in the library tidyverse. You get all this cruft which 99% of the time is just annoyring.\n\n\nlibrary( tidyverse )\n\n\n\n\nRegistered S3 methods overwritten by 'dbplyr':\n   method         from\n   print.tbl_lazy     \n   print.tbl_sql      \n ── Attaching packages ───────────────────────────────────────────────────────────── tidyverse 1.3.1 ──\n ✓ ggplot2 3.3.5     ✓ purrr   0.3.4\n ✓ tibble  3.1.6     ✓ dplyr   1.0.7\n ✓ tidyr   1.2.0     ✓ stringr 1.4.0\n ✓ readr   2.1.2     ✓ forcats 0.5.1\n ── Conflicts ──────────────────────────────────────────────────────────────── tidyverse_conflicts() ──\n x dplyr::filter() masks stats::filter()\n x dplyr::lag()    masks stats::lag()\n\nThat is now what we want! There are several other options (like asking about conflicts, warning that group_by is not carried over after a summarize, etc), and we get it already. To turn these off put the following into your .Rprofile file at the root of your home directory and it will make a beginning stab at it!\ntidyverse.quiet = TRUE\ndplyr.summarise.inform = FALSE\n\n\n\n",
     "preview": "posts/2022-02-01-unneceessary-output-by-ttdplyrtt/featured.png",
-    "last_modified": "2022-02-01T10:32:03-05:00",
+    "last_modified": "2022-03-05T07:17:58-05:00",
     "input_file": {},
     "preview_width": 1003,
     "preview_height": 300
@@ -51,7 +63,7 @@
     "categories": [],
     "contents": "\nHowever, not everything I do is strictly R related so I thought it would be cool to see if I can hook up Craft.do to serve as a secondary route for creating and integrating posts into my laboratory website.\nThe overall roadmap is as follows:\nWrite 1-paged (with cover image and internal images) posts in Craft.do.\nExport as some type (currently supported types include Markdown & TextBundle as options.\nCopy the folder over to the root directory of the DLabWebsite.\nWrite some custom R script to make a new distill blog post\nTrigger a build + git add + git commit + push action.\nLet’s see how this can be done.\nExported File Types\nTextBundle\nA TextBundle is a different thing entirely. It is apparently ya single document bundle that contains two files:\nA info.json bundle\nA text.markdown text file.\nThere does not appear to be any tangible reason why a textBundle would be preferred over a single markdown file, so I’ll not consider it from here on.\nMarkdown\nYou can specify the flavor of markdown and the built-in types include Github. There is a nice interface here to select certain options on it and the ability to put it into a single markdown file.\nScreen Shot 2021-12-21 at 08.06.28.pngOne of the other things that I didn’t quite appreciate was that for images, like the one inserted above,\nImage.pngCraft will include an online reference to it on their craft servers. This does allow me to not have to upload everything to my flickr account, which is both nice (less steps) but troubling (what would happen if the craft servers go down or craft goes away (i no longer have all my stuff in one place). I suppose I could easily suck down all the images and relink them in the markdown if necessary. For now, I’ll call that a win.\nMarkdown 2 Distill\nFor this one, I think I’ll make a cheap and quick R solution to this. For that I’ll pick up in the next installment, and do it from the R side.\nFor this, I will enforce the following general rules.\nI’ll have to configure a featured image separate from this file (there is no opportunity for finding the location of the Cover Image at the top.).\nThe title will be moved form H1 to markdown metadata title.\nThe first paragraph will be taken and used as the description for the markdown metadata description.\nSave the raw markdown to a _toImport folder in the git repository for the site. The next time the site is built, it will convert the raw markdown into a distill::article object and inserted in the appropriate place.\nOnce I get it all up and running, then I can wrap it all up in a shortcut.\n\n\n\n",
     "preview": "posts/2021-12-21-craft-app-rstudio-distill-blogging/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-21T11:15:02-05:00",
     "input_file": {},
     "preview_width": 1146,
     "preview_height": 653
@@ -70,7 +82,7 @@
     "categories": [],
     "contents": "\nSo the first thing to do was to set up a staging place to save raw markdown files. Once I had that, I moved the rendering of this website from the “push the button on the build pane in RStudio to”run this script.\"\nThis script is in the rood directory of the site and does the following steps:\nfinds all markdown files in the _toImport folder. For each file it:\nLoads in the file\nUses the first line as the metadata title:\nUse the first paragraph as the metadata description:\nCreates a new distill::create_post() with title and modification date for the markdown file.\nRemoves boilerplate stuff form new post and puts in content from the markdown file.\nAdds content to the metadata (extended author info and featured image components).\nRenames post to index.Rmd to make it easier to link in (I wish this was an option in distill).\nRenders the markdown.\nDeletes original markdown file.\nAfter finishing up, it then renders the entire site.\nHere is the script.\n\n\n#' This file is how I'll build the site.\n#' \nrm( list=ls() )\n\n\n# load in and convert any of the markdown stuff in _toImport into \n#  distill articles.\nfor( file in list.files(\"_toImport\", pattern = \"*.md\", full.names = TRUE) ) { \n  \n  # find previous stuff\n  raw <- readLines( file )\n  date <- stringr::str_split( file.info(file)$mtime , \n                              \" \", \n                              simplify = TRUE)[,1] \n  title <- stringr::str_remove( raw[1], \"# \") \n  description <- raw[3]\n  contents <- paste( raw[ -1 ], collapse=\"\\n\")\n  \n  # make new post  will create \n  filetitle <- gsub(\"[[:punct:][:blank:]]+\", \"-\", title ) \n  filetitle <- tolower(filetitle)\n  orig_title <- paste( \"_posts/\", \n                       date, \"-\", \n                       filetitle, \"/\", \n                       filetitle,\".Rmd\", \n                       sep=\"\" )\n  \n  distill::create_post( filetitle, \n                        date = date,\n                        edit = FALSE )\n  \n  raw_post <- readLines( orig_title )\n  raw_post[2] <- paste( \"title: \\\"\", title, \"\\\"\" )\n  raw_post[4] <- paste( \"  \", description, sep=\" \")\n  raw_post[7] <- \"    url: https://dyerlab.org\\n    affiliation: Center for Environmental Studies\\n    affiliation_url: https://ces.vcu.edu\\n    orcid_id: 0000-0003-4707-3453\"\n  raw_post[8] <- paste( raw_post[8], \"preview: featured.png\", sep=\"\\n\")\n  raw_post <- c( raw_post[1:13], contents ) \n  raw_post_output <- paste( raw_post, collapse=\"\\n\")\n  \n  new_file <- paste( \"_posts/\", \n                     date, \"-\", \n                     filetitle, \"/\", \n                     \"index.Rmd\", sep=\"\" )\n  writeLines( raw_post_output, \n              con = new_file )\n  \n  # clean up the posts\n  unlink( orig_title )\n  unlink( file ) \n  \n  rmarkdown::render( new_file )\n}\n\n# clean up any of the crap on the site and render the whole thing.\nsystem( \"find . -type f -iname '.DS_Store' -delete\")\nrmarkdown::render_site(\".\")\n\n\n\nWhat I do not do is push through all the git actions to upload it. I think I’ll just do that manually.\nHere is an example of the first Craft \\(\\to\\) Distill posting.\n\n\n\n",
     "preview": "posts/2021-12-21-craft-rstudio-distill-post/emily-reimer-W3RjW1rnHN0-unsplash.jpg",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-21T11:12:27-05:00",
     "input_file": {}
   },
   {
@@ -89,7 +101,7 @@
     ],
     "contents": "\n\nSo let’s load in a raster and crop it down to look at it. Here is the area surrounding Loreto, BCS Mexico as represented by a 1-km resolution raster of elevation.\n\n\nlibrary( raster )\nurl <- \"https://github.com/dyerlab/ENVS-Lectures/raw/master/data/alt_22.tif\"\nraster( url ) %>%\n  crop(extent( -111.6, -111, 25.6, 26.2) ) -> baja_california\nplot( baja_california ) \n\n\n\n\nFor simple viewing, we can tell the plot to interpolate it, which will shape it a bit. This does not change the data, it only shows the data a bit differently.\n\n\nplot( baja_california, interpolate = TRUE )\n\n\n\n\nWe can also resample the data, which changes it. We can disaggregate it, which makes a new raster with a more fine grain resolution and interpolates the new values to fit.\n\n\nloreto_disaggregated <- disaggregate( baja_california, \n                                      fact = 5,\n                                      method = \"bilinear\")\n\n\n\nwhich takes the previous raster whose size was:\n\n\ndim( baja_california )\n\n\n[1] 72 72  1\n\nand makes the new one of size\n\n\ndim( loreto_disaggregated )\n\n\n[1] 360 360   1\n\nas the fact=5 means that each cell in baja_california is turned into a 5x5 set of cells whose values are interpolated. Notice in the plot below, how the pixelation is reduced around the coast (this raster has all water = NA).\n\n\nplot( loreto_disaggregated )\n\n\n\n\nWe can also smooth it using a custom focal operation based upon a matrix of values and a function we define for it. Here the weight (w) matrix is a 5x5 matrix of 1 (defining the values around each spot that will be used) and the fun=mean will take the average of the 5x5 matrix of values.\n\n\nloreto_focal <- focal( baja_california, \n                       w = matrix(1, 5, 5), \n                       fun = mean, \n                       na.rm=TRUE)\n\n\n\nThis approach does not change the resoution of each cell, it only smooths it out. I also ignored NA for those edge cases.\n\n\ndim( loreto_focal )\n\n\n[1] 72 72  1\n\nAnd if you look at it, it still has some pixelation (minecraft-i-ness if you will)\n\n\nplot( loreto_focal )\n\n\n\n\nThe method you choose is up to you and the consequences of changing the raw data. Be careful.\n\n\n\n",
     "preview": "posts/2021-12-15-smoothing-rasters/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T11:34:33-05:00",
     "input_file": {},
     "preview_width": 798,
     "preview_height": 392
@@ -110,7 +122,7 @@
     ],
     "contents": "\n\nThis is going to require the rayshader library to get some orthorgraphic imagery of topologies. This will be a quick\nInstall Packages If Necessary\n\n\nfor( lib in c(\"rayshader\",\"magick\") ) { \n  if( !require(lib) ) { \n    install.packages(lib)\n  }\n}\n\nif( !require(webshot2 ) ) { \n  remotes::install_github(\"rstudio/webshot2\")\n}\n\n\n\nThe Data\nFor this example, I’m going to use a section of Baja California, in the vacinity of the town of Loreto, BCS.\n\n\n\nWe can load it in using the direct url and crop it to the approximate size of the area of interest.\n\n\nlibrary( rayshader )\nlibrary( raster )\n\n\n\nI have a raster up on github for my teaching site that we’ll use.\n\n\nurl <- \"https://github.com/dyerlab/ENVS-Lectures/raw/master/data/alt_22.tif\"\nraster( url ) %>%\n  crop(extent( -112, -110.5, 25, 26.5) ) -> baja_california\nplot( baja_california ) \n\n\n\n\nNow, we should probably reproject the raster. Right now, the datum for it is defined as:\n\n\ncrs( baja_california )\n\n\nCoordinate Reference System:\nDeprecated Proj.4 representation: +proj=longlat +datum=WGS84 +no_defs \nWKT2 2019 representation:\nGEOGCRS[\"WGS 84 (with axis order normalized for visualization)\",\n    DATUM[\"World Geodetic System 1984\",\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]]] \n\nWhich is great. However, the x- and y- coordinates in this are defined by degrees, whereas the values in it, the z-axis for us below, is defined in the unit of meters.\nLet’s reproject this raster (see lecture here if you want to know more about rasters) to a datum whose units are also in meters. I grabbed the proj.4 definition of epsg = 6366, which covers Mexico west of -114 degrees in zone 11N.\n\n\nbaja_utm <- raster::projectRaster(baja_california, crs=\"+proj=utm +zone=11 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs \")\nbaja_utm \n\n\nclass      : RasterLayer \ndimensions : 197, 201, 39597  (nrow, ncol, ncell)\nresolution : 838, 926  (x, y)\nextent     : 993606.5, 1162044, 2769727, 2952149  (xmin, xmax, ymin, ymax)\ncrs        : +proj=utm +zone=11 +ellps=GRS80 +units=m +no_defs \nsource     : memory\nnames      : alt_22 \nvalues     : -202, 1408.906  (min, max)\n\nBefore I move on, I’m going to smooth out the jaggedness of this a bit exmaple here.\n\n\nsmooth_utm <- focal( baja_utm, \n                       w = matrix(1, 3, 3), \n                       fun = mean, \n                       na.rm=TRUE)\npar( mfrow =c(1,2) ) \nplot( baja_utm, legend=FALSE )\nplot( smooth_utm, legend=FALSE ) \n\n\n\npar( mfrow=c(1,1) )\n\n\n\nJust taking the ‘edge’ off, so to speak. For some reason, one of the islands is denoted as negative elevation, so I’ll fix that\n\n\nbaja_matrix <- abs( raster_to_matrix( smooth_utm ) )\n\n\n\nAnd then clean it up. This elevation raster was originally provided by WorldClim, which ignores elevations in the water. So there is a ton of NA values for where the Pacific Ocean and Sea of Cortéz is located. I’m going to replace all the NA with 0\n\n\nsum( is.na( baja_matrix )  )\n\n\n[1] 20395\n\nbaja_matrix[ is.na(baja_matrix)] <- 0\n\n\n\nPlotting with Shading\nThe matrix can now be plot with shading. There are several built-in palettes (and you can supply your own as well).\n\n\nbaja_matrix %>%\n  sphere_shade( texture=\"bw\" ) %>%\n  plot_map() \n\n\n\n\nThe possible values include:\ntexture > Default ‘imhof1’. Either a square matrix indicating the spherical texture mapping, or a string indicating one of the built-in palettes (‘imhof1’,‘imhof2’,‘imhof3’,‘imhof4’,‘desert’, ‘bw’, and ‘unicorn’).\nWhich look like this\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"desert\" )  %>% \n  plot_map() \n\n\n\n\nand this\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"imhof2\",\n                sunangle = 45 ) %>%\n  plot_map() \n\n\n\n\nand this.\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"imhof3\",\n                sunangle = 45 ) %>%\n  plot_map() \n\n\n\n\nand this\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"imhof4\",\n                sunangle = 45 ) %>%\n  plot_map() \n\n\n\n\nand of course, there is a unicorn\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"unicorn\",\n                sunangle = 45 ) %>%\n  plot_map() \n\n\n\n\nAdding Water\nWater can be represented as either opaque or transparent. These rasters do not have bathymetry data (and I set them all to zero), so I’ll this part and just make it a solid color.\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"desert\",\n                sunangle = 45 ) %>%\n  add_water( detect_water( baja_matrix ), color = \"desert\") %>% \n  plot_map() \n\n\n\n\nAdding Shadows\nThere are several different kinds of shadings we can add to a scene. Here I’ll shading from the sun (and setting the angle and altitude).\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"desert\",\n                sunangle = 45 ) %>%\n  add_water( detect_water( baja_matrix ), color = \"desert\") %>% \n  add_shadow( ray_shade( baja_matrix, \n                         sunangle=82,\n                         sunaltitude = 85), 0.5) %>%\n  plot_map() \n\n\n\n\nWe can also add onto that ambient shading.\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"desert\",\n                sunangle = 45 ) %>%\n  add_water( detect_water( baja_matrix ), color = \"desert\") %>% \n  add_shadow( ray_shade( baja_matrix, \n                         sunangle=82,\n                         sunaltitude = 85), 0.5) %>%\n  add_shadow( ambient_shade( baja_matrix), 0 ) %>%\n  plot_map() \n\n\n\n\nRendering in 3-Space\nNow let’s make it a bit more interactive. Unfortunately, you will not be able to see the popup window and use your mouse to move it around as this is being cast onto a static webpage (so run the code yourself).\nThe following steps will require that you can plot rgl content. Depending upon your platform, you may need to download a few things. For example, on OSX, you need to download XQuartz (google it). I have no idea what you’ll need on Windows or Linux.\nThis will plot it and then render it appropriately in an external window.\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"desert\",\n                sunangle = 45 ) %>%\n  add_water( detect_water( baja_matrix ), color = \"desert\") %>% \n  add_shadow( ray_shade( baja_matrix, \n                         sunangle=82,\n                         sunaltitude = 85), 0.5) %>%\n  add_shadow( ambient_shade( baja_matrix), 0 ) %>%\n  plot_3d( baja_matrix/5, \n           zscale=10,\n           fov=0,\n           theta = 135,\n           zoom = 1, \n           phi = 45, \n           windowsize = c(1000,800))\nSys.sleep(0.2)\nrender_snapshot()\n\n\n\n\nThe parameters of plot_3d include: - zscale: scaling in the z-axis. - fov: Field of View. - theta: Rotation of the landscape. - zoom: Zoom\n- phi: Angle at which camera is looking at the landscape\nYou’ll just have to play around with these to get them to look proper for the landscape you are using.\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"desert\",\n                sunangle = 45 ) %>%\n  add_water( detect_water( baja_matrix ), color = \"desert\") %>% \n  add_shadow( ray_shade( baja_matrix, \n                         sunangle=82,\n                         sunaltitude = 85), 0.5) %>%\n  add_shadow( ambient_shade( baja_matrix), 0 ) %>%\n  plot_3d( baja_matrix/5, \n           zscale=10,\n           fov=0,\n           theta = 150,\n           zoom = 0.75, \n           phi = 30, \n           windowsize = c(1000,800))\nSys.sleep(0.2)\nrender_snapshot()\n\n\n\n\nWe can even use multi-pass rendering to make the image a bit better in quality.\n\n\nbaja_matrix %>%\n  sphere_shade( texture = \"desert\",\n                sunangle = 45 ) %>%\n  add_water( detect_water( baja_matrix ), color = \"desert\") %>% \n  add_shadow( ray_shade( baja_matrix, \n                         sunangle=82,\n                         sunaltitude = 85), 0.5) %>%\n  add_shadow( ambient_shade( baja_matrix), 0 ) %>%\n  plot_3d( baja_matrix/5, \n           zscale=10,\n           fov=0,\n           theta = 150,\n           zoom = 0.75, \n           phi = 30, \n           windowsize = c(1000,800))\nSys.sleep(0.2)\nrender_highquality(samples=200, scale_text_size = 24, clear=TRUE)\n\n\n\n\nThat looks pretty good for a cheap and quick 3d render.\n\n\n\n",
     "preview": "posts/2021-12-15-threeD-topographies-in-r/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T14:12:50-05:00",
     "input_file": {},
     "preview_width": 591,
     "preview_height": 472
@@ -129,7 +141,7 @@
     "categories": [],
     "contents": "\n\nOK, now that I have moved over most of the manuscripts from the previous site, it comes time to move over some of the older posts. Many of these posts are important as there is code and data associated with them that I’d like to have access to going forward.\nLike before, however, there is some futzing around that needs to be done. However, this time, I took a different appraoch. I was less concerned about keeping the category information and all of them were authored by myself, so what I did was:\nPick out a set of 100 or so entries to keep.\nMove them into a top-level folder called old_posts.\nRead them in, one at a time, and extracted the title and date.\nCreated a new post using distill::create_post() using that date and title.\nPasted the contents of the markdown (skipping all the YAML crazyness) on the end of the new post (n.b., did you know that you could use cat() to concatenate onto the end of a file on the filesystem? I didn’t!).\nSo here is the basic code I used for it.\n\n\nrm(list = ls())\nlibrary( distill )\nlibrary( stringr )\n\nfiles <- list.files(\n  path = \"old_posts\",\n  pattern = \"index.Rmd\",\n  recursive = TRUE,\n  full.names = TRUE\n)\n\nfor (file in files) {\n  print(file)\n  lines <- readLines(file)\n  \n  # find the date \n  idx <- grep( \"date: \", lines, fixed = TRUE)\n  date <- \"\"\n  \n  if (length(idx) == 1) {\n    date <- str_sub( lines[idx], 7, 16)\n  }\n  \n  # Find the second --- and put in the output type\n  idx <- grep(\"---\", lines, fixed = TRUE)\n  content <- \"\"\n  lines <- c(lines, \" \", \" \", \" \")\n  if (length(idx) == 2) {\n    content <- paste( lines[ (idx[2]+1):length(lines) ] , \n                      collapse = \"\\n\")\n  }\n  \n  # find the title\n  idx <- grep(\"title: \", lines, fixed=TRUE )\n  title <- \"No Title\"\n  if( length(idx)>0 ) { \n    title <- str_trim( gsub('[[:punct:] ]+', \n                            \" \", \n                            str_remove(lines[idx], \"title: \")))\n  }\n  \n  ofile <- str_replace_all( tolower(title),  \n                            pattern=\" \", \n                            replacement = \"-\" ) \n  nfile <- paste(date, ofile, sep=\"-\") \n  path <- paste(\"_posts/\",\n                nfile,\n                \"/\", \n                ofile, \n                \".Rmd\", sep=\"\")\n\n  if( !file.exists(path) ) { \n\n    distill::create_post( title[1], \n                          collection=\"posts\", \n                          date = date, \n                          date_prefix=date, \n                          edit = FALSE)\n    cat( content, \n         file = path, \n         append=TRUE, \n         sep=\"\\n\")  \n  }\n}\n\n\n\nBut the problem is that when we use distill::createpost(), it puts in the following default content into the markdown. And then I just appended the original content onto the end of it.\nDefault distill post contentSo I did a quick global search and replace using my favorite TextMate and then ran the following code to render it all out and looking good.\n\n\nfor( file in list.files(path=\"_posts/\", \n                        pattern = \"*.Rmd\",\n                        recursive = TRUE,\n                        full.names = TRUE) ) { \n  \n  rmarkdown::render( file )  \n}\n\n\n\nQuestions?\nPeter Sellers\n\n\n",
     "preview": "posts/2021-12-14-moving-old-markdown-posts/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-14T07:24:17-05:00",
     "input_file": {},
     "preview_width": 293,
     "preview_height": 395
@@ -148,7 +160,7 @@
     "categories": [],
     "contents": "\nAs part of moving over from Hugo to Distill, I need to move over all my manuscripts. While putting everything into Markdown is a good idea for portability, there does not seem to be a very quick way to translate YAML. IN this case, the old YAML looked like this (n.b., they are all .md files, not .Rmd files like distill likes so the syntax hightlighting will not look right):\nOldYAMLWhich will need to be translated into the new YAML to resemble:\nNewYAMLThis may not be that big of an deal but at the end of the day, I’ve got a ton of folders that each represent each manuscript I’ve published. I was able to get a lot of it done using some quick perl like this:\nperl -pi -e s/name =/name:/g file.md\nHowever, there is going to be a lot of pain associated with some of it (authors & categories sections). For that, I’ll have to run some R code. Here is how I did it.\n\n\nfiles <- list.files(path=\"../../_manuscripts\", \n                    recursive = TRUE,\n                    full.names = TRUE,\n                    pattern = \"index.md\")\n\n\n\nSo, for each of these files, I need to:\nLoad markdown file\nSave as Rmd\nUse some terminal magic to convert over yaml formatting.\nSo here it goes:\n\n\nfor( file in files ) { \n  newfile <- gsub(\".md\", \".Rmd\", file,perl = TRUE)\n  cmd <- paste(\"mv\",file, newfile )\n  system( cmd )\n}\n\n\n\nOK, so that was sufficient for me to get things good enough to compile. And it looks… meh.\nNailed it!I put all the manuscripts in its own category and subfolder but it has all the abstract shoved into the description. However, that causes some issues because some of the abstracts are long and it makes for an unreasonable view of the manuscripts.\n\nand none of the images are showing. Now we’ll have to go through it all and futz around to make it look good. Here is the whole salchicha.\n\n\nlibrary( yaml )\nfiles <- list.files(path=\"../../_manuscripts\", \n                    recursive = TRUE,\n                    full.names = TRUE,\n                    pattern = \"index.Rmd\")\n\nfor( file in files ) { \n  print(file)\n  # load in the YAML\n  old <- read_yaml( file )\n  \n  # Make the new file contents\n  new <- c(\"---\",\n           paste(\"title:\", as.yaml(old$title)),\n           paste(\"date:\", as.yaml(old$date ) ) )\n  # put authors, year and publication here.\n  authors <- paste(\"  \", paste(unlist(old$authors), collapse=\", \"))\n  year <- strsplit(old$date, \"-\",fixed = TRUE)[[1]][1]\n  pub <- paste(  \"<i>\", old$publication, \"<\/i>\", sep=\"\" )\n  \n  \n  \n  description <- paste(\"description: |\")\n  \n  # put in links to PDF and doi if presnt\n  links <- \"<br />\"\n  if( \"url_pdf\" %in% names( old ) ) { \n    url <- old$url_pdf \n    val <- paste( \"[![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](\", url, \")\", sep=\"\")\n    links <- paste( links, val)\n  }\n  \n  if( \"doi\" %in% names( old ) ) { \n    url <- paste(\"https://doi.org\",old$doi, sep=\"/\")\n    val <- paste( \"[![ DOI \", \n                  old$doi, \n                  \"](https://img.shields.io/badge/DOI-474747.svg)](\",\n                  url,\n                  \")\", sep=\"\") \n    links <- paste( links, val )\n  }\n  description <- paste( authors, year, pub,\" \", sep=\". \")\n  description <- paste( description, links)\n  new <- c(new,\n           \"description: |\",\n           description)\n  \n  # clean up the categories\n  if( \"categories\" %in% names(old) ) { \n    categories <- gsub( \"\\\"\", \"\", old$categories )\n    new <- c(new, \n             \"categories: \",\n             unlist( lapply( categories, \n                             FUN = function(x) { return(paste(\"-\", x))})))\n  }\n  \n  \n  \n  \n  # put in the Journal \n  if( length( old$publication) > 0 ) { \n    new <- c(new,\n             paste(\"journal: \", old$publication))\n  }\n  \n  if( \"doi\" %in% names( old ) ) { \n    new <- c(new,\n             paste(\"doi: \", old$doi ))\n  }\n  \n  \n  # if there is a bib\n  bibs <- list.files( dirname(file), \n                      pattern = \"*.bib\",\n                      full.names = TRUE)\n  if( length(bibs) == 1 ) { \n    new <- c(new,\n             paste(\"bibliography:\", basename(bibs[1]) ))\n  }\n  \n  \n  \n  #add end stuff\n  if( \"respository_url\" %in% names( old ) ) { \n    new <- c(new, \n             paste(\"repository_url:\",as.yaml(old$respository_url ) ) )\n  }\n  new <- c( new, \n            paste(\"output:\\n\",as.yaml(old$output)),\n            \"---\",\n            \"\")\n  new <- gsub(\"\\n\\n\", \"\\n\", paste( new, collapse=\"\\n\") ) \n  \n  # Add image if present\n  if( \"featured\" %in% names( old ) ) { \n    img <- paste(\"![](\",old$featured,\")\")\n    new <- c( new, \n              \"\",\n              img )\n  }\n  \n  if( \"description\" %in% names( old ) ) { \n    new <- c(new,\n             \"\",\n             \"## Abstract\",\n             \"\",\n             old$description )\n  }\n  \n  #  Previously, I saved to a different file so as to not overwrite the important stuff.\n  #   Once it worked, then write over the old one.\n  # newfile <- paste( dirname(file), \"/manuscript.Rmd\", sep=\"\")\n  write(new, file=file)\n  \n}\n\n\n\nNow, I’ve just got to go clean up the old temporary files using something like:\nfind _manuscripts -iname manuscrip* -delete\nSo after doing that, it appears that the index.Rmd files are not automatically knt again, so I’ll have to go through them and, once again, cycle through the files and knit each of them.\n\n\nfor( file in files) { \n  rmarkdown::render(file)\n}\n\n\n\nThe End\n\n\n",
     "preview": "posts/2021-12-12-moving-manuscripts-from-hugo/NewYAML.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2022-01-03T09:04:16-05:00",
     "input_file": {},
     "preview_width": 692,
     "preview_height": 189
@@ -167,7 +179,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": "posts/2021-12-12-dlab-swift/logo.jpg",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:44:02-05:00",
     "input_file": {}
   },
   {
@@ -184,7 +196,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:44:00-05:00",
     "input_file": {}
   },
   {
@@ -201,7 +213,7 @@
     "categories": [],
     "contents": "\n\nSo yesterday, Apple introduced the next set of operating systems for iOS, MacOS, tvOS, iPadOS, and tvOS as well as a bunch of interesting upgrades for all the new hardware. I took the plunge with installing it on my M1 Macbook and here are some thoughts on items as I see them evolve.\nOverall\nOverall, most things work out of the box with no problems.\nR, RStudio (minus git as described below)\nMail - I wish they would add “send later” but works great and has more privacy functions.\nSafari\nIt is still REALLY FAST and new layout for the tabs.\nSafari with tabs and address bar integrated\n\n\n",
     "preview": "posts/2021-06-09-macos-monterey-beta/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:58-05:00",
     "input_file": {},
     "preview_width": 583,
     "preview_height": 275
@@ -220,7 +232,7 @@
     "categories": [],
     "contents": "\nThis spring, my Landscape Genetics Workshop will need to be held virtually via zoom. While that provides a set of unique challenges, it looks like this is facilitating a more diverse group of attendees, which is always beneficial. All course content is hosted on this site under Courses link.\nCan’t wait to start!\n\n\n\n",
     "preview": "posts/2021-05-23-spring-2021-landscape-genetics-workshop/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:56-05:00",
     "input_file": {},
     "preview_width": 939,
     "preview_height": 325
@@ -239,7 +251,7 @@
     "categories": [],
     "contents": "\nA nice tool to have at your disposal is a method for quickly making a connected graph diagram in your markdown. It may be a workflow you are trying to show or something an org chart or whatever. One thing that I’ve recently learned to through Obsidian as I develop my second brain (I call it my brainforest) is that you can easily insert mermaid charts into markdown and have them render properly. In R, it is the same, though we have a few tricks we need to use so that it looks nice.\n\n\nlibrary(DiagrammeR)\n\n\n\nA mermaid chart is a simple textual representation of nodes and connections denoted as a string. There is a top down graph-like flowchart.\n\n\nmermaid(\"graph TD; \n  A[Start] --> B{Is it?}; \n  B -- Yes --> C[OK]; \n  C --> D[Rethink]; \n  D --> B; \n  B -- No --> E[End];\")\n\n\n\n{\"x\":{\"diagram\":\"graph TD; \\n\\tA[Start] --> B{Is it?}; \\n\\tB -- Yes --> C[OK]; \\n\\tC --> D[Rethink]; \\n\\tD --> B; \\n\\tB -- No --> E[End];\"},\"evals\":[],\"jsHooks\":[]}\nThe thing that I find a bit of a pain (in RMarkdown though apparently not here in blogdown) is that the box around the plot in RMarkdown is a bit too large. To correct for that, we need to add to the function call that the diagram needs to take up 100% of the space.\n\n\nmermaid(\"graph LR; \nA(Process 1)-->B(Process 2);\nB-->C(Analysis);\nC-->D(Visualization);\nD-->E(QA/QC);\",\n        width=\"100%\",height=\"100%\")\n\n\n\n{\"x\":{\"diagram\":\"graph LR; \\nA(Process 1)-->B(Process 2);\\nB-->C(Analysis);\\nC-->D(Visualization);\\nD-->E(QA/QC);\"},\"evals\":[],\"jsHooks\":[]}\nSo that it all fits together.\n\n\n\n",
     "preview": "posts/2021-03-30-mermaid-diagrams-in-rmarkdown/featured.jpg",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:54-05:00",
     "input_file": {}
   },
   {
@@ -256,7 +268,7 @@
     "categories": [],
     "contents": "\nOK, so in working on various RMarkdown stuff, I‘ve just run across a problem with it no longer rendering HTMLWidget stuff in the recent upgrade. So if you use something like mermaid or leaflet in your xaringan presentation, it will show you the raw\n<div><\/div>\noutput instead of the actual widget. This is not an easy one to track down online because the RMarkdown & Xaringan Github sites do not address it. So I thought I would insert a thing here so I can find it next time I need it.\nAs it turns out, we need to set an option in the setup chunck as follows:\noptions(htmltools.preserve.raw = FALSE)\nThis will fix things until RStudio fixes the markdown problems and the world can get back to normal.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:52-05:00",
     "input_file": {}
   },
   {
@@ -273,7 +285,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": "posts/2021-03-13-obsidian-mobile/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:50-05:00",
     "input_file": {},
     "preview_width": 666,
     "preview_height": 525
@@ -292,7 +304,7 @@
     "categories": [],
     "contents": "\nSo this spring, I’m going to make a large push at porting over the population graphs analyses (Dyer & Nason 2004) that I have in R to a version that runs as a native app on iOS/MacOS. The long-term goals here are to leverage the upcoming advances in Augmented Reality and LiDAR at the phone/glasses level that I suspect will be more mainstream by 2023 or so.\nBig Picture\nSo, in the long run, I’m looking to have a set of software that can do the following:\nEstimate a population graph from genotype data.\n\nWrite custom SVD routines linked with Accelerate.\n\nWrap in GeneticStudio interface for Genotype & Project CRUD.\n\nVisualize the graph in either 2D (SpriteKit), 3D (SceneKit), or in AR (ARKit).\n\nForce directed estimation of location in 2-space\n\nExpand to 3-space\n\nDevelop individual physics models for dynamical system in SpriteKit & SceneKit\n\nComprehensive set of network-based analytical output for local (node- and edge- centric) as well as global parameters.\nOverlay spatial network on GeoTiff for prevalence/avoidance of features.\nChromosome walking - Use engine to analyze how population covariance changes along stretches of chromosomes from SNP-like data.\nPopulation Simulation - Develop stochastic simulation background that is visualized using dynamical population graphs for hypothesis testing, where we specify a model and\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:48-05:00",
     "input_file": {}
   },
   {
@@ -309,7 +321,7 @@
     "categories": [],
     "contents": "\nOne of the few annoying things I find with dplyr lately is the addition of an experimental option where if you use something like,\ngroup_by(X) %>% \n  summarize( Val = mean(Y))\nit gives you an error message with something like.\n\nsummarise() has grouped output by ‘X’. You can override using the .groups argument.\n\nBut why would I want to ‘override’ that grouping dplyr::authors? Didn’t I just set the grouping? I would suspect that the majority of use cases are exactly like above (group_by() immediately by summarize()).\nWhile much of tidyverse is too verbose for most of my liking. I can do without messages like:\nmessages on tidyverse startupWell I finally figured out how to shut the first part up (still working on the second part). Just put the following code into your .Rprofile file for a global fix, or any code you are using on a per-file basis.\noptions( dplyr.summarise.inform = FALSE )\nNow if we could just find some way to not have to use include=FALSE in the chunk preamble or suppressPackageStartupMessages(library(dplyr)) just to load in a library without adding a bunch of crap to our markdown files.\n\n\n\n",
     "preview": "posts/2021-02-09-dplyr-summarize-warnings/featured.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:46-05:00",
     "input_file": {},
     "preview_width": 642,
     "preview_height": 129
@@ -328,7 +340,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:44-05:00",
     "input_file": {}
   },
   {
@@ -345,7 +357,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:42-05:00",
     "input_file": {}
   },
   {
@@ -362,7 +374,7 @@
     "categories": [],
     "contents": "\nThis is rather quick and easy to do. On MacOS, make sure you have Homebrew installed and then follow those instructions.\nFor me, it took a few additional steps because I was installing it on a new mac mini (in the home office). I had not made sure everything was up-to-date before starting so I had to walk away for a little bit to let it all happen. No biggie.\nrodney@rodneys-mini ~ % brew install postgis\nError: The following formulae\n  [#<Dependency: \"python\" []>, #<Options: []>] and [#<Dependency: \"gcc\" []>, #<Options: []>]\ncannot be installed as binary packages and must be built from source.\nInstall the Command Line Tools:\n  xcode-select --install\nSo I ran this to install the command line build tools:\nrodney@rodneys-mini ~ % xcode-select --install\nxcode-select: note: install requested for command line developer tools\nThis took several minutes as I had not updated my XCode in a while. No problem though. Then I went back and ran the command again, which installed a ton of dependencies.\nrodney@rodneys-mini ~ % brew install postgis  \n==> Installing dependencies for postgis: cfitsio, popt, epsilon, expat, freexl, gdbm, openssl@1.1, readline, sqlite, xz, python, geos, giflib, gmp, isl, mpfr, libmpc, gcc, szip, hdf5, jpeg, jasper, json-c, libxml2, libdap, libtiff, proj, libgeotiff, libpng, libpq, libspatialite, netcdf, openblas, numpy, pcre, freetype, fontconfig, libffi, glib, lzo, pixman, cairo, little-cms2, nspr, nss, openjpeg, qt, poppler, libtool, unixodbc, webp, xerces-c, zstd, gdal, icu4c, krb5, postgresql, protobuf, protobuf-c, boost, eigen, cgal and sfcgal\nThat took a while.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:40-05:00",
     "input_file": {}
   },
   {
@@ -379,7 +391,7 @@
     "categories": [],
     "contents": "\nJane Remfert opened the Integrative Life Sciences Research Symposium this year with her presentation on Cultivar Gene Escape.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:38-05:00",
     "input_file": {}
   },
   {
@@ -396,7 +408,7 @@
     "categories": [],
     "contents": "\nA population graph is a network structure based upon inter-stratum conditional genetic covariance (see Dyer & Nason 2004 for a more complete discussion). In this context, it is often of interest to know the statistical stability of your loci in determining the topology you see in the popgraph. Here is a way to subsample the loci you have and identify the extent to which you are asymptotically estimating a stable topology. Basically we are going to:\n1. Sample a subset of your loci randomly (without replacement) of a particular size (e.g., 10 loci).\n2. Estimate a topology.\n3. Measure some characteristic (or characteristics) on that topology.\n4. GoTo #1 a large number of times (say 100).\n5. Increment the number of loci being used.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:36-05:00",
     "input_file": {}
   },
   {
@@ -413,7 +425,7 @@
     "categories": [],
     "contents": "\nThe gstudio package has routines that can be used to simulate random populations. I’ve added these to facilitate more exploratory data analysis. Here is how you can use them.\nIf you have not updated the gstudio and popgraph packages in a while, you probably should. Here is how (if it asks if you would like to update the other packages, it is probably a good idea to say yes).\n\n\ndevtools::install_github(\"dyerlab/popgraph\")\ndevtools::install_github(\"dyerlab/gstudio\")\n\n\n\nThen load it in as:\n\n\nlibrary(gstudio)\n\n\n\nI’m going to start with the enigmatic bark beetle data set.\n\n\ndata(arapat)\nsummary(arapat)\n\n\n      Species      Cluster      Population        ID     \n Cape     : 75   CBP-C :150   32     : 19   101_10A:  1  \n Mainland : 36   NBP-C : 84   75     : 11   101_1A :  1  \n Peninsula:252   SBP-C : 18   Const  : 11   101_2A :  1  \n                 SCBP-A: 75   12     : 10   101_3A :  1  \n                 SON-B : 36   153    : 10   101_4A :  1  \n                              157    : 10   101_5A :  1  \n                              (Other):292   (Other):357  \n    Latitude       Longitude          LTRS          WNT     \n Min.   :23.08   Min.   :-114.3   01:01 :147   03:03  :108  \n 1st Qu.:24.59   1st Qu.:-113.0   01:02 : 86   01:01  : 82  \n Median :26.25   Median :-111.5   02:02 :130   01:03  : 77  \n Mean   :26.25   Mean   :-111.7                02:02  : 62  \n 3rd Qu.:27.53   3rd Qu.:-110.5                03:04  :  8  \n Max.   :29.33   Max.   :-109.1                (Other): 15  \n                                               NA's   : 11  \n       EN           EF          ZMP           AML           ATPS    \n 01:01  :225   01:01 :219   01:01 : 46   08:08  : 51   05:05  :155  \n 01:02  : 52   01:02 : 52   01:02 : 51   07:07  : 42   03:03  : 69  \n 02:02  : 38   02:02 : 90   02:02 :233   07:08  : 42   09:09  : 66  \n 03:03  : 22   NA's  :  2   NA's  : 33   04:04  : 41   02:02  : 30  \n 01:03  :  7                             07:09  : 22   07:09  : 14  \n (Other): 16                             (Other):142   08:08  :  9  \n NA's   :  3                             NA's   : 23   (Other): 20  \n      MP20    \n 05:07  : 64  \n 07:07  : 53  \n 18:18  : 52  \n 05:05  : 48  \n 05:06  : 22  \n (Other):119  \n NA's   :  5  \n\nTo simulate random data sets we need to start off by determining what allele frequencies you may want. I’m going to use the stratum-level frequencies from the example data set. Here is what these look like.\n\n\nsuppressPackageStartupMessages( library(tidyverse) )\nlibrary(DT)\nfreqs <- frequencies(arapat, stratum=\"Population\")\nhead(freqs)\n\n\n  Stratum Locus Allele Frequency\n1     101  LTRS     01 0.2777778\n2     101  LTRS     02 0.7222222\n3     101   WNT     01 1.0000000\n4     101    EN     01 0.6111111\n5     101    EN     03 0.3888889\n6     101    EF     01 0.7142857\n\nthough the whole data set has 700 rows!\nWhat I’m going to do is to create a random dataset from these frequencides. This dataset will have 20 populations (I’ll just grab the first 20 Stratum from this frequency matrix).\n\n\nfreqs %>%\n  filter( Stratum %in% unique(freqs$Stratum)[1:20] ) -> sim_freqs\nsummary(sim_freqs)\n\n\n   Stratum             Locus              Allele         \n Length:370         Length:370         Length:370        \n Class :character   Class :character   Class :character  \n Mode  :character   Mode  :character   Mode  :character  \n                                                         \n                                                         \n                                                         \n   Frequency     \n Min.   :0.0500  \n 1st Qu.:0.1500  \n Median :0.3500  \n Mean   :0.4297  \n 3rd Qu.:0.7000  \n Max.   :1.0000  \n\nAnd we can take a quick look at the frequencies across populations for, say MP20 as:\n\n\nsim_freqs %>%\n  filter( Locus == \"MP20\", Stratum %in% unique(Stratum)[1:5] ) %>% \n  ggplot( aes(Allele,Frequency)) + \n  geom_bar( stat=\"identity\", position=\"dodge\" )  + \n  facet_grid( Stratum ~ .) + \n  theme_bw()\n\n\n\n\nOK. Now, lets take a look at how we can make a random population. The make_population() function takes a frequency matrix and creates random individuals. Here is an example.\n\n\nfake101 <- make_population( sim_freqs %>% filter(Stratum==\"101\"), N=100 )\nhead(fake101)\n\n\n  Population ID   AML  ATPS    EF    EN  LTRS  MP20   WNT   ZMP\n1        101  1 08:11 02:09 01:01 01:03 01:01 12:13 01:01 01:01\n2        101  2 11:11 02:02 01:01 01:03 02:02 12:13 01:01 01:01\n3        101  3 08:08 02:09 01:02 01:03 01:02 12:13 01:01 01:01\n4        101  4 08:11 02:09 01:02 01:03 01:01 12:13 01:01 01:01\n5        101  5 11:11 02:02 02:02 03:03 01:02 13:14 01:01 01:01\n6        101  6 11:11 02:09 01:01 01:01 02:02 02:12 01:01 01:01\n\nThe frequencies should be pretty close to the real ones. Compare the LTRS locus allele frequencies from the simualted data\n\n\nfrequencies( fake101,loci = \"LTRS\") \n\n\n  Locus Allele Frequency\n1  LTRS     01      0.28\n2  LTRS     02      0.72\n\nand the real data\n\n\nsim_freqs %>% filter(Locus==\"LTRS\", Stratum==\"101\")\n\n\n  Stratum Locus Allele Frequency\n1     101  LTRS     01 0.2777778\n2     101  LTRS     02 0.7222222\n\nPretty close. So using this approach, we can make all kinds of allele random populations. You just need to figure out the allele frequency matrix and then pass that to the appropriate functions.\n\n\n\n",
     "preview": "posts/2019-04-21-simulating-random-populations/simulating-random-populations_files/figure-html5/unnamed-chunk-6-1.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:34-05:00",
     "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
@@ -432,7 +444,7 @@
     "categories": [],
     "contents": "\nHere is the seedlings file.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:23-05:00",
     "input_file": {}
   },
   {
@@ -449,7 +461,7 @@
     "categories": [],
     "contents": "\nThere is a persistent problem with the get_map() function now that the google api is required. Even if you ask for source=”stamen” you still get an error asking for the google api. A fix is to do the following:\nlibrary(gstudio)\ndata(arapat)\ncoords <- strata_coordinates(arapat)\nb1 <- c( left = -114.2935,\n         bottom = 23.0757,\n         right = -109.1263,\n         top=  29.32541)\n\nmap <- get_stamenmap( bbox = b1, zoom=7 )\nggmap(map)\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:22-05:00",
     "input_file": {}
   },
   {
@@ -466,7 +478,7 @@
     "categories": [],
     "contents": "\nThis week I’m in the wonderful town of Glasgow giving a workshop on Applied Landscape Genetics to a wide and interesting population of researchers.\nHere is the link to the content. If you are not taking it, you can follow along at your own pace, it is all available under the following CC-SA 4.0 license.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:20-05:00",
     "input_file": {}
   },
   {
@@ -483,7 +495,7 @@
     "categories": [],
     "contents": "\nUbuntu server is a nice platform for server-related activities. Here is a short tutorial of how I updated my most current version to the latest available by rstudio.org. Here is how I got it going.\nIf this is your first install, you need to grab the gdebi stuff\nsudo apt-get install gdebi-core \nNext download the latest deb from rstudio. I typically like to try out the preview release, often stable enough to get what you want done while at the same time highlighting the latest features. When writing, it was the 1.2.1321 version.\nwget https://s3.amazonaws.com/rstudio-ide-build/server/trusty/amd64/rstudio-server-1.2.1321-amd64.deb\nMake sure to check the md5sum!\nIf you already have it running, stop it with\nsudo rstudio-server stop\nthen install the new version\nsudo gdebi rstudio-server-1.2.1321-amd64.deb \nThis went out and grabbed some other libraries and installed everything for me then turned it back on. Since I had it already installed, that was the end of it. If this is the first time you are installing it, you can configure it following the installation guide here.\n\nRichmond, Virginia \n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:17-05:00",
     "input_file": {}
   },
   {
@@ -500,7 +512,7 @@
     "categories": [],
     "contents": "\nToday, I’ve been invited to give a talk at the University of Virginia Center for Public Health Genomics. I’ll be introducing the Population Graph framework we’ve been developing over the last decade with highlights on how we are applying it to SNP-level genomic data analysis in non-model systems.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:15-05:00",
     "input_file": {}
   },
   {
@@ -517,7 +529,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:12-05:00",
     "input_file": {}
   },
   {
@@ -534,7 +546,7 @@
     "categories": [],
     "contents": "\nJane Remfert has successfully completed the necessary steps to proceed to Doctoral Candidate by completing her written and oral defense and submitting her research proposal. Thank you to Drs. Eckert, Gough, Johnson, and Keyghobadi for their insightful comments and expertise in helping to shape a dynamic and exciting research project.\nNow, you just have to do it!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:11-05:00",
     "input_file": {}
   },
   {
@@ -551,7 +563,7 @@
     "categories": [],
     "contents": "\nSo as a way to expand some of the analytical tools we offer the students at my work, I’m developing a version of my Data Literacy course that will use Python as well as R. There is a lot of overlap in these two languages and both are of interest to our students as they develop their toolkits. This document walks through how to set up Pweave on your machine so you can engage in a little Literate Programming (trust me, it will make your life suck a lot less. To see how to set up Atom, see my previous post.\nLiterate Programming\n\n\nI believe that the time is ripe for significantly better documentation of programs, and that we can best achieve this by considering programs to be works of literature. Hence, my title Literate Programming.\n\n\nKnuth – 1992\n\n\nIf you think of it a bit, as data scientists, the documents and manuscripts we work on every day are just extensions of programs and scripts we use to do our work. However, in academia we are taught the process in entirely the wrong sequence. Traditionally, we are taught the following sequence.\nWe’ve are funneled by the primary interface for writing scientific documents–the word processor–into that monstrous chunk of software we use to crafted our tales about the data we were presenting. How many times have we started working on a new project and the first thing we do is fire up a editor and start an outline of a manuscript? We never really liked it but this was the main tool we were taught to use (and the crappy reference managers tacked onto them).\nIn a separate interface, we would perform our analyses. In my career, I’ve used:\nThat VAX machine over in the Math Department at UMSL. It ran SAS and I did most of my work in IML.\nOne-off software packages that worked on our ‘special’ kind of data we are working with. These were typically FORTRAN code written by some wizard at a far-off university. Anyone remember BioSYS from Swofford & Selander?\nWorkarounds in C (my own popgraph software is written in C).\nExtensions that could be shoved into Excel (GenAlEx is a good example of how far you can push VB).\nScripting languages such as R, Perl (no one uses this one any longer, which is probably a good thing), Python, Julia, etc.\n\nThen we would export the raw output to some kind of plotting software to make your graphics. I always hated this step, because inevitably, we’d have to come back and redo the graphics (higher DPI says the publisher) and we’d have to remember how we made it that last time as most of these interfaces are stupid point-and-click software packages.\nThe main problem is that any iteration of the manuscript would require manually going through the process or changing the text document, rerunning the analysis, then replotting the figures. Move this section up her and then go back through and make sure all your figure and table references are recovered.\nBut this is entirely upside-down! Instead of Communicate -> Analysis -> Visualize, our workflow should be more like:\n\nData science workflow\nWe should be data-focused, not manuscript focused!\n\n\nThe research manuscript is simply an advertisement of our research and the data, it IS NOT the research or data.\n\n\nDyer – Just now!\n\n\nPWeave\nPWeave is like SWeave (and its better version Knitr) on R. It is a tool that we can use to interdigitate our analysis and how we go about presenting it all in one place. This allows us to have a single document where we can have the data, the analyses, the output, and the verbiage that we use to describe what we are doing. This tight coupling of the data to the rest of the components helps in Reproducible Research.\nTo install Pweave, you need to have atom and python already configured. Then in Atom, install the following packages\nlanguage-weave\nHydrogen\nlanguage-markdown\nplatformio-ide-terminal\n\nNext, you can prepare a short script. Here is a fragment of one.\n\nRaw pweave document.\n\nWhat this does is mix in markdown text and code. If you have not used Markdown before, it is pretty straight forward. Here are some simple rules.\n\nA line with one or more # marks are headings.\nA word or bit of text between asterisks (e.g., *this*) are italicized.\nA word or bit of text between pairs of asterisks (e.g., **this**) are bold.\nLinks are placed in parentheses with the option to have specific word to be the link. \\[link\\](http://foo.bar)\nLists are done physically, new line with dash for unordered or new line with number as numeric.\nAll the python code must be within the bounds marked by the three backslashes. The code will be evaluated, from the top of the document to the bottom. You do not have to show the code for it to run.\nTo weave the document into HTML (we can do other formats as well but this gets us going, open the terminal and type:\npweave.exe test1.pmd\nAnd it should produce a document in the same folder but as an *.html file.\nWhich is pretty cool. Now, there are a lot more things you can do with markdown.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:09-05:00",
     "input_file": {}
   },
   {
@@ -568,7 +580,7 @@
     "categories": [],
     "contents": "\nThis past summer has seen some rather spectacular cases of where people have run afoul of dangerous flora, the most recent of which was a college student after a runin with Giant Hogweed–the results were not good.\nInformation\nThe Virginia Tech Cooperative Extension group publishes a nice overview of toxic plants in the Commonwealth. It has some useful information in that all of us should be aware of.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:05-05:00",
     "input_file": {}
   },
   {
@@ -585,7 +597,7 @@
     "categories": [],
     "contents": "\nThis is such a common thing to do these days, it is easier to just post this here rather than search through my class notes each time someone asks me how to do this.\nHere is the issue. Say you have some data associated with your research project and are adding to it and doing analyses. Chances are, you have it shoved into an Excel spreadsheet that is on your laptop, your home computer, the computer in the lab, a backup disk (you are keeping backups, right?), and even perhaps shared on a Cloud Drive with your collaborators/advisors/partner/whatever. Great! Now you have absolutely no way to know which version of the dataset is the real one and which are wrong.\nPublishing Spreadsheets from Google Drive\nIn R, we can use the ability to serve out spreadsheet-like data as *.csv files using Google Drive. This way, the data are in one (and only one) location and can be accessed by anyone you would like to grant access. Here is how to set it up.\nFirst, on Google Drive, you need to tell it to make a spreadsheet available and how to publish it. This is done from the menu as File -> Publish to the Web… A dialog box will pop up, like the one below, and let you select which sheet is published and what it is published as. The salient part here is that you should select **Comma separated values (*.csv)** as the output type. The URL that is provided in the image below should be copied as we will be using it in R to grab the data.\nNext, you can fire up R (I use RStudio as a sane interface) and make sure you have the RCurl library installed. If not, install it like this:\ninstall.packages(\"RCurl\")\nSo to load the file from Google Drive, we need to format the URL from Google Drive\nrequire(RCurl)\nlink \nThen open an internet connection asking for a text-based communication between Google Drive and your R session\ncon \nand then pull the data into R as if it was on the local filesystem.\ndata \nAnd your data should be there.\nsummary(data)\n\n#   Population       SampleID      X.Coordinate   Y.Coordinate      Cf.G8      \n# Min.   :2.000   Min.   :203.0   Min.   : 346   Min.   : 254   Min.   :147.0  \n# 1st Qu.:3.000   1st Qu.:315.5   1st Qu.:1482   1st Qu.:2231   1st Qu.:155.0  \n# Median :4.000   Median :428.0   Median :1656   Median :2928   Median :157.0  \n# Mean   :3.809   Mean   :428.0   Mean   :1747   Mean   :2588   Mean   :160.3  \n# 3rd Qu.:5.000   3rd Qu.:540.5   3rd Qu.:1914   3rd Qu.:3082   3rd Qu.:165.0  \n# Max.   :6.000   Max.   :653.0   Max.   :3778   Max.   :6148   Max.   :199.0  \n#                                                               NAs   :9      \n#       X           Cf.H18           X.1            Cf.N5            X.2     \n# Min.   :149   Min.   : 83.0   Min.   : 83.0   Min.   :148.0   Min.   :150  \n# 1st Qu.:161   1st Qu.: 99.0   1st Qu.:107.0   1st Qu.:165.0   1st Qu.:170  \n# Median :167   Median :105.0   Median :115.0   Median :170.0   Median :170  \n# Mean   :172   Mean   :104.5   Mean   :112.8   Mean   :167.7   Mean   :170  \n# 3rd Qu.:181   3rd Qu.:111.0   3rd Qu.:119.0   3rd Qu.:170.0   3rd Qu.:170  \n# Max.   :519   Max.   :123.0   Max.   :123.0   Max.   :172.0   Max.   :172  \n# NAs   :9     NAs   :1       NAs   :1       NAs   :36      NAs   :36   \n#     Cf.N10           X.3            Cf.O5            X.4       \n Min.   :171.0   Min.   :175.0   Min.   :176.0   Min.   :176.0  \n# 1st Qu.:187.0   1st Qu.:193.0   1st Qu.:178.0   1st Qu.:182.0  \n Median :189.0   Median :197.0   Median :182.0   Median :194.0  \n# Mean   :189.4   Mean   :196.3   Mean   :182.5   Mean   :190.3  \n 3rd Qu.:193.0   3rd Qu.:201.0   3rd Qu.:182.0   3rd Qu.:196.0  \n# Max.   :205.0   Max.   :205.0   Max.   :202.0   Max.   :204.0  \n NAs   :13      NAs   :13      NAs   :8       NAs   :8\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:07-05:00",
     "input_file": {}
   },
   {
@@ -602,7 +614,7 @@
     "categories": [],
     "contents": "\n\n\n\n\nBeing new to the Windows platform, I’m on the look for a good text editor that can do the myriad of tasks that we do each day. Notepad is not an option, let’s be real. I’m looking for something that can be extended and has been designed from the bottom up for wrangling text and writing code. Ultimately, I would like something that is amenable to teaching both R and Python using a single interface. RStudio is great for R but sucks for Python. Juypter notebooks are clunky and toy-like.\n\n\n\n\n\nAtom is created by the Github folks and is integrated into ‘the mothership’ repository. Here is what I did to get it up and running and having Python running correctly.\n\n\n\n\n\nPackages\n\n\n\n\n\nPackages are extensions to the main editor that accomplish some function to make you life a bit easier. Here are some of the ones I find helpful. You can find packages and install them using Settings -> Install. Then search for the packages and hit the install button.\n\n\n\n\n\nMinimap\n\n\n\n\n\nIf you have scripts and/or code that is longer than a single page (and who doesn’t) minimap provides a graphical depiction of your code on the right-hand side of the window to allow you to easily jump up and down the file. Here is an example on an R script.\n\n\n\n\n\n\n\n\n\n\n\nScript\n\n\n\n\n\nScript is a package that runs code in the editor directly. This means you can run individual lines as you develop and look at the output. Very helpful.\n\n\n\n\n\nThemes\n\n\n\n\n\nThere are a ton of themes, both overall for the editor as well as syntax highlighting, available. To install one, select Install -> Theme and type a name from Settings. Here is the atom-material-syntax being installed.\n\n\n\n\n\n\n\n\n\n\n\nOnce installed, you can change both the UI and the syntax colors.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAs I expand more into using Atom, I’ll add additional posts showing how I have configured it for use in my daily coding activities.\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
     "preview": "https://locker.ifttt.com/v2/6471854/1529502098516-7188915696ef52db/b4eb36ac38277ba03d724b9255d610d0490c0037bbab93a0d59e2ba8987154d4/285507c1-07ef-4cb0-b0fa-4bfb29559dd0?sharing_key=cb9e9fcf4c6fa73363e076a3fdefe1dc",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:03-05:00",
     "input_file": {}
   },
   {
@@ -619,7 +631,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:01-05:00",
     "input_file": {}
   },
   {
@@ -636,7 +648,7 @@
     "categories": [],
     "contents": "\nWelcome back!\n \n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:43:00-05:00",
     "input_file": {}
   },
   {
@@ -653,7 +665,7 @@
     "categories": [],
     "contents": "\nWelcome Back!\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:58-05:00",
     "input_file": {}
   },
   {
@@ -670,7 +682,7 @@
     "categories": [],
     "contents": "\nHere are my slides from a guest lecture I gave in ENVS 601. Interesting class, only place I’ve been called totally ignorant by another instructor… I’m thinking it was a compliment aimed at bias-free research approaches.\n\n\n\nDyer’s lecture\n\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:55-05:00",
     "input_file": {}
   },
   {
@@ -687,7 +699,7 @@
     "categories": [],
     "contents": "\nWe have just begun the new academic year and we are already getting orientation meetings together for the next set of incoming students.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:54-05:00",
     "input_file": {}
   },
   {
@@ -704,7 +716,7 @@
     "categories": [],
     "contents": "\nOK, just a quickie here. I’m working with a colleague on a manuscript using LaTeX. The citation formatting for the journal we are looking at uses the numerical citations but bibtex will number the citations by the order in which the  values they occur in the bibliography section. So, it would be great to get them to be in the order in which they occur in the text.\nSo, our old friend (and sometimes enemy) grep comes to the rescue. Here is a quick one-liner that allows you to search the text for all the  entries and return only the contents within the curly brackets.\ncat test.tex | grep -o -e \"cite{[^}]*}\"\nOnce all the editing is done and we’ve finished on the main body of the text, we can reorder the bibliography section and the numbers will be incremental.\nSometimes I forget how awesome and powerful the unix underpinnings are.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:52-05:00",
     "input_file": {}
   },
   {
@@ -721,7 +733,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:50-05:00",
     "input_file": {}
   },
   {
@@ -738,7 +750,7 @@
     "categories": [],
     "contents": "\nA great infographic of per-hour growth in major cities.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:47-05:00",
     "input_file": {}
   },
   {
@@ -755,7 +767,7 @@
     "categories": [],
     "contents": "\nThis is a short presentation on the progress for the VDOT eDNA project.\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:49-05:00",
     "input_file": {}
   },
   {
@@ -772,7 +784,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:45-05:00",
     "input_file": {}
   },
   {
@@ -789,7 +801,7 @@
     "categories": [],
     "contents": "\nHere are the notes for the March CES Faculty Meeting.\n \n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:43-05:00",
     "input_file": {}
   },
   {
@@ -806,7 +818,7 @@
     "categories": [],
     "contents": "\nOK, so there is a bit of a circular firing squad going on in some of my R installs with ggplot2. Apparently, you can get various CRAN/Github versions out of sync and a whole host of different. Here is how it started:\n\n> df \nhmmm…. Then ggmap also died.\nTo fix this, I did the following:\nRemoved ggtern, ggplot2, and ggmap from my library\nInstalled ggplot2 from CRAN\nInstalled ggmap from GitHub\nInstalled ggtern from Bitbucket (why not github, I don’t know).\nSeems to work now.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:41-05:00",
     "input_file": {}
   },
   {
@@ -823,7 +835,7 @@
     "categories": [],
     "contents": "\n\nUSB-3.0 powered!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:39-05:00",
     "input_file": {}
   },
   {
@@ -840,7 +852,7 @@
     "categories": [],
     "contents": "\nThis web page is now available as through the following URL’s\nhttp://dyerlab.orghttp://dyerlab.com\nbecause the longer URL is too long and confusing.\nhttp://dyerlab.ces.vcu.edu\n \n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:37-05:00",
     "input_file": {}
   },
   {
@@ -857,7 +869,7 @@
     "categories": [],
     "contents": "\nA three-part introduction to Bayesian Data Analysis by Rasmus Bååth.\n\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:35-05:00",
     "input_file": {}
   },
   {
@@ -874,7 +886,7 @@
     "categories": [],
     "contents": "\nFancy pie chart (thanks, yihui, you are a genius):\npar(mar = c(0, 1, 0, 1))\npie(\n  c(280, 60, 20),\n  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),\n  col = c('#0292D8', '#F7EA39', '#C4B632'),\n  init.angle = -50, border = NA\n)\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:34-05:00",
     "input_file": {}
   },
   {
@@ -891,7 +903,7 @@
     "categories": [],
     "contents": "\nI have accepted and begun working as the Director of the Center for Environmental Studies at Virginia Commonwealth University. The Center is a chartered research center whose mission is to… Well, do whatever I think it will do to produce the best research and educational opportunities for our undergraduate and graduate students. We train applied scientists.\nThe Center has about 10 FTE faculty, a lot of which are shared among groups (e.g., half biology/half CES, half business/half CES, etc.) and several quality adjunct instructors. We have about 250 undergraduates, 40 Masters-level graduate students in the program, and several individuals with Ph.D. students in the Integrative Life Sciences program.\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:32-05:00",
     "input_file": {}
   },
   {
@@ -908,7 +920,7 @@
     "categories": [],
     "contents": "\nPomp and Circumstance\nRecessional\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:30-05:00",
     "input_file": {}
   },
   {
@@ -925,7 +937,7 @@
     "categories": [],
     "contents": "\nGiving a talk up at Temple University, last seminar of the year but one I’ve been looking forward to giving for a while.\n\n\nClick through the image to download a PDF version of the talk.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:28-05:00",
     "input_file": {}
   },
   {
@@ -942,7 +954,7 @@
     "categories": [],
     "contents": "\nAs part of a class in Landscape Genetics, faculty (mostly done by Melanie Murphy and Jeffrey Evans) compiled an extensive list of spatial data sources. These were made available on the course website we hosted but I wanted to make a more persistent copy of them here so they will not be lost. They are listed below the break.\n\n\nAfrica Infrastructure Knowledge Program\n\n\nhttp://www.infrastructureafrica.org/\n\n\nASTER (Advanced Spaceborne Thermal Emission and Reflection Radiometer)\n\n\nhttp://asterweb.jpl.nasa.gov/\n\n\nASTER Global 30m DEM\n\n\nhttp://www.gdem.aster.ersdac.or.jp/\n\n\nAtlas of the Biosphere\n\n\nhttp://www.sage.wisc.edu/atlas/\n\n\nAtrium biodiversity information system\n\n\nhttp://atrium.andesamazon.org/metadata_search.php\n\n\nAtrium biodiversity information system\n\n\nhttp://atrium.andesamazon.org/\n\n\nAVIRIS (Airborne Visible/Infrared Imaging Spectrometer)\n\n\nhttp://aviris.jpl.nasa.gov/\n\n\nBLM Land Survey Information System\n\n\nhttp://www.geocommunicator.gov/GeoComm/\n\n\nBLM Sage Grouse Breeding Densities\n\n\nhttp://conserveonline.org/workspaces/sagegrouse/documents/all.html\n\n\nCAL-Atlas California GIS data\n\n\nhttp://www.atlas.ca.gov/\n\n\nColorado 2009 NAIP County Mosaics\n\n\nhttps://my.usgs.gov/Public/NSDIPartnershipOffice/CO/2009%20NAIP%20County%20Mosaics/\n\n\nColorado Dept of Transportation\n\n\nhttp://apps.coloradodot.info/dataaccess/GeoData/index.cfm?fuseaction=GeoDataMain\n\n\nColorado Ownership database (COMaP)\n\n\nhttp://www.nrel.colostate.edu/projects/comap/index.html\n\n\nCSIRO Lidar mapping of vegetation canopies\n\n\nhttp://www.cossa.csiro.au/vsis/lidhome.htm\n\n\nDownscaled Climate GCM’s\n\n\nhttp://futureclim.info/\n\n\nEPA Webmap Services\n\n\nhttp://www.epa.gov/geospatial/help.htm\n\n\nFEMA Flood maps\n\n\nhttps://msc.fema.gov/webapp/wcs/stores/servlet/FemaWelcomeView?storeId=10001&catalogId=10001&langId=-1&userType=G\n\n\nFEMA Imagery download\n\n\nhttp://stratus.cr.usgs.gov/viewer/\n\n\nGeoEye foundation\n\n\nhttp://www.geoeye.com/CorpSite/corporate/foundation/\n\n\nGlobal Gridded Popuation data\n\n\nhttp://sedac.ciesin.columbia.edu/gpw/aboutus.jsp\n\n\nGlobal Land Cover Characterization\n\n\nhttp://edc2.usgs.gov/glcc/glcc.php\n\n\nGlobal Landcover Facility\n\n\nhttp://landcover.org/index.shtml\n\n\nGlobal Landcover Facility Amazon and Central Africa Forest Change\n\n\nhttp://landcover.org/data/pathfinder/data.shtml\n\n\nGlobal Multi-resolution Terrain Elevation Data 2010\n\n\nhttp://pubs.usgs.gov/of/2011/1073/\n\n\nGlobal Protected Areas\n\n\nhttp://www.protectedplanet.net/\n\n\nICESat/GLAS\n\n\nhttp://icesat.gsfc.nasa.gov/icesat/\n\n\nIdaho Dept Water Resources\n\n\nhttp://www.idwr.idaho.gov/\n\n\nIdaho GIS data (Inside Idaho)\n\n\nhttp://inside.uidaho.edu/\n\n\nLandsat Path/Row Index Shapefile\n\n\nhttps://landsat.usgs.gov/tools_wrs-2_shapefile.php\n\n\nMODIS Global NPP\n\n\nhttp://secure.ntsg.umt.edu/projects/index.php/ID/ca2901a0/fuseaction/projects.detail.htm\n\n\nMODIS Sinusoidal Grid shapefile\n\n\nhttp://gis.cri.fmach.it/modis-sinusoidal-gis-files/\n\n\nMODIS Subset tool\n\n\nhttp://daac.ornl.gov/cgi-bin/MODIS/GLBVIZ_1_Glb/modis_subset_order_global_col5.pl\n\n\nMontana Geographic Information Clearinghouse\n\n\nhttp://nris.mt.gov/gis/default.asp\n\n\nMRLC National Land Cover\n\n\nhttp://www.mrlc.gov/nlcd2006.php\n\n\nNASA GLOVIS\n\n\nhttp://glovis.usgs.gov/\n\n\nNASA Land Processes Distributed Active Archive Center\n\n\nhttps://lpdaac.usgs.gov/\n\n\nNASA Multiangle Imaging SpectroRadiometer\n\n\nhttp://eosweb.larc.nasa.gov/PRODOCS/misr/table_misr.html\n\n\nNASA-JPL Global Carbon mapping\n\n\nhttp://lidarradar.jpl.nasa.gov/\n\n\nNational Agricultural Statistics Service Crop Data\n\n\nhttp://www.nass.usda.gov/research/Cropland/SARS1a.htm\n\n\nNational Agriculture Imagery Program (NAIP)\n\n\nhttp://www.fsa.usda.gov/FSA/apfoapp?area=home&subject=prog&topic=nai\n\n\nNatural Earth Global data\n\n\nhttp://www.naturalearthdata.com/\n\n\nNCALM (National Center of Airborne Laser Mapping)\n\n\nhttp://www.ncalm.org/home.html\n\n\nNDEP (National Digital Elevation Program)\n\n\nhttp://www.ndep.gov/\n\n\nNevada GIS data\n\n\nhttp://keck.library.unr.edu/\n\n\nNOAA Costal topographic change\n\n\nhttp://www.csc.noaa.gov/crs/tcm/index.html\n\n\nNorth American Regional Climate Change Assessment Program\n\n\nhttp://www.narccap.ucar.edu/users/observed-datasets.html\n\n\nNorth Dakota Webmap Services\n\n\nhttp://www.nd.gov/gis/mapsdata/web/\n\n\nNRCS Geospatial Data Gateway\n\n\nhttp://datagateway.nrcs.usda.gov/\n\n\nOpen Street Map\n\n\nhttp://www.openstreetmap.org/\n\n\nOpenTopography\n\n\nhttp://www.opentopography.org/\n\n\nOregon Geospatial Enterprise Office\n\n\nhttp://www.oregon.gov/DAS/EISPD/GEO/sdlibrary.shtml\n\n\nPlanet Action SPOT program\n\n\nhttp://www.planet-action.org/\n\n\nPritected Areas Database of the United States\n\n\nhttp://www.protectedlands.net/\n\n\nPuget Sound Lidar Consortium\n\n\nhttp://pugetsoundlidar.ess.washington.edu/\n\n\nUS State data clearinghouse (links to state data)\n\n\nhttp://web.mit.edu/dtfg/www/data/data_gis_us_state.htm\n\n\nSRTM (Shuttle Radar Topography Mission) 90m global data\n\n\nhttp://srtm.csi.cgiar.org/\n\n\nSTRM Topography and Canopy data\n\n\nhttp://srtm.csi.cgiar.org/\n\n\nSWreGAP processed Landsat, ASTER and MSS\n\n\nhttp://earth.gis.usu.edu/search.phtml\n\n\nTexas Natural Resources Information System\n\n\nhttp://www.tnris.org/get-data#ccm\n\n\nTNC AWWI Landscape Assessment Tool\n\n\nhttp://wind.tnc.org/awwi/#\n\n\nTNC Climate Wizard\n\n\nhttp://www.climatewizard.org/\n\n\nTNC Climate Wizard Custom Queries\n\n\nhttp://climatewizardcustom.org/\n\n\nTNC Development by Design Webmap Server\n\n\nhttp://50.18.62.210/DevByDesign/\n\n\nUMAC Remote Sensing Imagery\n\n\nhttp://www.umac.org/imagery/sources/index.html\n\n\nUniversity of Washington, Various Global Data\n\n\nhttp://wagda.lib.washington.edu/data/geography/world/\n\n\nUS Census Bureau\n\n\nhttp://www.census.gov/geo/www/pvs/PVS_main.html\n\n\nUS Census Bureau – TIGER data\n\n\nhttp://www.census.gov/geo/www/tiger/tgrshp2009/tgrshp2009.html\n\n\nUS Federal Geographic Data Committee\n\n\nhttp://www.fgdc.gov/\n\n\nUS National Atlas raw data download\n\n\nhttp://www.nationalatlas.gov/atlasftp.html\n\n\nUSDA-AFPO NAIP Webmap Service\n\n\nwms.ftw.nrcs.usda.gov\n\n\nUSFS-Rocky Mt Region GIS data\n\n\nhttp://www.fs.fed.us/r2/gis/datasets_regionwide.shtml\n\n\nUSFWS Critical Habitat data\n\n\nhttp://criticalhabitat.fws.gov/crithab/\n\n\nUSFWS National Wetlands Inventory\n\n\nhttp://www.fws.gov/wetlands/Data/DataDownload.html\n\n\nUSGS CLICK\n\n\nhttp://lidar.cr.usgs.gov/\n\n\nUSGS Geologic formations\n\n\nhttp://pubs.usgs.gov/of/2005/1325/index_map.htm\n\n\nUSGS Geosciences Database\n\n\nhttp://ngmdb.usgs.gov/Other_Resources/rdb_es.html\n\n\nUSGS Global Ecosystems\n\n\nhttp://rmgsc.cr.usgs.gov/ecosystems/\n\n\nUSGS National geophysical data\n\n\nhttp://tin.er.usgs.gov/catalog/cite-view.php?cite=97\n\n\nUSGS National Hydrography Dataset\n\n\nhttp://nhd.usgs.gov/\n\n\nUSGS North West ReGap Landcover\n\n\nhttp://gap.uidaho.edu/index.php/gap-home/Northwest-GAP/landcover/download-data-by-state\n\n\nUSGS Seamless data server\n\n\nhttp://seamless.usgs.gov/\n\n\nUSGS South West ReGap Landcover\n\n\nhttp://earth.gis.usu.edu/swgap/\n\n\nUSGS Water Resource Data\n\n\nhttp://water.usgs.gov/maps.html\n\n\nVITO Image processing and archiving center\n\n\nhttp://www.vgt.vito.be/\n\n\nWashington 2009 NAIP County Mosaics\n\n\nhttp://gis.ess.washington.edu/data/raster/naip2009ccm_wa/index.html\n\n\nWorldClim\n\n\nhttp://www.worldclim.org/\n\n\nWyGISc (Wyoming GIS data server)\n\n\nhttp://www.uwyo.edu/wygisc/geodata/\n\n\nWWF Ecoregions\n\n\nhttp://www.worldwildlife.org/science/data/item1875.html\n\n\nWWF GIS data\n\n\nhttp://www.worldwildlife.org/science/data/item1872.html\n\n\nWWF Global Hydrosheds\n\n\nhttp://hydrosheds.cr.usgs.gov/#\n\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:27-05:00",
     "input_file": {}
   },
   {
@@ -959,7 +971,7 @@
     "categories": [],
     "contents": "\nHere are my slides from the talk I gave in Dr. Fox’s Survey of Environmental Studies course.\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:25-05:00",
     "input_file": {}
   },
   {
@@ -976,7 +988,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:23-05:00",
     "input_file": {}
   },
   {
@@ -993,7 +1005,7 @@
     "categories": [],
     "contents": "\nThis semester, I’ll be leading a graduate course in applied ecological statistics. Should be a lot of fun getting a group of people up to speed on the benefits of being an R guru!\nhttps://sites.google.com/a/vcu.edu/applied-environmental-statistics\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:21-05:00",
     "input_file": {}
   },
   {
@@ -1010,7 +1022,7 @@
     "categories": [],
     "contents": "\nA large subset of the talks given at this year’s Evolution meeting are now available on Youtube.\nThe playlist is here as a Google Docs spreadsheet.\nThe channel is here on Youtube.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:19-05:00",
     "input_file": {}
   },
   {
@@ -1027,7 +1039,7 @@
     "categories": [],
     "contents": "\nI just ran across an R package that allows you to integrate your R workflow into the Slack environment. Really cool. Below I show how to set it up and to post output of your analyses to slack channels for your team as well as to register notifications.\n\n\nFirst things first, I recommend installing the latest version from the github repository.\nlibrary(devtools)\ninstall_github(\"hrbrmstr/slackr\")\n\nNow you have to set up a config file. I think it looks for it in ~/.slackr It is a normal Debian Control File (DCF) format. Here is my example one:\napi_token: xoxp-XXXXXXXXXXX-XXXXXXXXX-XXXXXXXXXX-XXXXXXXXX\nchannel: #r\nusername: rodney\nincoming_webhook_url: https://hooks.slack.com/services/XXXXXXXX/XXXXXXXX/XXXXXXXX\nYou need to get the api_token and the incoming_webhook_url from slack itself. Once you have that file saved, when you want to setup the slackr environment, you load it in and can send messages such as:\nrequire(slackr)\nslackr_setup()\nslackr(\"This is an incoming piece of text from RStudio\")\nWhich results in the following in my #r slack channel:\n\nThere is also a provision for sending output graphics like ggplot objects. Here is an example of heterozygosity in the Arapat data set.\nlibrary(gstudio)\nlibrary(ggplot2)\ndata(arapat)\nhe \nWhich directly uploads the image to the channel as:\n\nVery Cool!\nThere is a slight problem though. The current version of the slackr library has an error in it associated with (perhaps) a recent change in the Slack API that has not been fixed by the developer.\nFor me to get this to work, I had to compile the package myself after making the following change in one file. To fix it, do the following:\nDownload (or checkout) the repository from github at: https://github.com/hrbrmstr/slackr\nOpen the project in RStudio\nOpen the R file names slackr_utils.R\nIn the function named slackr_ims the last line (line 117) is something like dplyr::left_join( %some stuff% )\nReplace this line with suppressWarnings( merge(users, ims, by.x=”id”, by.y=‘user’) )\nThe compile and install the package as:\nrequire(devtools)\nload_all()\nbuild()\ninstall()\n\nIt should work just fine.\nHopefully, on the next time that this package is updated by the author, the left_join() problem will have been resolved. This issue had been marked as “resolved” in the github issues a while back but apparently not pushed to the repository.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:17-05:00",
     "input_file": {}
   },
   {
@@ -1044,7 +1056,7 @@
     "categories": [],
     "contents": "\nThis may be old news but I just ran across it today and thought it may be helpful for others. GoogleEarth Pro is now free.\nYou can download it and follow the instructions here.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:16-05:00",
     "input_file": {}
   },
   {
@@ -1061,7 +1073,7 @@
     "categories": [],
     "contents": "\nI was experiencing a bit of a problem with some conflicting files on google drive and a github repository. I mirror my google drive as my Documents folder and on occassion, I am logged into more than one machine at a time and if you work on the same files without saving, they result in a conflict. I notice this when I got the message.\nOffice-iMac:gstudio rodney$ git pull\nfatal: Reference has invalid format: 'refs/heads/master[Conflict 1]'\n\nAnd then when I looked into my .git folder, I saw\nOffice-iMac:gstudio rodney$ cd .git\nOffice-iMac:.git rodney$ ls\nCOMMIT_EDITMSG index\nCOMMIT_EDITMSG[Conflict 1] index[Conflict 1]\nCOMMIT_EDITMSG[Conflict] index[Conflict 2]\nFETCH_HEAD index[Conflict 3]\nFETCH_HEAD[Conflict 1] index[Conflict 4]\nFETCH_HEAD[Conflict] index[Conflict 5]\nHEAD index[Conflict]\nORIG_HEAD info\nORIG_HEAD[Conflict] logs\nbranches objects\nconfig packed-refs\ndescription refs\nhooks\n\n\nApparently, git does not like square brackets and such in the names. To fix this, you need to do the following.\nfind .git -type f -name \"*Conflict*\" -exec rm -f {} \\;\nAnd then clean up the packed references as:\nawk '!/conflicted/' .git/packed-refs > temp && mv temp .git/packed-refs\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:14-05:00",
     "input_file": {}
   },
   {
@@ -1078,7 +1090,7 @@
     "categories": [],
     "contents": "\nHere is my talk for the Evolution 2016 meeting\nHere is a link to the PDF.\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:12-05:00",
     "input_file": {}
   },
   {
@@ -1095,7 +1107,7 @@
     "categories": [],
     "contents": "\nAnd it starts! Going to be a great meeting with a huge VCU contingent!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:10-05:00",
     "input_file": {}
   },
   {
@@ -1112,7 +1124,7 @@
     "categories": [],
     "contents": "\nSo true. Thanks Sketching Science.\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:08-05:00",
     "input_file": {}
   },
   {
@@ -1129,7 +1141,7 @@
     "categories": [],
     "contents": "\nOK, so I just ‘found‘ shiny and it has a lot of cool stuff to it. OK, I’ve known about it for a long time but have just had the opportunity to sit down and work it out and see how it can fit into the presentation and learning I’m trying to develop in my Applied Population Genetics online textbook. Here is a brief overview of how I set up the shiny server on my Ubuntu box that is hosting the book (so I can embed more interactivity in the display).\n\nOK, below are the steps that I’m taking to upgrade everything on the box and install the shiny server app and start hosting individual shiny apps.\nUpdating Background & Installing Necessary Components\nFirst, you should update to the latest releases. I’m running a LTS version (long-term support) so it is pretty stark.\nsudo apt-get update\nsudo apt-get upgrade\nNext, I needed to install the following development libraries so that things will go easily.\nsudo apt-get install libssl-dev\nsudo apt-get install gdebi-core\nsudo su - -c \"R -e \\\"install.packages('devtools', repos='http://cran.rstudio.com/')\\\"\"\nAnd then we can use the gdebi framework to install the the server\nwget https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.4.2.786-amd64.deb\nsudo gdebi shiny-server-1.4.2.786-amd64.deb\nThis puts the conf file in /etc/init/shiny-server.conf , sets up the user shiny (and has a home directory), and starts the shiny-server process.\nRedirecting URL Requests\nAt this point the shiny-server is running and is servubg pages on port 3838. However, I block all ports other than 22 and 80 for security, so what I want to do is to redirect requests to my server asking for anything in the subdirectory http://popgen.bio.vcu.edu/shiny to redirect to http://127.0.0.1:3838 locally. I need to do this by fiddling with the Apache configuration scripts.\nApache on Ubuntu puts configuration scripts in /etc/apache2/sites-available and symliks them to /etc/apache2/sites-enabled. In this file, I set up a proxy pass so that any url that is asking for stuff in the /shiny/ subdirectory be redirected to the 3838 port on this machine. At the end of the section for this server, enclosed in <VirtualHost *:80> , I put the following in:\nRewriteCond %{HTTP:Upgrade} =websocket\nRewriteRule /shiny/(.*) ws://localhost:3838/$1 [P,L]\nRewriteCond %{HTTP:Upgrade} !=websocket\nRewriteRule /shiny/(.*) http://localhost:3838/$1 [P,L]\nProxyPass /shiny/ http://localhost:3838/        \nProxyPassReverse /shiny/ http://localhost:3838/\nYou need to make sure that the following mod are turned on for apache:\nmod_proxy\nmod_proxy_html\nmod_proxy_wstunnel\nEnable them the way that is appropriate for your server. On Ubuntu it is:\na2enmod mod_proxy\na2enmod mod_proxy_html\na2enmod mod_proxy_wstunnel\nRestart Apache\nAll that is left to do now is restart apache and check to see the startup screen for all shiny apps on the http://popgen.bio.vcu.edu/shiny/ page.\nsudo service apache2 restart\nThe first shiny app to be integrated into the Applied Population Genetics textbook is located in the Hardy-Weinberg chapter. It is embedded as:\n\nAnd creates the following widget in the book (go ahead and play with it, it is interactive):\nThis opens a whole slew of interactive graphics for the textbook!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:07-05:00",
     "input_file": {}
   },
   {
@@ -1146,7 +1158,7 @@
     "categories": [],
     "contents": "\n\nYou’re about to be told one more time that you’re America’s most valuable natural resource. Have you seen what they do to valuable, natural resources? Have you seen a strip mine? Have you seen a clear-cut in a forest? Have you seen a polluted river? Don’t ever let them call you a valuable natural resource! They’re gonna strip mine your soul! They’re gonna clear-cut your best thoughts for the sake of profit, unless you learn to resist, ‘cause the profit system follows the path of least resistance, and following the path of least resistance is what makes the river crooked!\n\nUtah Phillips\n\n\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:05-05:00",
     "input_file": {}
   },
   {
@@ -1163,7 +1175,7 @@
     "categories": [],
     "contents": "\nCongratulations to the latest member of the PhD club, Dr. Cathy Viverette! Today, she became the 14th graduate student to graduate from the lab and the very first doctoral student. Take a break, relax, and then let’s get to those revisions! ;-).\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:03-05:00",
     "input_file": {}
   },
   {
@@ -1180,7 +1192,7 @@
     "categories": [],
     "contents": "\nA very cool writeup on making blow out maps.\n\nhttp://urbandemographics.blogspot.co.uk/2016/04/creating-tilted-and-stacked-maps-in-r.html\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:59-05:00",
     "input_file": {}
   },
   {
@@ -1197,7 +1209,7 @@
     "categories": [],
     "contents": "\nHere are some very useful cheat sheets put out by RStudio. A great resource of information!\n\n\nCheatsheets\n\n\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:42:01-05:00",
     "input_file": {}
   },
   {
@@ -1214,7 +1226,7 @@
     "categories": [],
     "contents": "\nI just uploaded a new plugin for RStudio called dlab. I’ll be migrating over all the little helper functions I use to this as a general require() on startup. What it has now is an AddIn that allows you to select text and have it wrapped in the r-code markup. I’m moving stuff between ePub and Markdown and it was needed.\nYou can install it as:\ndevtools::install_github(\"dyerlab/dlab\")\nthen look at the AddIns menu for wrapCode.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:58-05:00",
     "input_file": {}
   },
   {
@@ -1231,7 +1243,7 @@
     "categories": [],
     "contents": "\nThis may help you understand customizing themes in ggplot much better.\n\nCheck out https://github.com/calligross/ggthemeassist\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:56-05:00",
     "input_file": {}
   },
   {
@@ -1248,7 +1260,7 @@
     "categories": [],
     "contents": "\nCongratulations to Chitra Seshadri for defending her Masters Thesis entitled, “Genome wide analysis of epigenetic adaptive variance in _Araptus __attenuatus_, the Sonoran Desert bark beetle.” You are #13 graduate student from the Dyer Laboratory (lucky right?).\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:54-05:00",
     "input_file": {}
   },
   {
@@ -1265,7 +1277,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:52-05:00",
     "input_file": {}
   },
   {
@@ -1282,7 +1294,7 @@
     "categories": [],
     "contents": "\nHere it is, time for student presentations all around! I thought it would be nice to send this presentation around again to remind everyone what make good (and sucky) presentations. More below the fold.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:50-05:00",
     "input_file": {}
   },
   {
@@ -1299,7 +1311,7 @@
     "categories": [],
     "contents": "\nThe program STRUCTURE is an ubiquitous feature of many population genetic studies these days—if it is appropriate is another question. Today, while covering model based clustering in population genetics, we ran into a problem where STRUCTURE was unable to run and the OS said it was Corrupted and should be thrown away. Jump below for our fix, it really is an easy one.\n\nThe most recent version of the GUI STRUCTURE java package dates from 2012. This is getting a bit long in the tooth, but when teaching it is not that far fetched to have aged laptops…\nThe error we were running into is the prompted with the following dialog box when attempting to start the program.\nLies about damagedAs it turns out, sometime between 2012 and now, OSX has moved towards digitally signing applications and in this case, it is not that it is “damaged” it just won’t allow the Java Runtime to run it unless we make a small change in the preferences panel and select the Security & Privacy option.\nSecurity SettingsThen authenticate on the bottom by clicking on the lock and entering your password.\nClick to AuthenticateNow, change the setting on the Allow apps downloaded from to the Anywhere option.\nChange to Allow from Anyone TemporarilyThis should allow you to start STRUCTURE and run it. Do that and then close it. Go back to the System Preferences and turn it back to what you had it before.\nChange backOnce you run it once, you will be able to run it again without lowering your security. Happy clustering!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2022-01-06T15:08:28-05:00",
     "input_file": {}
   },
   {
@@ -1316,7 +1328,7 @@
     "categories": [],
     "contents": "\nIt is often the case that the raster we are working with is not the exact size of the area from which our data are collected. It is a much easier situation if the raster is larger than the area than if you need to stitch together two raster Tiles to get all your data onto one extent. In my doctoral thesis work, the area of the southern Ozark mountains that my sites were in was not only straddling a boundary between existing rasters, it was also at the boundary of two UTM zones! What a pain.\n\nSpatial data often consists of very large datasets. One way to minimize the amount of computational resources you are going to use in R is to select only the spatial regions (extents) that you are working in and get rid of the remaining data. This is particularly important if you are going to be doing isolation modeling for genetic connectivity as the cost surface raster needs to be translated into a connectivity network. Data outside your area of interest are unnecessarily taking both resources and time away from your work.\nTo crop a raster, we need to identify the region we wish to keep as an extent object. An extent is a vector of length 4 defined as c(xmin, xmax, ymin, ymax) describing the boundaries of are of interest.\nHere is an extent for the arapat data set.\n\n\n<pre class=\"lang:r decode:true\">require(gstudio)\ndata(arapat) lon.min <- min(arapat\\(Longitude) lon.max <- max(arapat\\)Longitude) lat.min <- min(arapat\\(Latitude) lat.max <- max(arapat\\)Latitude) e <- extent( lon.min, lon.max, lat.min, lat.max ) e ## class: Extent ## xmin: -114.2935 ## xmax: -109.1263 ## ymin: 23.0757 ## ymax: 29.32541\n\n<p>\n  This is the exact boundaries of the data set. However, it is probably a good idea to not have your map cropped exactly to your boundaries but have your most extreme locations plotted within the map boundaries. So I’ll take an approximation (rounding up and down as necessary) to use.\n<\/p>\n\n<pre class=\"lang:r decode:true\">e <- extent( -115, -108, 23, 30 )\ne ## class: Extent ## xmin: -115 ## xmax: -108 ## ymin: 23 ## ymax: 30\n\n<p>\n  This can now be used as the area from within the alt raster that we want to keep.\n<\/p>\n\n<pre class=\"lang:r decode:true\">bc <- crop( alt, e )\nbc ## class : RasterLayer ## dimensions : 840, 840, 705600 (nrow, ncol, ncell) ## resolution : 0.008333333, 0.008333333 (x, y) ## extent : -115, -108, 23, 30 (xmin, xmax, ymin, ymax) ## coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 ## data source : in memory ## names : alt_22 ## values : -202, 2774 (min, max)\n\n<p>\n  And if we plot it, we see that it is more properly scaled for the region we are interested in working on.\n<\/p>\n\n<pre class=\"lang:r decode:true \">plot(bc)<\/pre>\n\n<p>\n  <img class=\"aligncenter wp-image-865 size-large\" src=\"wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-1024x604.png\" alt=\"Screen Shot 2016-03-18 at 1.33.39 PM\" width=\"768\" height=\"453\" srcset=\"wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-1024x604.png 1024w, wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-300x177.png 300w, wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-768x453.png 768w, wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1.png 1552w\" sizes=\"(max-width: 768px) 100vw, 768px\" />\n<\/p>\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:42-05:00",
     "input_file": {}
   },
   {
@@ -1333,7 +1345,7 @@
     "categories": [],
     "contents": "\nA raster is essentially an image, whose pixel size correspond to a particular spatial extent and the data contained within each pixel represents a particular feature on the landscape. Common rasters are DEM’s (measuring elevation), rainfall, temperature, buildings, etc. In R, it is common to think of rasters as matrices whose values measure some feature on the landscape. In this section, we will examine how to acquire, load, manipulate, and extract data from raster objects.\n\nAs mentioned above, a raster is essentially a matrix with some additional data added onto it related to the spatial extent of the values it contains. As such, we can easily start with a general matrix, perform various matrix manipulations, and then transform it into a raster object when we need it to have spatial properties and attributes. Here is an example of a basic matrix, whose values have been set to random normal variables (mean=0, sd=1) and then plot using the normal R plotting functions.\nx \n\nYou can see that despite the origin of a matrix when we write it (and when you work with the row and column indices in R on it) is different than when we plot it. Two things should be noted:\nThe axes from image() are not very helpful as they are scaled to the fractional width of the matrix rather than the number of rows and columns. This is apparently the preferred behavior from the people who wrote the original R graphics package.\nThe aspect ratio of the cells (e.g., each cell width and height) are not the same. This is problematic if we are intending these data to represent spatial content.\nThis matrix can be ‘decorated’ with additional attributes and turned into a raster object by casting it as one using the raster() function.\nrequire(raster)\nr \nIf we plot the raster object, we get a different view.\nplot(r)\n\n \n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:46-05:00",
     "input_file": {}
   },
   {
@@ -1350,7 +1362,7 @@
     "categories": [],
     "contents": "\nAs part of a collaboration with VDOT, I am pleased to announce that Ms. Bonnie Roderique has just joined the Dyer laboratory to work on a project around the endangered James River Spinymussel (Pleurobema collina). Not a plant, but at least not a vertebrate!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:40-05:00",
     "input_file": {}
   },
   {
@@ -1367,7 +1379,7 @@
     "categories": [],
     "contents": "\nI’m giving a seminar at the University of Denver on 22 February about my research program. Here is a link to a PDF version of the talk.\nPDF\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:38-05:00",
     "input_file": {}
   },
   {
@@ -1384,7 +1396,7 @@
     "categories": [],
     "contents": "\n\nWelcome potential Environmental Studies students\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:35-05:00",
     "input_file": {}
   },
   {
@@ -1401,7 +1413,7 @@
     "categories": [],
     "contents": "\nHow big is the data set you are analyzing? Apparently it depends on how you count…\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:34-05:00",
     "input_file": {}
   },
   {
@@ -1418,7 +1430,7 @@
     "categories": [],
     "contents": "\nHere are the online presentations for Chapter 2: Hardy Weinberg Equilibrium from the upcoming text, Applied Population Genetics. More information on this text can be found here.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:32-05:00",
     "input_file": {}
   },
   {
@@ -1435,7 +1447,7 @@
     "categories": [],
     "contents": "\nIntroduction to Environmental Studies.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:30-05:00",
     "input_file": {}
   },
   {
@@ -1452,7 +1464,7 @@
     "categories": [],
     "contents": "\nWay to go Dr. Bulluck! A cool overview of some research that we’ve been associated with over the years.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:28-05:00",
     "input_file": {}
   },
   {
@@ -1469,7 +1481,7 @@
     "categories": [],
     "contents": "\nHere are the presentations for Chapter 1: Learning R from the upcoming text Applied Population Genetics. More information on this text can be found here.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:26-05:00",
     "input_file": {}
   },
   {
@@ -1486,7 +1498,7 @@
     "categories": [],
     "contents": "\nThis semester has a ton of new content and opportunities in the Dyerlab. Here is a quick synopsis.\nTeaching Population Genetics, should be a ton of fun.\nTeaching the Distributed graduate seminar Landscape Genetics again.\nStarting a new eDNA project with VDOT and getting a new student associated with it.\nStarting a new RadSEQ project on Protonotary Warblers and getting a new student to start in the fall.\nStarting a new Landscape Genetics NSF-funded project on gypsy moths with the Johnson Lab. Need a technician for this one as well.\nThe text Applied Population Genetics should be released as an ebook.\nShould be finishing up both Jameson’s and Chitra’s theses and submitting them for publication.\nMoving into a new laboratory location and perhaps collapsing both our lab and the Verrelli lab into a single unit.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:24-05:00",
     "input_file": {}
   },
   {
@@ -1503,7 +1515,7 @@
     "categories": [],
     "contents": "\nPrevious Dyerlab member, Anna Tucker, just got her thesis work accepted for publication in Auk. Be on the lookout for the following:\nOpportunistic conspecific brood parasitism in a box-nesting population of Prothonotary Warblers (Protonotaria citrea)\n\nConspecific brood parasitism, while prevalent in some avian taxa, is easily overlooked in when it occurs low frequencies and therefore the ecology of this behavior has been only occasionally described in passerines. Here we describe the occurrence of conspecific brood parasitism (CBP) in a population of Prothonotary Warblers (Protonotaria citrea) breeding in nest boxes, demonstrate associated fitness costs, and investigate parasite strategy. We genotyped individuals at six microsatellite loci and used CERVUS to determine log-likelihood of maternity (LOD scores) for offspring and social mothers. We set critical cut-off LOD scores at 95% confidence for exclusion of the social mother and assignment of a parasite mother from the breeding population. Of 805 nestlings (233 family groups from 2009 to 2013), we found that 12.7% had incompatible genotypes with their social mother. Females with unrelated nestlings (hosts) fledged fewer biological offspring within the host year than non-host females despite fledging more total offspring, but being a host was not significantly associated with total reproductive success over five years of breeding. We were able to identify only ~30% of parasite females, suggesting that the majority of parasites may be floaters (i.e. non-nesters) in the population or nesting in nearby natural cavities. We found no evidence of host selection based on host age, arrival at the breeding site, or nest box productivity in the previous year. This opportunistic behavior is likely facilitated by the nesting ecology of this population, in that nest sites are limited, conspicuous, and relatively dense. Future studies investigating CBP in populations using natural cavities can help elucidate the drivers of this behavior.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:23-05:00",
     "input_file": {}
   },
   {
@@ -1520,7 +1532,7 @@
     "categories": [],
     "contents": "\nI will be posting portions of all 10 chapters of my upcoming textbook, Applied Population Genetics, as early draft chapters to this website over the spring semester. \nThis book will be published in both ibook and print-on-demand versions. I prefer the ibook format because I can embed interactive content (movies, JavaScript, etc.) into the text and it will update automatically when I make revisions etc.\nThe drawback is that ibook is limited to OSX and iOS devices at this time—which is why I will also be making it available as a print-on-demand text (though the interactive content will not obviously be included). The complete text is scheduled to be made available by the end of the academic year and I will be using it as the primary source in my Spring courses of Population Genetics BIOL516 and Landscape Genetics ENVS 692\n\n \n\n\n\n\nChapter 1: Learning R\n\n\nInstallation, Package Management, RStudio, Github\n\n\nData Types\n\n\nData Containers\n\n\nBasic Programming\n\n\nGraphical Output\n\n\n\n\n\n\nChapter 2: Hardy-Weinberg Equilibrium\n\n\nTheoretical Foundations & Expectations\n\n\nTesting for Hardy-Weinberg Equilibrium\n\n\n\n\n\n\nChapter 3: Mutation\n\n\nCauses and Consequences\n\n\nEquilibrium Expectations\n\n\nEstimating Mutation Rates\n\n\n\n\n\n\nChapter 4: Non-random Mating\n\n\nGenetic Linkage\n\n\nInbreeding\n\n\nMixed Mating Systems & Selfing Rates\n\n\nRelatedness\n\n\n\n\n\n\nChapter 5: Genetic Drift\n\n\nDrift & Structure\n\n\nAllelic & Genotypic Diversity\n\n\nGenetic Effective Population Size\n\n\nRarefaction\n\n\n\n\n\n\nChapter 6: Population Subdivision\n\n\nGene Frequencies & Gene Flow\n\n\nGenetic Distance\n\n\nGenetic Structure\n\n\n\n\n\n\nChapter 7: Selection\n\n\nThe Fundamental Theorem of Natural Selection\n\n\nNeutral Theory\n\n\nSelection on Genotypes\n\n\nIdentifying Putative Selection in Outliers & Gradients\n\n\n\n\n\n\nChapter 8: Spatial Data\n\n\nSpatial Autocorrelation\n\n\nShapefiles in R\n\n\nVector Data\n\n\nRaster Data\n\n\n\n\n\n\nChapter 9: Graph Models\n\n\nModel Free Networks\n\n\nPopulation Graphs\n\n\nIsolation Models\n\n\n\n\n\n\nChapter 10: Parent-Offspring Data\n\n\nPedigree Analyses\n\n\nParentage Analysis in Populations\n\n\nPollen Pool Analyses\n\n\n\n\n\n\nAppendices\n\n\nData sets in gstudio\n\n\nInstalling GDAL & RGEOS\n\n\nSpatial Projections\n\n\nCustomizing the R Environment\n\n\nAbout the Author\n\n\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:21-05:00",
     "input_file": {}
   },
   {
@@ -1537,7 +1549,7 @@
     "categories": [],
     "contents": "\nLife Sciences Graduation ceremony is here.\n\n\n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:19-05:00",
     "input_file": {}
   },
   {
@@ -1554,7 +1566,7 @@
     "categories": [],
     "contents": "\nThe Dyer laboratory is moving! I don not know the final destination, but it has been verified that the current space is unusable. After 31 months of not having a functional laboratory…\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:17-05:00",
     "input_file": {}
   },
   {
@@ -1571,7 +1583,7 @@
     "categories": [],
     "contents": "\nThe Johnson and Dyer laboratories have been funded by DEB-Evolutionary Ecology for the project, A landscape resistance mapping approach to understanding species invasion patterns. Congratulations to the gypsy moth crew.\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:15-05:00",
     "input_file": {}
   },
   {
@@ -1588,7 +1600,7 @@
     "categories": [],
     "contents": "\nBeen working on a lexicographic analysis of ‘Sustainability’ as published by the journals PNAS and Sustainability. Here are the stemmed word forms for 366 published articles represented as a hierarchical clustering. The wordclouds represent the top 10 word stems per group.\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:14-05:00",
     "input_file": {}
   },
   {
@@ -1605,7 +1617,7 @@
     "categories": [],
     "contents": "\nA previous visitor to the laboratory, Philip Bertrand, is taking a trip between his graduate programs to travel the world and report on climate change. Here is ongoing blog, cataloging their travel from across the globe. Definitely worth following.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:12-05:00",
     "input_file": {}
   },
   {
@@ -1622,7 +1634,7 @@
     "categories": [],
     "contents": "\nI was fortunate to get asked to provide a talk at the University of Paris-Sud, a great campus that I’ve visited back in 2011. Here are the slides I used, presenting for the first time the methylation genomic data from Araptus attenuatus.\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:10-05:00",
     "input_file": {}
   },
   {
@@ -1639,7 +1651,7 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:06-05:00",
     "input_file": {}
   },
   {
@@ -1656,7 +1668,7 @@
     "categories": [],
     "contents": "\nI’ve been asked to provide a talk for a meeting in Paris at the Institut des Sciences et Technologies, about how we use network theory to uncover connectivity networks in urban pollination systems. What an awesome opportunity. Here are my slides:\n\n\n\nClick on the image of my slide to present.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:08-05:00",
     "input_file": {}
   },
   {
@@ -1673,7 +1685,7 @@
     "categories": [],
     "contents": "\nHere is some interesting data coming out of the Baja Araptus attenuatus project. We looked at methylation variation, localized within the genome and compared the amount of among-population variation present. The underlying idea here is that in insects, methylation is more often encountered in coding regions, and has been shown in many cases to be influencing phenotype.\n\nSo, the questions we are looking at are:\nIs there spatial genetic variation in the methylation ‘loci’? If not, methylation may not be useful in the search for adaptive variance.\nIf there is variation, does it mimic the spatial structure found in nucleotide-based markers?\nIf some fraction of methylation loci, say p, do contain spatial structure then it means that these methylation patterns are inherited and can be used to help reconstruct neutral history.\nThe rest of the methylation structure, say 1-p, can be considered as being due to processes that operate at a time scale that does not capture recent demographic processes. These would be the ones we are most interested in looking at for evidence of local adaptation, right?\n\n\nSo in the first step, how is the variation distributed amongst populations in the nucleotide markers and their paired methylation markers can be seen below.\n\nPaired population structure for nucleotide, MSP, and methylation, HPA, loci.\n\nIf we look at genetic distances between population for both sets of markers, we see a discongruence in the topological structure. Here is a tangle plot of the data, on the left are the nucleotide markers and on the right are the methylation ones. The red branches in the interior of each are those that are different between the two topologies.\n\nPaired neighbor joining trees for methylation and nucleotide population structure\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:04-05:00",
     "input_file": {}
   },
   {
@@ -1690,7 +1702,7 @@
     "categories": [],
     "contents": "\nI am in various stages of writing technical texts using R/RStudio/knitr and have been looking for some methods that help in this process. My goals are to be able to:\nMaintain a single source tree that can produce the text (including graphics, statistical analyses, etc). easily\nBe able to produce high quality typesetting\nBe able to easily make epub\nInclude both Code and output in the text.\nI’ve just run across Gitbook and it looks like a good option, particularly with the help of the R package Rgitbook. Here is a bit of work that I had to do to get things going on my machine.\n\nYou will need to make sure you have XCode installed (get it from Apple) for all the building tools. If you’ve had previous versions of XCode on your machine, you may need to reset xcode-select as:\nsudo xcode-select -s /Applications/Xcode.app/Contents/Developer/\n\nDownload Node.js from their site.\nIn R, install devtools and then require(“devtools”) and install_github(“jbryer/Rgitbook”)\nTry to install it as per the instruction here. If this doesn’t help, what I had to do was:\nTry sudo npm install gitbook -g\nIf this fails, you need to clean the npm cache and figure out what the problems were. Depending upon your error message you may need to:\nClean up any locks: sudo chown -R $(whoami) ~/.npm/_locks\nClean the cache\nsudo npm cache clean\n\nThen install sudo npm install gitbook-plugins -g and sudo npm install gitbook-cli -g and you should be good.\n\nYou should be able to go to R and require(Rgitbook) and then checkForGitbook() and get normal feedback.\nNow you have it installed, you should go see http://jason.bryer.org/Rgitbook/ for how to use it. Good luck! It seems like this R package hasn’t been updated in a while. I hope it isn’t stale, it looks pretty interesting.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:59-05:00",
     "input_file": {}
   },
   {
@@ -1707,7 +1719,7 @@
     "categories": [],
     "contents": "\nI just received the program for an upcoming conference I’m presenting at in Paris on 23-24 September. I’m really excited to see the other presenters and hear about their work on eco-design tools. It is being held at la Gaîté Lyrique and sponsored by ParisTech and the Vinci Corporation.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:41:01-05:00",
     "input_file": {}
   },
   {
@@ -1724,7 +1736,7 @@
     "categories": [],
     "contents": "\nEvery time I upgrade in any significant way, two R libraries seem to raise their ugly heads and scream like a spoiled child—rgdal and rgeos . Why do these two have to be SOOOO much of a pain? Why can’t we have a auto build of a binary with all the options in it for OSX? Who knows? I always feel like I get the fuzzy end of the lollipop with these two. Here is my latest approach for getting them going.\n\nFirst you have to make sure you have the latest GDAL libraries. I used to get mine from\nKyngchaos, just download the framework, install it, and then do some kind of long R CMD INSTALL dance, which seems to no longer work for me. I also tried installing from Ripley’s repository and found that (a) It was a version older than the one I already had on my machine, and (b) you can’t install from that repository , there is a malformed header and the install.packages() function just barfs.\nTime to try something new. I typically stay away from the various installer frameworks out there on OSX to keep everything in Frameworks. But this time, I used MacPorts. You can find the latest version here. Here is how I got it to help me out.\nDownloaded the version for my OS, I’m currently on 10.10 and installed it.\nIn the terminal, I updated it sudo port -v selfupdate\nI then used it to install gdal as a unix library (rather than as a framework so it won’t be located in /Library/Frameworks) by sudo port install gdal. There were a lot of dependencies for this one so it took a while.\nI then had R install rgdal as install.packages( rgdal, type=”source”)\nWorked like a charm.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:55-05:00",
     "input_file": {}
   },
   {
@@ -1741,7 +1753,7 @@
     "categories": [],
     "contents": "\nIn R, there is often the need to merge two data.frame objects (say one with individual samples and the other with population coordinates. The merge() function is a pretty awesome though it may take a little getting used to.\nHere are some things to remember:\nYou need to have two data.frame objects to merge\nThe first one in the function call will be the one merged _on-to _the second one is added to the first.\nEach will need a column to use as an index—it is a column that will be used to match rows of data. If they are the same column names then the function will do it automagically, if no common names are found in the names() of either data.frame objects, you can specify the columns using the optional by.x= and by.y= function arguments.\nHere is an example. I’m going to load in some data from the\npopgraph library. First, I’ll load up the library and hten grab the population meta data for the lophocereus data set we analyzed in Dyer & Nason (2004).\nrequire(popgraph)\ndata(baja)\nsummary(baja)\n    Region     Population    Latitude       Longitude     \n Baja  :16   BaC    : 1   Min.   :22.93   Min.   :-114.7  \n Sonora:13   Cabo   : 1   1st Qu.:24.45   1st Qu.:-112.6  \n             CP     : 1   Median :27.95   Median :-111.8  \n             Ctv    : 1   Mean   :27.33   Mean   :-111.8  \n             ELR    : 1   3rd Qu.:29.59   3rd Qu.:-110.7  \n             IC     : 1   Max.   :31.95   Max.   :-109.5  \n             (Other):23                                   \n\nThe graph itself has nodes indicated as populations and perhaps we are interested in plotting node size as a function of spatial location. We can grab the names and sizes from the popgraph object (it is a kind of igraph ) by:\ndata(lopho)\ndf.nodes \nNow we have baja and df.nodes as two data.frames and can merge them by their common column `Population`. If we merge df.nodesonto baja then we get the new data.frame:\nmerge( baja, df.nodes )\n   Population Region Latitude Longitude      Size\n1         BaC   Baja    26.59   -111.79 12.158810\n2          CP Sonora    27.95   -110.66  7.870725\n3         Ctv   Baja    29.73   -114.72  3.880886\n4         LaV   Baja    24.04   -109.99  3.533757\n5          LF Sonora    30.68   -112.27  8.472215\n6         Lig   Baja    25.73   -111.27  4.731355\n7          PL Sonora    30.39   -112.58  6.692795\n8         PtC   Baja    24.19   -111.15  4.684652\n9         PtP   Baja    29.03   -113.90 10.925375\n10     SenBas Sonora    31.95   -112.87  9.116705\n11       Seri Sonora    28.88   -111.96  2.500000\n12         SG Sonora    29.40   -112.05 11.027530\n13         SI Sonora    29.75   -112.50 11.521450\n14        SLG   Baja    29.59   -114.40  5.955645\n15         SN Sonora    28.82   -111.80  8.325785\n16        SnE   Baja    24.45   -110.70 11.828220\n17        SnF   Baja    30.76   -114.73  6.325655\n18        SnI   Baja    27.29   -113.02  5.466695\n19        StR   Baja    24.91   -111.62  6.859545\n20         TS Sonora    28.41   -111.37 16.001165\n21        TsS   Baja    23.58   -110.34  5.290570\nbut if we do it the other way, we get:\nmerge(df.nodes,baja)\n   Population      Size Region Latitude Longitude\n1         BaC 12.158810   Baja    26.59   -111.79\n2          CP  7.870725 Sonora    27.95   -110.66\n3         Ctv  3.880886   Baja    29.73   -114.72\n4         LaV  3.533757   Baja    24.04   -109.99\n5          LF  8.472215 Sonora    30.68   -112.27\n6         Lig  4.731355   Baja    25.73   -111.27\n7          PL  6.692795 Sonora    30.39   -112.58\n8         PtC  4.684652   Baja    24.19   -111.15\n9         PtP 10.925375   Baja    29.03   -113.90\n10     SenBas  9.116705 Sonora    31.95   -112.87\n11       Seri  2.500000 Sonora    28.88   -111.96\n12         SG 11.027530 Sonora    29.40   -112.05\n13         SI 11.521450 Sonora    29.75   -112.50\n14        SLG  5.955645   Baja    29.59   -114.40\n15         SN  8.325785 Sonora    28.82   -111.80\n16        SnE 11.828220   Baja    24.45   -110.70\n17        SnF  6.325655   Baja    30.76   -114.73\n18        SnI  5.466695   Baja    27.29   -113.02\n19        StR  6.859545   Baja    24.91   -111.62\n20         TS 16.001165 Sonora    28.41   -111.37\n21        TsS  5.290570   Baja    23.58   -110.34\nHope this helps.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:56-05:00",
     "input_file": {}
   },
   {
@@ -1758,7 +1770,7 @@
     "categories": [],
     "contents": "\nMuch of the work in my laboratory uses spatial data in some context. As such it is important to try to be able to grab and use spatial data to in an easy fashion. At present, R is probably the best way to grab, visualize, and analyze spatial data. For this example, I went to http://worldclim.org and downloaded the elevation (altitude) for tile 13 (eastern North America) as a GeoTiff. A GeoTiff is a specific type of image format that has spatial data contained within it. The tile data has a pixel resolution of 30 arc seconds which puts us in the general area of ~ 1km. First, we need to get things set up to work.\n# Set the working directory to where you want it.\nsetwd(\"~/Downloads\")\n\n# load in the raster library\nrequire(raster)\nLoading required package: raster\nLoading required package: sp\n\nThen we can load in and visualize the data.\nr \n\nWe can see what the raster relates to by looking at the extent.\nextent(r)\nclass       : Extent \nxmin        : -90 \nxmax        : -60 \nymin        : 30 \nymax        : 60\nor its contents.\nprint(r)\nclass       : RasterLayer \ndimensions  : 3600, 3600, 12960000  (nrow, ncol, ncell)\nresolution  : 0.008333333, 0.008333333  (x, y)\nextent      : -90, -60, 30, 60  (xmin, xmax, ymin, ymax)\ncoord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 \ndata source : /Users/rodney/Downloads/alt_13.tif \nnames       : alt_13 \nvalues      : -98, 1961  (min, max)\nAnd you are off to the races. This should get you going with the data. Other posts you may be interested in looking at are found by here.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:53-05:00",
     "input_file": {}
   },
   {
@@ -1775,7 +1787,7 @@
     "categories": [],
     "contents": "\nHere is a map of the dogwood we’ve sampled in the Fan region of Richmond Virginia.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:51-05:00",
     "input_file": {}
   },
   {
@@ -1792,7 +1804,7 @@
     "categories": [],
     "contents": "\nHere is a short (39 minute) video of some basic graphics approaches in R I use in a class on population genetics.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:49-05:00",
     "input_file": {}
   },
   {
@@ -1809,7 +1821,7 @@
     "categories": [],
     "contents": "\nWe have added a new member to our lab, Jane Remfert. She is an incoming ILS PhD Student who is going to work on pollen movement in dogwood. Very exciting!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:47-05:00",
     "input_file": {}
   },
   {
@@ -1826,7 +1838,7 @@
     "categories": [],
     "contents": "\nTwo NSF grants submitted! Taking a bit of time out for some programming and to set up Dyerlab South (in the vicinity of 24.9515812,-80.5807652)…\n \n \n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:45-05:00",
     "input_file": {}
   },
   {
@@ -1843,7 +1855,7 @@
     "categories": [],
     "contents": "\nThe default CRAN repository is not the only place that R packages are stored. You can also find them on github. When I develop libraries for R, I typically develop them on http://github.com/dyerlab and then upload them to CRAN when I get to major milestones. The latest versions of all my software will always be found on github. So here is how to install packages directly.\nTo install from github directly, you need two things, the devtools library and the repository and project name on github that you’ll be installing from. As always, it is a great idea to update everything (latest version of R and packages via update.packages(ask=FALSE)) before you start.\nIn R, type install.packages(\"devtools\") and it will go grab the stuff for you. If you are on a machine that does not have compilers and other developers tools on it, R will tell you to go download the RTools package and install it. They give you a URL to follow and a function to test the installation with. Use it.\nrequire(devtools)\nAssuming you are using my account (dyerlab) and installing the gstudio package, you would then type: install_github(\"dyerlab/gstudio\").\nDone.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:44-05:00",
     "input_file": {}
   },
   {
@@ -1860,7 +1872,7 @@
     "categories": [],
     "contents": "\nI’ve been working on integrating the Swift language into my analysis workflow but much of what I do involves the GNU Scientific Libraries for matrix analysis and other tools. Here is a quick tutorial on how to install the GSL library on a clean OSX platform.\nIt is easiest if you have XCode installed. You can get this from the App Store for free. Go download it and install it.\nDownload the latest version of the GSL libraries. You can grab them by:\nLooking for your nearest mirror site listed at http://www.gnu.org/prep/ftp.html and connecting to it.\nOpen the directory gsl/ where all the versions will be listed. Scroll down and grab gsl-latest.tar.gz.\n\nOpen the terminal (Utilities -> Terminal.app) and type: cd ~/Downloads\nUnpack the archive by: tar zxvf gsl-latest.tar.gz then cd gsl-1.16/ (or whatever the version actually was, it will probably be some number larger than 1.16).\nInside that folder will be a README file (which you probably won’t read) and an INSTALL file (which you should read). In that folder it will tell you to: ./configure then make then sudo make install. This last command will require you to type in your password as it is going to install something into the base system.\nAll the libraries and header files will be installed into the /usr/local/ directory.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:42-05:00",
     "input_file": {}
   },
   {
@@ -1877,7 +1889,7 @@
     "categories": [],
     "contents": "\n\nJameson successfully defended his MS Thesis on eDNA techniques for identification of Atlantic Sturgeon. Jameson is now the twelfth graduate student to pass through the lab. It was great having him here and we look forward to seeing where he goes from here. Way to go!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:40-05:00",
     "input_file": {}
   },
   {
@@ -1894,7 +1906,7 @@
     "categories": [],
     "contents": "\nR Markdown\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nYou can embed an R code chunk like this:\n\n\nsummary(cars)\n\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\nfit <- lm(dist ~ speed, data = cars)\nfit\n\n\n\nCall:\nlm(formula = dist ~ speed, data = cars)\n\nCoefficients:\n(Intercept)        speed  \n    -17.579        3.932  \n\nIncluding Plots\nYou can also embed plots. See Figure 1 for example:\n\n\npar(mar = c(0, 1, 0, 1))\npie(\n  c(280, 60, 20),\n  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),\n  col = c('#0292D8', '#F7EA39', '#C4B632'),\n  init.angle = -50, border = NA\n)\n\n\n\n\nFigure 1: A fancy pie chart.\n\n\n\n\n\n\n",
     "preview": "posts/2015-07-23-hello-r-markdown/hello-r-markdown_files/figure-html5/pie-1.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:38-05:00",
     "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
@@ -1913,7 +1925,7 @@
     "categories": [],
     "contents": "\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:36-05:00",
     "input_file": {}
   },
   {
@@ -1930,7 +1942,7 @@
     "categories": [],
     "contents": "\nIt looks like I will be moving into the position of Assistant Director for the Center for Environmental Studies this year! Should be fun!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:34-05:00",
     "input_file": {}
   },
   {
@@ -1947,7 +1959,7 @@
     "categories": [],
     "contents": "\nThere seems to be some nefarious conspiracy against packaging spatial R packages on the mac platform. Don’t quite understand it but it sucks. Here is how to install the rgeos package.\nIf you try the normal way, you get the following error:\ninstall.packages(\"rgeos\")\npackage ‘rgeos’ is available as a source package but not as a binary\nWarning in install.packages : package ‘rgeos’ is not available (as a binary package for R version 3.1.3)\nwhich is not very helpful. So here is a quick way to do that I use when I need to upgrade it or put it on a new machine.\nIf you do not have the developers tools from Apple, download them and install through the normal AppStore mechanisms. You will need to compile stuff from raw code for this to work.\nDownload and install the GDAL Complete package from KyngChaos. At the time of writing, it was version 1.11 (39.0 MB). If you are using Mavericks or later, you’ll have to probably change your security settings (System Preferences -> Security -> General) to “Allow apps downloaded from ‘anywhere’ to be installed. If everything works nicely (which I’ve never seen actually work), you should be able to do the following to install. Unfortunately, it always barfs on me.\n\ninstall.packages(“rgeos”, repos=“http://R-Forge.R-project.org”, type=“source”) trying URL ‘http://R-Forge.R-project.org/src/contrib/rgeos_0.3-9.tar.gz’ Content type ‘application/x-gzip’ length 238246 bytes (232 KB) opened URL ================================================== downloaded 232 KB\ninstalling source package ‘rgeos’ … configure: CC: clang configure: CXX: clang++ configure: rgeos: 0.3-8 checking for /usr/bin/svnversion… yes cat: inst/SVN_VERSION: No such file or directory configure: svn revision: checking for geos-config… no configure: error: geos-config not found or not executable. ERROR: configuration failed for package ‘rgeos’\nremoving ‘/Library/Frameworks/R.framework/Versions/3.1/Resources/library/rgeos’\n\nThe downloaded source packages are in ‘/private/var/folders/06/jmbn_ny94rs1nw19xclvdzqc0000gn/T/Rtmp9VCkBI/downloaded_packages’ Warning message: In install.packages(“rgeos”, repos = “http://R-Forge.R-project.org”, : installation of package ‘rgeos’ had non-zero exit status\n\nThis means that you need to actually compile the results. Download the latest sources from r-forge (use the *.tar.gz version). Open the terminal and:\ncd ~/Downloads\nR CMD INSTALL\n\nand you should see the following:\n\n<pre class=\"lang:default decode:true \">R CMD INSTALL rgeos_0.3-9.tar.gz --configure-args=\"--with-geos-config=/Library/Frameworks/GEOS.framework/unix/bin/geos-config\"\ninstalling to library ‘/Library/Frameworks/R.framework/Versions/3.1/Resources/library’\ninstalling source package ‘rgeos’ … configure: CC: clang configure: CXX: clang++ configure: rgeos: 0.3-8 checking for /usr/bin/svnversion… yes cat: inst/SVN_VERSION: No such file or directory configure: svn revision: configure: geos-config set to /Library/Frameworks/GEOS.framework/unix/bin/geos-config checking geos-config exists… yes checking geos-config executable… yes checking geos-config usability… yes configure: GEOS version: 3.4.2 checking geos version at least 3.2.0… yes checking geos-config clibs… yes checking for gcc… clang checking whether the C compiler works… yes checking for C compiler default output file name… a.out checking for suffix of executables… checking whether we are cross compiling… no checking for suffix of object files… o checking whether we are using the GNU C compiler… yes checking whether clang accepts -g… yes checking for clang option to accept ISO C89… none needed checking how to run the C preprocessor… clang -E checking for grep that handles long lines and -e… /usr/bin/grep checking for egrep… /usr/bin/grep -E checking for ANSI C header files… rm: conftest.dSYM: is a directory rm: conftest.dSYM: is a directory yes checking for sys/types.h… yes checking for sys/stat.h… yes checking for stdlib.h… yes checking for string.h… yes checking for memory.h… yes checking for strings.h… yes checking for inttypes.h… yes checking for stdint.h… yes checking for unistd.h… yes checking geos_c.h usability… yes checking geos_c.h presence… yes checking for geos_c.h… yes checking geos: linking with libgeos_c… yes configure: PKG_CPPFLAGS: -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include configure: PKG_LIBS: -L/Library/Frameworks/GEOS.framework/Versions/3/unix/lib -lgeos -L/Library/Frameworks/GEOS.framework/Versions/3/unix/lib -lgeos_c configure: creating ./config.status config.status: creating src/Makevars ** libs clang++ -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c dummy.cc -o dummy.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c init.c -o init.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c local_stubs.c -o local_stubs.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos.c -o rgeos.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_R2geos.c -o rgeos_R2geos.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_R2geosMP.c -o rgeos_R2geosMP.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_bbox.c -o rgeos_bbox.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_buffer.c -o rgeos_buffer.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_coord.c -o rgeos_coord.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_geos2R.c -o rgeos_geos2R.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_misc.c -o rgeos_misc.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_poly2nb.c -o rgeos_poly2nb.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_predicate_binary.c -o rgeos_predicate_binary.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_predicate_unary.c -o rgeos_predicate_unary.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_topology.c -o rgeos_topology.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_topology_binary.c -o rgeos_topology_binary.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_validate.c -o rgeos_validate.o clang -I/Library/Frameworks/R.framework/Resources/include -DNDEBUG -I/Library/Frameworks/GEOS.framework/Versions/3/unix/include -I/usr/local/include -I/usr/local/include/freetype2 -I/opt/X11/include -I“/Library/Frameworks/R.framework/Versions/3.1/Resources/library/sp/include” -fPIC -Wall -mtune=core2 -g -O2 -c rgeos_wkt.c -o rgeos_wkt.o clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o rgeos.so dummy.o init.o local_stubs.o rgeos.o rgeos_R2geos.o rgeos_R2geosMP.o rgeos_bbox.o rgeos_buffer.o rgeos_coord.o rgeos_geos2R.o rgeos_misc.o rgeos_poly2nb.o rgeos_predicate_binary.o rgeos_predicate_unary.o rgeos_topology.o rgeos_topology_binary.o rgeos_validate.o rgeos_wkt.o -L/Library/Frameworks/GEOS.framework/Versions/3/unix/lib -lgeos -L/Library/Frameworks/GEOS.framework/Versions/3/unix/lib -lgeos_c -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation installing to /Library/Frameworks/R.framework/Versions/3.1/Resources/library/rgeos/libs ** R ** inst ** preparing package for lazy loading ** help *** installing help indices ** building package indices ** testing if installed package can be loaded\nDONE (rgeos)\n\nAnd your done.\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:33-05:00",
     "input_file": {}
   },
   {
@@ -1964,7 +1976,7 @@
     "categories": [],
     "contents": "\nWorking on some code and was having a tough time configuring the color palette in GGally since it does not produce a ggplot object. It appears to be a larger problem. So, here is one hack, redefine the ggplot function and change the default palette there. Need to make a dyerlab::palette now…\nggplot \nggpairs(df,columns = 3:7,axisLabels=\"none\",color=\"color\")\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:29-05:00",
     "input_file": {}
   },
   {
@@ -1981,7 +1993,7 @@
     "categories": [],
     "contents": "\nI just received verification that Jane Remfert has decided to join the Dyer lab in the fall as a new PhD student! AND she is interested in working on dogwood! Welcome!\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:31-05:00",
     "input_file": {}
   },
   {
@@ -1998,7 +2010,7 @@
     "categories": [],
     "contents": "\n\nThis past week, VCU lost a champion of multidisciplinary research, Dr. Thomas Huff, Vice Provost of Life Sciences. Tom was an unwavering advocate of interdisciplinary interactions and a continuous supporter of Biology. He leaves lasting impressions on VCU, Life Sciences, and the Department of Biology.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:27-05:00",
     "input_file": {}
   },
   {
@@ -2015,7 +2027,7 @@
     "categories": [],
     "contents": "\nIf you use Google Docs for your writing, there are several cool tricks you can use to increase your efficiency. Here is one thing that has made it much easier when it comes to turning in assignments. Previously, one would create a document in some word processor, work on it, put it on a thumb drive, take it home and work on it, take it back to school, perhaps a lab computer, maybe it is also worked on in the library, etc. Eventually, you finish the document and then to turn it in you can either print it off (got to go find a printer or where I put that extra paper) or email it in. This last option is terrible if you have a large class!\nIf you are using Google Docs, you can just share it with the instructor. In the sharing options, you can designate that you share with someone but only allow them to make “suggestions”. This keeps the integrity of your document in place while allowing another person to mark it up. Once you share it, they can open it and write in it but any and all changes to the document are indicated via a highlight color. Since both of you are working on the document, there is no need to email it back and forth, there is only one document.\nHere is a short video how that is done if you need more visual input.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:25-05:00",
     "input_file": {}
   },
   {
@@ -2032,7 +2044,7 @@
     "categories": [],
     "contents": "\nThis quick tutorial is for how you set up your site to make it able to syndicate to a class site. I am using the BIOL310 Genetics Online course as an example. You are going to need the following:\nA category given to you by the professor to use on your site to indicate which posts should be sent over to the class site.\nA blog. Here I am running WordPress as it is the supported one from VCU. Others are available if you already have a blog going, if not got to rampages.us and sign up as a VCU student and make one. Consider it a digital portfolio for all your work.\nSend your professor the address of your blog.\nBelow is a video of the process. It is pretty easy to do.\nThat should be it. Once your professor has the link and sets up syndication, your posts (when the category is applied to them) will show up on the site.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:23-05:00",
     "input_file": {}
   },
   {
@@ -2049,7 +2061,7 @@
     "categories": [],
     "contents": "\nThis covers some basic unix commands so that you can log into a machine and move around in it with ease. It is by no means comprehensive.\nLogging In\nTo log into a machine you must use SSH. This is a secure shell and is encrypted on both ends so that others cannot snoop on your passwords or activities. If you are a windows person (shudder), you will have to use a GUI application to log into the server. Download one and install it. The server we will be using in this exercise is:\nchesapeake.envs.vcu.edu\nand can also be referenced by the raw IP address as:\n128.172.178.27\nBoth of these addresses are the same. You will need both a user name and password on the server before you can log into it.\nIf you are outside VCU network, you will have to log into our VPN (see vcu.edu and search for webvpn if you do not know how to do this). On a mac/unix/linux box, you can use the terminal application to log into the server as:\nssh chesapeake.envs.vcu.edu\nor with the raw IP address. Note: if you have a user name that is different on your local machine than it is on the server, you need to specify that in the ssh call as:\nssh server_user_id@chesapeake.envs.vcu.edu\nOnce you log into the remote server you will be greeted with a prompt from which you will be able to interact with the computer directly (e.g., no need for gui-pointy-clicky stuff).\nBash\nWhen you are logged into the server, you are actually working in an interactive programming environment. By default, the dyerlab servers run the Bash Shell. This is a command line interface that has the ability to do quite a few things that reduce the amount of tedium in your computational life. The entire philosophy of unix is to provide an environment where:\nThere is a strict partition between the stuff that you do in your own account and the stuff others do. Security at the OS level is priority number one and as such has a fairly strict set of requirements for what you as a user can see and do. This is good.\nThings work well together. Programs are small. There is no monolithic program that tries to do everything (except emacs but that is a flamewar of a different type). Programs do one type of task and do not try to multitask. This is very good because we have evolved an ecosystem of programs that are very efficient.\nIt is assumed that unix programs read and write text files, not binary files. It goes against the philosophy of the OS for a program to sequester its data into formats that are unreachable by other programs. If a program does this then it is no longer a citizen of the unix program community and as such has cut itself off from the breadth of opportunities that such an interaction entails. This is a very very good thing because you as a user can build complicated workflows in the environment that achieve things that would take much longer in the normal clickity-clickity mouse world we typically inhabit.\nBasic Commands\nTo move around a unix box on a server you are not in front of, you must do it from the command line. You will always be logged into your ‘home’ account. This is literally at the location in the file system /home/your_user_name. Everyone has their own home directory and you cannot see what is in other peoples home directories unless they do some rather severe hacks (violating #1 above). However, there are places you can put stuff to share materials between users, it is just not within the home directory. Here is an overview of some basic commands. You can always find out where you are by typing:\n\nProgram\n\n\nDescription\n\n\npwd\n\n\nPrints out the current directory you are in.\n\n\nls\n\n\nLists the files and folders in that directory (see ls -l for a long listing)\n\n\ncd\n\n\nChange to your home directory\n\n\ncd ..\n\n\nChanges to directory that is the immediate parent of the current one\n\n\ncd folder\n\n\nChanges the directory to ‘folder’\n\n\nexit\n\n\nLogs you out of the computer\n\n\nchmod\n\n\nChanges the permission/privileges for files.\n\n\necho\n\n\nPrints out variables/content to the shell output\n\n\ncat\n\n\nConcatenates text to the terminal output\n\n\nhead\n\n\nPrints out the top lines of a file\n\n\nwc\n\n\nCounts words (default) or lines (-l) in a file\n\n\ngrep\n\n\nGets a regular expression (e.g., used for text searching)\n\nAlmost all programs (pwd, ls, cd, etc.) have a manual associated with them. This is because there are often many options to modify the behavior of the output. You can get to the manual for any program by:\nman prog\nAll manual entries have the same format and go through all the options available.\nEditing Files\nThere is a plethora of editors available to the unix user. Perhaps the easiest one on the servers you’ll be using is nano. This is a simple editor that allows you to open, change, and save text files. Given that this is a command-line environment, the menu-like options are available via keyboard combinations indicated at the bottom of the screen. In most unix environments the symbol ‘^’ denotes the control key (e.g., ^-Q would be holding down the control key and typing Q), and ‘M’ denotes the key labelled ‘alt’ (the modifier key). In nano these combinations act as the menu functionality.\nTo start an editing session type:\nnano\nand it will make a new file. If you have an existing file, you can edit it as:\nnano myfile.fasta\nfor example and it will open it up and start you on an editing session.\nPutting and Getting Files\nTo move documents from your computer to a remote server, we use the SSH Copy command ‘scp’. This is built into the ssh software itself.\nscp file remoteserver:~/\nThe last part, ‘:~/’ is required as it tells scp that the remoteserver is a server and you want the file to go into your home directory ‘~/’\nscp myremoteserver:~/thefile .\nThis will pull a file from the remote server to your current directory. Again notice that the period is there, a period in the options to a program specifically means ‘this place in the directory heirarchy.’\nIf you are using windows, there is a GUI drag and drop interface with your SSH client.\nRunning a Command Line Program\nOn a server all programs are run from the command line. You have already seen that you can run a program by typing its name and hitting return. The only reason this works is because there are executable binary files located in specific directories on the machine. These directories are all called ‘bin’ and they are located in parts of the folder heirarchy dictating who can access them. If you type at the command prompt:\necho $PATH\nit will return all the bin files that you are, by default, able to search for programs. The program echo prints out the value of a variable and all Bash Shell variables are indicated by a dollar sign (and by convention are typed in all upcase).\nIf a program is not in a ‘bin’ folder you access it will not run when you simply type its name. What you have to do is to tell the Bash Shell the location of the program specifically, even if it is in the same directory as you are.\nThere is one more requirement to execute a program. The program must be labelled as something that can be executed! In unix, scripts such as Bash Scripts, perl, python, lua, and many other languages can be used to make programs but these programs are just text files containing the instructions necessary to perform a task. To designate a program as a specific one that can be executed (if its contents actually can do something) you need to set the executable bit on the file by changing the mode of the file. This is done using chmod and telling it to add executable privileges.\nchmod +x program_file\nMany things have executable privileges, try a ls -l and look at the far left column to see the privileges, the last digit is either x or – indicating executable status or not (n.b., folders are executable, if you turn it off you will not be able to change directory into that folder).\nRedirecting Output\nAs mentioned above, programs are small and do specialized things but can work together in ways that are quite dynamic. This is done by redirecting output. Here are some examples. In the directory /usr/share/velvet_1.2.10/data, there are several example fasta files that come with velvet. Copy the test_reference.fa file to your directory as:\ncp /usr/share/velvet_1.2.10/data/test_reads.fa .\nYou should be able to see this file in your directory (via ls). Lets count how many lines are in that file. I see the following output (yours will be a bit different because you are not in my home directory (all the stuff to the left of the $ is not typed and is part of the bash prompt).\nrodney@chesapeake ~ $ wc -l test_reads.fa\n285716 test_reads.fa\nSo this file has 285,716 lines in it. Lets now look at the first few lines:\n>SEQUENCE_0_length_35\nGGATATAGGGCCAACCCAACTCAACGGCCTGTCTT\n>SEQUENCE_1_length_35\nCGACGAATGACAGGTCACGAATTTGGCGGGGATTA\n>SEQUENCE_2_length_35\nCCAAATAGGTCCTTACATCATGAGACGGGCCAAAT\n>SEQUENCE_3_length_35\nCGAGATGTATACCTCTAACACTGTGTTCCAAGTAC\n>SEQUENCE_4_length_35\nAAGCTCCCGCAATGGATCTTGTGACGGGCTGCTCG\nThis output is dumped to the terminal. To redirect this output to another place, say a file, we use the redirect operator ‘>’ otherwise known as the greater than sign.\nrodney@chesapeake ~ $ head test_reads.fa > firstfew.fa\nrodney@chesapeake ~ $ wc -l firstfew.fa\n10 firstfew.fa\nPiping Between Programs\nHooking together programs is the next step and it is called piping. It is accomplished by hooking together the output of one program with the input of another using the pipe character ‘|’ (the vertical line on the slash key on US english keyboards). Lets say I wanted to search for a particular sequence in the test_reads.fa file. I’ll use GATACA because it was a good movie. I use the grep command to find it by passing first what I am looking for and then the file I am looking for it in. I will then pipe this through the wc program to see how many lines have that sequence of nucleotides within it.\nrodney@chesapeake ~ $ grep GATACA test_reads.fa | wc -l\n790\nSo there are almost 800 reads with that sequence in it. We can continue to combine commands together beyond just these two. See if you can figure out what these commands do:\nrodney@chesapeake ~ $ cat test_reads.fa | sort | head -100 > sortedfirstfew.fa\nrodney@chesapeake ~ $ head sortedfirstfew.fa\nAAAAAAAACGGGCTTATAGACCATGCAGGCTTCAT\nAAAAAAACACTATACAGCCAGAGTTCCTTCTTCTT\nAAAAAAACCCTTCTGTGTTTGATCTACCTACTATA\nAAAAAAACGGGCTTATAGACCATGCAGGCTTCATG\nAAAAAAACGTAAGGAGCGTTTATGCCAAACGAAGA\nAAAAAAAGGCTCGTGACTGTCATCATCGAGACGCC\nAAAAAAAGTGGGGTTCAAACACTCTATCCATGAAG\nAAAAAAATTGACTGTTAATGGCAATTTCAAGTTAT\nAAAAAACAGCGAACCAGATCTTATTTTGCTTCTAC\nAAAAAACATGACAACGAGAGCAACCCGGGCATTTG\nScreen\nOK, so when working on long-running programs, there is the need to be able to log in and out of a session without the various things you have running stopping each time. When you log into a unix machine, you start a ‘session’ and you can log in many times using the same user ID. When you log out, every process (running program) is purged from the memory and thus lost. So unless you plan on being logged into a terminal until a long running process is done running (some may take months), a better solution is needed. This is where a program called ‘screen’ comes in handy.\nScreen is a program that is run after you log into the server. What this does is to then make a ‘virtual session’ (or many of them) that you can attach and detach your terminal session to. You start screen by typing:\nscreen\nand then a read the verbage and continue (via space bar or hitting return). After that it will look like your normal terminal session and you’ll be able to do whatever you want to do just like before. Screen is running in the background\nSo lets say you start a long running process like:\n./VelvetOptimiser.pl -s 16 -e 31 -f “-short -raw ~/data/pedima/pedimaSNPs.fasta”\nThis can take a while to run. Now that you are already within a screen session, you can run it and then detach your terminal from that screen session. After you detach, the program will continue running just as before and you can re-attach at a later time to check on progress.\nHere are the commands for listing, attaching, and detaching from screen sessions (n.b., they all start with CTRL+a followed by another letter.\n\nKeys\n\n\nDescription\n\n\nCTRL+a c\n\n\nCreates a new shell window\n\n\nCTRL+a k\n\n\nKills the current window\n\n\nCTRL+a w\n\n\nLists all windows (the current session is marked with an ‘*’)\n\n\nCTRL+a d\n\n\nDetach from current session\n\n\nCTRL+a D\n\n\nDetach from current session and close the shell as well\n\n\nCTRL+a 0-9\n\n\nGo to session 0, 1, … 9\n\nAfter you detach (CTRL+a d) you can exit the server and when you come back, you can reattach as:\nscreen -r\nif you only have one screen session going, otherwise you can just start screen, list the open sessions, and then come back at that time.\nVelvet\nLink to UMissouri\nhttp://umbc.rnet.missouri.edu/resources/How2RunVELVETonClark.html\nFrom NCBI: A basic protocol\nhttp://www.ncbi.nlm.nih.gov/pmc/articles/PMC2952100/\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:21-05:00",
     "input_file": {}
   },
   {
@@ -2066,7 +2078,7 @@
     "categories": [],
     "contents": "\nTo dilute primers for PCR, you need to first make a 100µM stock solution. To accomplish this, you find the number of nMol on the tube and add 10X that much water in µl. This is your stock solution. Then for your working solution, dilute it to 10µM and work with that one.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:19-05:00",
     "input_file": {}
   },
   {
@@ -2083,7 +2095,7 @@
     "categories": [],
     "contents": "\nThere are several reasons why, as someone that contributes packages to R, that you should consider using r-devel instead of the latest release. Primary among these reasons are the fact that there may be changes in r-devel that are not in the latest release version and the maintainers will ding you for not using the correct version. For whatever reason, it is a good idea and here are the notes I’ve put together to compile it on OSX (at the time this was written I was using 10.8.3).\nRequirements\nFirst among the requirements is the OS X development environment. This includes all the compilers and associated tools you’ll need. You can get these directly from Apple through the App Store.\nYou will also need:\nSubversion. This is some very useful software for source code development and collaboration. This can be installed once you install the XCode stuff from Apple. svn is part of the ‘command line tools’ that the package provides. However, it is not automatically installed, you’ll have to do it after installing XCode directly.\ngfortran-4.2X. This is found on the R webpage. Go to the Mac download and then the ‘tools’ directory. Download and install it.\nInstallation\nHere is the general approach I used, that seemed to work.\nGrab the latest version of r-devel.It should be noted that there is currently no certificate for this, so you’ll have to believe that there is no malicious code in the bundle.\nsvn checkout https://svn.r-project.org/R/trunk/ r-devel\nGrab the recommended packages that are not part of the r-devel distribution (you’ll need these or things will go pear shaped).\n./tools/rsync-recommended\nIf you are using OSX Mavericks, you may need to install the command line tools first (this only needs to be done once). Type this:\nxcode-select --install\nConfigure the compilation. I just grabbed these options from the default ones the binary OSX version uses.\n./configure 'CFLAGS=-mtune=core2 -g -O2' 'CXXFLAGS=-mtune=core2 -g -O2' 'OBJCFLAGS=-mtune=core2 -g -O2' 'FCFLAGS=-g -O2' 'F77FLAGS=-g -O2' '--with-system-zlib' '--enable-memory-profiling' '--disable-openmp' '--with-tcltk=/usr/local/lib' --with-x=no\nMake the base packages\nmake\nCheck the compilation for any potential errors.\nmake check\nMake the vignettes\nmake vignettes\nMake the manuals (an optional part here but if you are going to go through all this, you might as well do it completely). I compile them as PDF.\nmake pdf\nInstall it\n$ sudo make install\nUpdating\nOne of the benefits of having a svn repository locally is that you can just update it the next time that you need it and rebuild the components that have changed. To update the repository simply issue the following command in the directory with the r-devel folder.\nsvn up\nThen you can rebuild as outlined above.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:16-05:00",
     "input_file": {}
   },
   {
@@ -2100,7 +2112,7 @@
     "categories": [],
     "contents": "\nIf you work in R for very long on mac, there comes a time when you upgrade and the framework process looses all your libraries! In some sense this is pretty lame because you now have to install all these libraries again. However, it can be a blessing if you install packages in a willy-nilly fashion as you will only reinstall the ones you use most often. At any rate, it is kind of a pain. Here is what I’ve been doing about this to automate the process. The key here is that you need to do the first part before you upgrade.\nCurrent Library\nIn the old version of R, prior to updating you’ll want to save the libraries that you have installed. In R, this can be done as follows:\npkgs \n \nInstall Updated R Version\nEither download the latest package or update your svn repository and rebuild R and install it. There are a lot of options for learning more about these options elsewhere on the web.\nInstall Missing Packages\nNow, in the new version of R, you can figure out which are installed by default and then take the differences from what you have and what the previous version had installed and then install them.\nnew_pkgs \n \nAnd you should be done.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:18-05:00",
     "input_file": {}
   },
   {
@@ -2117,7 +2129,7 @@
     "categories": [],
     "contents": "\nThe key to the AFLP protocol is to be able to digest two restriction enzymes (RE’s) simultaneously and be able to ligate onto these sticky ends primers of known concentration. When you purchase new primers, you need to aliquot out usable volumes because repeated freeze/thaw cycles reduce RE efficiency. Here are some guidelines:\nOrder from NEB (http://neb.com), they are the shiznit (n.b., that is a technical term).\nDo not order the MOST CONCENTRATED but be reasonable. We typically do not work in the volume of needing 100,000 U/ml, be reasonable.\nWhen you receive the shipment from NEB, aliquot and dilute such that we get 5 U in 20µl putting in 2µl stock (e.g., shoot for 2.5 U/µl).\nTemplate DNA should be no more than 300 ng. We DO NOT need a lot of template to start with.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:14-05:00",
     "input_file": {}
   },
   {
@@ -2134,7 +2146,7 @@
     "categories": [],
     "contents": "\nR Markdown\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com. You can embed an R code chunk like this:\n\n\nsummary(cars)\n\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\nfit <- lm(dist ~ speed, data = cars)\nfit\n\n\n\nCall:\nlm(formula = dist ~ speed, data = cars)\n\nCoefficients:\n(Intercept)        speed  \n    -17.579        3.932  \n\nIncluding Plots\nYou can also embed plots. See Figure 1 for example:\n\n\npar(mar = c(0, 1, 0, 1))\npie(\n  c(280, 60, 20),\n  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),\n  col = c('#0292D8', '#F7EA39', '#C4B632'),\n  init.angle = -50, border = NA\n)\n\n\n\n\nFigure 1: A fancy pie chart.\n\n\n\n\n\n\n",
     "preview": "posts/2011-07-23-hello-r-markdown/hello-r-markdown_files/figure-html5/pie-1.png",
-    "last_modified": "2022-02-01T10:06:26-05:00",
+    "last_modified": "2021-12-15T05:40:12-05:00",
     "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
