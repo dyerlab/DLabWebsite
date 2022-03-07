@@ -42,22 +42,25 @@ Learning Objectives:
 ### Character Data and Basic Function Usage
 [![](https://live.staticflickr.com/65535/51920091958_05b2b3d335_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/2_functions_strings/slides.html#1)
 
-Learning Objectives:
-  - Learn about basic function structure,
-  - Explore the built-in help system,
-  - Practice operations using the fundamental data type `character`,
-  - Manipulate data in `vector` formats,
-  - Perform textual analyses using the `stringr` library.
- 
+Learning Objectives:  
+  - Learn about basic function structure,  
+  - Explore the built-in help system,  
+  - Practice operations using the fundamental data type `character`,  
+  - Manipulate data in `vector` formats,  
+  - Perform textual analyses using the `stringr` library.  
+
+[stringr Cheatsheet](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf) 
+
+
 ---
 
 ### Numeric Data and Data Frames
 
 [![](https://live.staticflickr.com/65535/51920323369_e11f07482c_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/3_numeric_dataframes/slides.html#1)
 
-Learning Objectives:
-  - Explore numeric data and mathematical operations.
-  - Create and manipulate data within `data.frame` objects.
+Learning Objectives:  
+  - Explore numeric data and mathematical operations.  
+  - Create and manipulate data within `data.frame` objects.  
  
 
 ---
@@ -65,11 +68,14 @@ Learning Objectives:
 ### Basic Data Manipulation - Tidyverse
 [![](https://live.staticflickr.com/65535/51920874490_ffbe78cd17_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/4_data_manipulations/slides.html#1)
 
-Learning Objectives:
-  - Understand data manipulation verbs,   
-  - Pipe data through several modifier functions to derive inferences,
-  - Filter and select subsets of a larger data set,
+Learning Objectives:  
+  - Understand data manipulation verbs,     
+  - Pipe data through several modifier functions to derive inferences,  
+  - Filter and select subsets of a larger data set,  
   - Group and summarize measurements to derive summary parameters
+
+[Data Wrangling Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
   
 
 ---
@@ -80,10 +86,13 @@ Learning Objectives:
 
 Learning Objectives:    
   - Apply the `mutate` operator to create derived data columns.    
-  - Demonstrate the use of unordered and unordered factor data.  
-  - Convert textual represenations of dates and times into date objects.  
+  - Demonstrate the use of unordered and ordered factor data.  
+  - Convert textual representations of dates and times into date objects.  
   - Derive temporal inferences from date objects  
-  
+
+[forcats Cheatsheet](http://www.flutterbys.com.au/stats/downloads/slides/figure/factors.pdf)  
+
+[lubridate Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf)
 ---
 
 
@@ -94,6 +103,8 @@ Learning Objectives:
   - Develop your first function for consistent data formatting prior to visualization.    
   - Understand and implement basic plotting routines provided in `R::graphics`  
   - Convert raw data into high-quality graphical output using a variety of  `ggplot2` routines.  
+  
+[Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
 
 ---
 
@@ -106,6 +117,8 @@ Learning Objectives:
   - Apply differential tile providers to an interactive map.  
   - Create markers on a map representing data found within the data frame.  
 
+[leaflet Cheatsheet](https://ugoproto.github.io/ugo_r_doc/pdf/leaflet-cheat-sheet.pdf)
+
 ---
 
 ### Markdown 
@@ -115,4 +128,6 @@ Learning Objectives:
   - Understand basic markup to represent common textual components.  
   - Insert graphical output (figures, maps, etc) into a markdown document.  
   - Inject components of statistical inferences into the text of a markdown document.  
+  
+[markdown Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown.pdf)
 
