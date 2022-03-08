@@ -93,6 +93,8 @@ Learning Objectives:
 [forcats Cheatsheet](http://www.flutterbys.com.au/stats/downloads/slides/figure/factors.pdf)  
 
 [lubridate Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf)
+
+
 ---
 
 
