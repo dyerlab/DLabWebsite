@@ -107,7 +107,7 @@ Learning Objectives:
   - Understand and implement basic plotting routines provided in `R::graphics`  
   - Convert raw data into high-quality graphical output using a variety of  `ggplot2` routines.  
   
-[Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+[visualization Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
 
 ---
 
