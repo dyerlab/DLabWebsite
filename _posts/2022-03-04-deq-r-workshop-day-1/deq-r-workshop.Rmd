@@ -100,6 +100,7 @@ Learning Objectives:
 [![](https://live.staticflickr.com/65535/51921177672_fc98325ac5_w_d.jpg)](https://dyerlab.github.io/ENVS-Lectures/deq/6_visualizations/slides.html#1)
 
 Learning Objectives:  
+  - Learn about joins to merge data from two or more data.frames.
   - Develop your first function for consistent data formatting prior to visualization.    
   - Understand and implement basic plotting routines provided in `R::graphics`  
   - Convert raw data into high-quality graphical output using a variety of  `ggplot2` routines.  
