@@ -1,5 +1,19 @@
 [
   {
+    "path": "posts/2022-03-18-github-distill-manuscript-automation/",
+    "title": "Github Distill Manuscript Automation",
+    "description": "Here is a quick fix to helping you streamline your manuscript creation using the rmarkdown::distill package so that your output is automatically put in the right locations for display on Github Pages.",
+    "author": [],
+    "date": "2022-03-18",
+    "categories": [],
+    "contents": "\no, I’ve been having some fun playing around with the Distill for R Markdown\npackage as I work on getting back into research after the “Admin\nCraptastic” I’ve been doing through. It is a really nice way to create\nmanuscripts and publish content with the help of github and GitHub Pages .\nOne of the things that has been holding me back thought is that I\nwould have to set up a custom script so that the manuscript file itself\n(when compiled into html) could be moved into a specific folder in the\nrepository that will be served up on GitHub pages. I chose to use the\n/docs folder and set this up in the settings section of the\nrepository. Once you save it, it looks like this.\n\nThen, go back to your repository and add the folder and check it into\nyour GitHub repository.\n\nThe main problems were:\nThe manuscript is typically named manuscript.Rmd (or\nsomething that is typically not index, which means that it\nwill have to be renamed upon check-in to the repository. In previous\nincarnations, I put in a hook into git that would copy it over just\nprior to committing but this was a pain as it was hidden behind the\nscenes.\nThe file was not in the docs folder so no matter what I\nnamed it, it would have to be moved anyways.\nThe Fix\nSo the fix is to override the knit function directly in the Rmd YAML\ndata. There is an optional argument that you can use to have a custom\nrender function that is called when you hit the “knit” button in RStudio, that has the following\nsyntax.\nknit: (function(inputFile, encoding) { \n  rmarkdown::render(inputFile,\n                    encoding=encoding,\n                    output_file='docs/index.html') })\nNow, if you put that stuff into the YAML, it will auto-magically\nrender it with the correct name and location by itself behind the scenes\nAND you will still see it in the preview stuff.\nVery cool.\n\n\n\n",
+    "preview": "posts/2022-03-18-github-distill-manuscript-automation/preview.png",
+    "last_modified": "2022-03-18T07:52:47-04:00",
+    "input_file": {},
+    "preview_width": 268,
+    "preview_height": 129
+  },
+  {
     "path": "posts/2022-03-04-deq-r-workshop-day-1/",
     "title": "Workshop on R Data Literacy",
     "description": "The lecture content from a 2-day workshop I delivered for individuals working at the Virginia Department of Environmental Quality tht focused on building a foundation of data analysis using R.",
