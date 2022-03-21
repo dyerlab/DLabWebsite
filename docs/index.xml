@@ -7,19 +7,6 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-<<<<<<< HEAD
-    <lastBuildDate>Fri, 18 Mar 2022 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Github Distill Manuscript Automation</title>
-      <link>https://dyerlab.github.io/DLabWebsite/posts/2022-03-18-github-distill-manuscript-automation</link>
-      <description>Here is a quick fix to helping you streamline your manuscript creation using the rmarkdown::distill package so that your output is automatically put in the right locations for display on Github Pages.</description>
-      <guid>https://dyerlab.github.io/DLabWebsite/posts/2022-03-18-github-distill-manuscript-automation</guid>
-      <pubDate>Fri, 18 Mar 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2022-03-18-github-distill-manuscript-automation/preview.png" medium="image" type="image/png" width="268" height="129"/>
-    </item>
-=======
-    <lastBuildDate>Tue, 08 Mar 2022 00:00:00 +0000</lastBuildDate>
->>>>>>> 7629ebea89480c3d6d0378cf98adf35688cc505c
     <item>
       <title>Workshop on R Data Literacy</title>
       <link>https://dyerlab.github.io/DLabWebsite/posts/2022-03-04-deq-r-workshop-day-1</link>
