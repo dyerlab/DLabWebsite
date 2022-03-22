@@ -7,8 +7,15 @@
     <description>Research on the spatial distribution of population and landscape genetic variation. 
 </description>
     <generator>Distill</generator>
-<<<<<<< HEAD
-    <lastBuildDate>Fri, 18 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Update to the R POPGRAPH library</title>
+      <link>https://dyerlab.github.io/DLabWebsite/posts/2022-03-22-update-to-popgraph-library</link>
+      <description>As part of an ongoing research project, I was simulating some populatiuon graph structures and found an annoying feture in the current popgraph library when comparing disconnected graphs for distance congruence.  Fixed it and updated the version to 1.5.3</description>
+      <guid>https://dyerlab.github.io/DLabWebsite/posts/2022-03-22-update-to-popgraph-library</guid>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2022-03-22-update-to-popgraph-library/featured.png" medium="image" type="image/png" width="768" height="451"/>
+    </item>
     <item>
       <title>Github Distill Manuscript Automation</title>
       <link>https://dyerlab.github.io/DLabWebsite/posts/2022-03-18-github-distill-manuscript-automation</link>
@@ -17,9 +24,6 @@
       <pubDate>Fri, 18 Mar 2022 00:00:00 +0000</pubDate>
       <media:content url="https://dyerlab.github.io/DLabWebsite/posts/2022-03-18-github-distill-manuscript-automation/preview.png" medium="image" type="image/png" width="268" height="129"/>
     </item>
-=======
-    <lastBuildDate>Tue, 08 Mar 2022 00:00:00 +0000</lastBuildDate>
->>>>>>> 7629ebea89480c3d6d0378cf98adf35688cc505c
     <item>
       <title>Workshop on R Data Literacy</title>
       <link>https://dyerlab.github.io/DLabWebsite/posts/2022-03-04-deq-r-workshop-day-1</link>

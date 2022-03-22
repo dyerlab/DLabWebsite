@@ -1,5 +1,19 @@
 [
   {
+    "path": "posts/2022-03-22-update-to-popgraph-library/",
+    "title": "Update to the R POPGRAPH library",
+    "description": "As part of an ongoing research project, I was simulating some populatiuon graph structures and found an annoying feture in the current popgraph library when comparing disconnected graphs for distance congruence.  Fixed it and updated the version to 1.5.3",
+    "author": [],
+    "date": "2022-03-22",
+    "categories": [],
+    "contents": "\nA population graph is a graph-theoretic representation of population\ngenetic covariance, which can arrise from a host of micro and macro\nevolutionary processes (see Dyer & Nason\n2004 for a more complete description) using the Lophocereus\nschottii topology depicted below.\nThe first population graph based upon the\nspatial genetic structure of the sonoran desert cactus, Lophocereus\nschottiiFor these analyses, I have written an R package named\npopgraph that does all the under-the-scenes kinds of stuff.\nOne of the things I’m currently working on is extending this to use in\ngenomic contexts. For this, I’ve been developing the tools for\nadditional analyses, one of which is concerned with comparing large\nnumbers of topologies. Well, today I found an annoying ‘feature’ in the\nlibrary that would not give an answer with specific kinds of topological\nstructure. I didn’t give the wrong answer, it just gave you a “I cannot\ngive you an answer” kind of answer, which is annoying.\nSo I fixed it and updated the package (github). If you are\nfollowing along at home and need to do congruent tests, version 1.5.3\nand later will be less annoying (and more information rich). Enjoy!\n\n\n\n",
+    "preview": "posts/2022-03-22-update-to-popgraph-library/featured.png",
+    "last_modified": "2022-03-22T12:54:27-04:00",
+    "input_file": {},
+    "preview_width": 768,
+    "preview_height": 451
+  },
+  {
     "path": "posts/2022-03-18-github-distill-manuscript-automation/",
     "title": "Github Distill Manuscript Automation",
     "description": "Here is a quick fix to helping you streamline your manuscript creation using the rmarkdown::distill package so that your output is automatically put in the right locations for display on Github Pages.",
@@ -8,7 +22,7 @@
     "categories": [],
     "contents": "\no, I’ve been having some fun playing around with the Distill for R Markdown\npackage as I work on getting back into research after the “Admin\nCraptastic” I’ve been doing through. It is a really nice way to create\nmanuscripts and publish content with the help of github and GitHub Pages .\nOne of the things that has been holding me back thought is that I\nwould have to set up a custom script so that the manuscript file itself\n(when compiled into html) could be moved into a specific folder in the\nrepository that will be served up on GitHub pages. I chose to use the\n/docs folder and set this up in the settings section of the\nrepository. Once you save it, it looks like this.\n\nThen, go back to your repository and add the folder and check it into\nyour GitHub repository.\n\nThe main problems were:\nThe manuscript is typically named manuscript.Rmd (or\nsomething that is typically not index, which means that it\nwill have to be renamed upon check-in to the repository. In previous\nincarnations, I put in a hook into git that would copy it over just\nprior to committing but this was a pain as it was hidden behind the\nscenes.\nThe file was not in the docs folder so no matter what I\nnamed it, it would have to be moved anyways.\nThe Fix\nSo the fix is to override the knit function directly in the Rmd YAML\ndata. There is an optional argument that you can use to have a custom\nrender function that is called when you hit the “knit” button in RStudio, that has the following\nsyntax.\nknit: (function(inputFile, encoding) { \n  rmarkdown::render(inputFile,\n                    encoding=encoding,\n                    output_file='docs/index.html') })\nNow, if you put that stuff into the YAML, it will auto-magically\nrender it with the correct name and location by itself behind the scenes\nAND you will still see it in the preview stuff.\nVery cool.\n\n\n\n",
     "preview": "posts/2022-03-18-github-distill-manuscript-automation/preview.png",
-    "last_modified": "2022-03-18T07:52:47-04:00",
+    "last_modified": "2022-03-21T13:16:22-04:00",
     "input_file": {},
     "preview_width": 268,
     "preview_height": 129
