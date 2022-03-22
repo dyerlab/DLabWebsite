@@ -10,8 +10,6 @@ author:
     orcid_id: 0000-0003-4707-3453
 date: 2021-12-15
 preview: featured.png
-categories:
-  - rayshader
 output:
   distill::distill_article:
     self_contained: false
