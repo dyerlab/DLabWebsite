@@ -2,15 +2,13 @@
   "hash": "d2180a5a42736f61483ad340db927798",
   "result": {
     "markdown": "---\ntitle: \"Thanks Research Gate\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2017-04-17\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n<img class=\"aligncenter wp-image-1135 size-full\" src=\"wp-content/uploads/2017/04/Screen-Shot-2017-04-17-at-8.22.48-AM.png\" alt=\"\" width=\"1194\" height=\"660\" srcset=\"wp-content/uploads/2017/04/Screen-Shot-2017-04-17-at-8.22.48-AM.png 1194w, wp-content/uploads/2017/04/Screen-Shot-2017-04-17-at-8.22.48-AM-300x166.png 300w, wp-content/uploads/2017/04/Screen-Shot-2017-04-17-at-8.22.48-AM-768x425.png 768w, wp-content/uploads/2017/04/Screen-Shot-2017-04-17-at-8.22.48-AM-1024x566.png 1024w\" sizes=\"(max-width: 1194px) 100vw, 1194px\" />\n \n \n \n",
-    "supporting": [
-      "thanks-research-gate_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

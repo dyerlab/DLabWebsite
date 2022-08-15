@@ -2,15 +2,13 @@
   "hash": "934d237424ea4f52a5a99ffaec3a20f6",
   "result": {
     "markdown": "---\ntitle: \"Landscape Epigenetics\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-06-19\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nHere is my talk for the Evolution 2016 meeting\n\nHere is a link to the [PDF](https://drive.google.com/file/d/0B0T81CzLjtfPaTIxUHVKT3BNU0k/view?usp=sharing).\n\n&nbsp;\n \n \n \n",
-    "supporting": [
-      "landscape-epigenetics_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

@@ -2,15 +2,13 @@
   "hash": "c90cb05a3ed394069602c35adaa09051",
   "result": {
     "markdown": "---\ntitle: \"Compiling RGDAL on OSX 8211 Why do you hate me\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-08-27\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nEvery time I upgrade in any significant way, two R libraries seem to raise their ugly heads and scream like a spoiled child—<span class=\"lang:default decode:true crayon-inline\">rgdal</span> and <span class=\"lang:default decode:true crayon-inline \">rgeos</span> .  Why do these two have to be SOOOO much of a pain?  Why can't we have a auto build of a binary with all the options in it for OSX?  Who knows?  I always feel like I get the fuzzy end of the lollipop with these two.  Here is my latest approach for getting them going.\n\n<!--more-->First you have to make sure you have the latest GDAL libraries.  I used to get mine from \n\n[Kyngchaos](http://www.kyngchaos.com/software/frameworks), just download the framework, install it, and then do some kind of long <span class=\"lang:default decode:true crayon-inline \">R CMD INSTALL</span>  dance, which seems to no longer work for me.  I also tried installing from Ripley's repository and found that (a) It was a version older than the one I already had on my machine, and (b) you can't install from that repository , there is a malformed header and the <span class=\"lang:default decode:true crayon-inline \">install.packages()</span>  function just barfs.\n\nTime to try something new.  I typically stay away from the various installer frameworks out there on OSX to keep everything in Frameworks.  But this time, I used MacPorts.  You can find the latest version [here](http://www.macports.org/).  Here is how I got it to help me out.\n\n  1. Downloaded the version for my OS, I'm currently on 10.10 and installed it.\n  2. In the terminal, I updated it <span class=\"lang:default decode:true crayon-inline\">sudo port -v selfupdate</span>\n  3. I then used it to install gdal as a unix library (rather than as a framework so it won't be located in /Library/Frameworks) by <span class=\"lang:default decode:true crayon-inline \">sudo port install gdal</span>.  There were **a lot** of dependencies for this one so it took a while.\n  4. I then had R install rgdal as <span class=\"lang:default decode:true crayon-inline \">install.packages( rgdal, type=&#8221;source&#8221;)</span>\n  5. Worked like a charm.\n \n \n \n",
-    "supporting": [
-      "compiling-rgdal-on-osx-8211-why-do-you-hate-me_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

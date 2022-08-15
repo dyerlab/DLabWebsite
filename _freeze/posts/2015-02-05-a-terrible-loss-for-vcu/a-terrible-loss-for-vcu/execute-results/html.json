@@ -2,15 +2,13 @@
   "hash": "85267cbad8160e4723a8804839b37b82",
   "result": {
     "markdown": "---\ntitle: \"A terrible loss for VCU\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-02-05\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n[<img class=\" size-medium wp-image-394 aligncenter\" src=\"wp-content/uploads/2015/02/110317_049_aj_ar-e1422911097445-300x225.jpg\" alt=\"110317_049_aj_ar-e1422911097445\" width=\"300\" height=\"225\" />](wp-content/uploads/2015/02/110317_049_aj_ar-e1422911097445.jpg)\n\nThis past week, VCU lost a champion of multidisciplinary research, Dr. Thomas Huff, Vice Provost of Life Sciences.  Tom was an unwavering advocate of interdisciplinary interactions and a continuous supporter of Biology.  He leaves lasting impressions on VCU, Life Sciences, and the Department of Biology.\n \n \n \n",
-    "supporting": [
-      "a-terrible-loss-for-vcu_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

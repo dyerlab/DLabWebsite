@@ -2,15 +2,13 @@
   "hash": "3ac37e3b775e8ac07f749d2b59d51af7",
   "result": {
     "markdown": "---\ntitle: \"Landscape Genetics Workshop 2019\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2019-03-24\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nThis week I'm in the wonderful town of Glasgow giving a workshop on Applied Landscape Genetics to a wide and interesting population of researchers. \n\n[Here](https://drive.google.com/open?id=1DjbT-WO2pNnAb1AbofQgg1gw9JsatTrY) is the link to the content. If you are not taking it, you can follow along at your own pace, it is all available under the following CC-SA 4.0 license.<figure class=\"wp-block-image\">\n\n[<img src=\"https://rodneydyer.com/wp-content/uploads/2019/03/Screen-Shot-2019-03-24-at-5.11.33-PM-1024x263.png\" alt=\"\" class=\"wp-image-2261\" srcset=\"https://rodneydyer.com/wp-content/uploads/2019/03/Screen-Shot-2019-03-24-at-5.11.33-PM-1024x263.png 1024w, https://rodneydyer.com/wp-content/uploads/2019/03/Screen-Shot-2019-03-24-at-5.11.33-PM-300x77.png 300w, https://rodneydyer.com/wp-content/uploads/2019/03/Screen-Shot-2019-03-24-at-5.11.33-PM-768x197.png 768w, https://rodneydyer.com/wp-content/uploads/2019/03/Screen-Shot-2019-03-24-at-5.11.33-PM.png 1596w\" sizes=\"(max-width: 1024px) 100vw, 1024px\" />](https://creativecommons.org/licenses/by-sa/4.0/)</figure></p>\n\n \n \n \n",
-    "supporting": [
-      "landscape-genetics-workshop-2019_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

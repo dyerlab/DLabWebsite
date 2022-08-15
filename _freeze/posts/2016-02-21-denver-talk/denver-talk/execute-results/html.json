@@ -2,15 +2,13 @@
   "hash": "9f17771fb56d0c272e7053573c72349d",
   "result": {
     "markdown": "---\ntitle: \"Denver Talk\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-02-21\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nI'm giving a seminar at the University of Denver on 22 February about my research program.  Here is a link to a PDF version of the talk.\n\n[PDF](https://drive.google.com/file/d/0B0T81CzLjtfPTFdKMl9PYVZUT2c/view?usp=sharing)\n \n \n \n",
-    "supporting": [
-      "denver-talk_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

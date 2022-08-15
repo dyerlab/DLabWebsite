@@ -2,15 +2,13 @@
   "hash": "24ef18355b3ae2dd147001a8c117d5d7",
   "result": {
     "markdown": "---\ntitle: \"Population Graph Stability\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2019-04-22\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n\nA population graph is a network structure based upon inter-stratum conditional genetic covariance (see [Dyer & Nason 2004](/publication/dyer-nason-2004/index.html) for a more complete discussion). In this context, it is often of interest to know the statistical stability of your loci in determining the topology you see in the popgraph.  Here is a way to subsample the loci you have and identify the extent to which you are asymptotically estimating a stable topology.  Basically we are going to:  \n1. Sample a subset of your loci randomly (without replacement) of a particular size (e.g., 10 loci).  \n2. Estimate a topology.  \n3. Measure some characteristic (or characteristics) on that topology.  \n4. GoTo #1 a large number of times (say 100).  \n5. Increment the number of loci being used.  \n\n\n\n\n\n\n\n \n \n \n",
-    "supporting": [
-      "population-graph-stability_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

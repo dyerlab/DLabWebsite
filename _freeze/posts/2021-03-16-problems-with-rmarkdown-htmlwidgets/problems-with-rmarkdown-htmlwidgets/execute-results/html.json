@@ -2,15 +2,13 @@
   "hash": "1cf615e30b4f1ea1bd2d813eb56ab4a2",
   "result": {
     "markdown": "---\ntitle: \"Problems with RMarkdown HTMLWidgets\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2021-03-16\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n\nOK, so in working on various RMarkdown stuff, I‘ve just run across a problem with it no longer rendering HTMLWidget stuff in the recent upgrade.  So if you use something like `mermaid` or `leaflet` in your `xaringan` presentation, it will show you the raw\n\n```html\n<div></div>\n```\n\noutput instead of the actual widget.   This is not an easy one to track down online because the [RMarkdown](https://github.com/rstudio/rmarkdown) & [Xaringan](https://github.com/yihui/xaringan) Github sites do not address it.  So I thought I would insert a thing here so I can find it next time I need it.\n\nAs it turns out, we need to set an option in the setup chunck as follows:\n\n```r\noptions(htmltools.preserve.raw = FALSE)\n```\n\nThis will fix things until RStudio fixes the markdown problems and the world can get back to normal.\n \n \n \n",
-    "supporting": [
-      "problems-with-rmarkdown-htmlwidgets_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

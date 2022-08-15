@@ -2,15 +2,13 @@
   "hash": "2068886baa6e622e09246af5f9086193",
   "result": {
     "markdown": "---\ntitle: \"Unnecessary Output by dplyr\"\ndescription: |\n  I love tidyverse but cannot understand how the authors disregard meaningless output so poorly.  Here is how to quiet some of that extra cruft when you load in tidyverse\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2022-02-01\npreview: featured.png\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n\nI love to use tidyverse when working on data but there is a bad habit that the authors have by spamming your output with messages they thing are informative.  We need to have some basic ways to turn off this output if we are to use things link `distil` to publish actual manuscripts directly instead of just simple markdown documents.\n\nFor example, consider the case when you load in the library `tidyverse`.  You get all this cruft which 99% of the time is just annoying.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary( tidyverse )\n```\n:::\n\n\n<pre>\nRegistered S3 methods overwritten by 'dbplyr':\n   method         from\n   print.tbl_lazy     \n   print.tbl_sql      \n ── Attaching packages ───────────────────────────────────────────────────────────── tidyverse 1.3.1 ──\n ✓ ggplot2 3.3.5     ✓ purrr   0.3.4\n ✓ tibble  3.1.6     ✓ dplyr   1.0.7\n ✓ tidyr   1.2.0     ✓ stringr 1.4.0\n ✓ readr   2.1.2     ✓ forcats 0.5.1\n ── Conflicts ──────────────────────────────────────────────────────────────── tidyverse_conflicts() ──\n x dplyr::filter() masks stats::filter()\n x dplyr::lag()    masks stats::lag()\n</pre>\n\nThat is now what we want!  There are several other options (like asking about conflicts, warning that `group_by` is not carried over after a summarize, etc), and we get it already.  To turn these off put the following into your `.Rprofile` file at the root of your home directory and it will make a beginning stab at it!\n\n```bash\ntidyverse.quiet = TRUE\ndplyr.summarise.inform = FALSE\n```",
-    "supporting": [
-      "unneceessary-output-by-ttdplyrtt_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

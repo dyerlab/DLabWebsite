@@ -2,15 +2,13 @@
   "hash": "cbae1865a59cc13ab017f9bb136dfda8",
   "result": {
     "markdown": "---\ntitle: \"Life Sciences Graduation\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-05-14\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n> You’re about to be told one more time that you’re America’s most valuable natural resource. Have you seen what they do to valuable, natural resources? Have you seen a strip mine? Have you seen a clear-cut in a forest? Have you seen a polluted river? Don’t ever let them call you a valuable natural resource! They’re gonna strip mine your soul! They’re gonna clear-cut your best thoughts for the sake of profit, unless you learn to resist, ‘cause the profit system follows the path of least resistance, and following the path of least resistance is what makes the river crooked!\n> \n> <p style=\"text-align: right\">\n>   Utah Phillips\n> </p>\n\n&nbsp;\n \n \n \n",
-    "supporting": [
-      "life-sciences-graduation_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

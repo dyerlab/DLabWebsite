@@ -2,15 +2,13 @@
   "hash": "f6b439325a949572176cb25da6951dcf",
   "result": {
     "markdown": "---\ntitle: \"get map Problems w o Google API\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2019-03-25\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nThere is a persistent problem with the get_map() function now that the google api is required. Even if you ask for source=&#8221;stamen&#8221; you still get an error asking for the google api. A fix is to do the following:\n\n```\nlibrary(gstudio)\ndata(arapat)\ncoords <- strata_coordinates(arapat)\nb1 <- c( left = -114.2935,\n         bottom = 23.0757,\n         right = -109.1263,\n         top=  29.32541)\n\nmap <- get_stamenmap( bbox = b1, zoom=7 )\nggmap(map)\n```\n\n\n \n \n \n",
-    "supporting": [
-      "get-map-problems-w-o-google-api_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

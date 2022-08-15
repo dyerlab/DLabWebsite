@@ -2,15 +2,13 @@
   "hash": "088c85ecfabbb3838f0f63cb5f0078ab",
   "result": {
     "markdown": "---\ntitle: \"Updating R and With Current Libraries\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2013-06-03\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nIf you work in R for very long on mac, there comes a time when you upgrade and the framework process looses all your libraries!  In some sense this is pretty lame because you now have to install all these libraries again.  However, it can be a blessing if you install packages in a willy-nilly fashion as you will only reinstall the ones you use most often.  At any rate, it is kind of a pain.  Here is what I’ve been doing about this to automate the process.  The key here is that you need to do the first part _before_ you upgrade.\n\n# Current Library\n\nIn the old version of R, prior to updating you’ll want to save the libraries that you have installed.  In R, this can be done as follows:\n\n<pre class=\"lang:r decode:true\">pkgs <- installed.packages()\npkgs <- names( is.na(pkgs[,4]))\nsave(pkgs,file=’~/Desktop/pkgs.rda’)</pre>\n\n&nbsp;\n\n# Install Updated R Version\n\nEither download the latest package or update your svn repository and rebuild R and install it.  There are a lot of options for learning more about these options elsewhere on the web.\n\n# Install Missing Packages\n\nNow, in the new version of R, you can figure out which are installed by default and then take the differences from what you have and what the previous version had installed and then install them.\n\n<pre class=\"lang:r decode:true \">new_pkgs <- installed.packages()\nnew_pkgs <- names( is.na(new_pkgs[,4]))\nload(“~/Desktop/pkgs.rda”)\nto_install <- setdiff( pkgs, new_pkgs )\ninstall.packages( to_install )\nupdate.packages()\n</pre>\n\n&nbsp;\n\nAnd you should be done.\n \n \n \n",
-    "supporting": [
-      "updating-r-and-with-current-libraries_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }

@@ -2,15 +2,13 @@
   "hash": "2264b22e278fcbdde369e6cb2e8cabcd",
   "result": {
     "markdown": "---\ntitle: \"Obsidian mobile\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2021-03-13\npreview: featured.png\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n",
-    "supporting": [
-      "obsidian-mobile_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
     "includes": {},
     "engineDependencies": {},
     "preserve": {},
-    "postProcess": null
+    "postProcess": true
   }
 }
