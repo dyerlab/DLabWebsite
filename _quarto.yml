@@ -9,10 +9,6 @@ website:
         text: People
       - href: manuscripts.qmd
         text: Manuscripts
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
   twitter-card:
     creator: "@RodneyDyer"    
     site: "@dyerlab"
