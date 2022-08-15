@@ -7,5 +7,5 @@ Rproj.user
 .Rproj.user
 
 _toImport/
-/.quarto/
+./.quarto
 .DS_Store
