@@ -1,0 +1,16 @@
+{
+  "hash": "0febf5f700d1df83edcce11fc103b228",
+  "result": {
+    "markdown": "---\ntitle: \"ggproblems\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2017-03-14\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nOK, so there is a bit of a circular firing squad going on in some of my R installs with ggplot2.  Apparently, you can get various CRAN/Github versions out of sync and a whole host of different.  Here is how it started:\n\n<!--more-->\n\n<pre class=\"lang:r decode:true\">&gt; df <- data.frame(x=runif(20),y=runif(20),z=runif(20))\n&gt; library(ggtern)\nLoading required package: ggplot2\n--\nConsider donating at: http://ggtern.com\nEven small amounts (say $10-50) are very much appreciated!\nRemember to cite, run citation(package = 'ggtern') for further info.\n--\n\nAttaching package: ‘ggtern’\n\nThe following objects are masked from ‘package:ggplot2’:\n\n    %+%, aes, annotate, calc_element, ggplot, ggplot_build,\n    ggplot_gtable, ggplotGrob, ggsave, layer_data, theme, theme_bw,\n    theme_classic, theme_dark, theme_gray, theme_light, theme_linedraw,\n    theme_minimal, theme_void\n\n&gt; ggtern(df,aes(x,y,z))\nError in f(..., self = self) : unused argument (&lt;environment&gt;)</pre>\n\nhmmm&#8230;.  Then ggmap also died.\n\nTo fix this, I did the following:\n\n  1. Removed ggtern, ggplot2, and ggmap from my library\n  2. Installed ggplot2 from CRAN\n  3. Installed ggmap from GitHub\n  4. Installed ggtern from Bitbucket (why not github, I don't know).\n\nSeems to work now.\n \n \n \n",
+    "supporting": [
+      "ggproblems_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "hash": "889ca5e05928c8ccdf7302d4315cc8a9",
+  "result": {
+    "markdown": "---\ntitle: \"Hello R Markdown\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-07-23\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n# R Markdown\n\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.\n\nYou can embed an R code chunk like this:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsummary(cars)\n##      speed           dist       \n##  Min.   : 4.0   Min.   :  2.00  \n##  1st Qu.:12.0   1st Qu.: 26.00  \n##  Median :15.0   Median : 36.00  \n##  Mean   :15.4   Mean   : 42.98  \n##  3rd Qu.:19.0   3rd Qu.: 56.00  \n##  Max.   :25.0   Max.   :120.00\nfit <- lm(dist ~ speed, data = cars)\nfit\n## \n## Call:\n## lm(formula = dist ~ speed, data = cars)\n## \n## Coefficients:\n## (Intercept)        speed  \n##     -17.579        3.932\n```\n:::\n\n\n# Including Plots\n\nYou can also embed plots. See Figure \\@ref(fig:pie) for example:\n\n\n::: {.cell}\n\n```{.r .cell-code}\npar(mar = c(0, 1, 0, 1))\npie(\n  c(280, 60, 20),\n  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),\n  col = c('#0292D8', '#F7EA39', '#C4B632'),\n  init.angle = -50, border = NA\n)\n```\n\n::: {.cell-output-display}\n![A fancy pie chart.](hello-r-markdown_files/figure-html/pie-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "hello-r-markdown_files/figure-html"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

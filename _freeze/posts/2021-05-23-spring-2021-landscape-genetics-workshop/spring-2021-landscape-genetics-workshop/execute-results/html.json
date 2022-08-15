@@ -1,0 +1,16 @@
+{
+  "hash": "1e29072f4bf9c401174010284f357c1b",
+  "result": {
+    "markdown": "---\ntitle: \"Spring 2021 Landscape Genetics Workshop\"\ndescription: |\n  This spring, my Landscape Genetics Workshop will need to be held virtually via zoom.  While that provides a set of unique challenges, it looks like this is facilitating a more diverse group of attendees, which is always beneficial. All course content is hosted on this site under Courses.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2021-05-23\npreview: featured.png\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\nThis spring, my Landscape Genetics Workshop will need to be held virtually via zoom.  While that provides a set of unique challenges, it looks like this is facilitating a more diverse group of attendees, which is always beneficial. All course content is hosted on this site under Courses [link](../../courses/landscapegenetics/).\n\nCan't wait to start!\n\n",
+    "supporting": [
+      "spring-2021-landscape-genetics-workshop_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

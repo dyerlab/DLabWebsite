@@ -1,0 +1,102 @@
+---
+title: "People"
+title-block-banner: true
+---
+
+
+
+Research in the Dyer Laboratory focuses on understanding how landscape features influence genetic connectivity and movement in native and introduced species. 
+
+
+<table>
+
+<tr>
+<td>
+<img src="https://live.staticflickr.com/65535/51278950913_17e0f63c25_w_d.jpg" class="roundedImg" width="200px">
+</td>
+<td>&nbsp; &nbsp;</td>
+<td>
+### [Rodney J. Dyer, PhD](./people/dyer.html)
+Principal Investigator
+</td>
+</tr>
+
+
+<tr><td>&nbsp;</td></tr>
+
+<tr>
+<td>
+<img src="https://live.staticflickr.com/65535/51742489450_98b3788b6f_o_d.jpg" class="roundedImg"  width="200px">
+</td>
+<td>&nbsp; &nbsp;</td>
+<td>
+### [Jane Remfert]()
+Doctoral Candidate
+</td>
+</tr>
+
+<tr><td>&nbsp;</td></tr>
+
+
+<tr>
+<td>
+<img src="https://live.staticflickr.com/65535/51740785322_0ea8e8c066_w_d.jpg" class="roundedImg" width="200px">
+</td>
+<td>&nbsp; &nbsp;</td>
+<td>
+### [Madison Whitehurst]()
+Masters Candidate
+</td>
+</tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+# Previous Laboratory Members 
+
+- **Rebekha Archibald-Shaw** Thesis: Seed dispersal and subsequent recruitment of the mid-canopy forest tree, *Cornus florida*. Supported in part by the Rice Center. MS, Environmental Sciences, Virginia Commonwealth University 2009.    
+
+- **Stephen Baker** Thesis: Invasion genetic of the invasive grass, *Microstegium vimineum* (Poaceae). Supported in part by the Rice Center. MS, Biology, Virginia Commonwealth University 2009.    
+
+- **Dan Carr** Thesis: Pollination biology of the understory tree, *Cornus florida* L. Supported in part by the Rice Center and National Science Foundation research grant DEB-0640803. MS, Biology, Virginia Commonwealth University, 2010.  
+
+- **Stephanie Crouch-Burgess** Thesis: Spatial genetic structure of the mole salamander, *Ambystoma opacum* (Gravenhorst). Supported in part by the Rice Center. MS, Biology, Virginia Commonwealth University, 2008.  Currently pursuing her PhD at OleMiss with Dr. Ryan Garrick.  
+
+- **Matthew DeSaix**  Thesis: Patterns of population structure and migratory connectivity revealed in a songbird of conservation concern.  Supported in part by funding by the Department of Defense, the Rice Center, and the Center for Environmental Studies.  MS, Environmental STudies, Virginia Commonwealth University, 2018.  
+
+- **Candace Dillion** Thesis: Assessment of pre-PCR whole genome amplification of single pollen grains in flowering dogwood (*Cornus florida* L.). Supported in part by the Rice Center and National Science Foundation research grant DEB-0640803. MS, Biology, Virginia Commonwealth University 2009.  
+
+- **Vicki Gardiakos** Thesis: Investigating patterns of pollen-mediated gene dispersal in the flowering dogwood, *Cornus florida* L. Supported in part by NSF DEB-0640803. Supported in part by National Science Foundation research grant DEB-0640803. MS, Biology, Virginia Commonwealth University 2009.  
+
+- **Dr. Ryan Garrick** Dr. Garrick was a post-doctoral researcher in the laboratory from 2007-2009 under National Science Foundation Research Grant DEB-0543102. Currently Dr. Garrick is an Assistant Professor in Biology at the University of Mississippi.  
+
+- **Morgan Gostel** Thesis: Evolutionary relationships in Afro-Malagasy Schefflera based on nuclear and chloroplast markers. MS, Biology, Virginia Commonwealth University, 2010.  
+
+- **Catherine Heidrich** MS Thesis Project: Who’s your daddy? Extra-pair copulation of Prothonotary warblers (*Protonotaria citrea*). Supported in part by the Rice Center. MS, Biology, Virginia Commonwealth University 2012.  
+
+- **Jameson Hinkle** MS Thesis Project: Proof-of-concept of environmental DNA tools for Atlantic Sturgeon management.  MS Center for Environmental Studies, Virginia Commonwealth University, 2015.  
+
+- **Megan Kuechle** Thesis:  Influence of environmental features on spermatophore placement and male fecundity in spotted salamanders (Ambystoma maculatum).  MS, Center for Environmental Studies, Virginia Commonwealth University, 2020.
+
+- **Olivia Latham**  Thesis: Bee functional trait analysis in shale barren pollinator networks.  MS, Center for Environmental Studies, Virginia Commonwealth University, 2020.
+
+- **Crystal Meadows** Thesis: Determining impediments to gene flow in a natural population of *Cornus florida* L. Cornaceae, using integrative landscape genetic techniques. MS, Biology, Virginia Commonwealth University, 2010.  
+
+- **Angela Redwine** Thesis: Reproductive dynamics in flowering dogwood along an urban landscape gradient. MS, Environmental Sciences, Virginia Commonwealth University, 2012.  
+
+- **Bonnie Roderique**  Thesis: Improving the conservation of a cryptic endangered freshwater mussel (*Parvaspina collina*) through the use of environmental DNA and species distribution modeling.  This project was supported in part by funding from the Virginia Transportation Research Council (VTRC) and the Rice Center.  MS, Environmental Studies, Virginia Commonwealth University, 2018.  
+
+- **Chitra Seshadri** Thesis: Genome wide analysis of sequence and epigenetic variance in *Araptus attenuatus*, the Sonoran Desert bark beetle. MS, Environmental Sciences, 2016.  
+
+- **Anna Tucker** Thesis: Fitness cost of conspecific brood parasitism in a cavity-nesting warbler. MS, Biology, Virginia Commonwealth University, 2014.  
+
+- **Dr. Cathy Viverette** Thesis: Influence of historic landscapes and contemporary species management on Chesapeake Bay Bald Eagles and Osprey. PhD, Integrated Life Sciences, 2016.  
+
+- **Abby Wright** Undergraduate researchers.  2019-2020.

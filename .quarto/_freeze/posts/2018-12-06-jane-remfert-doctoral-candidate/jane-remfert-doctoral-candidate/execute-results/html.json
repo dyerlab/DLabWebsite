@@ -1,0 +1,16 @@
+{
+  "hash": "23a360d9b70dfc7b5973bf4b398e153d",
+  "result": {
+    "markdown": "---\ntitle: \"Jane Remfert Doctoral Candidate\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2018-12-06\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nJane Remfert has successfully completed the necessary steps to proceed to Doctoral Candidate by completing her written and oral defense and submitting her research proposal.  Thank you to Drs. Eckert, Gough, Johnson, and Keyghobadi for their insightful comments and expertise in helping to shape a dynamic and exciting research project.\n\nNow, you just have to do it!\n \n \n \n",
+    "supporting": [
+      "jane-remfert-doctoral-candidate_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

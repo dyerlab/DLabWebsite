@@ -1,0 +1,16 @@
+{
+  "hash": "7b2c6dd6abed54d9bebada2c59e5145b",
+  "result": {
+    "markdown": "---\ntitle: \"RStudio Cheatsheets\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-04-20\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nHere are some very useful cheat sheets put out by RStudio. A great resource of information!\n\n<blockquote class=\"wp-embedded-content\" data-secret=\"gDWwrH7M4G\">\n  <p>\n    <a href=\"https://www.rstudio.com/resources/cheatsheets/\">Cheatsheets</a>\n  </p>\n</blockquote>\n\n\n\n&nbsp;\n \n \n \n",
+    "supporting": [
+      "rstudio-cheatsheets_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

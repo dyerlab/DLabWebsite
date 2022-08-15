@@ -1,0 +1,14 @@
+{
+  "hash": "447b2ea9be37e086f7e127f633184ad3",
+  "result": {
+    "markdown": "---\ntitle: Population Genetic Structure, Connectivity, and Potential Broodstock Sources for the Endangered James Spinymussel (Parvaspina collina).\ndescription: |\n  Virginia Department of Wildlife Resources, General Technical Report.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\n  - name: Bonnie Roderique\ndate: 2021-06-11\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\nDistill is a publication format for scientific and technical writing, native to the web.\n\nLearn more about using Distill at <https://rstudio.github.io/distill>.\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

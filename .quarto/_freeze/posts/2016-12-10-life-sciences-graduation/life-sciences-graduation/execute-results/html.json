@@ -1,0 +1,16 @@
+{
+  "hash": "2bceb01635091566076358682cee886a",
+  "result": {
+    "markdown": "---\ntitle: \"Life Sciences Graduation\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-12-10\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n[Pomp and Circumstance](https://www.youtube.com/watch?v=Kw-_Ew5bVxs)\n\n[Recessional](https://www.youtube.com/watch?v=GzLZJaAm2hw)\n\n&nbsp;\n \n \n \n",
+    "supporting": [
+      "life-sciences-graduation_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

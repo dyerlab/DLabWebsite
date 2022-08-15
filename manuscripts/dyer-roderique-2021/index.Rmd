@@ -1,0 +1,19 @@
+---
+title: Population Genetic Structure, Connectivity, and Potential Broodstock Sources for the Endangered James Spinymussel (Parvaspina collina).
+description: |
+  Virginia Department of Wildlife Resources, General Technical Report.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+  - name: Bonnie Roderique
+date: 2021-06-11
+---
+
+
+
+
+
+

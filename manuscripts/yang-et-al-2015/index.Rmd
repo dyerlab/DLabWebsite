@@ -1,0 +1,30 @@
+---
+title: 'Genetic structure of Pinus henryi and Pinus tabuliformis: Natural landscapes as significant
+  barriers to gene flow among populations'
+date: '2015-08-01'
+authors:
+- name: Lu Yang
+- name: Zhan-Lin Liu
+- name: Jianfang Li
+- name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
+description: |
+    BIOCHEMICAL SYSTEMATICS AND ECOLOGY. 2015.  
+categories: 
+- cpssr
+- genetic structure
+- geographical boundary
+- pinus henryi
+- pinus tabuliformis
+image: featured.png
+doi:  10.1016/j.bse.2015.06.003
+---
+
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/0B0T81CzLjtfPR01iZzJtVGFsZ28/view?usp=sharing) [![ DOI 10.1016/j.bse.2015.06.003](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1016/j.bse.2015.06.003)
+
+## Abstract
+
+Mountains as natural barriers often have important effects on intraspecific genetic structure through restraining gene flow and enhancing differentiation among populations. While the Qinling and Daba mountains are considered significant geographic barriers, dividing China into temperate and subtropical regions, little is known about how this barrier influences the genetic patterns of sister species represented in distinct habitats. In this study, we analyzed genetic differentiation and the geographic boundary between Pinus henryi and Pinus tabuliformis using chloroplast microsatellite markers. Our data show high levels of among-population differentiation, consistent with the effects of historical demographic bottlenecks, local adaptation and climate effects. Three main geographic boundaries coinciding with mountain systems indicate natural landscapes, such as large rivers, and habitat loss caused by anthropogenic deforestation, are significant barriers to genetic exchange among populations. The divergence between populations in the eastern and western Qinling Mountains populations may possibly be ascribed to fragmentation driven by climate change. The genetic boundary of P. henryi and P. tabuliformis generally coincides with the previous morphological dividing line based on the unweighted pair group method using arithmetic averages and on spatial analysis of molecular variance. (C) 2015 Elsevier Ltd. All rights reserved.

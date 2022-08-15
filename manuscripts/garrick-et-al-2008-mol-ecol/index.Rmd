@@ -1,0 +1,31 @@
+---
+title: 'Babies and bathwater: a comment on the premature obituary for nested clade phylogeographical
+  analysis'
+date: '2008-03-01'
+authors:
+- name: Ryan C. Garrick
+- name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
+- name: LB. Beheregaray
+- name: Paul Sunnucks
+description: |
+    MOLECULAR ECOLOGY. 2008.  
+categories: 
+- cross-validation
+- hypothesis testing
+- integrative analyses
+- multiple loci
+image: featured.png
+doi:  10.1111/j.1365-294X.2008.03675.x
+---
+
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPSUZXWlloMDZEUW8) [![ DOI 10.1111/j.1365-294X.2008.03675.x](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1365-294X.2008.03675.x)
+
+![]( featured.png )
+
+## Abstract
+
+

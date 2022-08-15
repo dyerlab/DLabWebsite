@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rodney Dyer">
+<meta name="dcterms.date" content="2016-10-06">
+<meta name="description" content="A short description of the post.">
+
+<title>dyerlab - Spatial Data Sources</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="dyerlab - Spatial Data Sources">
+<meta property="og:description" content="A short description of the post.">
+<meta property="og:site-name" content="dyerlab">
+<meta name="twitter:title" content="dyerlab - Spatial Data Sources">
+<meta name="twitter:description" content="A short description of the post.">
+<meta name="twitter:creator" content="@RodneyDyer">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">dyerlab</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html">People</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../manuscripts.html">Manuscripts</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Spatial Data Sources</h1>
+                  <div>
+        <div class="description">
+          <p>A short description of the post.</p>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <a href="https://dyerlab.org">Rodney Dyer</a> 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Center for Environmental Studies
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 6, 2016</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>As part of a class in Landscape Genetics, faculty (mostly done by <a href="https://sites.google.com/site/murphylabuwyo/">Melanie Murphy</a> and <a href="http://www.nature.org/science-in-action/our-scientists/jeff-evans.xml">Jeffrey Evans</a>) compiled an extensive list of spatial data sources. These were made available on the course website we hosted but I wanted to make a more persistent copy of them here so they will not be lost. They are listed below the break.</p>
+<!--more-->
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody><tr>
+<td>
+Africa<br> Infrastructure Knowledge Program
+</td>
+<td>
+<a href="http://www.infrastructureafrica.org/">http://www.infrastructureafrica.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+ASTER (Advanced Spaceborne<br> Thermal Emission and Reflection Radiometer)
+</td>
+<td>
+<a href="http://asterweb.jpl.nasa.gov/">http://asterweb.jpl.nasa.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+ASTER<br> Global 30m DEM
+</td>
+<td>
+<a href="http://www.gdem.aster.ersdac.or.jp/">http://www.gdem.aster.ersdac.or.jp/</a>
+</td>
+</tr>
+<tr>
+<td>
+Atlas of<br> the Biosphere
+</td>
+<td>
+<a href="http://www.sage.wisc.edu/atlas/">http://www.sage.wisc.edu/atlas/</a>
+</td>
+</tr>
+<tr>
+<td>
+Atrium<br> biodiversity information system
+</td>
+<td>
+<a href="http://atrium.andesamazon.org/metadata_search.php">http://atrium.andesamazon.org/metadata_search.php</a>
+</td>
+</tr>
+<tr>
+<td>
+Atrium biodiversity<br> information system
+</td>
+<td>
+<a href="http://atrium.andesamazon.org/">http://atrium.andesamazon.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+AVIRIS (Airborne<br> Visible/Infrared Imaging Spectrometer)
+</td>
+<td>
+<a href="http://aviris.jpl.nasa.gov/">http://aviris.jpl.nasa.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+BLM Land<br> Survey Information System
+</td>
+<td>
+<a href="http://www.geocommunicator.gov/GeoComm/">http://www.geocommunicator.gov/GeoComm/</a>
+</td>
+</tr>
+<tr>
+<td>
+BLM Sage<br> Grouse Breeding Densities
+</td>
+<td>
+<a href="http://conserveonline.org/workspaces/sagegrouse/documents/all.html">http://conserveonline.org/workspaces/sagegrouse/documents/all.html</a>
+</td>
+</tr>
+<tr>
+<td>
+CAL-Atlas<br> California GIS data
+</td>
+<td>
+<a href="http://www.atlas.ca.gov/">http://www.atlas.ca.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+Colorado<br> 2009 NAIP County Mosaics
+</td>
+<td>
+<a href="https://my.usgs.gov/Public/NSDIPartnershipOffice/CO/2009%20NAIP%20County%20Mosaics/">https://my.usgs.gov/Public/NSDIPartnershipOffice/CO/2009%20NAIP%20County%20Mosaics/</a>
+</td>
+</tr>
+<tr>
+<td>
+Colorado<br> Dept of Transportation
+</td>
+<td>
+<a href="http://apps.coloradodot.info/dataaccess/GeoData/index.cfm?fuseaction=GeoDataMain">http://apps.coloradodot.info/dataaccess/GeoData/index.cfm?fuseaction=GeoDataMain</a>
+</td>
+</tr>
+<tr>
+<td>
+Colorado<br> Ownership database (COMaP)
+</td>
+<td>
+<a href="http://www.nrel.colostate.edu/projects/comap/index.html">http://www.nrel.colostate.edu/projects/comap/index.html</a>
+</td>
+</tr>
+<tr>
+<td>
+CSIRO Lidar mapping of vegetation<br> canopies
+</td>
+<td>
+<a href="http://www.cossa.csiro.au/vsis/lidhome.htm">http://www.cossa.csiro.au/vsis/lidhome.htm</a>
+</td>
+</tr>
+<tr>
+<td>
+Downscaled<br> Climate GCM’s
+</td>
+<td>
+<a href="http://futureclim.info/">http://futureclim.info/</a>
+</td>
+</tr>
+<tr>
+<td>
+EPA<br> Webmap Services
+</td>
+<td>
+<a href="http://www.epa.gov/geospatial/help.htm">http://www.epa.gov/geospatial/help.htm</a>
+</td>
+</tr>
+<tr>
+<td>
+FEMA<br> Flood maps
+</td>
+<td>
+<a href="https://msc.fema.gov/webapp/wcs/stores/servlet/FemaWelcomeView?storeId=10001&amp;catalogId=10001&amp;langId=-1&amp;userType=G">https://msc.fema.gov/webapp/wcs/stores/servlet/FemaWelcomeView?storeId=10001&amp;catalogId=10001&amp;langId=-1&amp;userType=G</a>
+</td>
+</tr>
+<tr>
+<td>
+FEMA<br> Imagery download
+</td>
+<td>
+<a href="http://stratus.cr.usgs.gov/viewer/">http://stratus.cr.usgs.gov/viewer/</a>
+</td>
+</tr>
+<tr>
+<td>
+GeoEye foundation
+</td>
+<td>
+<a href="http://www.geoeye.com/CorpSite/corporate/foundation/">http://www.geoeye.com/CorpSite/corporate/foundation/</a>
+</td>
+</tr>
+<tr>
+<td>
+Global<br> Gridded Popuation data
+</td>
+<td>
+<a href="http://sedac.ciesin.columbia.edu/gpw/aboutus.jsp">http://sedac.ciesin.columbia.edu/gpw/aboutus.jsp</a>
+</td>
+</tr>
+<tr>
+<td>
+Global<br> Land Cover Characterization
+</td>
+<td>
+<a href="http://edc2.usgs.gov/glcc/glcc.php">http://edc2.usgs.gov/glcc/glcc.php</a>
+</td>
+</tr>
+<tr>
+<td>
+Global Landcover<br> Facility
+</td>
+<td>
+<a href="http://landcover.org/index.shtml">http://landcover.org/index.shtml</a>
+</td>
+</tr>
+<tr>
+<td>
+Global<br> Landcover Facility Amazon and Central Africa Forest Change
+</td>
+<td>
+<a href="http://landcover.org/data/pathfinder/data.shtml">http://landcover.org/data/pathfinder/data.shtml</a>
+</td>
+</tr>
+<tr>
+<td>
+Global<br> Multi-resolution Terrain Elevation Data 2010
+</td>
+<td>
+<a href="http://pubs.usgs.gov/of/2011/1073/">http://pubs.usgs.gov/of/2011/1073/</a>
+</td>
+</tr>
+<tr>
+<td>
+Global<br> Protected Areas
+</td>
+<td>
+<a href="http://www.protectedplanet.net/">http://www.protectedplanet.net/</a>
+</td>
+</tr>
+<tr>
+<td>
+ICESat/GLAS
+</td>
+<td>
+<a href="http://icesat.gsfc.nasa.gov/icesat/">http://icesat.gsfc.nasa.gov/icesat/</a>
+</td>
+</tr>
+<tr>
+<td>
+Idaho<br> Dept Water Resources
+</td>
+<td>
+<a href="http://www.idwr.idaho.gov/">http://www.idwr.idaho.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+Idaho<br> GIS data (Inside Idaho)
+</td>
+<td>
+<a href="http://inside.uidaho.edu/">http://inside.uidaho.edu/</a>
+</td>
+</tr>
+<tr>
+<td>
+Landsat<br> Path/Row Index Shapefile
+</td>
+<td>
+<a href="https://landsat.usgs.gov/tools_wrs-2_shapefile.php">https://landsat.usgs.gov/tools_wrs-2_shapefile.php</a>
+</td>
+</tr>
+<tr>
+<td>
+MODIS<br> Global NPP
+</td>
+<td>
+<a href="http://secure.ntsg.umt.edu/projects/index.php/ID/ca2901a0/fuseaction/projects.detail.htm">http://secure.ntsg.umt.edu/projects/index.php/ID/ca2901a0/fuseaction/projects.detail.htm</a>
+</td>
+</tr>
+<tr>
+<td>
+MODIS<br> Sinusoidal Grid shapefile
+</td>
+<td>
+<a href="http://gis.cri.fmach.it/modis-sinusoidal-gis-files/">http://gis.cri.fmach.it/modis-sinusoidal-gis-files/</a>
+</td>
+</tr>
+<tr>
+<td>
+MODIS<br> Subset tool
+</td>
+<td>
+<a href="http://daac.ornl.gov/cgi-bin/MODIS/GLBVIZ_1_Glb/modis_subset_order_global_col5.pl">http://daac.ornl.gov/cgi-bin/MODIS/GLBVIZ_1_Glb/modis_subset_order_global_col5.pl</a>
+</td>
+</tr>
+<tr>
+<td>
+Montana<br> Geographic Information Clearinghouse
+</td>
+<td>
+<a href="http://nris.mt.gov/gis/default.asp">http://nris.mt.gov/gis/default.asp</a>
+</td>
+</tr>
+<tr>
+<td>
+MRLC<br> National Land Cover
+</td>
+<td>
+<a href="http://www.mrlc.gov/nlcd2006.php">http://www.mrlc.gov/nlcd2006.php</a>
+</td>
+</tr>
+<tr>
+<td>
+NASA GLOVIS
+</td>
+<td>
+<a href="http://glovis.usgs.gov/">http://glovis.usgs.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+NASA<br> Land Processes Distributed Active Archive Center
+</td>
+<td>
+<a href="https://lpdaac.usgs.gov/">https://lpdaac.usgs.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+NASA Multiangle Imaging<br> SpectroRadiometer
+</td>
+<td>
+<a href="http://eosweb.larc.nasa.gov/PRODOCS/misr/table_misr.html">http://eosweb.larc.nasa.gov/PRODOCS/misr/table_misr.html</a>
+</td>
+</tr>
+<tr>
+<td>
+NASA-JPL Global Carbon mapping
+</td>
+<td>
+<a href="http://lidarradar.jpl.nasa.gov/">http://lidarradar.jpl.nasa.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+National<br> Agricultural Statistics Service Crop Data
+</td>
+<td>
+<a href="http://www.nass.usda.gov/research/Cropland/SARS1a.htm">http://www.nass.usda.gov/research/Cropland/SARS1a.htm</a>
+</td>
+</tr>
+<tr>
+<td>
+National Agriculture Imagery<br> Program (NAIP)
+</td>
+<td>
+<a href="http://www.fsa.usda.gov/FSA/apfoapp?area=home&amp;subject=prog&amp;topic=nai">http://www.fsa.usda.gov/FSA/apfoapp?area=home&amp;subject=prog&amp;topic=nai</a>
+</td>
+</tr>
+<tr>
+<td>
+Natural<br> Earth Global data
+</td>
+<td>
+<a href="http://www.naturalearthdata.com/">http://www.naturalearthdata.com/</a>
+</td>
+</tr>
+<tr>
+<td>
+NCALM (National Center of Airborne Laser<br> Mapping)
+</td>
+<td>
+<a href="http://www.ncalm.org/home.html">http://www.ncalm.org/home.html</a>
+</td>
+</tr>
+<tr>
+<td>
+NDEP (National Digital Elevation Program)
+</td>
+<td>
+<a href="http://www.ndep.gov/">http://www.ndep.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+Nevada<br> GIS data
+</td>
+<td>
+<a href="http://keck.library.unr.edu/">http://keck.library.unr.edu/</a>
+</td>
+</tr>
+<tr>
+<td>
+NOAA Costal topographic change
+</td>
+<td>
+<a href="http://www.csc.noaa.gov/crs/tcm/index.html">http://www.csc.noaa.gov/crs/tcm/index.html</a>
+</td>
+</tr>
+<tr>
+<td>
+North<br> American Regional Climate Change Assessment Program
+</td>
+<td>
+<a href="http://www.narccap.ucar.edu/users/observed-datasets.html">http://www.narccap.ucar.edu/users/observed-datasets.html</a>
+</td>
+</tr>
+<tr>
+<td>
+North<br> Dakota Webmap Services
+</td>
+<td>
+<a href="http://www.nd.gov/gis/mapsdata/web/">http://www.nd.gov/gis/mapsdata/web/</a>
+</td>
+</tr>
+<tr>
+<td>
+NRCS<br> Geospatial Data Gateway
+</td>
+<td>
+<a href="http://datagateway.nrcs.usda.gov/">http://datagateway.nrcs.usda.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+Open<br> Street Map
+</td>
+<td>
+<a href="http://www.openstreetmap.org/">http://www.openstreetmap.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+OpenTopography
+</td>
+<td>
+<a href="http://www.opentopography.org/">http://www.opentopography.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+Oregon<br> Geospatial Enterprise Office
+</td>
+<td>
+<a href="http://www.oregon.gov/DAS/EISPD/GEO/sdlibrary.shtml">http://www.oregon.gov/DAS/EISPD/GEO/sdlibrary.shtml</a>
+</td>
+</tr>
+<tr>
+<td>
+Planet Action SPOT<br> program
+</td>
+<td>
+<a href="http://www.planet-action.org/">http://www.planet-action.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+Pritected<br> Areas Database of the United States
+</td>
+<td>
+<a href="http://www.protectedlands.net/">http://www.protectedlands.net/</a>
+</td>
+</tr>
+<tr>
+<td>
+Puget Sound Lidar Consortium
+</td>
+<td>
+<a href="http://pugetsoundlidar.ess.washington.edu/">http://pugetsoundlidar.ess.washington.edu/</a>
+</td>
+</tr>
+<tr>
+<td>
+US State data clearinghouse (links to state data)
+</td>
+<td>
+<a href="http://web.mit.edu/dtfg/www/data/data_gis_us_state.htm">http://web.mit.edu/dtfg/www/data/data_gis_us_state.htm</a>
+</td>
+</tr>
+<tr>
+<td>
+SRTM (Shuttle Radar Topography Mission)<br> 90m global data
+</td>
+<td>
+<a href="http://srtm.csi.cgiar.org/">http://srtm.csi.cgiar.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+STRM<br> Topography and Canopy data
+</td>
+<td>
+<a href="http://srtm.csi.cgiar.org/">http://srtm.csi.cgiar.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+SWreGAP processed Landsat,<br> ASTER and MSS
+</td>
+<td>
+<a href="http://earth.gis.usu.edu/search.phtml">http://earth.gis.usu.edu/search.phtml</a>
+</td>
+</tr>
+<tr>
+<td>
+Texas<br> Natural Resources Information System
+</td>
+<td>
+<a href="http://www.tnris.org/get-data#ccm">http://www.tnris.org/get-data#ccm</a>
+</td>
+</tr>
+<tr>
+<td>
+TNC AWWI<br> Landscape Assessment Tool
+</td>
+<td>
+<a href="http://wind.tnc.org/awwi/">http://wind.tnc.org/awwi/#</a>
+</td>
+</tr>
+<tr>
+<td>
+TNC<br> Climate Wizard
+</td>
+<td>
+<a href="http://www.climatewizard.org/">http://www.climatewizard.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+TNC<br> Climate Wizard Custom Queries
+</td>
+<td>
+<a href="http://climatewizardcustom.org/">http://climatewizardcustom.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+TNC<br> Development by Design Webmap Server
+</td>
+<td>
+<a href="http://50.18.62.210/DevByDesign/">http://50.18.62.210/DevByDesign/</a>
+</td>
+</tr>
+<tr>
+<td>
+UMAC<br> Remote Sensing Imagery
+</td>
+<td>
+<a href="http://www.umac.org/imagery/sources/index.html">http://www.umac.org/imagery/sources/index.html</a>
+</td>
+</tr>
+<tr>
+<td>
+University<br> of Washington, Various Global Data
+</td>
+<td>
+<a href="http://wagda.lib.washington.edu/data/geography/world/">http://wagda.lib.washington.edu/data/geography/world/</a>
+</td>
+</tr>
+<tr>
+<td>
+US<br> Census Bureau
+</td>
+<td>
+<a href="http://www.census.gov/geo/www/pvs/PVS_main.html">http://www.census.gov/geo/www/pvs/PVS_main.html</a>
+</td>
+</tr>
+<tr>
+<td>
+US<br> Census Bureau – TIGER data
+</td>
+<td>
+<a href="http://www.census.gov/geo/www/tiger/tgrshp2009/tgrshp2009.html">http://www.census.gov/geo/www/tiger/tgrshp2009/tgrshp2009.html</a>
+</td>
+</tr>
+<tr>
+<td>
+US<br> Federal Geographic Data Committee
+</td>
+<td>
+<a href="http://www.fgdc.gov/">http://www.fgdc.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+US<br> National Atlas raw data download
+</td>
+<td>
+<a href="http://www.nationalatlas.gov/atlasftp.html">http://www.nationalatlas.gov/atlasftp.html</a>
+</td>
+</tr>
+<tr>
+<td>
+USDA-AFPO<br> NAIP Webmap Service
+</td>
+<td>
+<a href="wms.ftw.nrcs.usda.gov">wms.ftw.nrcs.usda.gov</a>
+</td>
+</tr>
+<tr>
+<td>
+USFS-Rocky<br> Mt Region GIS data
+</td>
+<td>
+<a href="http://www.fs.fed.us/r2/gis/datasets_regionwide.shtml">http://www.fs.fed.us/r2/gis/datasets_regionwide.shtml</a>
+</td>
+</tr>
+<tr>
+<td>
+USFWS<br> Critical Habitat data
+</td>
+<td>
+<a href="http://criticalhabitat.fws.gov/crithab/">http://criticalhabitat.fws.gov/crithab/</a>
+</td>
+</tr>
+<tr>
+<td>
+USFWS<br> National Wetlands Inventory
+</td>
+<td>
+<a href="http://www.fws.gov/wetlands/Data/DataDownload.html">http://www.fws.gov/wetlands/Data/DataDownload.html</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS CLICK
+</td>
+<td>
+<a href="http://lidar.cr.usgs.gov/">http://lidar.cr.usgs.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> Geologic formations
+</td>
+<td>
+<a href="http://pubs.usgs.gov/of/2005/1325/index_map.htm">http://pubs.usgs.gov/of/2005/1325/index_map.htm</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> Geosciences Database
+</td>
+<td>
+<a href="http://ngmdb.usgs.gov/Other_Resources/rdb_es.html">http://ngmdb.usgs.gov/Other_Resources/rdb_es.html</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> Global Ecosystems
+</td>
+<td>
+<a href="http://rmgsc.cr.usgs.gov/ecosystems/">http://rmgsc.cr.usgs.gov/ecosystems/</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> National geophysical data
+</td>
+<td>
+<a href="http://tin.er.usgs.gov/catalog/cite-view.php?cite=97">http://tin.er.usgs.gov/catalog/cite-view.php?cite=97</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> National Hydrography Dataset
+</td>
+<td>
+<a href="http://nhd.usgs.gov/">http://nhd.usgs.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> North West ReGap Landcover
+</td>
+<td>
+<a href="http://gap.uidaho.edu/index.php/gap-home/Northwest-GAP/landcover/download-data-by-state">http://gap.uidaho.edu/index.php/gap-home/Northwest-GAP/landcover/download-data-by-state</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> Seamless data server
+</td>
+<td>
+<a href="http://seamless.usgs.gov/">http://seamless.usgs.gov/</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> South West ReGap Landcover
+</td>
+<td>
+<a href="http://earth.gis.usu.edu/swgap/">http://earth.gis.usu.edu/swgap/</a>
+</td>
+</tr>
+<tr>
+<td>
+USGS<br> Water Resource Data
+</td>
+<td>
+<a href="http://water.usgs.gov/maps.html">http://water.usgs.gov/maps.html</a>
+</td>
+</tr>
+<tr>
+<td>
+VITO Image processing and<br> archiving center
+</td>
+<td>
+<a href="http://www.vgt.vito.be/">http://www.vgt.vito.be/</a>
+</td>
+</tr>
+<tr>
+<td>
+Washington<br> 2009 NAIP County Mosaics
+</td>
+<td>
+<a href="http://gis.ess.washington.edu/data/raster/naip2009ccm_wa/index.html">http://gis.ess.washington.edu/data/raster/naip2009ccm_wa/index.html</a>
+</td>
+</tr>
+<tr>
+<td>
+WorldClim
+</td>
+<td>
+<a href="http://www.worldclim.org/">http://www.worldclim.org/</a>
+</td>
+</tr>
+<tr>
+<td>
+WyGISc (Wyoming GIS data server)
+</td>
+<td>
+<a href="http://www.uwyo.edu/wygisc/geodata/">http://www.uwyo.edu/wygisc/geodata/</a>
+</td>
+</tr>
+<tr>
+<td>
+WWF<br> Ecoregions
+</td>
+<td>
+<a href="http://www.worldwildlife.org/science/data/item1875.html">http://www.worldwildlife.org/science/data/item1875.html</a>
+</td>
+</tr>
+<tr>
+<td>
+WWF GIS<br> data
+</td>
+<td>
+<a href="http://www.worldwildlife.org/science/data/item1872.html">http://www.worldwildlife.org/science/data/item1872.html</a>
+</td>
+</tr>
+<tr>
+<td>
+WWF<br> Global Hydrosheds
+</td>
+<td>
+<a href="http://hydrosheds.cr.usgs.gov/">http://hydrosheds.cr.usgs.gov/#</a>
+</td>
+</tr>
+
+</tbody></table>
+<p>&nbsp;</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

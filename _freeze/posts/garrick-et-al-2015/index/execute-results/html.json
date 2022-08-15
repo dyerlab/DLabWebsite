@@ -1,0 +1,16 @@
+{
+  "hash": "7916483d23f5bbe82e0cd7941394b75a",
+  "result": {
+    "markdown": "---\ntitle: Identification of Eastern United States Reticulitermes Termite Species via PCR-RFLP,\n  Assessed Using Training and Test Data\ndate: '2015-06-01'\nauthors:\n- name: Ryan C. Garrick\n- name: Benjamin D. Collins\n- name: Rachel N. Yi\n- name: Rodney J. Dyer\n  url: https://dyerlab.org\n  affiliation: Center for Environmental Studies\n  affiliation_url: https://ces.vcu.edu\n  orcid_id: 0000-0003-4707-3453\n- name: Chaz Hyseni\ndescription: |\n    INSECTS. 2015.  \npreview: featured.png\n\ndoi:  10.3390/insects6020524\nbibliography: bibliography.bib\n---\n\n [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/0B0T81CzLjtfPbl9PaFhfclNiTFk/view) [![ DOI 10.3390/insects6020524](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.3390/insects6020524)\n\n![]( featured.png )\n\n## Abstract\n\nReticulitermes termites play key roles in dead wood decomposition and nutrient cycling in forests. They also damage man-made structures, resulting in considerable economic loss. In the eastern United States, five species (R. flavipes, R. virginicus, R. nelsonae, R. hageni and R. malletei) have overlapping ranges and are difficult to distinguish morphologically. Here we present a molecular tool for species identification. It is based on polymerase chain reaction (PCR) amplification of a section of the mitochondrial cytochrome oxidase subunit II gene, followed by a three-enzyme restriction fragment length polymorphism (RFLP) assay, with banding patterns resolved via agarose gel electrophoresis. The assay was designed using a large set of training data obtained from a public DNA sequence database, then evaluated using an independent test panel of Reticulitermes from the Southern Appalachian Mountains, for which species assignments were determined via phylogenetic comparison to reference sequences. After refining the interpretive framework, the PCR-RFLP assay was shown to provide accurate identification of four co-occurring species (the fifth species, R. hageni, was absent from the test panel, so accuracy cannot yet be extended to training data). The assay is cost- and time-efficient, and will help improve knowledge of Reticulitermes species distributions.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

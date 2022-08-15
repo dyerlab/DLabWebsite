@@ -1,0 +1,16 @@
+{
+  "hash": "9b072696b3919d96f823be91cf14b214",
+  "result": {
+    "markdown": "---\ntitle: \"Chapter 1 Learning R\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-01-15\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nHere are the presentations for Chapter 1: Learning R from the upcoming text _Applied Population Genetics_.  More information on this text can be found [here](http://dyerlab.bio.vcu.edu/applied-population-genetics/).\n\n<!--more-->\n \n \n \n",
+    "supporting": [
+      "chapter-1-learning-r_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

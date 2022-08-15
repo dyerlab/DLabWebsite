@@ -1,0 +1,16 @@
+{
+  "hash": "8725ce1e1596d746fef6feab9324118f",
+  "result": {
+    "markdown": "---\ntitle: A set of polymorphic nuclear intron markers for conservation genetics and phylogeography\n  of Euphorbia species (Pedilanthus clade)\ndate: '2008-12-01'\nauthors:\n- name: Ryan C. Garrick\n- name: Crystal A. Meadows\n- name: Antoine N. Nicolas\n- name: John D. Nason\n- name: Rodney J. Dyer\n  url: https://dyerlab.org\n  affiliation: Center for Environmental Studies\n  affiliation_url: https://ces.vcu.edu\n  orcid_id: 0000-0003-4707-3453\ndescription: |\n    CONSERVATION GENETICS. 2008.  \ncategories: \n- codominant loci\n- euphorbiaceae\n- population structure\n- phylogeny\n- sonoran desert\npreview: featured.png\n\ndoi:  10.1007/s10592-008-9521-5\nbibliography: bibliography.bib\n---\n\n [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPSUZXWlloMDZEUW8) [![ DOI 10.1007/s10592-008-9521-5](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1007/s10592-008-9521-5)\n\n![]( featured.png )\n\n## Abstract\n\nWe developed seven nuclear intron markers for Euphorbia lomelii. New exon-primed intron-crossing (EPIC) oligonucleotides were used for initial amplification and sequencing, then locus-specific primers and restriction-fragment-length polymorphism genotyping assays were designed. Loci showed no significant deviation from Hardy-Weinberg and linkage equilibrium, and they cross-amplify in at least three congeneric species.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

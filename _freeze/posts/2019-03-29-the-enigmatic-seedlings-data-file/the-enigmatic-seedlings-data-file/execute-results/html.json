@@ -1,0 +1,16 @@
+{
+  "hash": "18a12a657e9afcb66187e4e3dc60f94b",
+  "result": {
+    "markdown": "---\ntitle: \"The Enigmatic Seedlings Data File\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2019-03-29\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n\n[Here](https://drive.google.com/file/d/1_SMPw4yij0ySdR2XRvaZqXXUduzbwuwg/view?usp=sharing) is the seedlings file.\n \n \n \n",
+    "supporting": [
+      "the-enigmatic-seedlings-data-file_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

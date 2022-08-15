@@ -1,0 +1,16 @@
+{
+  "hash": "545ea8b7b365af57899787facabfabc9",
+  "result": {
+    "markdown": "---\ntitle: \"Capturing contents within Curly Brackets\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2017-10-05\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nOK, just a quickie here. I'm working with a colleague on a manuscript using LaTeX.  The citation formatting for the journal we are looking at uses the numerical citations but bibtex will number the citations by the order in which the <span class=\"lang:sh decode:true  crayon-inline \">\\bibitem</span>  values they occur in the bibliography section.  So, it would be great to get them to be in the order in which they occur in the text.\n\nSo, our old friend (and sometimes enemy) grep comes to the rescue.  Here is a quick one-liner that allows you to search the text for all the <span class=\"lang:sh decode:true  crayon-inline \">\\cite{}</span>  entries and return only the contents within the curly brackets.\n\n<pre class=\"lang:sh decode:true \">cat test.tex | grep -o -e \"cite{[^}]*}\"</pre>\n\nOnce all the editing is done and we've finished on the main body of the text, we can reorder the bibliography section and the numbers will be incremental.\n\nSometimes I forget how awesome and powerful the unix underpinnings are.\n \n \n \n",
+    "supporting": [
+      "capturing-contents-within-curly-brackets_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

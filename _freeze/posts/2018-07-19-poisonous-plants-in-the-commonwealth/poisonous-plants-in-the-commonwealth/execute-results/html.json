@@ -1,0 +1,16 @@
+{
+  "hash": "863afc729160daf9bec13b13458f81ee",
+  "result": {
+    "markdown": "---\ntitle: \"Poisonous Plants in the Commonwealth\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2018-07-19\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nThis past summer has seen some rather spectacular cases of where people have run afoul of dangerous flora, the most recent of which was a college student after a runin with [Giant Hogweed](https://www.usatoday.com/videos/news/health/2018/07/13/virginia-teen-suffered-third-degree-burns-giant-hogweed-plant/36841743/)&#8211;the results were not good.\n\n## Information\n\nThe [Virginia Tech Cooperative Extension](https://ext.vt.edu/) group publishes a nice overview of toxic plants in the Commonwealth.  It has some useful information in that all of us should be aware of.\n\n \n \n \n",
+    "supporting": [
+      "poisonous-plants-in-the-commonwealth_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

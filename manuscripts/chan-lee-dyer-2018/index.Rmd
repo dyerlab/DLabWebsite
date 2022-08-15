@@ -1,0 +1,31 @@
+---
+title: Comparison of Pollination Graphs
+date: '2018-08-01'
+authors:
+- name: James H. Lee
+- name: David M. Chan
+- name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
+description: |
+    MOLECULAR ECOLOGY. 2018.  
+categories: 
+- pollination network
+- correlated random walk
+- agent-based model
+- pollen carryover
+- tree density
+image: featured.png
+doi:  10.5772/intechopen.74553
+---
+
+
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/1NinBAwbRwLucSwoZzod2B7F0O_QIuIpW/view) [![ DOI 10.5772/intechopen.74553](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.5772/intechopen.74553)
+
+![]( featured.png )
+
+## Abstract
+
+From the agent-based, correlated random walk model presented, we observe theeffects of varying the maximum turning angle, δmax, tree density, ω, and pollen carryover, κmax, on the distribution of pollen within a tree population by examining pollination graphs. Varying maximum turning angle and pollen carryover alters the dispersal of pollen, which affects many measures of connectivity of the pollination graph. Among these measures the clustering coefficient of fathers is largest when δmax is between 60 and 90∘ . The greatest effect of varying ω is not on the clustering coefficient of fathers, but on the other measures of genetic diversity. In particular when comparing simulations with randomly placed trees with that of actual tree placement of C. florida at the VCU Rice Center, it is clear that having specific tree locations is crucial in determining the properties of a pollination graph.

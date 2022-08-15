@@ -1,0 +1,33 @@
+---
+title: 'Variable nuclear markers for a Sonoran Desert bark beetle, Araptus attenuatus Wood
+  (Curculionidae: Scolytinae), with applications to related genera'
+date: '2009-08-01'
+authors:
+- name: Ryan C. Garrick
+- name: Crystal A. Meadows
+- name: John D. Nason
+- name: Anthony I. Cognato
+- name: Rodney J. Dyer
+  url: https://dyerlab.org
+  affiliation: Center for Environmental Studies
+  affiliation_url: https://ces.vcu.edu
+  orcid_id: 0000-0003-4707-3453
+description: |
+    CONSERVATION GENETICS. 2009.  
+categories: 
+- baja california
+- codominant loci
+- coleoptera
+- introns
+- population structure
+image: featured.png
+doi:  10.1007/s10592-008-9738-3
+---
+
+ [![ DOI 10.1007/s10592-008-9738-3](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1007/s10592-008-9738-3)
+
+![]( featured.png )
+
+## Abstract
+
+We report eight new co-dominant nuclear markers for population genetics of the bark beetle Araptus attenuatus Wood. Several loci include introns from low-copy genes, and four cross-amplify in one or more related genera. The markers show moderate levels of polymorphism (2-19 alleles per locus), and no loci showed significant deviations from Hardy-Weinberg or linkage equilibrium across both of the two populations examined, consistent with Mendelian inheritance patterns.

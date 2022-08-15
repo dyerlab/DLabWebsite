@@ -1,0 +1,16 @@
+{
+  "hash": "c0e204d9056667ebdf8144ecedbb5fce",
+  "result": {
+    "markdown": "---\ntitle: \"ENVS Welcome Slides\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2017-10-07\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nWe have just begun the new academic year and we are already getting orientation meetings together for the next set of incoming students.\n \n \n \n",
+    "supporting": [
+      "envs-welcome-slides_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

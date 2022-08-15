@@ -1,0 +1,16 @@
+{
+  "hash": "13e7bbd4bafdd8233734c7c8ba2cb0b4",
+  "result": {
+    "markdown": "---\ntitle: Wide outcrossing provides functional connectivity for new and old Banksia populations\n  within a fragmented landscape\ndate: '2019-03-27'\nauthors:\n- name: Alison Ritchie\n- name: Rodney Dyer\n- name: Paul Nevill\n- name: Elizabeth Sinclair\n- name: Siegfried Krauss\ndescription: |\n    Oecologia. 2019.  \ncategories: \n- population genetics\n- gene flow\n- genetic structure\npreview: featured.png\n\ndoi:  10.1007/s00442-019-04387-z\nbibliography: bibliography.bib\n---\n\n [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=1OXy-Edw8dtb5xQJH-965A0zcSHQy4S25) [![ DOI 10.1007/s00442-019-04387-z](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1007/s00442-019-04387-z)\n\n![]( featured.png )\n\n## Abstract\n\nHabitat fragmentation affects landscape connectivity, the extent of which is influenced by the movement capacity of the vectors of seed and pollen dispersal for plants. Negative impacts of reduced connectivity can include reduced fecundity, increased inbreeding, genetic erosion and decreased long-term viability. These are issues for not only old (remnant) populations, but also new (restored) populations. We assessed reproductive and connective functionality within and among remnant and restored populations of a common tree, Banksia menziesii R.Br. (Proteaceae), in a fragmented urban landscape, utilising a genetic and graph theoretical approach. Adult trees and seed cohorts from five remnants and two restored populations were genotyped using microsatellite markers. Genetic variation and pollen dispersal were assessed using direct (paternity assignment) and indirect (pollination graphs and mating system characterisation) methods. Restored populations had greater allelic diversity (Ar=8.08; 8.34) than remnant populations (Ar range=6.49-7.41). Genetic differentiation was greater between restored and adjacent remnants (F-ST=0.03 and 0.10) than all other pairwise comparisons of remnant populations (mean F<sub>ST</sub>=0.01 +/- 0.01; N=16 P=0.001). All populations displayed low correlated paternity (r<sub>p</sub>=0.06-0.16) with wide-ranging realised pollen dispersal distances (<1.7km) and well-connected pollen networks. Here, we demonstrate reproductive and connective functionality of old and new populations of B. menziesii within a fragmented landscape. Due to long-distance pollination events, the physical size of these sites underestimates their effective population size. Thus, they are functionally equivalent to large populations, integrated into a larger landscape matrix.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

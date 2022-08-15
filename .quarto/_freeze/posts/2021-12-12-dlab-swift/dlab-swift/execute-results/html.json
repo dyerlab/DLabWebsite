@@ -1,0 +1,16 @@
+{
+  "hash": "c7e7531fe1368526a5e260ed3acbc6dd",
+  "result": {
+    "markdown": "---\ntitle: \"DLab Swift\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2021-12-12\npreview: logo.jpg\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n",
+    "supporting": [
+      "dlab-swift_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

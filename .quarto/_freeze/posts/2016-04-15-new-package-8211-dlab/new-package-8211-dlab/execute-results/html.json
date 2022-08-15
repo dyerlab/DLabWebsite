@@ -1,0 +1,16 @@
+{
+  "hash": "7fb7393c3fd049c9f9f74b201140edaa",
+  "result": {
+    "markdown": "---\ntitle: \"New Package 8211 dlab\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-04-15\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nI just uploaded a new plugin for RStudio called dlab.  I'll be migrating over all the little helper functions I use to this as a general require() on startup.  What it has now is an AddIn that allows you to select text and have it wrapped in the r-code markup.  I'm moving stuff between ePub and Markdown and it was needed.\n\nYou can install it as:\n\n<pre class=\"lang:r decode:true\">devtools::install_github(\"dyerlab/dlab\")</pre>\n\nthen look at the AddIns menu for wrapCode.\n \n \n \n",
+    "supporting": [
+      "new-package-8211-dlab_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

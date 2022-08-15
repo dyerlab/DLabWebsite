@@ -1,0 +1,24 @@
+---
+title: 'Population Graphs: the graph theoretic shape of genetic structure'
+date: '2004-07-01'
+authors:
+- name: RJ Dyer
+- name: JD Nason
+description: |
+    MOLECULAR ECOLOGY. 2004.  
+categories: 
+- genetic structure
+- graph theory
+- networks
+- phylogeography
+image: featured.png
+doi:  10.1111/j.1365-294X.2004.02177.x
+---
+
+ [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPdzNaUm9hV2phM1E) [![ DOI 10.1111/j.1365-294X.2004.02177.x](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1365-294X.2004.02177.x)
+
+![]( featured.png )
+
+## Abstract
+
+Patterns of intraspecific genetic variation result from interactions among both historical and contemporary evolutionary processes. Traditionally, population geneticists have used methods such as F-statistics, pairwise isolation by distance models, spatial autocorrelation and coalescent models to analyse this variation and to gain insight about causal evolutionary processes. Here we introduce a novel approach (Population Graphs) that focuses on the analysis of marker-based population genetic data within a graph theoretic framework. This method can be used to estimate traditional population genetic summary statistics, but its primary focus is on characterizing the complex topology resulting from historical and contemporary genetic interactions among populations. We introduce the application of Population Graphs by examining the range-wide population genetic structure of a Sonoran Desert cactus (Lophocereus schottii). With this data set, we evaluate hypotheses regarding historical vicariance, isolation by distance, population-level assignment and the importance of specific populations to species-wide genetic connectivity. We close by discussing the applicability of Population Graphs for addressing a wide range of population genetic and phylogeographical problems.

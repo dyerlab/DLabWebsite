@@ -1,0 +1,16 @@
+{
+  "hash": "070902a5c14e2ac6ed5c5e6743fb2d65",
+  "result": {
+    "markdown": "---\ntitle: \"Research Talk Chaire Éco conception\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-09-22\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n",
+    "supporting": [
+      "research-talk-chaire-co-conception_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "hash": "40c4010b5e83f83b2986344acb83d109",
+  "result": {
+    "markdown": "---\ntitle: \"Congratulations to Jameson Hinkle\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-07-28\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n<img class=\"alignnone size-full wp-image-346\" src=\"wp-content/uploads/2015/01/Hinkle-e1421078975142.png\" alt=\"Hinkle\" width=\"303\" height=\"221\" srcset=\"wp-content/uploads/2015/01/Hinkle-e1421078975142.png 303w, wp-content/uploads/2015/01/Hinkle-e1421078975142-300x219.png 300w\" sizes=\"(max-width: 303px) 100vw, 303px\" />\n\nJameson successfully defended his MS Thesis on eDNA techniques for identification of Atlantic Sturgeon.  Jameson is now the twelfth graduate student to pass through the lab.  It was great having him here and we look forward to seeing where he goes from here.  Way to go!\n \n \n \n",
+    "supporting": [
+      "congratulations-to-jameson-hinkle_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

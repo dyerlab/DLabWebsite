@@ -1,0 +1,14 @@
+{
+  "hash": "c8b3822e8b28893fad31f542d79cbc31",
+  "result": {
+    "markdown": "---\ntitle: 'GeneticStudio: a suite of programs for spatial analysis of genetic-marker data'\ndate: '2009-01-01'\nauthors:\n- name: Rodney J. Dyer\n  url: https://dyerlab.org\n  affiliation: Center for Environmental Studies\n  affiliation_url: https://ces.vcu.edu\n  orcid_id: 0000-0003-4707-3453\ndescription: |\n    MOLECULAR ECOLOGY RESOURCES. 2009.  \ncategories: \n- genetic structure\n- population graphs\n- spatial structure\nimage: featured.png\ndoi:  10.1111/j.1755-0998.2008.02384.x\ntitle-block-banner: true\n---\n\n\n [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/open?id=0B0T81CzLjtfPX2pkVVhoTF9icnM) [![ DOI 10.1111/j.1755-0998.2008.02384.x](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/j.1755-0998.2008.02384.x)\n\n![]( featured.png )\n\n## Abstract\n\nThe analysis of genetic marker data is increasingly being conducted in the context of the spatial arrangement of strata (e.g. populations) necessitating a more flexible set of analysis tools. GeneticStudio consists of four interacting programs: (i) Geno a spreadsheet-like interface for the analysis of spatially explicit marker-based genetic variation; (ii) Graph software for the analysis of Population Graph and network topologies, (iii) Manteller, a general purpose for matrix analysis program; and (iv) SNPFinder, a program for identifying single nucleotide polymorphisms. The GeneticStudio suite is available as source code as well as binaries for OSX and Windows and is distributed under the GNU General Public License.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

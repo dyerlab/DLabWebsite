@@ -1,0 +1,16 @@
+{
+  "hash": "9888ab2ecc8fb9aae94f7840dc6ebd55",
+  "result": {
+    "markdown": "---\ntitle: \"Welcome Jane Remfert\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-08-19\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nWe have added a new member to our lab, Jane Remfert.  She is an incoming ILS PhD Student who is going to work on pollen movement in dogwood.  Very exciting!\n \n \n \n",
+    "supporting": [
+      "welcome-jane-remfert_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

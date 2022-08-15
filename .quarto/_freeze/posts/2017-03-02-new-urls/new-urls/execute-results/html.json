@@ -1,0 +1,16 @@
+{
+  "hash": "a63153ce7072c6017b116afd24cd3cae",
+  "result": {
+    "markdown": "---\ntitle: \"New URLs\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2017-03-02\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nThis web page is now available as through the following URL's\n\nhttp://dyerlab.org  \nhttp://dyerlab.com\n\nbecause the longer URL is too long and confusing.\n\nhttp://dyerlab.ces.vcu.edu\n\n&nbsp;\n\n&nbsp;\n \n \n \n",
+    "supporting": [
+      "new-urls_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

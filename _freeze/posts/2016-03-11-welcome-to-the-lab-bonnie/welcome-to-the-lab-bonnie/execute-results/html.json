@@ -1,0 +1,16 @@
+{
+  "hash": "25517e163faa9652d03c8f916b9be383",
+  "result": {
+    "markdown": "---\ntitle: \"Welcome to the Lab Bonnie\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-03-11\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nAs part of a collaboration with VDOT, I am pleased to announce that [Ms. Bonnie Roderique](http://dyerlab.bio.vcu.edu/people/) has just joined the Dyer laboratory to work on a project around the endangered James River Spinymussel (_Pleurobema collina_).  Not a plant, but at least not a vertebrate!\n \n \n \n",
+    "supporting": [
+      "welcome-to-the-lab-bonnie_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "hash": "fe16edf01599c55ecc4e82170774d65d",
+  "result": {
+    "markdown": "---\ntitle: \"Setting up Postgresql on mac\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2020-03-12\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\n\nThis is rather quick and easy to do.  On MacOS, make sure you have Homebrew installed and then follow those instructions.  \n\nFor me, it took a few additional steps because I was installing it on a new mac mini (in the home office).  I had not made sure everything was up-to-date before starting so I had to walk away for a little bit to let it all happen.  No biggie.\n\n```\nrodney@rodneys-mini ~ % brew install postgis\nError: The following formulae\n  [#<Dependency: \"python\" []>, #<Options: []>] and [#<Dependency: \"gcc\" []>, #<Options: []>]\ncannot be installed as binary packages and must be built from source.\nInstall the Command Line Tools:\n  xcode-select --install\n```\n\nSo I ran this to install the command line build tools:\n\n```\nrodney@rodneys-mini ~ % xcode-select --install\nxcode-select: note: install requested for command line developer tools\n```\n\nThis took several minutes as I had not updated my XCode in a while.  No problem though.  Then I went back and ran the command again, which installed a ton of dependencies.\n\n```\nrodney@rodneys-mini ~ % brew install postgis  \n==> Installing dependencies for postgis: cfitsio, popt, epsilon, expat, freexl, gdbm, openssl@1.1, readline, sqlite, xz, python, geos, giflib, gmp, isl, mpfr, libmpc, gcc, szip, hdf5, jpeg, jasper, json-c, libxml2, libdap, libtiff, proj, libgeotiff, libpng, libpq, libspatialite, netcdf, openblas, numpy, pcre, freetype, fontconfig, libffi, glib, lzo, pixman, cairo, little-cms2, nspr, nss, openjpeg, qt, poppler, libtool, unixodbc, webp, xerces-c, zstd, gdal, icu4c, krb5, postgresql, protobuf, protobuf-c, boost, eigen, cgal and sfcgal\n```\n\nThat took a while.\n\n \n \n \n",
+    "supporting": [
+      "setting-up-postgresql-on-mac_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

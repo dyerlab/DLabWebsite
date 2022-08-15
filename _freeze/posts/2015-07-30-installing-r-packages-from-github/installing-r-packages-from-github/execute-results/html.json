@@ -1,0 +1,16 @@
+{
+  "hash": "3a316a571861224cffc332eba04dc5a1",
+  "result": {
+    "markdown": "---\ntitle: \"Installing R packages from github\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-07-30\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nThe default CRAN repository is not the only place that R packages are stored.  You can also find them on github.  When I develop libraries for R, I typically develop them on <http://github.com/dyerlab> and then upload them to CRAN when I get to major milestones.  The latest versions of all my software will always be found on github.  So here is how to install packages directly.<!--more-->\n\nTo install from github directly, you need two things, the devtools library and the repository and project name on github that you'll be installing from.  As always, it is a great idea to update everything (latest version of R and packages via `update.packages(ask=FALSE)`) before you start.\n\n  1. In R, type `install.packages(\"devtools\")` and it will go grab the stuff for you.  If you are on a machine that does not have compilers and other developers tools on it, R will tell you to go download the RTools package and install it.  They give you a URL to follow and a function to test the installation with.  Use it.\n  2. `require(devtools)`\n  3. Assuming you are using my account (dyerlab) and installing the gstudio package, you would then type: `install_github(\"dyerlab/gstudio\")`.\n  4. Done.\n \n \n \n",
+    "supporting": [
+      "installing-r-packages-from-github_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

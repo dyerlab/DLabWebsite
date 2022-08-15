@@ -1,0 +1,5 @@
+Dyer RJ 2009. Biological Data Analysis Using R.  Released as Open Source under the Creative Commons license.  download.
+Dyer RJ, Roderique BA, 2021.  Population genetic structure, connectivity, and potential broodstock sources for the endangered James Spinymussel (Parvaspina collina). Virginia Department of Wildlife Resources, General Technical Report. link.
+Dyer RJ, Roderique BA, Deadwyler MC.  2021.  Refining environmental DNA protocols developed for the endangered James Spinymussle (Pleurobema collina).  Virginia Transportation Research Council, Technical Report VTRC 21-R14. 
+Dyer RJ.  2016.  Applied Population Genetics.  CC-SA.  https://goo.gl/NF7NId.
+Dyer RJ.  2016.  Landscape Genetic Data Analysis.  CC-SA. https://goo.gl/kA9I6O.

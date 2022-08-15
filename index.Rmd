@@ -1,9 +1,0 @@
----
-title: "Latest Content"
-site: distill::distill_website
-listing: posts
----
-
-<div class="parallax l-screen">
-</div>
-

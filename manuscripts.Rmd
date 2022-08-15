@@ -1,5 +1,0 @@
----
-title: "Manuscripts"
-listing: manuscripts
----
-

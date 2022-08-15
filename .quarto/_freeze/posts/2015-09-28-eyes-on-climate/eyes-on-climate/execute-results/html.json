@@ -1,0 +1,16 @@
+{
+  "hash": "c8e4d44973f881f8015c67755459aa8c",
+  "result": {
+    "markdown": "---\ntitle: \"Eyes on Climate\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2015-09-28\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nA previous visitor to the laboratory, Philip Bertrand, is taking a trip between his graduate programs to travel the world and report on climate change.  Here is ongoing [blog](http://www.eyesonclimate.org/), cataloging their travel from across the globe.  Definitely worth following.\n \n \n \n",
+    "supporting": [
+      "eyes-on-climate_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

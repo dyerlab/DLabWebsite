@@ -1,0 +1,16 @@
+{
+  "hash": "35167d13c0bdf7454689710ea6c866ed",
+  "result": {
+    "markdown": "---\ntitle: \"Applied Environmental Statistics\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-08-29\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nThis semester, I'll be leading a graduate course in applied ecological statistics.  Should be a lot of fun getting a group of people up to speed on the benefits of being an R guru!\n\n<https://sites.google.com/a/vcu.edu/applied-environmental-statistics>\n \n \n \n",
+    "supporting": [
+      "applied-environmental-statistics_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

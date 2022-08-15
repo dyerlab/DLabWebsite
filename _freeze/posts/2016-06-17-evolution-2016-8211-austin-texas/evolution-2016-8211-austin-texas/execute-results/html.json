@@ -1,0 +1,16 @@
+{
+  "hash": "827a5d4ab381877d40702df2fda26ffc",
+  "result": {
+    "markdown": "---\ntitle: \"Evolution 2016 8211 Austin Texas\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-06-17\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nAnd it starts!  Going to be a great meeting with a huge VCU contingent!\n \n \n \n",
+    "supporting": [
+      "evolution-2016-8211-austin-texas_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}

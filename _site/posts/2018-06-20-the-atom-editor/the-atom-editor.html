@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rodney Dyer">
+<meta name="dcterms.date" content="2018-06-20">
+<meta name="description" content="A short description of the post.">
+
+<title>dyerlab - The Atom Editor</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="dyerlab - The Atom Editor">
+<meta property="og:description" content="A short description of the post.">
+<meta property="og:site-name" content="dyerlab">
+<meta name="twitter:title" content="dyerlab - The Atom Editor">
+<meta name="twitter:description" content="A short description of the post.">
+<meta name="twitter:creator" content="@RodneyDyer">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">dyerlab</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html">People</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../manuscripts.html">Manuscripts</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">The Atom Editor</h1>
+                  <div>
+        <div class="description">
+          <p>A short description of the post.</p>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <a href="https://dyerlab.org">Rodney Dyer</a> 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Center for Environmental Studies
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 20, 2018</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div>
+<p><img src="https://locker.ifttt.com/v2/6471854/1529502098516-7188915696ef52db/b4eb36ac38277ba03d724b9255d610d0490c0037bbab93a0d59e2ba8987154d4/285507c1-07ef-4cb0-b0fa-4bfb29559dd0?sharing_key=cb9e9fcf4c6fa73363e076a3fdefe1dc" width="1214" height="1061"></p>
+</div>
+<div>
+<p>Being new to the Windows platform, I’m on the look for a good text editor that can do the myriad of tasks that we do each day. Notepad is not an option, let’s be real. I’m looking for something that can be extended and has been designed from the bottom up for wrangling text and writing code. Ultimately, I would like something that is amenable to teaching both R and Python using a single interface. RStudio is great for R but sucks for Python. Juypter notebooks are clunky and toy-like.</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Atom is created by the Github folks and is integrated into ‘the mothership’ repository. Here is what I did to get it up and running and having Python running correctly.</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Packages</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Packages are extensions to the main editor that accomplish some function to make you life a bit easier. Here are some of the ones I find helpful. You can find packages and install them using Settings -&gt; Install. Then search for the packages and hit the install button.</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Minimap</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>If you have scripts and/or code that is longer than a single page (and who doesn’t) minimap provides a graphical depiction of your code on the right-hand side of the window to allow you to easily jump up and down the file. Here is an example on an R script.</p>
+</div>
+<div>
+
+</div>
+<div>
+<p><img src="https://locker.ifttt.com/v2/6471854/1529502099224-b5ebe3e5af2fa6b9/63e8f13843558c57eac9fa528a99b904adf1792277ecd52805b8864609680b27/376b6252-244d-433a-8559-6def74b4e578?sharing_key=8ad680ffdbeff320cd1567f4d10c7369" width="908" height="596"></p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Script</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Script is a package that runs code in the editor directly. This means you can run individual lines as you develop and look at the output. Very helpful.</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Themes</p>
+</div>
+<div>
+
+</div>
+<div>
+<p>There are a ton of themes, both overall for the editor as well as syntax highlighting, available. To install one, select Install -&gt; Theme and type a name from Settings. Here is the atom-material-syntax being installed.</p>
+</div>
+<div>
+
+</div>
+<div>
+<p><img src="https://locker.ifttt.com/v2/6471854/1529502099863-a9c4f8ee83cf54a1/0232f9fb30b4ddc6a99d0f712d0f3c17fa0481311beb20a7bb976d97c79709ce/6a4cef59-9275-4d33-8dd5-9edc284f9e4d?sharing_key=d7b4f369f60df59e985da85253f411ad" width="695" height="728"></p>
+</div>
+<div>
+
+</div>
+<div>
+<p>Once installed, you can change both the UI and the syntax colors.</p>
+</div>
+<div>
+
+</div>
+<div>
+<p><img src="https://locker.ifttt.com/v2/6471854/1529502100357-3c53f43e1e3284f9/d868a580869d96c7a6f26d7e52f90095a4ad485e84b989dfa284f989d12c7da0/0f968f10-37e2-4853-8d94-c0bd7f4b70b3?sharing_key=24ddcb1dd80ff3721f860c8d4e5873dd" width="931" height="582"></p>
+</div>
+<div>
+
+</div>
+<div>
+
+</div>
+<div>
+<p>As I expand more into using Atom, I’ll add additional posts showing how I have configured it for use in my daily coding activities.</p>
+</div>
+<div>
+
+</div>
+<div>
+
+</div>
+<div>
+
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

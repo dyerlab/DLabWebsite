@@ -1,0 +1,16 @@
+{
+  "hash": "591c9ad3d57275080d409b328d9b2363",
+  "result": {
+    "markdown": "---\ntitle: Model Comparison for Abiotic versus Biotic Pollen Dispersal\ndate: '2016-10-01'\nauthors:\n- name: Erich L. Foster\n- name: David M. Chan\n- name: Rodney J. Dyer\n  url: https://dyerlab.org\n  affiliation: Center for Environmental Studies\n  affiliation_url: https://ces.vcu.edu\n  orcid_id: 0000-0003-4707-3453\ndescription: |\n    NONLINEAR DYNAMICS PSYCHOLOGY AND LIFE SCIENCES. 2016.  \ncategories: \n- gene flow\n- agent based modelling\n- correlated random walk\n- pollen\npreview: featured.png\nbibliography: bibliography.bib\n---\n\n [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](https://drive.google.com/file/d/0B0T81CzLjtfPMHROQ2E1Tk42TkU/view?usp=sharing)\n\n![]( featured.png )\n\n## Abstract\n\nAn agent-based model with a correlated random walk is used to explore pollination within a forest. For abiotic dispersal, say via the wind, we use a purely random walk where there is no correlation between consecutive steps and for biotic dispersal, say via insect, we use a moderate or highly correlated random walk. In particular, we examine the differences in a number of biological measurement between a purely random walk and a correlated random walk in terms of gene dispersal in low and high plant densities.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

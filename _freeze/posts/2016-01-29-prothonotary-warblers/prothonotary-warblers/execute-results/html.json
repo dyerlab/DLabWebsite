@@ -1,0 +1,16 @@
+{
+  "hash": "7a34f31f42f4201e3c6b4a498bb417c5",
+  "result": {
+    "markdown": "---\ntitle: \"Prothonotary Warblers\"\ndescription: |\n  A short description of the post.\nauthor:\n  - name: Rodney Dyer\n    url: https://dyerlab.org\n    affiliation: Center for Environmental Studies\n    affiliation_url: https://ces.vcu.edu\n    orcid_id: 0000-0003-4707-3453\ndate: 2016-01-29\noutput:\n  distill::distill_article:\n    self_contained: false\n---\n\n\n\n\n\nWay to go [Dr. Bulluck](http://rampages.us/bullucklab/)!  A cool overview of some research that we've been associated with over the years.\n \n \n \n",
+    "supporting": [
+      "prothonotary-warblers_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}
