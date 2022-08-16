@@ -2,13 +2,10 @@
 title: "Workshop on R Data Literacy"
 description: |
   The lecture content from a 2-day workshop I delivered for individuals working at the Virginia Department of Environmental Quality tht focused on building a foundation of data analysis using R.
-preview: venti-views-2zKt6Zcc1UU-unsplash.jpg
-output:
-  distill::distill_article:
-    self_contained: false
+date: "2022-03-04"
 ---
 
-![Venti Views Image from Unspalsh](venti-views-2zKt6Zcc1UU-unsplash.jpg)
+![Venti Views Image from Unspalsh](venti-views-2zKt6Zcc1UU-unsplash.jpg){.roundedImg}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)

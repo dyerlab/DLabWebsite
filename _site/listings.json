@@ -52,9 +52,10 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2022-03-04-deq-r-workshop-day-1/deq-r-workshop.html",
+      "/posts/2022-08-16-xcode-select/index.html",
       "/posts/2022-03-22-update-to-popgraph-library/update-to-popgraph-library.html",
       "/posts/2022-03-18-github-distill-manuscript-automation/github-distill-manuscript-automation.html",
+      "/posts/2022-03-04-deq-r-workshop-day-1/deq-r-workshop.html",
       "/posts/2022-02-15-guest-lecture-in-envs102/guest-lecture-in-envs102.html",
       "/posts/2022-02-01-unneceessary-output-by-ttdplyrtt/unneceessary-output-by-ttdplyrtt.html",
       "/posts/2021-12-21-craft-app-rstudio-distill-blogging/index.html",

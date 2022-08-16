@@ -1,0 +1,44 @@
+---
+title: "xcrun issues on Ventura Beta"
+description: |
+  Experiencing some problems with git and odd startup screens on the Terminal.app.  Apparently I had to reset the command line tools with the new Xcode-beta.  Here is how I fixed it.
+date: "2022-08-16"
+
+---
+
+![](featured.png)
+
+I'm running some of the beta versions of the next MacOS & iPadOS for development purposes.  I ran across the following issue on a laptop when trying to work on a git repository for teaching.
+
+When checking on the status of the repo, 
+
+```
+git status
+```
+
+it gave me the following error.
+
+```
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+```
+
+I noticed that the laptop did not have a version of Xcode on it, so I downloaded it and installed it.   Same problem.  
+
+```
+[➜  ~/ xcode-select --install
+xcode-select: note: install requested for command line developer tools
+```
+
+It turns out that you need to also tell the OS to install the command line tools.  I had thought they were previously installed when you installed Xcode but apparently, the OS needs to be pointed at the proper binaries.
+
+To do this, first reset the system and then switch it over to the new beta version of Xcode.
+
+```
+➜  ~ sudo xcode-select --reset
+Password:
+➜  ~ sudo xcode-select --switch /Applications/Xcode-beta.app 
+```
+
+Perfect, now it works exactly as it should.
+
+

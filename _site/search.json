@@ -749,6 +749,13 @@
     "text": "This script is in the rood directory of the site and does the following steps:\n\nfinds all markdown files in the _toImport folder. For each file it:\n\n\nLoads in the file\nUses the first line as the metadata title:\nUse the first paragraph as the metadata description:\nCreates a new distill::create_post() with title and modification date for the markdown file.\nRemoves boilerplate stuff form new post and puts in content from the markdown file.\nAdds content to the metadata (extended author info and featured image components).\nRenames post to index.Rmd to make it easier to link in (I wish this was an option in distill).\nRenders the markdown.\nDeletes original markdown file.\n\n\nAfter finishing up, it then renders the entire site.\n\nHere is the script.\n\n#' This file is how I'll build the site.\n#' \nrm( list=ls() )\n\n\n# load in and convert any of the markdown stuff in _toImport into \n#  distill articles.\nfor( file in list.files(\"_toImport\", pattern = \"*.md\", full.names = TRUE) ) { \n  \n  # find previous stuff\n  raw <- readLines( file )\n  date <- stringr::str_split( file.info(file)$mtime , \n                              \" \", \n                              simplify = TRUE)[,1] \n  title <- stringr::str_remove( raw[1], \"# \") \n  description <- raw[3]\n  contents <- paste( raw[ -1 ], collapse=\"\\n\")\n  \n  # make new post  will create \n  filetitle <- gsub(\"[[:punct:][:blank:]]+\", \"-\", title ) \n  filetitle <- tolower(filetitle)\n  orig_title <- paste( \"_posts/\", \n                       date, \"-\", \n                       filetitle, \"/\", \n                       filetitle,\".Rmd\", \n                       sep=\"\" )\n  \n  distill::create_post( filetitle, \n                        date = date,\n                        edit = FALSE )\n  \n  raw_post <- readLines( orig_title )\n  raw_post[2] <- paste( \"title: \\\"\", title, \"\\\"\" )\n  raw_post[4] <- paste( \"  \", description, sep=\" \")\n  raw_post[7] <- \"    url: https://dyerlab.org\\n    affiliation: Center for Environmental Studies\\n    affiliation_url: https://ces.vcu.edu\\n    orcid_id: 0000-0003-4707-3453\"\n  raw_post[8] <- paste( raw_post[8], \"preview: featured.png\", sep=\"\\n\")\n  raw_post <- c( raw_post[1:13], contents ) \n  raw_post_output <- paste( raw_post, collapse=\"\\n\")\n  \n  new_file <- paste( \"_posts/\", \n                     date, \"-\", \n                     filetitle, \"/\", \n                     \"index.Rmd\", sep=\"\" )\n  writeLines( raw_post_output, \n              con = new_file )\n  \n  # clean up the posts\n  unlink( orig_title )\n  unlink( file ) \n  \n  rmarkdown::render( new_file )\n}\n\n# clean up any of the crap on the site and render the whole thing.\nsystem( \"find . -type f -iname '.DS_Store' -delete\")\nrmarkdown::render_site(\".\")\n\nWhat I do not do is push through all the git actions to upload it. I think I’ll just do that manually.\nHere is an example of the first Craft \\(\\to\\) Distill posting."
   },
   {
+    "objectID": "posts/2022-08-16-xcode-select/index.html",
+    "href": "posts/2022-08-16-xcode-select/index.html",
+    "title": "xcrun issues on Ventura Beta",
+    "section": "",
+    "text": "I’m running some of the beta versions of the next MacOS & iPadOS for development purposes. I ran across the following issue on a laptop when trying to work on a git repository for teaching.\nWhen checking on the status of the repo,\ngit status\nit gave me the following error.\nxcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun\nI noticed that the laptop did not have a version of Xcode on it, so I downloaded it and installed it. Same problem.\n[➜  ~/ xcode-select --install\nxcode-select: note: install requested for command line developer tools\nIt turns out that you need to also tell the OS to install the command line tools. I had thought they were previously installed when you installed Xcode but apparently, the OS needs to be pointed at the proper binaries.\nTo do this, first reset the system and then switch it over to the new beta version of Xcode.\n➜  ~ sudo xcode-select --reset\nPassword:\n➜  ~ sudo xcode-select --switch /Applications/Xcode-beta.app \nPerfect, now it works exactly as it should."
+  },
+  {
     "objectID": "posts/2015-09-04-installing-gitbook-on-osx/installing-gitbook-on-osx.html",
     "href": "posts/2015-09-04-installing-gitbook-on-osx/installing-gitbook-on-osx.html",
     "title": "Installing Gitbook on OSX",
@@ -1246,6 +1253,13 @@
     "text": "The Dyer laboratory is a research lab at Virginia Commonwealth University that focuses on developing and testing tools to aid in understand how landscape features influence genetic connectivity. This requires a mix of theory development, software creation, and evaluation using (largely) non-model systems in the field."
   },
   {
+    "objectID": "index.html#recent-posts",
+    "href": "index.html#recent-posts",
+    "title": "dyerlab",
+    "section": "Recent Posts",
+    "text": "Recent Posts"
+  },
+  {
     "objectID": "people.html",
     "href": "people.html",
     "title": "People",
@@ -1272,19 +1286,5 @@
     "title": "Rodney J. Dyer",
     "section": "Professional Experience",
     "text": "Professional Experience\n2017 - Present: Full Professor, VCU\n2017 - Present: Director, CES\n2017 - 2018: Interim Director, CSBC\n2010 - 2017: Associate Professor, VCU\n2004 - 2010: Assistant Professor, VCU\n2002 - 2004: Postdoctoral Researcher, ISU\n1995 - 1995: Howard Hughes Research Fellow, UW"
-  },
-  {
-    "objectID": "index.html#blog-posts",
-    "href": "index.html#blog-posts",
-    "title": "dyerlab",
-    "section": "Blog Posts",
-    "text": "Blog Posts"
-  },
-  {
-    "objectID": "index.html#recent-posts",
-    "href": "index.html#recent-posts",
-    "title": "dyerlab",
-    "section": "Recent Posts",
-    "text": "Recent Posts"
   }
 ]
