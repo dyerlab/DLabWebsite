@@ -10,4 +10,5 @@ _toImport/
 ./.quarto
 .DS_Store
 /.quarto/
-_freeze/
+/_freeze/
+/_site/
