@@ -15,4 +15,4 @@ A few years ago, I began taking all of my teaching components and breaking them 
 
 -   Each topic may be of interest for several different courses.
 
--   Reusing topics makes my life **so much less sucky** (see also Dyer's Philosophy of Life)
+-   Reusing topics makes my life **so much less sucky** (see also [Dyer's Philosophy of Life](https://dyerlab.org/posts/1969-10-14-dyers-philosophy-of-life/))
