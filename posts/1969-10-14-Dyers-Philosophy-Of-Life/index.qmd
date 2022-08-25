@@ -1,6 +1,7 @@
 ---
 title: "Dyer's Philosophy of Life"
 editor: visual
+date: "1969-10-14"
 description:  |
   There are many great intellectual traditions that our species has derived related to a general 'philosophy' of life.  Here is mine.
 ---
@@ -79,6 +80,8 @@ In the examples above, we have a situation where roughly 22.2% of the life is cl
 That situation looks like this:
 
 ```{r}
+#| echo: false
+
 par(mar = c(0, 1, 0, 1))
 pie(
   c(280, 60, 20),
@@ -96,9 +99,11 @@ Now, here is the solemn truth of this entire philosophy. If you can look at thes
 
 -   Reconfigure your life so they no longer live rent free in your head (e.g., become a Seattle Seahawks fan)
 
-Then you can achieve what is technically called a **period of suckiness reduction**. These things are not guaranteed to stay static without constant vigilance. Howver, your life after this reduction will be more like this:
+Then you can achieve what is technically called a **period of suckiness reduction**. These things are not guaranteed to stay static without constant vigilance. However, your life after this reduction will be more like this:
 
 ```{r}
+#| echo: false
+
 par(mar = c(0, 1, 0, 1))
 pie(
   c(300, 60),
