@@ -13,6 +13,10 @@ website:
     creator: "@RodneyDyer"    
     site: "@dyerlab"
   open-graph: true
+
+execute:
+  freeze: auto
+
 format:
   html:
     theme: cosmo
