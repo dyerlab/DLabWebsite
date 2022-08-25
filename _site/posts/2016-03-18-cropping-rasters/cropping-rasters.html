@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rodney Dyer">
+<meta name="dcterms.date" content="2016-03-18">
+<meta name="description" content="A short description of the post.">
+
+<title>dyerlab - Cropping Rasters</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="dyerlab - Cropping Rasters">
+<meta property="og:description" content="A short description of the post.">
+<meta property="og:site-name" content="dyerlab">
+<meta name="twitter:title" content="dyerlab - Cropping Rasters">
+<meta name="twitter:description" content="A short description of the post.">
+<meta name="twitter:creator" content="@RodneyDyer">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">dyerlab</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html">People</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../manuscripts.html">Manuscripts</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Cropping Rasters</h1>
+                  <div>
+        <div class="description">
+          <p>A short description of the post.</p>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <a href="https://dyerlab.org">Rodney Dyer</a> 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Center for Environmental Studies
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 18, 2016</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>It is often the case that the raster we are working with is not the exact size of the area from which our data are collected. It is a much easier situation if the raster is larger than the area than if you need to stitch together two raster Tiles to get all your data onto one extent. In my doctoral thesis work, the area of the southern Ozark mountains that my sites were in was not only straddling a boundary between existing rasters, it was also at the boundary of two UTM zones! What a pain.</p>
+<!--more-->
+<p>Spatial data often consists of very large datasets. One way to minimize the amount of computational resources you are going to use in R is to select only the spatial regions (extents) that you are working in and get rid of the remaining data. This is particularly important if you are going to be doing isolation modeling for genetic connectivity as the cost surface raster needs to be translated into a connectivity network. Data outside your area of interest are unnecessarily taking both resources and time away from your work.</p>
+<p>To crop a raster, we need to identify the region we wish to keep as an extent object. An extent is a vector of length 4 defined as <span class="lang:r decode:true crayon-inline">c(xmin, xmax, ymin, ymax)</span> describing the boundaries of are of interest.</p>
+<p>Here is an extent for the arapat data set.</p>
+<div class="layoutArea">
+<div class="column">
+<pre><code>&lt;pre class="lang:r decode:true"&gt;require(gstudio)</code></pre>
+data(arapat) lon.min &lt;- min(arapat<span class="math inline">\(Longitude) lon.max &lt;- max(arapat\)</span>Longitude) lat.min &lt;- min(arapat<span class="math inline">\(Latitude) lat.max &lt;- max(arapat\)</span>Latitude) e &lt;- extent( lon.min, lon.max, lat.min, lat.max ) e ## class: Extent ## xmin: -114.2935 ## xmax: -109.1263 ## ymin: 23.0757 ## ymax: 29.32541
+
+<pre><code>&lt;p&gt;
+  This is the exact boundaries of the data set. However, it is probably a good idea to not have your map cropped exactly to your boundaries but have your most extreme locations plotted within the map boundaries. So I’ll take an approximation (rounding up and down as necessary) to use.
+&lt;/p&gt;
+
+&lt;pre class="lang:r decode:true"&gt;e &lt;- extent( -115, -108, 23, 30 )</code></pre>
+e ## class: Extent ## xmin: -115 ## xmax: -108 ## ymin: 23 ## ymax: 30
+
+<pre><code>&lt;p&gt;
+  This can now be used as the area from within the alt raster that we want to keep.
+&lt;/p&gt;
+
+&lt;pre class="lang:r decode:true"&gt;bc &lt;- crop( alt, e )</code></pre>
+bc ## class : RasterLayer ## dimensions : 840, 840, 705600 (nrow, ncol, ncell) ## resolution : 0.008333333, 0.008333333 (x, y) ## extent : -115, -108, 23, 30 (xmin, xmax, ymin, ymax) ## coord. ref. : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 ## data source : in memory ## names : alt_22 ## values : -202, 2774 (min, max)
+
+<pre><code>&lt;p&gt;
+  And if we plot it, we see that it is more properly scaled for the region we are interested in working on.
+&lt;/p&gt;
+
+&lt;pre class="lang:r decode:true "&gt;plot(bc)&lt;/pre&gt;
+
+&lt;p&gt;
+  &lt;img class="aligncenter wp-image-865 size-large" src="wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-1024x604.png" alt="Screen Shot 2016-03-18 at 1.33.39 PM" width="768" height="453" srcset="wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-1024x604.png 1024w, wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-300x177.png 300w, wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1-768x453.png 768w, wp-content/uploads/2016/03/Screen-Shot-2016-03-18-at-1.33.39-PM-1.png 1552w" sizes="(max-width: 768px) 100vw, 768px" /&gt;
+&lt;/p&gt;</code></pre>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
