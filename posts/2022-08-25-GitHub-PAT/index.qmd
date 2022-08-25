@@ -1,0 +1,62 @@
+---
+title: "GitHub Personal Access Tokens"
+editor: visual
+date: "2022-08-25"
+image: featured.png
+description:  |
+  GitHub has recently moved over to using Personal Access Tokens for repositories. So I thought it would be a good idea to write out how to configure your setup so that you have RStudio set up and ready to go.  This setup will walk you through how to do this so your life will be just a little bit better.
+---
+
+## Generating A Personal Access Token
+
+To create a new token in RStudio, you will be using some packages that you may not have on your machine already. No problem. Just follow the instructions below.
+
+1.  Open RStudio and select the R Console.
+
+2.  Type in the following command
+
+    ```{r}
+    #| eval: false
+    install.packages("usethis")
+    install.packages("credentials")
+    library(usethis)
+    ```
+
+3.  Now create a token from Github by typing in the following command
+
+    ```{r}
+    #| eval: false
+    create_github_token()
+    ```
+
+4.  This will open a verification window in a browser that will ask you to verify your GitHub credentials. Then it will dump you into the Personal Access Token settings page for your GitHub account.
+
+    ![](pat1.png)
+
+5.  Generate a new token and give it a name for its intended use.
+
+    ![](pat2.png)
+
+6.  It will produce this long access token (the `ghp_B0…` part. Copy that long access token, this is your key (n.b., this one is not valid after I made this page).
+
+    ![](pat3.png)
+
+7.  No go back into RStudio and type
+
+    ```{r}
+    #| eval: false
+    credentials::set_github_pat("YOUR ACCESS TOKEN HERE")
+    ```
+
+You should be able to check to see if your access token is set and all good by looking at the output from this command. You should s
+
+```{r}
+#| eval: false 
+git_sitrep()
+```
+
+Somewhere in the output you should see something like:
+
+>     • Personal access token for 'https://github.com': '<discovered>'
+
+If so, you are good!

@@ -2,7 +2,7 @@
 title: "GitHub Classroom"
 description: |
   This year I am reconfiguring my teaching to be more granular in scope. Historically, I have made all my quantitative lectures part of a single large GitHub repository, which is good for me.  However, this does have a problem that it is getting so large that it may only be good for me and not for anyone else. So, I've decided to break up my teaching compoinents into individual, stand-alone, GitHub Repositories & use GitHub Classroom for teaching.
-date: "2022-08-16"
+date: "2022-08-24"
 ---
 
 ![](featured.png)
