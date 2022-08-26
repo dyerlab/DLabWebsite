@@ -52,6 +52,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2022-08-26-Installing-R-Package-From-Source/index.html",
       "/posts/2022-08-25-GitHub-PAT/index.html",
       "/posts/2022-08-25-GitHub-Classroom/index.html",
       "/posts/2022-08-16-xcode-select/index.html",

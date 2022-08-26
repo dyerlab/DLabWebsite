@@ -1,0 +1,19 @@
+---
+title: "Installing R Packages from Source"
+editor: visual
+date: "2022-08-26"
+image: featured.png
+description: |
+  There are times when you use `install.packages()` and it says something like "the package requested cannot be installed on this version of R."  This typically means something like it is an old pacakge or one that has a lot of dependencies that may be problematic.  Here is the first thing to try when you get to those situations.
+---
+
+So there are times when you need a package but the normal installation process is not giving you what you want.  Either the package is old and hasn't been updated (and you've been keeping up with your working version) or some aspect of the dependency tree is not satisfied.
+
+Here is the first option.  Below is a gist that shows two different ways of getting it. They both **require** that the package be available as a source file (.tar.gz or .zip) AND that the package is located on CRAN.
+
+<script src="https://gist.github.com/dyerlab/42696e36008eab0748b855bd85fd486e.js"></script>
+
+Problems:
+
+- If this does not work because it is not on CRAN, then you'll need to figure out where the source is and install it from there.  If it is on GitHub or GitLab, you can use `remotes::install_github()`.
+- If it tries to install but `R` barfs because of some other package, then you'll have to go manually install those dependencies yourself.  
