@@ -9,7 +9,9 @@ description: |
 
 So there are times when you need a package but the normal installation process is not giving you what you want.  Either the package is old and hasn't been updated (and you've been keeping up with your working version) or some aspect of the dependency tree is not satisfied.
 
-Here is the first option.  Below is a gist that shows two different ways of getting it. They both **require** that the package be available as a source file (.tar.gz or .zip) AND that the package is located on CRAN.
+Here is the first option.  {{< fa thumbs-up >}} 
+
+Below is a gist that shows two different ways of getting it. They both **require** that the package be available as a source file (.tar.gz or .zip) AND that the package is located on CRAN.
 
 <script src="https://gist.github.com/dyerlab/42696e36008eab0748b855bd85fd486e.js"></script>
 
