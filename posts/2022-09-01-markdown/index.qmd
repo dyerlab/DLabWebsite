@@ -1,0 +1,19 @@
+---
+title: "Markdown in the Classroom"
+editor: visual
+image: markdown.png
+---
+
+Today I will be working on explaining how to use basic markdown to the Data Literacy class. This is a critical component of understanding basic data literacy as it is a foundation for reproducible research.
+
+This year I am using [GitHub Classroom](https://classroom.github.com) as a main teaching tool and each of the componetns of the class are being represented as their own individual repository. For this topic, I have two different repositories.
+
+  - [Quarto](https://github.com/DyerlabTeaching/Quarto) the document processing system
+  - [Markdown](https://github.com/DyerlabTeaching/Markdown) syntax
+
+The basic format of these repositories contains basic learning objectives, content in the form of slide sets and a larger narrative document, external resources, etc.
+
+![](repositoryformat.png)
+
+We shall see how this goes.
+

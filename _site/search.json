@@ -588,6 +588,13 @@
     "text": "Jane Remfert opened the Integrative Life Sciences Research Symposium this year with her presentation on Cultivar Gene Escape."
   },
   {
+    "objectID": "posts/2022-09-01-markdown/index.html",
+    "href": "posts/2022-09-01-markdown/index.html",
+    "title": "Markdown in the Classroom",
+    "section": "",
+    "text": "This year I am using GitHub Classroom as a main teaching tool and each of the componetns of the class are being represented as their own individual repository. For this topic, I have two different repositories.\n\nQuarto the document processing system\nMarkdown syntax\n\nThe basic format of these repositories contains basic learning objectives, content in the form of slide sets and a larger narrative document, external resources, etc.\n\nWe shall see how this goes."
+  },
+  {
     "objectID": "posts/2016-04-12-point-and-click-theme-editing-for-ggplot/point-and-click-theme-editing-for-ggplot.html",
     "href": "posts/2016-04-12-point-and-click-theme-editing-for-ggplot/point-and-click-theme-editing-for-ggplot.html",
     "title": "Point And Click Theme Editing for ggplot",
@@ -1295,6 +1302,13 @@
     "text": "The Dyer laboratory is a research lab at Virginia Commonwealth University that focuses on developing and testing tools to aid in understand how landscape features influence genetic connectivity. This requires a mix of theory development, software creation, and evaluation using (largely) non-model systems in the field."
   },
   {
+    "objectID": "index.html#recent-posts",
+    "href": "index.html#recent-posts",
+    "title": "dyerlab",
+    "section": "Recent Posts",
+    "text": "Recent Posts"
+  },
+  {
     "objectID": "people.html",
     "href": "people.html",
     "title": "People",
@@ -1321,12 +1335,5 @@
     "title": "Rodney J. Dyer",
     "section": "Professional Experience",
     "text": "Professional Experience\n2017 - Present: Full Professor, VCU\n2017 - Present: Director, CES\n2017 - 2018: Interim Director, CSBC\n2010 - 2017: Associate Professor, VCU\n2004 - 2010: Assistant Professor, VCU\n2002 - 2004: Postdoctoral Researcher, ISU\n1995 - 1995: Howard Hughes Research Fellow, UW"
-  },
-  {
-    "objectID": "index.html#recent-posts",
-    "href": "index.html#recent-posts",
-    "title": "dyerlab",
-    "section": "Recent Posts",
-    "text": "Recent Posts"
   }
 ]
