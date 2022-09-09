@@ -1,0 +1,30 @@
+---
+title: "Rendering R Help Files"
+date: "2022-09-07"
+description: |
+  Included help files are critical for working in R and, despite the pain that is caused by creating them when you make libraries, they are an essential part of the experience and help your users more easily gain proficiency.  One of the challenges, however, has been including the actual text of a help file into a markdown document.  Here is an example of how to include help files by rendering .Rd to Html and then knitting it into the document itself.
+---
+
+![](featured.png)
+
+In teaching, there are many situations where you may want to show a generic `help` file and have it rendered in markdown. However, it has been a constant pain to do this for some reason. I finally found a way to do it easily in quarto so that you can quickly grab a help file, render it as HTML and then put it into a slide that is `.scrollable` using [Quarto](https://quarto.org) in a [ReactJS](https://reactjs.org) presentation.
+
+Here is how to set it up.
+
+1. Create a slide that has the atrributed `{.scrollable}` so that the content on the slide can be much taller than the slide itself (it will be).
+
+2. Create a chunk that is not echoed (e.g., add the `#| echo: false` at the first line.)
+
+3. The main code grabs the help file, renders it into html, saves it as a temporary file, and then uses knitr to paste it into the slide as raw ouptput.
+
+Here is an example I used for embedding `?strptime` into the presentation.
+
+```{r}
+hlp <- help(strptime)
+helpfile <- utils:::.getHelpFile( hlp )
+outfile <- tempfile(fileext = ".html")
+tools::Rd2HTML(helpfile, out=outfile)
+rawHTML <- paste( readLines(outfile), collapse = "\n")
+knitr::asis_output( htmltools::htmlPreserve(rawHTML))
+```
+

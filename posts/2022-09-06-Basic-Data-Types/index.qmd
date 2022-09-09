@@ -1,0 +1,25 @@
+---
+title: "Basic R Data Types"
+editor: visual
+date: "2022-09-06"
+description: |
+  This is a topic for basic data literacy in R that introduces the basic data types used in most analyses.
+---
+
+![](markus-spiske-8OyKWQgBsKQ-unsplash.jpg){fig-alt="Photo by Markus Spiske on Unsplash" fig-align="center"}
+
+So today, we started the work on [Basic Data Types](https://github.com/DyerlabTeaching/Basic-Data-Types) in R. I am looking at simplifying things a bit and just starting with a working knowledge of some of the most common data types we use, including:
+
+-   Missing data `NA`
+
+-   Numeric data
+
+-   Character data
+
+-   Logical data
+
+-   Dates & Time
+
+The homework for this activity will focus on use of variable creation, data assignment, coercion, introspection, and some simple operations on the each of the data types.
+
+![](repo.png){fig-align="center"}

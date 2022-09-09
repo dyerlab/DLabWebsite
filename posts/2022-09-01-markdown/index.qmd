@@ -2,6 +2,7 @@
 title: "Markdown in the Classroom"
 editor: visual
 image: markdown.png
+date: "2022-09-01"
 ---
 
 Today I will be working on explaining how to use basic markdown to the Data Literacy class. This is a critical component of understanding basic data literacy as it is a foundation for reproducible research.
