@@ -25,6 +25,9 @@ about:
     - icon: file-earmark-code
       text: Webpage
       href: "https://rodneydyer.org"
+    - icon: calendar
+      text: Calendar
+      href: "https://calendar.google.com/calendar/embed?src=rjdyer%40vcu.edu&ctz=America%2FNew_York"
 ---
 
  
