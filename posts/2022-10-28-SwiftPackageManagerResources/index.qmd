@@ -1,0 +1,83 @@
+---
+title: "Resources in Swift Package Manager"
+date: "2022-10-28"
+format: html
+description: |
+  I really love the Swift Language for its elegance as well as power under the new Apple Silicon.  However, development on snapshots of pre-release XCode can, at times, be a bit problematic.  Here is a situation I ran into that took me a bit of time to figure out regarding adding resources to a Swift Package.
+---
+
+![](featured.png)
+
+
+```{r}
+```
+
+
+The [Swift Package Manager](https://www.swift.org/package-manager/) is a great tool to wrap up code and help compartmentalize some of your data. It is still evolving but is really powerful.  I ran into a few issues when trying to figure out how to add image resources to a package.  
+
+Here are the ways that I used to figure this out.
+
+### Resources Folder
+
+There is no `Resources` folder (by default), so you'll have to make one for yourself.  Put it into:
+
+`Sources/PROJECTNAME/Resources`
+
+### Creating a Copy Phase
+
+You'll have to automatically set up a copy phase in your `Package.swift` file.  It should be in the targets section for the main target.  Mine looks like this by default.
+
+
+```
+        .target(
+            name: "DLab",
+            dependencies: []
+        ),
+        .testTarget(
+            name: "DLabTests",
+            dependencies: ["DLab"]
+        ),
+```
+
+You need to add a `resources: [.copy("Resources") ]` to the main target section so it looks like this.
+
+
+```
+        .target(
+            name: "DLab",
+            dependencies: [],
+            resources: [
+                .copy("Resources")
+            ]
+        ),
+        .testTarget(
+            name: "DLabTests",
+            dependencies: ["DLab"]
+        ),
+```
+
+Now, if you *do not have anything in the `Resources` folder at this time, you'll get a CodeSign error, which makes absolutely no sense (and will have you doing a lot of googling to no end).  So put something (an image for example) into this folder and it will go away.
+
+
+## Still Not Working
+
+OK, so this is still not working.  I didn't get the error when compiling and testing on MacOS target, but I do when compiling for iOS.  Apparetly, the best way to do it is to specify the items in the `Resources` directly explicitly.  
+
+The following does actually work!
+
+```
+        .target(
+            name: "DLab",
+            dependencies: [],
+            resources: [
+                .copy("Resources/tree.png")
+            ]
+        ),
+```
+
+
+Now it does work.  And if you need to have additional items, they need to go into their own `.copy()` framework.
+
+
+
+

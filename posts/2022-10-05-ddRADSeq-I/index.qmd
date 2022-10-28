@@ -1,0 +1,262 @@
+---
+title: "ddRADSeq Demultiplexing"
+editor: visual
+date: "2022-10-05"
+image: featured.png
+execute:
+  eval: false
+description: |
+  Setting up the workflow for processing ddRADSeq can be a total pain in the ass.  Here is how I was able to do this on a HPC installation at my university with the least amount of pain.
+---
+
+# Getting Components
+
+Your sequencing facility will let you provide to you a ftp link to download compressed fasta files (ending in `.fa.gz` in my case). We are getting these data in raw form and will do own own demultiplexing and creating a *de novo* assembly from which to call SNPs.
+
+## Setting up SSH
+
+One pain point in doing this is that you'll have to do all the work on a remote server and logging in each time can lead to a pain point (because *you are* using unique, long, and complicated passwords for each of your accounts, right?).
+
+To overcome this, set up your public/private SSH key pair. First, check if you have one setup.
+
+    rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*.pub
+    .ssh/id_rsa.pub
+
+If there is nothing there, then you need to generate a new public key.
+
+```{}
+rodney@Rodneys-Mac-Studio ~ % ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+```
+
+and follow the online instructions. If you do use a *passphrase* **MAKE SURE** you have it written down somewhere (like in your password manager).
+
+After this, you should see both the public and private versions in your local repository.
+
+```{}
+rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*    
+.ssh/id_rsa     .ssh/id_rsa.pub
+```
+
+Now, what you need to do is to copy your identity over to the new server.
+
+```{}
+ssh-copy-id remoteUserID@remote.server.com
+```
+
+You should get some message like:
+
+```{}
+remoteUserID@remote.server.com's password: 
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   
+"ssh 'remoteUserID@remote.server.com'"
+and check to make sure that only the key(s) you 
+wanted were added.
+```
+
+Now you should be able to log into the remote server without needing to copy over a password all the time.
+
+One last thing that I find to help out. If your remote server has some long name to it, you can make a shortcut by adding an entry to the `/etc/hosts` file.
+
+```{}
+sudo vim /etc/hosts
+```
+
+To this file, add a line that has the full name of the server, a tab, and then a nickname you give it.
+
+```{}
+rodney@Rodneys-Mac-Studio ~ % cat /etc/hosts
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+my.server.with.long.name	nickname
+```
+
+Now, you should be able to log into your remote server as:
+
+```{}
+ssh user@nickname
+```
+
+much easier.
+
+## Getting STACKS
+
+Stacks is a set of programs that are used to assemble sequence data. I use it commonly for demultiplexing. Go grab the link to the latest version [here](https://catchenlab.life.illinois.edu/stacks/).
+
+When I did it for this document it was version 2.62. Grab it from your server. I typically put all the source code into a `src` folder.
+
+```{}
+$ mkdir src
+$ cd src
+$ wget http://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz
+$ tar zxvf stacks-2.62.tar.gz
+$ cd stacks-2.62
+```
+
+Then you need to install it.
+
+On my current server, they use a Module system for loading various development environments. You can find the documentation [here](https://wiki.vcu.edu/display/unix/Modules+at+HPRC).  To load up the most recent version of the gcc compiler set, you enter.
+
+```{}
+$ module load gcc
+$ module list
+Currently Loaded Modules:
+  1) gcc/10.2.1
+```
+
+Then you can configure the compiliation and environment.
+
+```{}
+$ ./configure --prefix=/home/user/
+```
+
+And if all the stuff is there, you should get a long list of stuff ending with:
+
+```{}
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating htslib/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+```
+
+Now, compile the components (and go grab a cup of coffee)
+
+```{}
+$ make 
+```
+
+If it died for some reason, you'll have to do some spelunking and figure out why it died (probably due to a missing dependency) and then grab the components that you were missing.
+
+After that, you can install it (to your local directories).
+
+```{}
+$ make install
+```
+
+And everything should be good.
+
+## Screen
+
+Doing anything with this large amount of data will take time. It is good to remember that the vast majority of what you'll be working with is actually stuff you are going to throw away in the end anyways. That being said, our first main tool will be `screen`. This is a program that allows you to create a "sub shell" for a process, do something that is going to take a long time, log out of the shell and continue on your daily routine. Then, at various times in the near (or distant) future, you can log back in and see how things are going.
+
+You can run screen on your machine or on the remote server where things are happening. I'm going to run it on the other end.
+
+```{}
+$ screen --help 
+```
+
+To start a new screen session, invoke it as:
+
+```{}
+$ screen
+```
+
+And you will be entered into a new session.  To exit, hit `CTRL-A D` and you will be pooped out of the screen session.
+
+To reattach to an existing session, you can list the current active ones
+
+```{}
+$ screen -list 
+There are screens on:
+	12892.pts-10.server	(Detached)
+	12775.pts-10.server	(Detached)
+	12658.pts-10.server	(Detached)
+3 Sockets in /var/run/screen/S-user.
+```
+
+Then reattach to one, you need to specify it by the id.
+
+```{}
+$ screen -r 12892
+```
+
+To exit a session you are in (and no longer retain it), type
+
+```{}
+$ exit
+```
+
+
+
+## Process Radtags
+
+
+Last time I tried this, I ran it with this configuration on a single linux box.  
+
+```{}
+process_radtags -p ./raw/ -o ./samples/run_13_2/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI
+```
+
+
+Now I am on a cluster and we need to submit our jobs through SLURM.  Here is a config file to run a batch run.
+
+```{}
+#!/bin/bash
+#SBATCH --time=72:00:00
+#SBATCH --chdir=./
+#SBATCH --mem=16G
+#SBATCH --mail-user=rjdyer@vcu.edu
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-type=REQUEUE
+#SBATCH --mail-type=ALL
+#SBATCH -J "radtags"
+#SBATCH --ntasks=1
+
+
+START=$(date +%s.%N)
+echo "Starting process radtags" 
+
+# for the run, you need to change the lane
+process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -D -e ecoRI 
+
+
+END=$(date +%s.%N)
+DIFF=$(echo "($END - $START)/60" | bc)
+echo "Processing radtags took ${DIFF} minutes to complete."
+```
+
+
+To run it, I saved the script as `01-process_radtags_slurm.sh`, made it executable as
+
+```{}
+$ chmod +x 01-process_radtags_slurm.sh
+```
+
+and ran it as:
+
+```{}
+$ sbatch ./01-process_radtags_slurm.sh
+```
+
+
+Actually I was not able to get `sbatch` to run, so I just did a quick bash srun job.
+
+```{}
+$ srun -A rjdyer --nodes=1 --time=48:00:00 --mem=16G --pty /bin/bash
+$ process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI 
+```
+
+
+
+
+Some pages of interest
+
+- https://slurm.schedmd.com/quickstart.html
+- https://gist.github.com/andersgs/4aa1c19f7cd8a2db49a26f06efe7492d
+
+
+
+
