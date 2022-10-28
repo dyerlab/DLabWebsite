@@ -17,6 +17,69 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -60,11 +123,11 @@ ul.task-list{list-style: none;}
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="dyerlab - ddRADSeq Demultiplexing">
 <meta property="og:description" content="Setting up the workflow for processing ddRADSeq can be a total pain in the ass. Here is how I was able to do this on a HPC installation at my university with the least amount of pain.">
-<meta property="og:image" content="featured.png">
+<meta property="og:image" content="featured.jpg">
 <meta property="og:site-name" content="dyerlab">
 <meta name="twitter:title" content="dyerlab - ddRADSeq Demultiplexing">
 <meta name="twitter:description" content="Setting up the workflow for processing ddRADSeq can be a total pain in the ass. Here is how I was able to do this on a HPC installation at my university with the least amount of pain.">
-<meta name="twitter:image" content="featured.png">
+<meta name="twitter:image" content="featured.jpg">
 <meta name="twitter:creator" content="@RodneyDyer">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -138,15 +201,141 @@ ul.task-list{list-style: none;}
 <section id="setting-up-ssh" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-ssh">Setting up SSH</h2>
 <p>One pain point in doing this is that you’ll have to do all the work on a remote server and logging in each time can lead to a pain point (because <em>you are</em> using unique, long, and complicated passwords for each of your accounts, right?).</p>
-<p>To overcome this, set up your</p>
+<p>To overcome this, set up your public/private SSH key pair. First, check if you have one setup.</p>
 <pre><code>rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*.pub
 .ssh/id_rsa.pub</code></pre>
+<p>If there is nothing there, then you need to generate a new public key.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rodney<span class="sc">@</span>Rodneys<span class="sc">-</span>Mac<span class="sc">-</span>Studio <span class="sc">~</span> % ssh<span class="sc">-</span>keygen <span class="sc">-</span>t rsa <span class="sc">-</span>b <span class="dv">4096</span> <span class="sc">-</span>C <span class="st">"your_email@domain.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and follow the online instructions. If you do use a <em>passphrase</em> <strong>MAKE SURE</strong> you have it written down somewhere (like in your password manager).</p>
+<p>After this, you should see both the public and private versions in your local repository.</p>
+<pre><code>rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*    
+.ssh/id_rsa     .ssh/id_rsa.pub</code></pre>
+<p>Now, what you need to do is to copy your identity over to the new server.</p>
+<pre><code>ssh-copy-id remoteUserID@remote.server.com</code></pre>
+<p>You should get some message like:</p>
+<pre><code>remoteUserID@remote.server.com's password: 
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   
+"ssh 'remoteUserID@remote.server.com'"
+and check to make sure that only the key(s) you 
+wanted were added.</code></pre>
+<p>Now you should be able to log into the remote server without needing to copy over a password all the time.</p>
+<p>One last thing that I find to help out. If your remote server has some long name to it, you can make a shortcut by adding an entry to the <code>/etc/hosts</code> file.</p>
+<pre><code>sudo vim /etc/hosts</code></pre>
+<p>To this file, add a line that has the full name of the server, a tab, and then a nickname you give it.</p>
+<pre><code>rodney@Rodneys-Mac-Studio ~ % cat /etc/hosts
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1   localhost
+255.255.255.255 broadcasthost
+::1             localhost
+my.server.with.long.name    nickname</code></pre>
+<p>Now, you should be able to log into your remote server as:</p>
+<pre><code>ssh user@nickname</code></pre>
+<p>much easier.</p>
+</section>
+<section id="getting-stacks" class="level2">
+<h2 class="anchored" data-anchor-id="getting-stacks">Getting STACKS</h2>
+<p>Stacks is a set of programs that are used to assemble sequence data. I use it commonly for demultiplexing. Go grab the link to the latest version <a href="https://catchenlab.life.illinois.edu/stacks/">here</a>.</p>
+<p>When I did it for this document it was version 2.62. Grab it from your server. I typically put all the source code into a <code>src</code> folder.</p>
+<pre><code>$ mkdir src
+$ cd src
+$ wget http://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz
+$ tar zxvf stacks-2.62.tar.gz
+$ cd stacks-2.62</code></pre>
+<p>Then you need to install it.</p>
+<p>On my current server, they use a Module system for loading various development environments. You can find the documentation <a href="https://wiki.vcu.edu/display/unix/Modules+at+HPRC">here</a>. To load up the most recent version of the gcc compiler set, you enter.</p>
+<pre><code>$ module load gcc
+$ module list
+Currently Loaded Modules:
+  1) gcc/10.2.1</code></pre>
+<p>Then you can configure the compiliation and environment.</p>
+<pre><code>$ ./configure --prefix=/home/user/</code></pre>
+<p>And if all the stuff is there, you should get a long list of stuff ending with:</p>
+<pre><code>checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating htslib/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands</code></pre>
+<p>Now, compile the components (and go grab a cup of coffee)</p>
+<pre><code>$ make </code></pre>
+<p>If it died for some reason, you’ll have to do some spelunking and figure out why it died (probably due to a missing dependency) and then grab the components that you were missing.</p>
+<p>After that, you can install it (to your local directories).</p>
+<pre><code>$ make install</code></pre>
+<p>And everything should be good.</p>
 </section>
 <section id="screen" class="level2">
 <h2 class="anchored" data-anchor-id="screen">Screen</h2>
 <p>Doing anything with this large amount of data will take time. It is good to remember that the vast majority of what you’ll be working with is actually stuff you are going to throw away in the end anyways. That being said, our first main tool will be <code>screen</code>. This is a program that allows you to create a “sub shell” for a process, do something that is going to take a long time, log out of the shell and continue on your daily routine. Then, at various times in the near (or distant) future, you can log back in and see how things are going.</p>
 <p>You can run screen on your machine or on the remote server where things are happening. I’m going to run it on the other end.</p>
-<pre class="{bash}"><code>screen --help </code></pre>
+<pre><code>$ screen --help </code></pre>
+<p>To start a new screen session, invoke it as:</p>
+<pre><code>$ screen</code></pre>
+<p>And you will be entered into a new session. To exit, hit <code>CTRL-A D</code> and you will be pooped out of the screen session.</p>
+<p>To reattach to an existing session, you can list the current active ones</p>
+<pre><code>$ screen -list 
+There are screens on:
+    12892.pts-10.server (Detached)
+    12775.pts-10.server (Detached)
+    12658.pts-10.server (Detached)
+3 Sockets in /var/run/screen/S-user.</code></pre>
+<p>Then reattach to one, you need to specify it by the id.</p>
+<pre><code>$ screen -r 12892</code></pre>
+<p>To exit a session you are in (and no longer retain it), type</p>
+<pre><code>$ exit</code></pre>
+</section>
+<section id="process-radtags" class="level2">
+<h2 class="anchored" data-anchor-id="process-radtags">Process Radtags</h2>
+<p>Last time I tried this, I ran it with this configuration on a single linux box.</p>
+<pre><code>process_radtags -p ./raw/ -o ./samples/run_13_2/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI</code></pre>
+<p>Now I am on a cluster and we need to submit our jobs through SLURM. Here is a config file to run a batch run.</p>
+<pre><code>#!/bin/bash
+#SBATCH --time=72:00:00
+#SBATCH --chdir=./
+#SBATCH --mem=16G
+#SBATCH --mail-user=rjdyer@vcu.edu
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-type=REQUEUE
+#SBATCH --mail-type=ALL
+#SBATCH -J "radtags"
+#SBATCH --ntasks=1
+
+
+START=$(date +%s.%N)
+echo "Starting process radtags" 
+
+# for the run, you need to change the lane
+process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -D -e ecoRI 
+
+
+END=$(date +%s.%N)
+DIFF=$(echo "($END - $START)/60" | bc)
+echo "Processing radtags took ${DIFF} minutes to complete."</code></pre>
+<p>To run it, I saved the script as <code>01-process_radtags_slurm.sh</code>, made it executable as</p>
+<pre><code>$ chmod +x 01-process_radtags_slurm.sh</code></pre>
+<p>and ran it as:</p>
+<pre><code>$ sbatch ./01-process_radtags_slurm.sh</code></pre>
+<p>Actually I was not able to get <code>sbatch</code> to run, so I just did a quick bash srun job.</p>
+<pre><code>$ srun -A rjdyer --nodes=1 --time=48:00:00 --mem=16G --pty /bin/bash
+$ process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI </code></pre>
+<p>Some pages of interest</p>
+<ul>
+<li>https://slurm.schedmd.com/quickstart.html</li>
+<li>https://gist.github.com/andersgs/4aa1c19f7cd8a2db49a26f06efe7492d</li>
+</ul>
+<hr>
+<p>Cover Photo by <a href="https://unsplash.com/@sangharsh_l?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Sangharsh Lohakare</a> on <a href="https://unsplash.com/s/photos/dna?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 
 
 </section>

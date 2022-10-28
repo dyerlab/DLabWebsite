@@ -2,7 +2,7 @@
 title: "ddRADSeq Demultiplexing"
 editor: visual
 date: "2022-10-05"
-image: featured.png
+image: featured.jpg
 execute:
   eval: false
 description: |
@@ -24,7 +24,7 @@ To overcome this, set up your public/private SSH key pair. First, check if you h
 
 If there is nothing there, then you need to generate a new public key.
 
-```{}
+```{r}
 rodney@Rodneys-Mac-Studio ~ % ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
 ```
 
@@ -259,4 +259,7 @@ Some pages of interest
 
 
 
+---
 
+Cover Photo by <a href="https://unsplash.com/@sangharsh_l?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sangharsh Lohakare</a> on <a href="https://unsplash.com/s/photos/dna?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
