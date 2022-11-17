@@ -1,0 +1,33 @@
+---
+title: "Using R on VSCode Remotely"
+date: "2022-09-30"
+description: |
+  Analyzing SNP data remotely on a server for demultiplexing, etc. can be a bit of a hastle if you would like to do some R analyses.  Here is how I set up VSCode to run on my office machine (& laptop) and interface with our servers where all the data are analyzed.  I would love to have RStudio be able to do this but, alas, it is not possible yet.  
+---
+
+
+## Seting up R and VSCode 
+
+First of all, we'll need to install some stuff on the `R` side.  The language serve is necessary for VSCode and the httpgd is helpful for viewing graphical output.  The following code will check to see if you have them installed and if not, install them for you.
+
+```{r}
+if( !require(languageserver) ) { 
+  install.packages("languageserver")
+}
+if( !require(httpgd)) { 
+  remotes::install_github("nx10/httpgd")
+}
+```
+
+Now, download [VSCode](https://code.visualstudio.com/) from the main server.  You will also need to install the [R Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r), which can be installed from inside VSCode.
+
+
+
+
+
+## Making Secure Connections
+
+
+
+
+## Remote Work
