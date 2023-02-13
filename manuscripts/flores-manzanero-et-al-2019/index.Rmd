@@ -20,7 +20,7 @@ categories:
 - landscape genetics
 - merriam's kangaroo rat
 - resistance surfaces
-image: featured.jpg
+image: featured.png
 
 doi:  10.1002/ece3.4762
 ---

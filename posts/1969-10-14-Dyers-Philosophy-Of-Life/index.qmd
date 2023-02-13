@@ -2,8 +2,7 @@
 title: "Dyer's Philosophy of Life"
 editor: visual
 date: "1969-10-14"
-description:  |
-  There are many great intellectual traditions that our species has derived related to a general 'philosophy' of life.  Here is mine.
+description:  There are many great intellectual traditions that our species has derived related to a general philosophy of life.  Here is mine.
 ---
 
 ## The Taxonomy

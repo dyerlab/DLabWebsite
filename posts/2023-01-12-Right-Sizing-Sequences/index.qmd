@@ -1,0 +1,72 @@
+---
+title: "Right Sizing the Sequences"
+date: "2023-01-20"
+image: featured.png
+execute:
+  eval: false
+description: |
+  OK, so we finally received all the data (after the financials office was able to pay the bill) and here it is as a large chunk.
+---
+
+![](featured.png)
+
+There is a necessity to figure out how much of your data you should be using for each step.  It is a balancing act where we need to simultaneously:  
+
+1. Capture as much of the underlying genetic information as we can so that we have a good representation across the species distribution -> *more data*
+2. Make sure that the data we are using is conservative enough such that we can have a sufficient level of confidence that what we are working with is actually good data. -> *less overall data*
+3. Be able to do the bioinformatics parts in a reasonable timeframe -> *smaller data sets*
+
+However, it is not always *a priori* knowable how much of the data to use.
+
+
+## Full Data
+
+So I started by running on the full data set.  It took me a few runs to figure out that this is probably not going to work.  A more complete discussion of these can be found:  
+
+- [First dDocent Run](/posts/2023-01-21-First-dDocent-Run/index.html)
+- [Second dDocent Run](/posts/2023-01-25-Second-dDocent-Run/index.html)
+
+
+
+
+## Smaller Subsets
+
+So it appears that taking all the data to make an assembly may be problematic for a few different reasons:
+
+1.  It will take a *shit ton* of time (that is technical measure of quantity reserved for only the most important and magnificently large collections of items).
+2.  It may produce a much too many contigs to be generally informative.
+
+So I set up some subsets of the data to see how long it will take to do smaller amounts.
+
+Here some `R` code that I wrote to just take a fractional subset of the sequences from each individual and, using the program `seqtk` make a new set of data in a different folder.
+
+```{r}
+rm(list=ls())
+pct <- "0.025"
+folder <- "./all0025/"
+
+files <- list.files("all",pattern="F.fq.gz")
+
+for( i in 1:length(files) ) {
+	file <- files[i]
+	tmp <- strsplit(file, split="\\.")[[1]]
+	ofile <- paste( paste(tmp[1],tmp[2],sep=""), tmp[3],tmp[4], sep=".")
+	cmd <- paste( "seqtk sample ./all/",file," ", 
+	              pct, " > ", folder, " ", ofile, sep="")
+	system(cmd)
+	cat( format(i/length(files), digits=3), " ", ofile, "\n")
+}
+```
+
+Using this, I set up random subsets of the data for the following partitions.  For each of these, I actually did a singular.
+
+- 10% of each individuals genome.
+- 5% of each individuals genome.
+- [2.5% of each individuals genome.](/posts/2023-01-30-2pt5pct-dDocent-Run/index.html)
+
+
+
+
+
+
+

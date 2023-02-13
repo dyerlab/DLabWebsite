@@ -1,0 +1,88 @@
+---
+title: "A 10% dDocent Run"
+date: "2023-01-27"
+execute: 
+  eval: false
+description: |
+  A bit optimistic here but I thought I'd run an assembly with 10% of the data from each individual and see how many configs I could produce.  It did run and produced 394,146 contigs from 969,927 sequences.  But unfortunately, it was running on all the data to map at 10% and was going to take just too long.  So I killed it.
+---
+
+![](featured.png)
+
+So this time I made a small representation of the overall sequences, using: 
+- 10% of each individual 
+- Renamed to not have period in population name for each state (thinking that may be why I've had failures in the past).
+- Saved to different folder.
+
+```
+rm(list=ls())
+
+files <- list.files("all",pattern="F.fq.gz")
+for( i in 1:length(files) ) {
+	file <- files[i]
+	tmp <- strsplit(file, split="\\.")[[1]]
+	ofile <- paste( paste( tmp[1],
+								 tmp[2],
+								 sep=""), 
+						tmp[3], tmp[4], tmp[5], sep=".")
+	cmd <- paste("seqtk sample ./all/",
+					 file,
+					 " 0.10 | gzip > ./all010/", 
+					 ofile, 
+					 sep="")
+	system(cmd)
+	cat( format(i/length(files), digits=3), " ", ofile, "\n")
+}
+```
+
+It ran for a while, then died.  So I tried it again and there were some issues with dDocent not recognizing the the files as being `gz` files...  So I had to unzip all the 10% individuals and redo them.
+
+Finally it went through but I got a few errors along the way.
+
+```
+Trimming reads and simultaneously assembling reference sequences
+
+Removing the _1 character and replacing with /1 in the name of every sequence
+parallel: Warning: Starting 16 processes took > 2 sec.
+parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.
+```
+
+Then it gave me the prompt for number of unique sequences per individual.
+
+![](image_1.png)
+
+```r  
+Please choose data cutoff. In essence, you are picking a minimum (within individual) coverage level for a read (allele) to be used in the reference assembly.
+3
+```
+![](image_2.png)
+
+I had hit the return button a few times and it ran using some 'default' value.
+
+
+This time it did finish and made contigs.
+
+```
+At this point, all configuration information has been entered and dDocent may take several hours to run.
+
+It is recommended that you move this script to a background operation and disable terminal input and output.
+
+All data and logfiles will still be recorded.
+To do this:
+Press **control** and **Z** simultaneously
+Type **bg** and press enter
+Type **disown -h** and press enter
+Now sit back, relax, and wait for your analysis to finish
+
+dDocent assembled 969927 sequences (after cutoffs) into 394146 contigs
+  
+Using BWA to map reads
+```
+
+
+So at this point, I let it run for a while longer and then realized I was not going to use the 10% representation and would be using another assembly.  So I killed the mapping.
+
+
+
+
+

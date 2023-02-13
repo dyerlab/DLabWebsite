@@ -18,7 +18,7 @@ categories:
 - pollen movement
 - quercus alba
 - 2gener
-image: featured.jpg
+image: featured.png
 ---
 
  [![PDF Download](https://img.shields.io/badge/PDF-21B02C.svg)](http://dx.doi.org/10.1111/j.0014-3820.2001.tb01291.x)

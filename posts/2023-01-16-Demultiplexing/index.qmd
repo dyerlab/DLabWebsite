@@ -1,0 +1,8 @@
+---
+title: "Demultiplexing"
+date: "2023-01-16"
+execute:
+  eval: false
+description: |
+  Here is where we take apart the large lane files and then sort them into individual files based upon the read barcodes
+---

@@ -18,7 +18,7 @@ categories:
 - population genetics
 - ddradseq
 - gypsy moth
-image: featured.jpg
+image: featured.png
 
 doi:  10.1111/mec.15069
 ---

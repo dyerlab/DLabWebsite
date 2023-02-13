@@ -13,7 +13,7 @@ categories:
 - inflorescence-feeding insects
 - iteroparous perennial
 - population growth rate
-image: featured.jpg
+image: featured.png
 
 doi:  10.1007/s00442-002-0948-y
 ---

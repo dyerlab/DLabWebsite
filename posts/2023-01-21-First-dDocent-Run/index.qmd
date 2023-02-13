@@ -1,0 +1,18 @@
+---
+title: "First dDocent Run"
+date: "2023-01-21"
+execute:
+  eval: false
+description: |
+  So, I've got my data demultiplexed.  Now, we just need to run an assembler on it and call some SNPs.  I should be writing the manuscript by the end of the month.
+---
+
+![](featured.png)
+
+> You crash all the time, and sometimes it's a really bad one, but sometimes it's not so bad.
+> - Lindsay Vonn
+
+
+So I set this one up with all the data to make an assembly, map, and then call SNPs for all the individuals.
+
+It crashed so bad that I didn't even make a log of it.
