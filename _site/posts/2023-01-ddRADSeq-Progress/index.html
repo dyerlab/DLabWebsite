@@ -9,7 +9,7 @@
 <meta name="dcterms.date" content="2023-02-15">
 <meta name="description" content="This is an ongoing summary of progress on the ddRADSeq project. The beginning of 2023, we finally received the raw sequence data from the provider (total nightmare working with them—they actually lost all my samples). We are now conducting the bioinformatic processing of the data, which is substantial. This page will be updated as we go forward to reflect the current status of the project.">
 
-<title>dyerlab - Map of Content for ddRADSeq Project</title>
+<title>dyerlab - Turtle ddRADSeq Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,11 +130,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="dyerlab - Map of Content for ddRADSeq Project">
+<meta property="og:title" content="dyerlab - Turtle ddRADSeq Project">
 <meta property="og:description" content="This is an ongoing summary of progress on the ddRADSeq project.">
 <meta property="og:image" content="featured.png">
 <meta property="og:site-name" content="dyerlab">
-<meta name="twitter:title" content="dyerlab - Map of Content for ddRADSeq Project">
+<meta name="twitter:title" content="dyerlab - Turtle ddRADSeq Project">
 <meta name="twitter:description" content="This is an ongoing summary of progress on the ddRADSeq project.">
 <meta name="twitter:image" content="featured.png">
 <meta name="twitter:creator" content="@RodneyDyer">
@@ -176,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Map of Content for ddRADSeq Project</h1>
+      <h1 class="title">Turtle ddRADSeq Project</h1>
                   <div>
         <div class="description">
           <p>This is an ongoing summary of progress on the ddRADSeq project. The beginning of 2023, we finally received the raw sequence data from the provider (total nightmare working with them—they actually lost all my samples). We are now conducting the bioinformatic processing of the data, which is substantial. This page will be updated as we go forward to reflect the current status of the project.</p>
@@ -265,8 +265,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>So, I can now start mapping. At first, I took the reference genome from the <a href="../../posts/2023-01-30-2pt5pct-ddocent-run/">2.5% subset</a> and took the raw data again (all the reads for each indiviudal) and used <code>bwa</code> to assemble and <code>FreeBayes</code> to call SNPs. Unfortunately, since the number of reads for each individual is somewhere in the range of 3 - 33 million reads, it takes a bit of time. Right now, it is averaging 11 hours per individual * 1419 individuals which is 650.375 days (meaning it will be done on 2024-11-13). This run is still going and unless it dies at some point, I am going to allow it to keep running…</li>
 <li>Again, to take a random subset seems to be the way to go. In what follows is my current approach to this, which started on 2 February 2022.</li>
 </ul>
-<section id="mapping-projgress-status" class="level3">
-<h3 class="anchored" data-anchor-id="mapping-projgress-status">Mapping Projgress Status</h3>
+<section id="workflow-progress" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-progress">Workflow Progress</h3>
 <p>So I started up a individuals processes to map and call SNPs. It is done using <a href="https://slurm.schedmd.com">slurm</a> on our clusters so I fire up an instance on one of the compute nodes as:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--mem</span><span class="op">=</span>16G <span class="at">--export</span><span class="op">=</span>ALL <span class="at">-J</span> mapX <span class="at">--pty</span> /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As a first mapping run, I had a single process (that one used 64G of memory and was way too much for what <code>bwa</code> and <code>FreeBayes</code> seem to need). The data being used in this run include:</p>
@@ -279,253 +279,519 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Population </th>
-   <th style="text-align:right;"> N </th>
-   <th style="text-align:left;"> Demultiplexed </th>
-   <th style="text-align:left;"> Filtered </th>
-   <th style="text-align:left;"> Mapped </th>
-   <th style="text-align:right;"> Sites </th>
-   <th style="text-align:right;"> SNPs </th>
-   <th style="text-align:left;"> Note </th>
-  </tr>
- </thead>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Population
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:left;">
+Demultiplexed
+</th>
+<th style="text-align:left;">
+Filtered
+</th>
+<th style="text-align:left;">
+Mapped
+</th>
+<th style="text-align:right;">
+Sites
+</th>
+<th style="text-align:left;">
+SNPs
+</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> S </td>
-   <td style="text-align:right;"> 187 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-13 </td>
-   <td style="text-align:right;"> 15089 </td>
-   <td style="text-align:right;"> 1994 </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> P </td>
-   <td style="text-align:right;"> 59 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-15 </td>
-   <td style="text-align:right;"> 10730 </td>
-   <td style="text-align:right;"> 1660 </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> J </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-15 </td>
-   <td style="text-align:right;"> 9367 </td>
-   <td style="text-align:right;"> 1508 </td>
-   <td style="text-align:left;"> Rerun FreeBayes </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> K </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-15 </td>
-   <td style="text-align:right;"> 9367 </td>
-   <td style="text-align:right;"> 1508 </td>
-   <td style="text-align:left;"> Rerun FreeBayes </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> R </td>
-   <td style="text-align:right;"> 42 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-13 </td>
-   <td style="text-align:right;"> 10294 </td>
-   <td style="text-align:right;"> 1348 </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> W </td>
-   <td style="text-align:right;"> 53 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-09 </td>
-   <td style="text-align:right;"> 10891 </td>
-   <td style="text-align:right;"> 1113 </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> O </td>
-   <td style="text-align:right;"> 44 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-15 </td>
-   <td style="text-align:right;"> 11338 </td>
-   <td style="text-align:right;"> 282 </td>
-   <td style="text-align:left;"> Rerun FreeBayes </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Q </td>
-   <td style="text-align:right;"> 18 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-10 </td>
-   <td style="text-align:right;"> 7100 </td>
-   <td style="text-align:right;"> 188 </td>
-   <td style="text-align:left;"> Rerun FreeBayes </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> T </td>
-   <td style="text-align:right;"> 81 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-15 </td>
-   <td style="text-align:right;"> 11986 </td>
-   <td style="text-align:right;"> 176 </td>
-   <td style="text-align:left;"> Rerun FreeBayes </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> V </td>
-   <td style="text-align:right;"> 21 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-13 </td>
-   <td style="text-align:right;"> 8586 </td>
-   <td style="text-align:right;"> 58 </td>
-   <td style="text-align:left;"> Rerun FreeBayes </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:right;"> 92 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-04 </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:right;"> 102 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-06 </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:right;"> 139 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-10 </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> D </td>
-   <td style="text-align:right;"> 84 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-12 </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> E </td>
-   <td style="text-align:right;"> 36 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-13 </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> F </td>
-   <td style="text-align:right;"> 31 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;"> 2023-02-14 </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> G </td>
-   <td style="text-align:right;"> 78 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> H </td>
-   <td style="text-align:right;"> 66 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> I </td>
-   <td style="text-align:right;"> 33 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> L </td>
-   <td style="text-align:right;"> 95 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> M </td>
-   <td style="text-align:right;"> 129 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> N </td>
-   <td style="text-align:right;"> 53 </td>
-   <td style="text-align:left;"> 2023-01-23 </td>
-   <td style="text-align:left;"> 2023-01-31 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Summary </td>
-   <td style="text-align:right;"> 67 </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:right;"> 10475 </td>
-   <td style="text-align:right;"> 984 </td>
-   <td style="text-align:left;">  </td>
-  </tr>
+<tr>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+15089
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1994</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+10730
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1660</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+9367
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1508</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+9367
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1508</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+10294
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1348</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+10891
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1113</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+11338
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">282</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Q
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+7100
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">188</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+11986
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">176</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+8586
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">58</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 41.00%">41</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 15.00%">15</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 0.00%">0</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 9.00%">9</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 99.00%">99</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 17.00%">17</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
 </tbody>
-</table>
 
+</table>
+<p>Current progress on bioinformatic workflows.</p>
 </div>
 </div>
 <p>Overall, there is a relationship between the number of individuals used to call SNPs and the number found. Those population groups with small <span class="math inline">\(N\)</span> are going to be collapsed into larger groups and rerun to call SNPs. I think when it is all said and done, I’ll run a little test to see what the asymptote is for this relationship and then partition the remaining mapped data into groups when calling SNPs.</p>

@@ -1,5 +1,5 @@
 ---
-title: "Map of Content for ddRADSeq Project"
+title: "Turtle ddRADSeq Project"
 date: "2023-02-15"
 execute:
   echo: false
@@ -15,6 +15,7 @@ suppressMessages( library( knitr ) )
 suppressMessages( library( kableExtra ) )
 suppressMessages( library( tidyverse) )
 suppressMessages( library( lubridate )  )
+library( formattable)
 options(knitr.kable.NA = '')
 theme_set( theme_minimal() )
 ```
@@ -102,7 +103,7 @@ The following logs document the initial attempts at implementing the [dDocent](h
 - So, I can now start mapping.  At first, I took the reference genome from the [2.5% subset](/posts/2023-01-30-2pt5pct-ddocent-run/) and took the raw data again (all the reads for each indiviudal) and used `bwa` to assemble and `FreeBayes` to call SNPs.  Unfortunately, since the number of reads for each individual is somewhere in the range of 3 - 33 million reads, it takes a bit of time.  Right now, it is averaging 11 hours per individual * 1419 individuals which is `r 11*1419/24` days (meaning it will be done on `r as.Date("2023-02-02") + (11*1419/24)`).  This run is still going and unless it dies at some point, I am going to allow it to keep running...
 - Again, to take a random subset seems to be the way to go.  In what follows is my current approach to this, which started on 2 February 2022.
 
-### Mapping Projgress Status
+### Workflow Progress
 
 So I started up a individuals processes to map and call SNPs.  It is done using [slurm](https://slurm.schedmd.com) on our clusters so I fire up an instance on one of the compute nodes as:
 
@@ -118,13 +119,34 @@ As a first mapping run, I had a single process (that one used 64G of memory and 
 This was started on 2 February 2023 and appears to be taking roughly 30 minutes per indivudal to allow `bwa` to map.  Below is the progress to date.
 
 ```{r}
-progress %>%
-  arrange(-SNPs, Population) %>%
-  rbind( tribble( ~Population, ~N, ~Demultiplexed, ~Filtered, ~Mapped, ~Sites, ~SNPs, ~Note,
-                            "Summary", mean(progress$N, na.rm=T), NA, NA, NA, mean(progress$Sites, na.rm=T),
-                                            mean(progress$SNPs, na.rm=T), NA) ) %>%
-  kable(digits = 0) %>%
-  kable_paper()
+#| fig-cap: Current progress on bioinformatic workflows.
+
+tmp <- progress %>% select( Population, N, Sites, SNPs) %>% arrange( -SNPs )
+tmp$Demultiplexed <- 100
+tmp$Filtered <- 100
+tmp$Mapped <- 100
+tmp %>%
+  select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
+
+tmp$Mapped[ tmp$Population == "G" ] <- round(32 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "H" ] <- round(12 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "I" ] <- round(0 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "L" ] <- round(7 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "M" ] <- round(77 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "N" ] <- round(13 / tmp$N[ tmp$Population == "G"] * 100.0)
+
+tmp$Mapped <- color_bar("lightgreen")(tmp$Mapped)
+tmp$Demultiplexed <- color_bar( "lightgreen")(tmp$Demultiplexed)
+tmp$Filtered <- color_bar( "lightgreen")(tmp$Filtered)
+
+tmp$SNPs <- ifelse( tmp$SNPs > 1000, 
+                    cell_spec( tmp$SNPs, color = "green", bold=TRUE),
+                    cell_spec( tmp$SNPs, color = "red", italic=TRUE))
+
+tmp %>% 
+  kbl( escape = F, digits=0) %>%
+  kable_paper("hover", full_width = FALSE) %>%
+  column_spec( 3:5, width="3cm")
 ```
 
 Overall, there is a relationship between the number of individuals used to call SNPs and the number found. Those population groups with small $N$ are going to be collapsed into larger groups and rerun to call SNPs.  I think when it is all said and done, I'll run a little test to see what the asymptote is for this relationship and then partition the remaining mapped data into groups when calling SNPs.
