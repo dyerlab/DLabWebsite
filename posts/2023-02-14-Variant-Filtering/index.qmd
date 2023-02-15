@@ -1,0 +1,29 @@
+---
+title: "Variant Filtering"
+date: "2023-02-14"
+draft: true
+execute: 
+  eval: false
+description: |
+  So I have a few VCF files that have been mapped and I wanted to take a look at the data.  Here is some information on how that has come along thus far.  I'm still trying to determine if we are doing the right thing by chunking up the data and the consequences of doing it this way.  That being said, here is some information on what we have.  This is based upon 
+---
+
+
+## Merging VCF Files
+
+
+
+
+2. 
+
+
+```{r}
+library( gwscaR )
+```
+
+
+
+```{bash}
+brew install brewsci/bio/vcflib
+```
+

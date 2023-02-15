@@ -14,7 +14,54 @@ title-block-banner: true
 
 The Dyer laboratory is a research lab at [Virginia Commonwealth University](https://vcu.edu) that focuses on developing and testing tools to aid in understand how landscape features influence genetic connectivity. This requires a mix of theory development, software creation, and evaluation using (largely) non-model systems in the field.
 
+<table>
+<tr>
+<td width="40%">
+### Turtle Project
+
+For updates on the turtle project, [here](/posts/2023-01-ddRADSeq-Progress/) is a summary of ongoing content.  
+
+
+```{r}
+#| echo: false
+#| fig-height: 3
+library( tidyverse )
+load("posts/2023-01-ddRADSeq-Progress/progress.rda")
+data.frame( Step = c("Demultiplexed", "Filtered", "Mapped", "SNPs"),
+            Progress = 100.0 * c( 1.0 - (sum( is.na(progress$Demultiplexed) ) / nrow(progress)),
+                                  1.0 - (sum( is.na(progress$Filtered) ) / nrow(progress)),
+                                  1.0 - (sum( is.na(progress$Mapped) ) / nrow(progress)),
+                                  1.0 - (sum( is.na(progress$SNPs) ) / nrow(progress))) ) %>%
+  knitr::kable( digits=0 ) %>%
+  kableExtra::kable_paper()
+
+```
+
+
+
+
+
+</td>
+<td width="5%">&nbsp;</td>
+<td width="40%">
+### GeneticStudio
+
+GeneticStudio is a suite of population & landscape genetic software created in the Dyer laboratory. It can be found as an `R` package <tt>gstudio</tt> [here](https://github.com/dyerlab/gstudio).  
+
+A beta version of this software is also available as stand-alone executables for MacOS and iPadOS.  If you are interested in participating in the testing process, send an email to [rodney@dyerlab.org](mailto://rodney@dyerlab.org).
+
 &nbsp;
+
+
+</td>
+</tr>
+</table>
+
+
+&nbsp;
+
+&nbsp;
+
 
 ## Recent Posts
 

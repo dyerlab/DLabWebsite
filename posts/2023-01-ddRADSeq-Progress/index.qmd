@@ -1,0 +1,140 @@
+---
+title: "Map of Content for ddRADSeq Project"
+date: "2023-01-15"
+execute:
+  echo: false
+description: | 
+  This is an ongoing summary of progress on the ddRADSeq project.
+---
+
+```{r}
+#| label: setup
+suppressMessages( library( knitr ) )
+suppressMessages( library( kableExtra ) )
+suppressMessages( library( tidyverse) )
+suppressMessages( library( lubridate )  )
+options(knitr.kable.NA = '')
+theme_set( theme_minimal() )
+```
+
+
+## Summary 
+
+
+```{r}
+read_csv("sizes.csv",col_names = FALSE, show_col_types = F) -> tmp 
+```
+
+
+We retrieved usable sequence data from at total of `r nrow(tmp)` individuals.  The number of sequence reads is depicted by file size (log base 10) below.
+
+```{r}
+#| fig-cap: The distrubiton of sequence reads (denoted as log10 of file size) for all individuals sequenced. 
+tmp %>%
+  ggplot( aes(log10(X5) ) )  + 
+  geom_histogram( bins=50) + 
+  xlab("Log10(Sequence Content)")
+```
+
+The largest number of sequences was retrieved from a sample from Camp Edwards, MA, with 50,205,568 sequences.  The median read size was 17,332,284.  
+
+
+## Processing
+
+```{r}
+tribble( ~Population, ~N, ~Demultiplexed, ~Filtered, ~Mapped, ~Sites, ~SNPs, ~Note,
+         "A", 92,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-04"), NA, NA, "",
+         "B", 102, as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-06"), NA, NA, "",
+         "C", 139, as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-10"), NA, NA, "",
+         "D", 84,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-12"), NA, NA, "",
+         "E", 36,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-13"), NA, NA, "",
+         "F", 31,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-14"), NA, NA, "",
+         "G", 78,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
+         "H", 66,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
+         "I", 33,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
+         "J", 13,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-15"), 9367, 1508, "Rerun FreeBayes",
+         "K", 13,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-15"), 9367, 1508, "Rerun FreeBayes",
+         "L", 95,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
+         "M", 129, as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
+         "N", 53,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
+         "O", 44,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-15"), 11338, 282, "Rerun FreeBayes",
+         "P", 59,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-15"), 10730, 1660, "",
+         "Q", 18,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-10"), 7100, 188, "Rerun FreeBayes",
+         "R", 42,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-13"), 10294, 1348, "",
+         "S", 187, as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-13"), 15089, 1994, "",
+         "T", 81,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-15"), 11986, 176, "Rerun FreeBayes",
+         "V", 21,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-13"), 8586, 58, "Rerun FreeBayes",
+         "W", 53,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-09"), 10891, 1113, ""
+) -> progress
+save(progress, file="progress.rda")
+```
+
+
+
+```{r}
+#| fig-cap: Progress of the main steps in processing raw sequence data.  
+data.frame( Step = c("Demultiplexed", "Filtered", "Mapped", "SNPs"),
+            Progress = 100.0 * c( 1.0 - (sum( is.na(progress$Demultiplexed) ) / nrow(progress)),
+                                  1.0 - (sum( is.na(progress$Filtered) ) / nrow(progress)),
+                                  1.0 - (sum( is.na(progress$Mapped) ) / nrow(progress)),
+                                  1.0 - (sum( is.na(progress$SNPs) ) / nrow(progress)))
+            ) %>%
+  ggplot( aes(Step, Progress) ) + 
+  geom_col()
+
+```
+
+
+## Progress
+
+The following logs document the initial attempts at implementing the [dDocent](https://www.ddocent.com) workflow for processing NovoSEQ data on the spotted turtle.
+
+- [Demultiplexing](/posts/2022-10-05-ddradseq) is the process of taking all the data that is mixed together and turning it inot a a bunch of files, one for each individual, based upon the individual barcodes.
+- The [first run](/posts/2023-01-21-first-ddocent-run/) of [dDocent](http://ddocent.com/) crashed almost immediately.
+- The [second run](/2023-01-25-second-ddocent-run/) of [dDocent](http://ddocent.com/) also crashed, but this time it was for a different reason.  Apparently, the node it was running on was failing.  However, it still crashed.
+- As a result of these attempts, it appears that the data are just *too big* and I need to take subsets of the data to work with so the computers can actually get something done.  So, after talking with a colleague about it, I [right-sized](/posts/2023-01-12-right-sizing-sequences/) the data *first* in random samples and then ran a [third](/posts/2023-01-25-a-10percent-full-data-run/) run used a random subset of 10% of each individuals reads to make a synthetic "individual".  It ultimately failed at the end as well.
+- So, lessons learned.  I needed to create a random subset of my data and use that for **just** the assembly portion of this process.  So I set out to do that and found results.  
+  - A [2.5% subset](/posts/2023-01-30-2pt5pct-ddocent-run/) finished with 7k contigs.
+  - A [5% subset](/posts/2023-01-31-5pct-ddocent-run/) finished with 58k contigs.
+  - A [10% subset](/posts/2023-01-27-10pct-ddocent-run/) finished with 400k contigs.
+- So, I can now start mapping.  At first, I took the reference genome from the [2.5% subset](/posts/2023-01-30-2pt5pct-ddocent-run/) and took the raw data again (all the reads for each indiviudal) and used `bwa` to assemble and `FreeBayes` to call SNPs.  Unfortunately, since the number of reads for each individual is somewhere in the range of 3 - 33 million reads, it takes a bit of time.  Right now, it is averaging 11 hours per individual * 1419 individuals which is `r 11*1419/24` days (meaning it will be done on `r as.Date("2023-02-02") + (11*1419/24)`).  This run is still going and unless it dies at some point, I am going to allow it to keep running...
+- Again, to take a random subset seems to be the way to go.  In what follows is my current approach to this, which started on 2 February 2022.
+
+### Mapping Projgress Status
+
+So I started up a individuals processes to map and call SNPs.  It is done using [slurm](https://slurm.schedmd.com) on our clusters so I fire up an instance on one of the compute nodes as:
+
+```bash
+srun --nodes=1 --mem=16G --export=ALL -J mapX --pty /bin/bash
+```
+
+As a first mapping run, I had a single process (that one used 64G of memory and was way too much for what `bwa` and `FreeBayes` seem to need). The data being used in this run include:
+
+- A new random selection of 5% of each individuals genome.  
+- The assembly created from the 2.5% random selection of each individual.
+
+This was started on 2 February 2023 and appears to be taking roughly 30 minutes per indivudal to allow `bwa` to map.  Below is the progress to date.
+
+```{r}
+progress %>%
+  arrange(-SNPs, Population) %>%
+  rbind( tribble( ~Population, ~N, ~Demultiplexed, ~Filtered, ~Mapped, ~Sites, ~SNPs, ~Note,
+                            "Summary", mean(progress$N, na.rm=T), NA, NA, NA, mean(progress$Sites, na.rm=T),
+                                            mean(progress$SNPs, na.rm=T), NA) ) %>%
+  kable(digits = 0) %>%
+  kable_paper()
+```
+
+Overall, there is a relationship between the number of individuals used to call SNPs and the number found. Those population groups with small $N$ are going to be collapsed into larger groups and rerun to call SNPs.  I think when it is all said and done, I'll run a little test to see what the asymptote is for this relationship and then partition the remaining mapped data into groups when calling SNPs.
+
+```{r}
+progress %>%
+  filter( !is.na(SNPs)) %>%
+  ggplot( aes(N, SNPs)) + 
+  geom_jitter( ) 
+```
+
+OK, so we wait until the rest of the samples are analyzed.
+
+
+
