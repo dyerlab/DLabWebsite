@@ -1,11 +1,13 @@
 ---
 title: "Map of Content for ddRADSeq Project"
-date: "2023-01-15"
+date: "2023-02-15"
 execute:
   echo: false
 description: | 
-  This is an ongoing summary of progress on the ddRADSeq project.
+  This is an ongoing summary of progress on the ddRADSeq project.  The beginning of 2023, we finally received the raw sequence data from the provider (total nightmare working with them—they actually lost all my samples).  We are now conducting the bioinformatic processing of the data, which is substantial.   This page will be updated as we go forward to reflect the current status of the project.
 ---
+
+![](featured.png)
 
 ```{r}
 #| label: setup
