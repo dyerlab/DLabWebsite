@@ -1503,5 +1503,19 @@
     "title": "Rodney J. Dyer",
     "section": "Professional Experience",
     "text": "Professional Experience\n2017 - Present: Full Professor, VCU\n2017 - Present: Director, CES\n2017 - 2018: Interim Director, CSBC\n2010 - 2017: Associate Professor, VCU\n2004 - 2010: Assistant Professor, VCU\n2002 - 2004: Postdoctoral Researcher, ISU\n1995 - 1995: Howard Hughes Research Fellow, UW"
+  },
+  {
+    "objectID": "posts/2023-02-14-Variant-Filtering/index.html",
+    "href": "posts/2023-02-14-Variant-Filtering/index.html",
+    "title": "Variant Filtering",
+    "section": "",
+    "text": "library( tidyverse )\ntheme_set( theme_minimal() )"
+  },
+  {
+    "objectID": "posts/2023-02-14-Variant-Filtering/index.html#merging-vcf-files",
+    "href": "posts/2023-02-14-Variant-Filtering/index.html#merging-vcf-files",
+    "title": "Variant Filtering",
+    "section": "Merging VCF Files",
+    "text": "Merging VCF Files\nThe first thing we need to to is zip and then index the individual vcf files. As a reminder, these files have been created by individual freebayes SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected. So, in the following examples, the file R.vcf contains all the individuals in populations starting with the letter R. When there are not that many individuals in a group, they are clustered—below we have JK.vcf which has all the individuals from populations starting with the letters J and K.\nSo, lets compress these raw files first.\n\n% bgzip JK.vcf\n% bgzip P.vcf \n% bgzip R.vcf \n% bgzip S.vcf \n% bgzip W.vcf\n% ls -alh\ntotal 70032\ndrwxr-xr-x   7 rodney  staff   224B Feb 16 14:22 .\ndrwxr-xr-x  21 rodney  staff   672B Feb 16 14:10 ..\n-rw-r--r--   1 rodney  staff   3.1M Feb 16 14:20 JK.vcf.gz\n-rw-r--r--   1 rodney  staff   5.8M Feb 16 14:22 P.vcf.gz\n-rw-r--r--   1 rodney  staff   4.6M Feb 16 14:22 R.vcf.gz\n-rw-r--r--   1 rodney  staff    14M Feb 16 14:22 S.vcf.gz\n-rw-r--r--   1 rodney  staff   5.8M Feb 16 14:22 W.vcf.gz\n\nNow we need to index these files.\n\n% tabix -p vcf JK.vcf.gz \n% tabix -p vcf P.vcf.gz \n% tabix -p vcf R.vcf.gz\n% tabix -p vcf S.vcf.gz\n% tabix -p vcf W.vcf.gz\n\nThen we can merge the files together into a single file. Here, the output file indicates the populations that contribute to it.\n\n % vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz > JKPRSW.vcf\n\nSo here are a few things that I’ve found that provide some insights into the data we are getting. Here is the sequencing depth per individual for only the SNP sites.\n\n% vcftools --vcf JKPRSW.vcf --remove-indels --depth -c > depth.txt\n\nThis produced a distribution of sequencing depths for these individuals.\n\n\n\n\n\nAlternatively—and perhaps more important for us—we can look at the per-site depths."
   }
 ]

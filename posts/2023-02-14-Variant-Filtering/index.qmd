@@ -1,29 +1,99 @@
 ---
 title: "Variant Filtering"
 date: "2023-02-14"
-draft: true
-execute: 
-  eval: false
 description: |
   So I have a few VCF files that have been mapped and I wanted to take a look at the data.  Here is some information on how that has come along thus far.  I'm still trying to determine if we are doing the right thing by chunking up the data and the consequences of doing it this way.  That being said, here is some information on what we have.  This is based upon 
 ---
 
 
+```{r}
+library( tidyverse )
+theme_set( theme_minimal() )
+```
+
+
 ## Merging VCF Files
 
+The first thing we need to to is zip and then index the individual vcf files.  As a reminder, these files have been created by individual `freebayes` SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected.  So, in the following examples, the file `R.vcf` contains all the individuals in populations starting with the letter `R`.  When there are not that many individuals in a group, they are clustered—below we have `JK.vcf` which has all the individuals from populations starting with the letters `J` and `K`.
 
-
-
-2. 
-
-
-```{r}
-library( gwscaR )
-```
-
-
+So, lets compress these raw files first.
 
 ```{bash}
-brew install brewsci/bio/vcflib
+#| eval: false
+% bgzip JK.vcf
+% bgzip P.vcf 
+% bgzip R.vcf 
+% bgzip S.vcf 
+% bgzip W.vcf
+% ls -alh
+total 70032
+drwxr-xr-x   7 rodney  staff   224B Feb 16 14:22 .
+drwxr-xr-x  21 rodney  staff   672B Feb 16 14:10 ..
+-rw-r--r--   1 rodney  staff   3.1M Feb 16 14:20 JK.vcf.gz
+-rw-r--r--   1 rodney  staff   5.8M Feb 16 14:22 P.vcf.gz
+-rw-r--r--   1 rodney  staff   4.6M Feb 16 14:22 R.vcf.gz
+-rw-r--r--   1 rodney  staff    14M Feb 16 14:22 S.vcf.gz
+-rw-r--r--   1 rodney  staff   5.8M Feb 16 14:22 W.vcf.gz
 ```
+
+Now we need to index these files.
+
+```{bash}
+#| eval: false
+% tabix -p vcf JK.vcf.gz 
+% tabix -p vcf P.vcf.gz 
+% tabix -p vcf R.vcf.gz
+% tabix -p vcf S.vcf.gz
+% tabix -p vcf W.vcf.gz
+```
+
+Then we can merge the files together into a single file.  Here, the output file indicates the populations that contribute to it.
+
+```{bash}
+#| eval: false
+ % vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz > JKPRSW.vcf
+```
+
+So here are a few things that I've found that provide some insights into the data we are getting.  Here is the sequencing depth per individual for only the SNP sites.
+
+```{bash}
+#| eval: false
+% vcftools --vcf JKPRSW.vcf --remove-indels --depth -c > depth.txt
+```
+
+This produced a distribution of sequencing depths for these individuals. 
+
+```{r}
+#| echo: false
+read.delim("individual-depth.txt") %>%
+  ggplot( aes(MEAN_DEPTH) ) + 
+  geom_histogram( bins=50 ) + 
+  xlab("Average Sequencing Depth per Individual") + 
+  ylab("Count")
+```
+
+Alternatively—and perhaps more important for us—we can look at the per-site depths.
+
+```{r}
+#| echo: false
+read.delim("site_depth.txt") %>% 
+  ggplot( aes(SUM_DEPTH) ) + 
+  geom_histogram( bins = 50 ) + 
+  xlab("log10(Sequencing Depth per Site)") + 
+  ylab("Count") +
+  scale_x_log10()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
