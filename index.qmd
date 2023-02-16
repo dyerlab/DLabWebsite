@@ -25,7 +25,9 @@ For updates on the turtle project, [here](/posts/2023-01-ddRADSeq-Progress/) is 
 ```{r}
 #| echo: false
 #| fig-height: 3
-library( tidyverse )
+#| warning: false
+#| message: false
+suppressMessages(library( tidyverse ))
 load("posts/2023-01-ddRADSeq-Progress/progress.rda")
 data.frame( Step = c("Demultiplexed", "Filtered", "Mapped", "SNPs"),
             Progress = 100.0 * c( 1.0 - (sum( is.na(progress$Demultiplexed) ) / nrow(progress)),

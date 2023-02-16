@@ -1,0 +1,109 @@
+%%tana%%
+- Functions
+  - Functions Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Functions
+  - Functions Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Functions/slides.html
+  - Functions Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Functions/slides.html
+  - Functions In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Functions/slides.html
+  - Understanding variable scope and how it relates to visibility and naming conventions as your code becomes more complex. #[[learning objective]]
+  - Create general functions that take zero or more input values and return (or not) implicit values to the caller. #[[learning objective]]
+  - Understand and implement basic conditional statements based upon logic as well as looping. #[[learning objective]]
+  - Functions #lecture
+- Regression Analysis
+  - Regression Analysis Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Regression
+  - Regression Analysis Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Regression/slides.html
+  - Regression Analysis Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Regression/slides.html
+  - Regression Analysis In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Regression/slides.html
+  - Conceptually describe the process of least square regression. #[[learning objective]]
+  - Perform a linear regression with one or more predictor variables using the `lm()` function. #[[learning objective]]
+  - Evaluate the fit of the models by examining both the residuals and fitted values. #[[learning objective]]
+  - Describe and implement methods necessary to select the best model from a set of potential candidate models using a metric such as AIC. #[[learning objective]]
+  - Regression Analysis #lecture
+- Correaltion Analyses
+  - Correaltion Analyses Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Correlation
+  - Correaltion Analyses Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Correlation/slides.html
+  - Correaltion Analyses Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Correlation/slides.html
+  - Correaltion Analyses In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Correlation/slides.html
+  - Understand the differences between parametric, non-parametric, and randomization methods for hypothesis testing. #[[learning objective]]
+  - Test the normality of data using the Shapiro-Wilks test. #[[learning objective]]
+  - Perform basic transformations on data to attempt to get your data more representative of normal data sets. #[[learning objective]]
+  - Use the `cor.test()` function for parametric and non-parametric data. #[[learning objective]]
+  - Correaltion Analyses #lecture
+- Graphics that Don't Suck
+  - Graphics that Don't Suck Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Graphics-That-Do-Not-Suck
+  - Graphics that Don't Suck Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Graphics-That-Do-Not-Suck/slides.html
+  - Graphics that Don't Suck Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Graphics-That-Do-Not-Suck/slides.html
+  - Graphics that Don't Suck In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Graphics-That-Do-Not-Suck/slides.html
+  - Create both univariate and bivariate plots of data using continuous and categorical data types. #[[learning objective]]
+  - Customize symbologies for data representation based upon properties intrinsic to the data. #[[learning objective]]
+  - Apply the use of colors to make data better represented. #[[learning objective]]
+  - Graphics that Don't Suck #lecture
+- Joins
+  - Joins Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Joins
+  - Joins Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Joins/slides.html
+  - Joins Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Joins/slides.html
+  - Joins In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Joins/slides.html
+  - Explain the difference between a *primary* and *foreign* key. #[[learning objective]]
+  - Describe the differences in join types including full, left, right, inner, outer, semi and anti joins. #[[learning objective]]
+  - Understand that joins also work for spatial contexts. #[[learning objective]]
+  - Joins #lecture
+- Tidyverse
+  - Tidyverse Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Tidyverse
+  - Tidyverse Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Tidyverse/slides.html
+  - Tidyverse Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Tidyverse/slides.html
+  - Tidyverse In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Tidyverse/slides.html
+  - Understand the basic *verbs* of data manipulation. #[[learning objective]]
+  - Create *de novo* workflows to manipulate data frames #[[learning objective]]
+  - Produce summary tabular output. #[[learning objective]]
+  - Tidyverse #lecture
+- Factors
+  - Factors Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Factors
+  - Factors Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Factors/slides.html
+  - Factors Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Factors/slides.html
+  - Factors In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Factors/slides.html
+  - Create factor data *de novo* from raw data. #[[learning objective]]
+  - Describe the differences between ordered and unordered factor data. #[[learning objective]]
+  - Reorganize factor levels and manipulate factors using `forcats` #[[learning objective]]
+  - Factors #lecture
+- Data Containers in R
+  - Data Containers in R Repository #[[github repository]]
+    - URL:: https://github.com/DyerlabTeaching/Data-Containers
+  - Data Containers in R Slides #webpage
+    - URL:: https://dyerlabteaching.github.io/Data-Containers/slides.html
+  - Data Containers in R Narrative #webpage
+    - URL:: https://dyerlabteaching.github.io/Data-Containers/slides.html
+  - Data Containers in R In Class Activity #webpage
+    - URL:: https://dyerlabteaching.github.io/Data-Containers/slides.html
+  - Understand the basic types of data containers available for your data in R and know when one type is preferable over another. #[[learning objective]]
+  - Create, *de novo* data representations for each type. #[[learning objective]]
+  - Import data from files or internet resources into common data types. #[[learning objective]]
+  - Access, edit, update, and delete constituent data components of common data types. #[[learning objective]]
+  - Save data to file as either binary R data files or as text files. #[[learning objective]]
+  - Data Containers in R #lecture

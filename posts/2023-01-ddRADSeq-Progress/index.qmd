@@ -11,6 +11,8 @@ description: |
 
 ```{r}
 #| label: setup
+#| message: false
+#| warning: false
 suppressMessages( library( knitr ) )
 suppressMessages( library( kableExtra ) )
 suppressMessages( library( tidyverse) )
@@ -122,12 +124,14 @@ tmp$Mapped <- 100
 tmp %>%
   select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
 
-tmp$Mapped[ tmp$Population == "G" ] <- round(69 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "H" ] <- round(14 / tmp$N[ tmp$Population == "H"] * 100.0)
+tmp$Mapped[ tmp$Population == "G" ] <- round(77 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "H" ] <- round(24 / tmp$N[ tmp$Population == "H"] * 100.0)
 tmp$Mapped[ tmp$Population == "I" ] <- round(0 / tmp$N[ tmp$Population == "I"] * 100.0)
 tmp$Mapped[ tmp$Population == "L" ] <- round(10 / tmp$N[ tmp$Population == "L"] * 100.0)
-tmp$Mapped[ tmp$Population == "M" ] <- round(113 / tmp$N[ tmp$Population == "M"] * 100.0)
-tmp$Mapped[ tmp$Population == "N" ] <- round(48 / tmp$N[ tmp$Population == "N"] * 100.0)
+tmp$Mapped[ tmp$Population == "M" ] <- round(121 / tmp$N[ tmp$Population == "M"] * 100.0)
+tmp$Mapped[ tmp$Population == "N" ] <- round(53 / tmp$N[ tmp$Population == "N"] * 100.0)
+tmp$Mapped[ tmp$Population == "V" ] <- round(4 / tmp$N[ tmp$Population == "V"] * 100.0)
+
 
 tmp$Mapped <- color_bar("lightgreen")(tmp$Mapped)
 tmp$Demultiplexed <- color_bar( "lightgreen")(tmp$Demultiplexed)

@@ -205,44 +205,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( tidyverse )</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>( <span class="fu">theme_minimal</span>() )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <section id="merging-vcf-files" class="level2">
 <h2 class="anchored" data-anchor-id="merging-vcf-files">Merging VCF Files</h2>
 <p>The first thing we need to to is zip and then index the individual vcf files. As a reminder, these files have been created by individual <code>freebayes</code> SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected. So, in the following examples, the file <code>R.vcf</code> contains all the individuals in populations starting with the letter <code>R</code>. When there are not that many individuals in a group, they are clustered—below we have <code>JK.vcf</code> which has all the individuals from populations starting with the letters <code>J</code> and <code>K</code>.</p>
 <p>So, lets compress these raw files first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip JK.vcf</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip P.vcf </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip R.vcf </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip S.vcf </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip W.vcf</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-alh</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 70032</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   7 rodney  staff   224B Feb 16 14:22 .</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  21 rodney  staff   672B Feb 16 14:10 ..</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   3.1M Feb 16 14:20 JK.vcf.gz</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 P.vcf.gz</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   4.6M Feb 16 14:22 R.vcf.gz</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff    14M Feb 16 14:22 S.vcf.gz</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip JK.vcf</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip P.vcf </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip R.vcf </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip S.vcf </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip W.vcf</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-alh</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 70032</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   7 rodney  staff   224B Feb 16 14:22 .</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  21 rodney  staff   672B Feb 16 14:10 ..</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   3.1M Feb 16 14:20 JK.vcf.gz</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 P.vcf.gz</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   4.6M Feb 16 14:22 R.vcf.gz</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff    14M Feb 16 14:22 S.vcf.gz</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we need to index these files.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf JK.vcf.gz </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf P.vcf.gz </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf R.vcf.gz</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf S.vcf.gz</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf JK.vcf.gz </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf P.vcf.gz </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf R.vcf.gz</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf S.vcf.gz</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we can merge the files together into a single file. Here, the output file indicates the populations that contribute to it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">%</span> vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz <span class="op">&gt;</span> JKPRSW.vcf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">%</span> vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz <span class="op">&gt;</span> JKPRSW.vcf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So here are a few things that I’ve found that provide some insights into the data we are getting. Here is the sequencing depth per individual for only the SNP sites who have a minimum quality score of 20.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--minQ</span> 20 <span class="at">--depth</span> <span class="at">-c</span> <span class="op">&gt;</span> depth.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--minQ</span> 20 <span class="at">--depth</span> <span class="at">-c</span> <span class="op">&gt;</span> depth.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This produced a distribution of sequencing depths for these individuals.</p>
 <div class="cell">
@@ -268,8 +267,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>For simplicity, I’m just going to take the inner-50% of the data, dropping off the lower and upper quantiles.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( site_depth<span class="sc">$</span>SUM_DEPTH,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( site_depth<span class="sc">$</span>SUM_DEPTH,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>25% 75% 
 110 964 </code></pre>
@@ -278,11 +277,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This leaves us with 5047 sites.</p>
 <p>Now, we can go back to <code>vcftools</code> and use these values to select only sites with a quality score exceeding 20, and are in the middle 50 percentile of the depth coverage and have a minor allele frequency of at least 5%.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--min-meanDP</span> 110 <span class="at">--max-meanDP</span> 964 <span class="at">--minQ</span> 20 <span class="at">--maf</span> 0.05  <span class="at">--min-alleles</span> 2 <span class="at">--max-alleles</span> 2 <span class="at">--freq</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 302 out of 302 Individuals</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Outputting</span> Frequency Statistics...</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 120 out of a possible 22604 Sites</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Run</span> Time = 1.00 seconds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--min-meanDP</span> 110 <span class="at">--max-meanDP</span> 964 <span class="at">--minQ</span> 20 <span class="at">--maf</span> 0.05  <span class="at">--min-alleles</span> 2 <span class="at">--max-alleles</span> 2 <span class="at">--freq</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 302 out of 302 Individuals</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Outputting</span> Frequency Statistics...</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 120 out of a possible 22604 Sites</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Run</span> Time = 1.00 seconds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So, we have 120 loci to work with from this subset.</p>
 <div class="cell">
