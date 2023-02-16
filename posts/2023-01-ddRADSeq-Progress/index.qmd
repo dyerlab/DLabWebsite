@@ -20,16 +20,13 @@ options(knitr.kable.NA = '')
 theme_set( theme_minimal() )
 ```
 
-
-## Summary 
-
+## Summary
 
 ```{r}
 read_csv("sizes.csv",col_names = FALSE, show_col_types = F) -> tmp 
 ```
 
-
-We retrieved usable sequence data from at total of `r nrow(tmp)` individuals.  The number of sequence reads is depicted by file size (log base 10) below.
+We retrieved usable sequence data from at total of `r nrow(tmp)` individuals. The number of sequence reads is depicted by file size (log base 10) below.
 
 ```{r}
 #| fig-cap: The distrubiton of sequence reads (denoted as log10 of file size) for all individuals sequenced. 
@@ -39,8 +36,7 @@ tmp %>%
   xlab("Log10(Sequence Content)")
 ```
 
-The largest number of sequences was retrieved from a sample from Camp Edwards, MA, with 50,205,568 sequences.  The median read size was 17,332,284.  
-
+The largest number of sequences was retrieved from a sample from Camp Edwards, MA, with 50,205,568 sequences. The median read size was 17,332,284.
 
 ## Processing
 
@@ -72,8 +68,6 @@ tribble( ~Population, ~N, ~Demultiplexed, ~Filtered, ~Mapped, ~Sites, ~SNPs, ~No
 save(progress, file="progress.rda")
 ```
 
-
-
 ```{r}
 #| fig-cap: Progress of the main steps in processing raw sequence data.  
 data.frame( Step = c("Demultiplexed", "Filtered", "Mapped", "SNPs"),
@@ -87,36 +81,36 @@ data.frame( Step = c("Demultiplexed", "Filtered", "Mapped", "SNPs"),
 
 ```
 
-
 ## Progress
 
 The following logs document the initial attempts at implementing the [dDocent](https://www.ddocent.com) workflow for processing NovoSEQ data on the spotted turtle.
 
-- [Demultiplexing](/posts/2022-10-05-ddradseq) is the process of taking all the data that is mixed together and turning it inot a a bunch of files, one for each individual, based upon the individual barcodes.
-- The [first run](/posts/2023-01-21-first-ddocent-run/) of [dDocent](http://ddocent.com/) crashed almost immediately.
-- The [second run](/2023-01-25-second-ddocent-run/) of [dDocent](http://ddocent.com/) also crashed, but this time it was for a different reason.  Apparently, the node it was running on was failing.  However, it still crashed.
-- As a result of these attempts, it appears that the data are just *too big* and I need to take subsets of the data to work with so the computers can actually get something done.  So, after talking with a colleague about it, I [right-sized](/posts/2023-01-12-right-sizing-sequences/) the data *first* in random samples and then ran a [third](/posts/2023-01-25-a-10percent-full-data-run/) run used a random subset of 10% of each individuals reads to make a synthetic "individual".  It ultimately failed at the end as well.
-- So, lessons learned.  I needed to create a random subset of my data and use that for **just** the assembly portion of this process.  So I set out to do that and found results.  
-  - A [2.5% subset](/posts/2023-01-30-2pt5pct-ddocent-run/) finished with 7k contigs.
-  - A [5% subset](/posts/2023-01-31-5pct-ddocent-run/) finished with 58k contigs.
-  - A [10% subset](/posts/2023-01-27-10pct-ddocent-run/) finished with 400k contigs.
-- So, I can now start mapping.  At first, I took the reference genome from the [2.5% subset](/posts/2023-01-30-2pt5pct-ddocent-run/) and took the raw data again (all the reads for each indiviudal) and used `bwa` to assemble and `FreeBayes` to call SNPs.  Unfortunately, since the number of reads for each individual is somewhere in the range of 3 - 33 million reads, it takes a bit of time.  Right now, it is averaging 11 hours per individual * 1419 individuals which is `r 11*1419/24` days (meaning it will be done on `r as.Date("2023-02-02") + (11*1419/24)`).  This run is still going and unless it dies at some point, I am going to allow it to keep running...
-- Again, to take a random subset seems to be the way to go.  In what follows is my current approach to this, which started on 2 February 2022.
+-   [Demultiplexing](/posts/2022-10-05-ddradseq) is the process of taking all the data that is mixed together and turning it inot a a bunch of files, one for each individual, based upon the individual barcodes.
+-   The [first run](/posts/2023-01-21-first-ddocent-run/) of [dDocent](http://ddocent.com/) crashed almost immediately.
+-   The [second run](/2023-01-25-second-ddocent-run/) of [dDocent](http://ddocent.com/) also crashed, but this time it was for a different reason. Apparently, the node it was running on was failing. However, it still crashed.
+-   As a result of these attempts, it appears that the data are just *too big* and I need to take subsets of the data to work with so the computers can actually get something done. So, after talking with a colleague about it, I [right-sized](/posts/2023-01-12-right-sizing-sequences/) the data *first* in random samples and then ran a [third](/posts/2023-01-25-a-10percent-full-data-run/) run used a random subset of 10% of each individuals reads to make a synthetic "individual". It ultimately failed at the end as well.
+-   So, lessons learned. I needed to create a random subset of my data and use that for **just** the assembly portion of this process. So I set out to do that and found results.
+    -   A [2.5% subset](/posts/2023-01-30-2pt5pct-ddocent-run/) finished with 7k contigs.
+    -   A [5% subset](/posts/2023-01-31-5pct-ddocent-run/) finished with 58k contigs.
+    -   A [10% subset](/posts/2023-01-27-10pct-ddocent-run/) finished with 400k contigs.
+-   So, I can now start mapping. At first, I took the reference genome from the [2.5% subset](/posts/2023-01-30-2pt5pct-ddocent-run/) and took the raw data again (all the reads for each indiviudal) and used `bwa` to assemble and `FreeBayes` to call SNPs. Unfortunately, since the number of reads for each individual is somewhere in the range of 3 - 33 million reads, it takes a bit of time. Right now, it is averaging 11 hours per individual \* 1419 individuals which is `r 11*1419/24` days (meaning it will be done on `r as.Date("2023-02-02") + (11*1419/24)`). This run is still going and unless it dies at some point, I am going to allow it to keep running...
+-   Again, to take a random subset seems to be the way to go. In what follows is my current approach to this, which started on 2 February 2022.
 
 ### Workflow Progress
 
-So I started up a individuals processes to map and call SNPs.  It is done using [slurm](https://slurm.schedmd.com) on our clusters so I fire up an instance on one of the compute nodes as:
+So I started up a individuals processes to map and call SNPs. It is done using [slurm](https://slurm.schedmd.com) on our clusters so I fire up an instance on one of the compute nodes as:
 
-```bash
+```{bash}
+#| eval: false
 srun --nodes=1 --mem=16G --export=ALL -J mapX --pty /bin/bash
 ```
 
 As a first mapping run, I had a single process (that one used 64G of memory and was way too much for what `bwa` and `FreeBayes` seem to need). The data being used in this run include:
 
-- A new random selection of 5% of each individuals genome.  
-- The assembly created from the 2.5% random selection of each individual.
+-   A new random selection of 5% of each individuals genome.\
+-   The assembly created from the 2.5% random selection of each individual.
 
-This was started on 2 February 2023 and appears to be taking roughly 30 minutes per indivudal to allow `bwa` to map.  Below is the progress to date.
+This was started on 2 February 2023 and appears to be taking roughly 30 minutes per indivudal to allow `bwa` to map. Below is the progress to date.
 
 ```{r}
 #| fig-cap: Current progress on bioinformatic workflows.
@@ -128,12 +122,12 @@ tmp$Mapped <- 100
 tmp %>%
   select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
 
-tmp$Mapped[ tmp$Population == "G" ] <- round(32 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "H" ] <- round(12 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "I" ] <- round(0 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "L" ] <- round(7 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "M" ] <- round(77 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "N" ] <- round(13 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "G" ] <- round(69 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "H" ] <- round(14 / tmp$N[ tmp$Population == "H"] * 100.0)
+tmp$Mapped[ tmp$Population == "I" ] <- round(0 / tmp$N[ tmp$Population == "I"] * 100.0)
+tmp$Mapped[ tmp$Population == "L" ] <- round(10 / tmp$N[ tmp$Population == "L"] * 100.0)
+tmp$Mapped[ tmp$Population == "M" ] <- round(113 / tmp$N[ tmp$Population == "M"] * 100.0)
+tmp$Mapped[ tmp$Population == "N" ] <- round(48 / tmp$N[ tmp$Population == "N"] * 100.0)
 
 tmp$Mapped <- color_bar("lightgreen")(tmp$Mapped)
 tmp$Demultiplexed <- color_bar( "lightgreen")(tmp$Demultiplexed)
@@ -148,17 +142,3 @@ tmp %>%
   kable_paper("hover", full_width = FALSE) %>%
   column_spec( 3:5, width="3cm")
 ```
-
-Overall, there is a relationship between the number of individuals used to call SNPs and the number found. Those population groups with small $N$ are going to be collapsed into larger groups and rerun to call SNPs.  I think when it is all said and done, I'll run a little test to see what the asymptote is for this relationship and then partition the remaining mapped data into groups when calling SNPs.
-
-```{r}
-progress %>%
-  filter( !is.na(SNPs)) %>%
-  ggplot( aes(N, SNPs)) + 
-  geom_jitter( ) 
-```
-
-OK, so we wait until the rest of the samples are analyzed.
-
-
-

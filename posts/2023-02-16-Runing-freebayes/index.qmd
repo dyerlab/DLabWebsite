@@ -1,0 +1,110 @@
+---
+title: "Running freebayes"
+date: "2023-02-16"
+description:  | 
+  Now we need to start calling more SNPs on the indiviudals that have been mapped to the reference genome.  I'm breaking this up into groups of individuals (200-300) across many populations.  I'm also submitting this via <tt>sbatch</tt> rather than spinning up a <tt>srun /bin/bash</tt> approach...  Fingers crossed.
+---
+
+![](featured.png)
+
+```{r}
+#| label: startup
+library( tidyverse )
+library( ggrepel )
+theme_set( theme_minimal() )
+```
+
+
+As a first pass through the data, I split individual sequences into different groups to run `bwa`.  This works on an individual-by-individual basis and with 5% of each individuals genome takes roughly 30 minutes per individual (*1419 individuals ...).  Doing it in smaller groups allows me to run multiple instances at the same time.  See the table [here](/posts/2023-01-ddRADSeq-Progress/) for the groups and current status.  At the time of this writing, this process is still waiting on the final 6 groups of samples to be processed.
+
+For a subset of the data, I did call SNPs at the same time that 
+
+```{r}
+#| echo: false
+tribble( ~Population, ~N, ~Sites, ~SNPs,
+         "S", 187, 15089, 1994,
+         "P", 59, 10730, 1660,
+         "J", 13, 9367, 1508,
+         "K", 13, 9367, 1508,
+         "R", 42, 10294, 1348,
+         "W", 53, 10891, 1113,
+         "O", 44, 11338, 282,
+         "Q", 18, 7100, 188,
+         "T", 81, 11986, 176,
+         "V", 21, 8586, 58) %>% 
+  ggplot( aes(N,SNPs,label=Population) ) + 
+  geom_point()
+  
+  
+```
+
+
+
+
+
+
+## Batching `freebayes`
+
+To batch these I made a new directory called `snpcalling` and linked the bam files from a set of indiviudals in several different populations to this folder.
+
+```{bash}
+#| eval: false
+for bam in ../samples/O/*.bam; do  
+  ln -s $bam; 
+done
+```
+
+
+I then made a small `runFreeBayes.sh` run file that would 
+
+```{bash}
+#| eval: false 
+#!/bin/bash
+ref="../samples/all005/reference.fasta"
+ls *.bam > bam.fofn
+freebayes --fasta-reference ${ref} --bam-list bam.fofn --vcf Output.vcf
+```
+
+I then made it executable
+
+```{bash}
+#| eval: false 
+chmod +x runFreeBayes.sh
+```
+
+
+And made a slurm batch file `freebayes.sub` which contains
+
+```{bash}
+#| eval: false 
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -n 36
+#SBATCH -t 96:00:00
+#SBATCH -J freebayesbaby
+#SBATCH -o freebayes.o%j
+#SBATCH -e freebayes.e%j
+#SBATCH --mail-user=rjdyer@vcu.edu
+#SBATCH --mail-type=ALL
+ulimit -s unlimited
+./runFreeBayes.sh
+scontrol show job $SLURM_JOB_ID
+```
+
+and then dumped it off for batch processing
+
+```{bash}
+#| eval: false
+sbatch freebayes.sub
+```
+
+After this, you can see that the batch job has been queued up (#34827) and waiting to go.
+
+```
+[rjdyer@huff snpcalling]$ squeue
+  JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)
+  34828     basic freebaye   rjdyer PD       0:00      1 (Priority)
+```
+
+So, now lets see if it actually works.  This run has 293 samples and the next one (#34828) has 270.  
