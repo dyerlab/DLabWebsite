@@ -1,6 +1,6 @@
 ---
 title: "Variant Filtering"
-date: "2023-02-14"
+date: "2023-02-16"
 description: |
   So I have a few VCF files that have been mapped and I wanted to take a look at the data.  Here is some information on how that has come along thus far.  I'm still trying to determine if we are doing the right thing by chunking up the data and the consequences of doing it this way.  That being said, here is some information on what we have.  This is based upon 
 ---
@@ -54,29 +54,33 @@ Then we can merge the files together into a single file.  Here, the output file 
  % vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz > JKPRSW.vcf
 ```
 
-So here are a few things that I've found that provide some insights into the data we are getting.  Here is the sequencing depth per individual for only the SNP sites.
+So here are a few things that I've found that provide some insights into the data we are getting.  Here is the sequencing depth per individual for only the SNP sites who have a minimum quality score of 20.
 
 ```{bash}
 #| eval: false
-% vcftools --vcf JKPRSW.vcf --remove-indels --depth -c > depth.txt
+% vcftools --vcf JKPRSW.vcf --remove-indels --minQ 20 --depth -c > depth.txt
 ```
 
 This produced a distribution of sequencing depths for these individuals. 
 
 ```{r}
 #| echo: false
-read.delim("individual-depth.txt") %>%
+#| fig-cap: Figure 1 Average sequencing depth across loci within each of the 302 individuals.
+read.delim("individual-depth.txt") %>% 
+  filter( !is.na(MEAN_DEPTH) ) %>%
   ggplot( aes(MEAN_DEPTH) ) + 
   geom_histogram( bins=50 ) + 
   xlab("Average Sequencing Depth per Individual") + 
   ylab("Count")
 ```
 
-Alternatively—and perhaps more important for us—we can look at the per-site depths.
+Alternatively—and perhaps more important for us—we can look at the per-site depths.  The goal here is to retain sites that have enough sequencing depth such that we are confident that it is a good site but not too much such that it is a reapeaty region in the geniome.  For simplicity, I'll drop the lower and upper standard deviation.
 
 ```{r}
 #| echo: false
-read.delim("site_depth.txt") %>% 
+#| fig-cap: Figure 2 Average sequencing depth per site across 302 individuals.
+read.delim("site-depth.txt") -> site_depth
+site_depth %>% 
   ggplot( aes(SUM_DEPTH) ) + 
   geom_histogram( bins = 50 ) + 
   xlab("log10(Sequencing Depth per Site)") + 
@@ -84,14 +88,50 @@ read.delim("site_depth.txt") %>%
   scale_x_log10()
 ```
 
+For simplicity, I'm just going to take the inner-50% of the data, dropping off the lower and upper quantiles.
+
+```{r}
+quantile( site_depth$SUM_DEPTH,
+          prob = c(0.25,0.75))
+```
+
+This leaves us with `r nrow( site_depth %>% filter( SUM_DEPTH >= 110, SUM_DEPTH <= 964))` sites.
+
+Now, we can go back to `vcftools` and use these values to select only sites with a quality score exceeding 20, and are in the middle 50 percentile of the depth coverage and have a minor allele frequency of at least 5%.  
+
+```{bash}
+#| eval: false
+% vcftools --vcf JKPRSW.vcf --remove-indels --min-meanDP 110 --max-meanDP 964 --minQ 20 --maf 0.05  --min-alleles 2 --max-alleles 2 --freq
+After filtering, kept 302 out of 302 Individuals
+Outputting Frequency Statistics...
+After filtering, kept 120 out of a possible 22604 Sites
+Run Time = 1.00 seconds
+```
 
 
+So, we have 120 loci to work with from this subset.
 
+```{r}
+#| echo: false
+suppressWarnings(read_delim("out.frq", show_col_types = FALSE) -> tmp)
+tmp$Allele <- 0.0
 
+for( i in 1:nrow(tmp) ) { 
+  for( freq in as.character(str_split( tmp$`{ALLELE:FREQ}`[i], pattern = "\t", simplify = T)) ) {
+    keyval <- str_split(freq,pattern=":", simplify = TRUE)
+    f <- as.numeric(keyval[1,2]) 
+    if( f <= 0.5 & f > 0.05) {
+      tmp$Allele[i] <- f
+    }
+  }
+}
 
-
-
-
+tmp %>% 
+  ggplot( aes(Allele) ) + 
+  geom_histogram( bins=50 ) + 
+  xlab("Minor Allele Frequency") + 
+  ylab("Count")
+```
 
 
 
