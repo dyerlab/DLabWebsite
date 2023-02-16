@@ -672,13 +672,6 @@
     "text": "As part of a collaboration with VDOT, I am pleased to announce that Ms. Bonnie Roderique has just joined the Dyer laboratory to work on a project around the endangered James River Spinymussel (Pleurobema collina). Not a plant, but at least not a vertebrate!"
   },
   {
-    "objectID": "posts/2023-02-14-Variant-Filtering/index.html",
-    "href": "posts/2023-02-14-Variant-Filtering/index.html",
-    "title": "Variant Filtering",
-    "section": "",
-    "text": "library( tidyverse )\ntheme_set( theme_minimal() )"
-  },
-  {
     "objectID": "posts/2023-02-14-Variant-Filtering/index.html#merging-vcf-files",
     "href": "posts/2023-02-14-Variant-Filtering/index.html#merging-vcf-files",
     "title": "Variant Filtering",
@@ -943,6 +936,13 @@
     "title": "Per Hour Population Growth",
     "section": "",
     "text": "A great infographic of per-hour growth in major cities."
+  },
+  {
+    "objectID": "posts/2023-02-16-github-reset-user/index.html",
+    "href": "posts/2023-02-16-github-reset-user/index.html",
+    "title": "Reset Github User for Push",
+    "section": "",
+    "text": "So I was working on a repository at home that I set up on another github acount, for another entity. In doing so, I clobbered my global github user and user.email values and as such when I tried to git push none of the changes would go because it could not authenticate. Instead I got this:\n\nrodney$ git push\nremote: Permission to dyerlab/DLabWebsite.git denied to windbunny.\nfatal: unable to access 'https://github.com/dyerlab/DLabWebsite.git/': The requested URL returned error: 403\n\nSo, what you have to do is reconfigure the username, user.email, and remote.origin.url to reset your user name for ssh/https pushing.\n\nrodney$ git config user.name dyerlab\nrodney$ git config user.email rjdyer@vcu.edu\nrodney$ git config remote.origin.url https://dyerlab@github.com/dyerlab/DLabWebsite.git\n\nThen the next time you push it (go Salt-n-Pepper), it will ask for your authentication token again. Enter it and you are good."
   },
   {
     "objectID": "posts/2016-07-10-evolution-2016-youtube-channel/evolution-2016-youtube-channel.html",
