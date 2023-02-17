@@ -115,7 +115,8 @@ As a first mapping run, I had a single process (that one used 64G of memory and 
 This was started on 2 February 2023 and appears to be taking roughly 30 minutes per indivudal to allow `bwa` to map. Below is the progress to date.
 
 ```{r}
-#| fig-cap: Current progress on bioinformatic workflows.
+#| fig-cap: Table 1 Current progress on bioinformatic workflows.
+#| fig-cap-location: top
 
 tmp <- progress %>% select( Population, N, Sites, SNPs) 
 tmp$Demultiplexed <- 100
@@ -124,13 +125,12 @@ tmp$Mapped <- 100
 tmp %>%
   select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
 
-tmp$Mapped[ tmp$Population == "G" ] <- round(78 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "H" ] <- round(50 / tmp$N[ tmp$Population == "H"] * 100.0)
-tmp$Mapped[ tmp$Population == "I" ] <- round(1 / tmp$N[ tmp$Population == "I"] * 100.0)
-tmp$Mapped[ tmp$Population == "L" ] <- round( (9+2+1) / tmp$N[ tmp$Population == "L"] * 100.0)
-tmp$Mapped[ tmp$Population == "M" ] <- round(129 / tmp$N[ tmp$Population == "M"] * 100.0)
-tmp$Mapped[ tmp$Population == "N" ] <- round(53 / tmp$N[ tmp$Population == "N"] * 100.0)
-tmp$Mapped[ tmp$Population == "V" ] <- round(21 / tmp$N[ tmp$Population == "V"] * 100.0)
+tmp$Mapped[ tmp$Population == "H" ] <- round(53 / tmp$N[ tmp$Population == "H"] * 100.0)
+tmp$Mapped[ tmp$Population == "I" ] <- round(8 / tmp$N[ tmp$Population == "I"] * 100.0)
+tmp$Mapped[ tmp$Population == "L" ] <- round( (9+5+6) / tmp$N[ tmp$Population == "L"] * 100.0)
+
+left2Do <- round(sum(tmp$N) - sum(tmp$Mapped/100 * tmp$N))
+
 
 tmp %>% arrange( -Mapped, Population ) -> tmp
 
@@ -147,3 +147,7 @@ tmp %>%
   kable_paper("hover", full_width = FALSE) %>%
   column_spec( 3:5, width="3cm")
 ```
+
+
+At present, there are `r left2Do` samples remaining to be mapped.
+
