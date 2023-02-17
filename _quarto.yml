@@ -9,17 +9,26 @@ website:
         text: People
       - href: manuscripts.qmd
         text: Manuscripts
+      - icon: github
+        href: https://github.com/dyerlab/
+        aria-label: GitHub
+      - icon: twitter
+        href: https://twitter.com/dyerlab/
+        aria-label: Twitter
   twitter-card:
-    creator: "@RodneyDyer"    
+    creator: "@dyerlab"    
     site: "@dyerlab"
-  open-graph: true
+  open-graph: 
+    site-name: dyerlab
 
 execute:
   freeze: auto
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: cosmo
+      dark: cyborg
     css: styles.css
 
 
