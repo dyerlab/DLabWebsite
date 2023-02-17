@@ -117,21 +117,22 @@ This was started on 2 February 2023 and appears to be taking roughly 30 minutes 
 ```{r}
 #| fig-cap: Current progress on bioinformatic workflows.
 
-tmp <- progress %>% select( Population, N, Sites, SNPs) %>% arrange( -SNPs )
+tmp <- progress %>% select( Population, N, Sites, SNPs) 
 tmp$Demultiplexed <- 100
 tmp$Filtered <- 100
 tmp$Mapped <- 100
 tmp %>%
   select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
 
-tmp$Mapped[ tmp$Population == "G" ] <- round(77 / tmp$N[ tmp$Population == "G"] * 100.0)
-tmp$Mapped[ tmp$Population == "H" ] <- round(24 / tmp$N[ tmp$Population == "H"] * 100.0)
-tmp$Mapped[ tmp$Population == "I" ] <- round(0 / tmp$N[ tmp$Population == "I"] * 100.0)
-tmp$Mapped[ tmp$Population == "L" ] <- round(10 / tmp$N[ tmp$Population == "L"] * 100.0)
-tmp$Mapped[ tmp$Population == "M" ] <- round(121 / tmp$N[ tmp$Population == "M"] * 100.0)
+tmp$Mapped[ tmp$Population == "G" ] <- round(78 / tmp$N[ tmp$Population == "G"] * 100.0)
+tmp$Mapped[ tmp$Population == "H" ] <- round(50 / tmp$N[ tmp$Population == "H"] * 100.0)
+tmp$Mapped[ tmp$Population == "I" ] <- round(1 / tmp$N[ tmp$Population == "I"] * 100.0)
+tmp$Mapped[ tmp$Population == "L" ] <- round( (9+2+1) / tmp$N[ tmp$Population == "L"] * 100.0)
+tmp$Mapped[ tmp$Population == "M" ] <- round(129 / tmp$N[ tmp$Population == "M"] * 100.0)
 tmp$Mapped[ tmp$Population == "N" ] <- round(53 / tmp$N[ tmp$Population == "N"] * 100.0)
-tmp$Mapped[ tmp$Population == "V" ] <- round(4 / tmp$N[ tmp$Population == "V"] * 100.0)
+tmp$Mapped[ tmp$Population == "V" ] <- round(21 / tmp$N[ tmp$Population == "V"] * 100.0)
 
+tmp %>% arrange( -Mapped, Population ) -> tmp
 
 tmp$Mapped <- color_bar("lightgreen")(tmp$Mapped)
 tmp$Demultiplexed <- color_bar( "lightgreen")(tmp$Demultiplexed)
