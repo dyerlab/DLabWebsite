@@ -125,9 +125,9 @@ tmp$Mapped <- 100
 tmp %>%
   select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
 
-tmp$Mapped[ tmp$Population == "H" ] <- round(53 / tmp$N[ tmp$Population == "H"] * 100.0)
-tmp$Mapped[ tmp$Population == "I" ] <- round(8 / tmp$N[ tmp$Population == "I"] * 100.0)
-tmp$Mapped[ tmp$Population == "L" ] <- round( (9+5+6) / tmp$N[ tmp$Population == "L"] * 100.0)
+tmp$Mapped[ tmp$Population == "H" ] <- round(57 / tmp$N[ tmp$Population == "H"] * 100.0)
+tmp$Mapped[ tmp$Population == "I" ] <- round(15 / tmp$N[ tmp$Population == "I"] * 100.0)
+tmp$Mapped[ tmp$Population == "L" ] <- round( (9+9+10) / tmp$N[ tmp$Population == "L"] * 100.0)
 
 left2Do <- round(sum(tmp$N) - sum(tmp$Mapped/100 * tmp$N))
 

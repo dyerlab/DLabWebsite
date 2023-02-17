@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-02-16">
+<meta name="dcterms.date" content="2023-02-17">
 <meta name="description" content="So I have a few VCF files that have been mapped and I wanted to take a look at the data. Here is some information on how that has come along thus far. I’m still trying to determine if we are doing the right thing by chunking up the data and the consequences of doing it this way. That being said, here is some information on what we have. This is based upon">
 
 <title>dyerlab - Variant Filtering</title>
@@ -126,16 +126,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="dyerlab - Variant Filtering">
 <meta property="og:description" content="So I have a few VCF files that have been mapped and I wanted to take a look at the data.  Here is some information on how that has come along thus far.">
+<meta property="og:image" content="featured.png">
 <meta property="og:site-name" content="dyerlab">
 <meta name="twitter:title" content="dyerlab - Variant Filtering">
 <meta name="twitter:description" content="So I have a few VCF files that have been mapped and I wanted to take a look at the data.  Here is some information on how that has come along thus far.">
+<meta name="twitter:image" content="featured.png">
 <meta name="twitter:creator" content="@dyerlab">
 <meta name="twitter:site" content="@dyerlab">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -201,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 16, 2023</p>
+        <p class="date">February 17, 2023</p>
       </div>
     </div>
     
@@ -219,45 +222,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<p><img src="featured.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( tidyverse )</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>( <span class="fu">theme_minimal</span>() )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
 <section id="merging-vcf-files" class="level2">
 <h2 class="anchored" data-anchor-id="merging-vcf-files">Merging VCF Files</h2>
 <p>The first thing we need to to is zip and then index the individual vcf files. As a reminder, these files have been created by individual <code>freebayes</code> SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected. So, in the following examples, the file <code>R.vcf</code> contains all the individuals in populations starting with the letter <code>R</code>. When there are not that many individuals in a group, they are clustered—below we have <code>JK.vcf</code> which has all the individuals from populations starting with the letters <code>J</code> and <code>K</code>.</p>
 <p>So, lets compress these raw files first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip JK.vcf</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip P.vcf </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip R.vcf </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip S.vcf </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip W.vcf</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-alh</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 70032</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   7 rodney  staff   224B Feb 16 14:22 .</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  21 rodney  staff   672B Feb 16 14:10 ..</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   3.1M Feb 16 14:20 JK.vcf.gz</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 P.vcf.gz</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   4.6M Feb 16 14:22 R.vcf.gz</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff    14M Feb 16 14:22 S.vcf.gz</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip JK.vcf</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip P.vcf </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip R.vcf </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip S.vcf </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> bgzip W.vcf</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-alh</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 70032</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>   7 rodney  staff   224B Feb 16 14:22 .</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span>  21 rodney  staff   672B Feb 16 14:10 ..</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   3.1M Feb 16 14:20 JK.vcf.gz</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 P.vcf.gz</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   4.6M Feb 16 14:22 R.vcf.gz</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff    14M Feb 16 14:22 S.vcf.gz</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we need to index these files.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf JK.vcf.gz </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf P.vcf.gz </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf R.vcf.gz</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf S.vcf.gz</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf JK.vcf.gz </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf P.vcf.gz </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf R.vcf.gz</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf S.vcf.gz</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> tabix <span class="at">-p</span> vcf W.vcf.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we can merge the files together into a single file. Here, the output file indicates the populations that contribute to it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">%</span> vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz <span class="op">&gt;</span> JKPRSW.vcf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">%</span> vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz <span class="op">&gt;</span> JKPRSW.vcf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So here are a few things that I’ve found that provide some insights into the data we are getting. Here is the sequencing depth per individual for only the SNP sites who have a minimum quality score of 20.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--minQ</span> 20 <span class="at">--depth</span> <span class="at">-c</span> <span class="op">&gt;</span> depth.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--minQ</span> 20 <span class="at">--depth</span> <span class="at">-c</span> <span class="op">&gt;</span> depth.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This produced a distribution of sequencing depths for these individuals.</p>
 <div class="cell">
@@ -283,21 +286,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>For simplicity, I’m just going to take the inner-50% of the data, dropping off the lower and upper quantiles.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( site_depth<span class="sc">$</span>SUM_DEPTH,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>( site_depth<span class="sc">$</span>SUM_DEPTH,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.10</span>,<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>25% 75% 
-110 964 </code></pre>
+<pre><code>   10%    25%    50%    75%    90% 
+  60.0  110.0  278.0  964.0 3421.1 </code></pre>
 </div>
 </div>
 <p>This leaves us with 5047 sites.</p>
 <p>Now, we can go back to <code>vcftools</code> and use these values to select only sites with a quality score exceeding 20, and are in the middle 50 percentile of the depth coverage and have a minor allele frequency of at least 5%.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--min-meanDP</span> 110 <span class="at">--max-meanDP</span> 964 <span class="at">--minQ</span> 20 <span class="at">--maf</span> 0.05  <span class="at">--min-alleles</span> 2 <span class="at">--max-alleles</span> 2 <span class="at">--freq</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 302 out of 302 Individuals</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Outputting</span> Frequency Statistics...</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 120 out of a possible 22604 Sites</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Run</span> Time = 1.00 seconds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> vcftools <span class="at">--vcf</span> JKPRSW.vcf <span class="at">--remove-indels</span> <span class="at">--min-meanDP</span> 110 <span class="at">--max-meanDP</span> 964 <span class="at">--minQ</span> 20 <span class="at">--maf</span> 0.05  <span class="at">--min-alleles</span> 2 <span class="at">--max-alleles</span> 2 <span class="at">--freq</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 302 out of 302 Individuals</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Outputting</span> Frequency Statistics...</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> filtering, kept 120 out of a possible 22604 Sites</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Run</span> Time = 1.00 seconds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So, we have 120 loci to work with from this subset.</p>
 <div class="cell">
@@ -305,8 +308,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<section id="filtering-out-sequncing-errors" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-out-sequncing-errors">Filtering out Sequncing Errors</h3>
+<p>Now, I’m going to look at the effects of filter different aspects. Here is the minor allele count (MAC). I’m doing this over frequency given that I have <span class="math inline">\(N=1419\)</span> individuals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>( <span class="sc">~</span>MAC, <span class="sc">~</span>SNPs, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">2</span>,  <span class="dv">934</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">5</span>,  <span class="dv">843</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="dv">10</span>, <span class="dv">745</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>         <span class="dv">25</span>, <span class="dv">568</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>         <span class="dv">50</span>, <span class="dv">386</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>         <span class="dv">75</span>, <span class="dv">294</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>         <span class="dv">100</span>, <span class="dv">223</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>         <span class="dv">150</span>, <span class="dv">155</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>         <span class="dv">200</span>, <span class="dv">90</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">p =</span> MAC<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="dv">1419</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(MAC, SNPs) ) <span class="sc">+</span> </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Minor Allele Count"</span>) <span class="sc">+</span> </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"SNP Loci Identified"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Nubmer of filtered SNP loci across a range of stringency in the minimum number of times a minor allele is observed across the data set.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I am sure there is a probability example that could be used here to look at where you break even on sequencing errors and joint probability of the same allele being <em>incorrectly</em> identified. Don’t quite want to work it out right now but I think my 5% (putting it just shy of the MAC=150) may have been a bit too stringent…</p>
+</section>
+<section id="filtering-on-depth" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-on-depth">Filtering on Depth</h3>
+<p>Next lets look at sequencing depth. Here i am going to fix the MAC=5 and cut off all the loci that have a depths in excess of the 90% in depths (see above) and then look at how many loci are recovered going from 5X coverage up to 200X (the example above had it set at a minimum coverage of 110X).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>( <span class="sc">~</span><span class="st">`</span><span class="at">Minimum Depth</span><span class="st">`</span>, <span class="sc">~</span>SNPs, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">5</span>,  <span class="dv">1519</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">10</span>, <span class="dv">843</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="dv">25</span>, <span class="dv">459</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="dv">50</span>, <span class="dv">298</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         <span class="dv">75</span>, <span class="dv">226</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         <span class="dv">100</span>, <span class="dv">166</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         <span class="dv">150</span>, <span class="dv">110</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>         <span class="dv">200</span>, <span class="dv">85</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="st">`</span><span class="at">Minimum Depth</span><span class="st">`</span>, SNPs) ) <span class="sc">+</span> </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Minor Allele Count"</span>) <span class="sc">+</span> </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"SNP Loci Identified"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
