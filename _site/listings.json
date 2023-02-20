@@ -52,6 +52,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-02-20-processing-bam-files/index.html",
+      "/posts/2022-11-17-VSCode-Remote/index.html",
       "/posts/2023-02-14-Variant-Filtering/index.html",
       "/posts/2023-02-16-Runing-freebayes/index.html",
       "/posts/2023-02-16-github-reset-user/index.html",
@@ -66,7 +68,6 @@
       "/posts/2023-01-16-Demultiplexing/index.html",
       "/posts/2022-10-28-SwiftPackageManagerResources/index.html",
       "/posts/2022-10-05-ddRADSeq-I/index.html",
-      "/posts/2022-11-17-VSCode-Remote/index.html",
       "/posts/2022-09-30-Irreversibility/index.html",
       "/posts/2022-09-07-Rendering-R-Helpfiles/index.html",
       "/posts/2022-09-06-Basic-Data-Types/index.html",

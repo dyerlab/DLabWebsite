@@ -2,7 +2,7 @@
 title: "Running freebayes"
 date: "2023-02-16"
 description:  | 
-  Now we need to start calling more SNPs on the indiviudals that have been mapped to the reference genome.  I'm breaking this up into groups of individuals (200-300) across many populations.  I'm also submitting this via <tt>sbatch</tt> rather than spinning up a <tt>srun /bin/bash</tt> approach...  Fingers crossed.
+  Now we need to start calling more SNPs on the indiviudals that have been mapped to the reference genome.  I'm breaking this up into groups of individuals (200-300) across many populations.  I'm also submitting this via <tt>sbatch</tt> rather than spinning up a <tt>srun /bin/bash</tt> approach...  Failed.
 ---
 
 ![](featured.png)

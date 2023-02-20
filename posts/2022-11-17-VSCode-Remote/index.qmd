@@ -1,6 +1,6 @@
 ---
 title: "Using R on VSCode Remotely"
-date: "2022-09-30"
+date: "2023-02-20"
 description: |
   Analyzing SNP data remotely on a server for demultiplexing, etc. can be a bit of a hastle if you would like to do some R analyses.  Here is how I set up VSCode to run on my office machine (& laptop) and interface with our servers where all the data are analyzed.  I would love to have RStudio be able to do this but, alas, it is not possible yet.  
 ---
@@ -21,13 +21,15 @@ if( !require(httpgd)) {
 
 Now, download [VSCode](https://code.visualstudio.com/) from the main server.  You will also need to install the [R Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r), which can be installed from inside VSCode.
 
+Now, you'll need to install the following items for VSCode:  
+
+- [Remote-ssh](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
 
 
+Once you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work.  For me, after logging into the remot server, I created an `R` file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side.  It was all locally done so no big deal.
 
+The only problem that I did run into is that for some reason, `jsonlite` would not install because of some python dependency problem.
 
-## Making Secure Connections
-
-
-
-
-## Remote Work
+```
+Failed to get list of R functions. Make sure that `jsonlite` is installed and r.rpath.linux points to a valid R executable.
+```

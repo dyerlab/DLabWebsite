@@ -1,0 +1,53 @@
+---
+title: "Pre-Processing Bam Files 🐢"
+date: "2023-02-20"
+execute:
+  eval: false
+description: | 
+  Before doing a large SNP calling exercise, I needed to sort and index all the BAM files that we'll be working with.
+---
+
+![](featured.png)
+
+For this, I wanted to sort, mark duplicates, and index each of the bam files we are working with.  I softlinked all the bam files into a new folder called `processing` via `for file in ../samples/all005/*.bam; do ln -s $file; done`.
+
+Then I fired up R and loaded the latest modeule on the server `module load R/4.1.2` and then hooked up VSCode over SSH to write the following snippet.
+
+```{r}
+library( tidyverse )
+
+bam <- list.files("./processing", pattern=".bam", full.names=TRUE)
+for( i in 1:length(bam) ) { 
+    file <- bam[i]
+    base <- str_replace( file, pattern="-RG.bam", replacement="")
+
+    fsorted <- paste( base, "-sorted.bam", sep="")
+    cmd <- paste( "samtools sort", file, "-o", fsorted )
+    system( cmd )
+
+    mdfile <- paste( base, "-sorted-md.bam", sep="")
+    cmd <- paste( "samtools markdup", fsorted, mdfile )
+    system( cmd )
+
+    cmd <- paste( "samtools index", mdfile)
+    system( cmd )
+
+    cat( i, base, "\n")
+}
+```
+
+
+Running this made several derivded files for each one, a sorted one, a one with marked duplicates, and one that had the index on it.  So now each sample looks like this.
+
+```
+[rjdyer@huff10 4_processing]$ ls -1 Zoo_969*
+Zoo_969-RG.bam -> ../samples/all005/Zoo_969-RG.bam
+Zoo_969-sorted.bam
+Zoo_969-sorted-md.bam
+Zoo_969-sorted-md.bam.bai
+```
+
+After testing to make sure the commands were properly set up, I ran the script in as a batch.  It didn't take that long to finish, maybe 3-4 seconds per sample.
+
+
+

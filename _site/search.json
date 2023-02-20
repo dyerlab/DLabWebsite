@@ -441,6 +441,13 @@
     "text": "Here is a map of the dogwood we’ve sampled in the Fan region of Richmond Virginia."
   },
   {
+    "objectID": "posts/2023-02-20-processing-bam-files/index.html",
+    "href": "posts/2023-02-20-processing-bam-files/index.html",
+    "title": "Pre-Processing Bam Files 🐢",
+    "section": "",
+    "text": "For this, I wanted to sort, mark duplicates, and index each of the bam files we are working with. I softlinked all the bam files into a new folder called processing via for file in ../samples/all005/*.bam; do ln -s $file; done.\nThen I fired up R and loaded the latest modeule on the server module load R/4.1.2 and then hooked up VSCode over SSH to write the following snippet.\n\nlibrary( tidyverse )\n\nbam <- list.files(\"./processing\", pattern=\".bam\", full.names=TRUE)\nfor( i in 1:length(bam) ) { \n    file <- bam[i]\n    base <- str_replace( file, pattern=\"-RG.bam\", replacement=\"\")\n\n    fsorted <- paste( base, \"-sorted.bam\", sep=\"\")\n    cmd <- paste( \"samtools sort\", file, \"-o\", fsorted )\n    system( cmd )\n\n    mdfile <- paste( base, \"-sorted-md.bam\", sep=\"\")\n    cmd <- paste( \"samtools markdup\", fsorted, mdfile )\n    system( cmd )\n\n    cmd <- paste( \"samtools index\", mdfile)\n    system( cmd )\n\n    cat( i, base, \"\\n\")\n}\n\nRunning this made several derivded files for each one, a sorted one, a one with marked duplicates, and one that had the index on it. So now each sample looks like this.\n[rjdyer@huff10 4_processing]$ ls -1 Zoo_969*\nZoo_969-RG.bam -> ../samples/all005/Zoo_969-RG.bam\nZoo_969-sorted.bam\nZoo_969-sorted-md.bam\nZoo_969-sorted-md.bam.bai\nAfter testing to make sure the commands were properly set up, I ran the script in as a batch. It didn’t take that long to finish, maybe 3-4 seconds per sample."
+  },
+  {
     "objectID": "posts/2020-03-12-setting-up-postgresql-on-mac/setting-up-postgresql-on-mac.html",
     "href": "posts/2020-03-12-setting-up-postgresql-on-mac/setting-up-postgresql-on-mac.html",
     "title": "Setting up Postgresql on mac",
@@ -725,21 +732,7 @@
     "href": "posts/2022-11-17-VSCode-Remote/index.html",
     "title": "Using R on VSCode Remotely",
     "section": "",
-    "text": "First of all, we’ll need to install some stuff on the R side. The language serve is necessary for VSCode and the httpgd is helpful for viewing graphical output. The following code will check to see if you have them installed and if not, install them for you.\n\nif( !require(languageserver) ) { \n  install.packages(\"languageserver\")\n}\n\nLoading required package: languageserver\n\nif( !require(httpgd)) { \n  remotes::install_github(\"nx10/httpgd\")\n}\n\nLoading required package: httpgd\n\n\nNow, download VSCode from the main server. You will also need to install the R Extension for Visual Studio Code, which can be installed from inside VSCode."
-  },
-  {
-    "objectID": "posts/2022-11-17-VSCode-Remote/index.html#making-secure-connections",
-    "href": "posts/2022-11-17-VSCode-Remote/index.html#making-secure-connections",
-    "title": "Using R on VSCode Remotely",
-    "section": "Making Secure Connections",
-    "text": "Making Secure Connections"
-  },
-  {
-    "objectID": "posts/2022-11-17-VSCode-Remote/index.html#remote-work",
-    "href": "posts/2022-11-17-VSCode-Remote/index.html#remote-work",
-    "title": "Using R on VSCode Remotely",
-    "section": "Remote Work",
-    "text": "Remote Work"
+    "text": "First of all, we’ll need to install some stuff on the R side. The language serve is necessary for VSCode and the httpgd is helpful for viewing graphical output. The following code will check to see if you have them installed and if not, install them for you.\n\nif( !require(languageserver) ) { \n  install.packages(\"languageserver\")\n}\n\nLoading required package: languageserver\n\nif( !require(httpgd)) { \n  remotes::install_github(\"nx10/httpgd\")\n}\n\nLoading required package: httpgd\n\n\nNow, download VSCode from the main server. You will also need to install the R Extension for Visual Studio Code, which can be installed from inside VSCode.\nNow, you’ll need to install the following items for VSCode:\n\nRemote-ssh\n\nOnce you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work. For me, after logging into the remot server, I created an R file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side. It was all locally done so no big deal."
   },
   {
     "objectID": "posts/2023-01-30-2pt5pct-dDocent-Run/index.html",
