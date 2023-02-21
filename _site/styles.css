@@ -17,3 +17,9 @@ div.quarto-post .thumbnail img {
   border-radius: 10px;
   -moz-border-radius: 10px;
 }
+
+
+.img-fluid { 
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+}
