@@ -60,5 +60,3 @@ Screen | Batch  | Start             | End               |  Sites | SNPs
 I'm not sure why there are such small amounts in `batch3` and `batch4`, so I'm just going to do them all in a single lump and see how that goes.
 
 
-  
-  
