@@ -1,0 +1,16 @@
+---
+title: "Scrolling Back using 'Screen'"
+date: "2023-02-20"
+description:  |
+  Tired of attempting to scroll back in your terminal and only getting a list of historical commands when in `screen`?  Here is how to fix it.
+---
+
+I use `screen` a lot to do stuff on remote servers and one of the things that annoyed me is that it appears that when you are in a `screen` session, and you flick the scroll wheel backwards, it simply goes back through the history of commands on the same command line.  The indended behavior, would be like the normal terminal, when not in a `screen` session, and the terminal would scroll up/down..
+
+Apparently `screen` has some kind of buffer that prevents this for reason I cannot tell you.  To fix it, create a `.screenrc` file in your home directory (if it does not already exist) and put the following line of code in it.
+
+```
+termcapinfo xterm* ti@:te@
+```
+
+Makes total sense, right?  Sometimes I get so frustrated that things need to be so complicated.  Simplicity people!  Let's focus on [removing stuff that sucks](/posts/1969-10-14-Dyers-Philosophy-Of-Life) from our lives!

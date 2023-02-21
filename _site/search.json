@@ -1510,5 +1510,12 @@
     "title": "Rodney J. Dyer",
     "section": "Professional Experience",
     "text": "Professional Experience\n2017 - Present: Full Professor, VCU\n2017 - Present: Director, CES\n2017 - 2018: Interim Director, CSBC\n2010 - 2017: Associate Professor, VCU\n2004 - 2010: Assistant Professor, VCU\n2002 - 2004: Postdoctoral Researcher, ISU\n1995 - 1995: Howard Hughes Research Fellow, UW"
+  },
+  {
+    "objectID": "posts/2023-02-20-screen-scrolling/index.html",
+    "href": "posts/2023-02-20-screen-scrolling/index.html",
+    "title": "Scrolling Back using ‘Screen’",
+    "section": "",
+    "text": "I use screen a lot to do stuff on remote servers and one of the things that annoyed me is that it appears that when you are in a screen session, and you flick the scroll wheel backwards, it simply goes back through the history of commands on the same command line. The indended behavior, would be like the normal terminal, when not in a screen session, and the terminal would scroll up/down..\nApparently screen has some kind of buffer that prevents this for reason I cannot tell you. To fix it, create a .screenrc file in your home directory (if it does not already exist) and put the following line of code in it.\ntermcapinfo xterm* ti@:te@\nMakes total sense, right? Sometimes I get so frustrated that things need to be so complicated. Simplicity people! Let’s focus on removing stuff that sucks from our lives!"
   }
 ]

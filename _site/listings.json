@@ -52,10 +52,11 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-02-16-Runing-freebayes/index.html",
       "/posts/2023-02-20-processing-bam-files/index.html",
+      "/posts/2023-02-20-screen-scrolling/index.html",
       "/posts/2022-11-17-VSCode-Remote/index.html",
       "/posts/2023-02-14-Variant-Filtering/index.html",
-      "/posts/2023-02-16-Runing-freebayes/index.html",
       "/posts/2023-02-16-github-reset-user/index.html",
       "/posts/2023-01-ddRADSeq-Progress/index.html",
       "/posts/2023-01-31-5pct-dDocent-Run/index.html",

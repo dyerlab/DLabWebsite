@@ -50,7 +50,7 @@ tribble( ~Population, ~N, ~Demultiplexed, ~Filtered, ~Mapped, ~Sites, ~SNPs, ~No
          "D", 84,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-12"), NA, NA, "",
          "E", 36,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-13"), NA, NA, "",
          "F", 31,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-14"), NA, NA, "",
-         "G", 78,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
+         "G", 78,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-16"), NA, NA, "",
          "H", 66,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
          "I", 33,  as.Date("2023-01-23"), as.Date("2023-01-31"), NA, NA, NA, "",
          "J", 13,  as.Date("2023-01-23"), as.Date("2023-01-31"), as.Date("2023-02-15"), 9367, 1508, "Rerun FreeBayes",
@@ -125,9 +125,7 @@ tmp$Mapped <- 100
 tmp %>%
   select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
 
-tmp$Mapped[ tmp$Population == "H" ] <- round(57 / tmp$N[ tmp$Population == "H"] * 100.0)
-tmp$Mapped[ tmp$Population == "I" ] <- round(15 / tmp$N[ tmp$Population == "I"] * 100.0)
-tmp$Mapped[ tmp$Population == "L" ] <- round( (9+9+10) / tmp$N[ tmp$Population == "L"] * 100.0)
+tmp$Mapped[ tmp$Population == "L" ] <- round( (9+51+37) / tmp$N[ tmp$Population == "L"] * 100.0)
 
 left2Do <- round(sum(tmp$N) - sum(tmp$Mapped/100 * tmp$N))
 
