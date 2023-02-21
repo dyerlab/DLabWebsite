@@ -1,5 +1,5 @@
 ---
-title: "Run FreeBayes, Run!"
+title: "Run FreeBayes, Run!!"
 date: "2023-02-21"
 twitter-card:
   image: "https://dyerlab.org/posts/2023-02-21-freebayes2/featured.png"
