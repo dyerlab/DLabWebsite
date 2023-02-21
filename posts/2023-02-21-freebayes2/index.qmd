@@ -1,7 +1,8 @@
 ---
 title: "Run FreeBayes, Run!"
 date: "2023-02-21"
-image: featured.png
+twitter-card:
+  image: "https://dyerlab.org/posts/2023-02-21-freebayes2/featured.png"
 description: |
   OK, I've run a few tests on calling and several have failed.  Here is how I'm going to finsih up and call SNPs for the last 1000 samples.
 ---

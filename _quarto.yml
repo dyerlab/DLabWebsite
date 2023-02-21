@@ -15,11 +15,7 @@ website:
       - icon: twitter
         href: https://twitter.com/dyerlab/
         aria-label: Twitter
-  twitter-card:
-    creator: "@dyerlab"    
-    site: "@dyerlab"
-  open-graph: 
-    site-name: dyerlab
+  twitter-card: true
 
 execute:
   freeze: auto
