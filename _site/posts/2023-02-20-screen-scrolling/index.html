@@ -67,12 +67,14 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="dyerlab - Scrolling Back using ‘Screen’">
 <meta property="og:description" content="Tired of attempting to scroll back in your terminal and only getting a list of historical commands when in `screen`?  Here is how to fix it.">
+<meta property="og:image" content="featured.png">
 <meta property="og:site-name" content="dyerlab">
 <meta name="twitter:title" content="dyerlab - Scrolling Back using ‘Screen’">
 <meta name="twitter:description" content="Tired of attempting to scroll back in your terminal and only getting a list of historical commands when in `screen`?  Here is how to fix it.">
+<meta name="twitter:image" content="featured.png">
 <meta name="twitter:creator" content="@dyerlab">
 <meta name="twitter:site" content="@dyerlab">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -156,6 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p><img src="featured.png" class="img-fluid"></p>
 <p>I use <code>screen</code> a lot to do stuff on remote servers and one of the things that annoyed me is that it appears that when you are in a <code>screen</code> session, and you flick the scroll wheel backwards, it simply goes back through the history of commands on the same command line. The indended behavior, would be like the normal terminal, when not in a <code>screen</code> session, and the terminal would scroll up/down..</p>
 <p>Apparently <code>screen</code> has some kind of buffer that prevents this for reason I cannot tell you. To fix it, create a <code>.screenrc</code> file in your home directory (if it does not already exist) and put the following line of code in it.</p>
 <pre><code>termcapinfo xterm* ti@:te@</code></pre>
