@@ -1,0 +1,62 @@
+---
+title: "Second Run at FreeBayes"
+date: "2023-02-21"
+description: |
+  OK, I've run a few tests on calling and several have failed.  Here is how I'm going to finsih up and call SNPs for the last 1000 samples.
+---
+
+![](featured.png)
+
+
+So I have somewhere in the vicinity of 1117 samples left to do SNP calling.  I thought that I'd just take them and randomly divide them up into 4 groups and then call SNPs on each group.  This helps me overcome lack of variation within a particular population.
+
+Here is how I set it up.  I have already called SNPs on individuals whose populations start with the letter *S, P, J, K, R, and W*, so I'm going to exclude all of them.
+
+
+
+```{r}
+#| eval: false
+library( tidyverse )
+files <- list.files("../../samples/all005", pattern="*.F.fq.gz")
+for( rem in c("^S","^P", "^J", "^K", "^R","^W") ) { 
+    files[ grepl(rem,files) ] <- NA 
+}
+files <- str_replace( files[ !is.na(files) ], pattern = ".F.fq.gz", replace="") 
+folders <- c("batch1","batch2","batch3","batch4")
+moveTo <- c(rep( folders, each = floor( length(files)/4) ), "batch1") 
+moveTo <- sample( moveTo, size=length(moveTo), replace=FALSE )
+
+df <-data.frame( files, moveTo )
+
+head( df )
+
+
+# Move the folders into random locations
+for( i in 1:nrow(df) ) { 
+    file <- df$files[i]
+    cmd <- paste( "cp ../../samples/all005/", file, "* ./", df$moveTo[i], "/", sep="")
+    cat(paste(i, file, "->", df$moveTo[i], "\n") )
+    system( cmd )
+}
+
+```
+
+
+This coppied over the raw forward and reverse directions for trimmed data, the `.bam` files for that were mapped onto the same reference, and the index files I recreated after moving stuff around.  
+
+I then fired up a `srun` for each of the folders and ran `dDocent` on them with no trim, no assembly, no mapping, and yes FreeBayes.
+
+
+Screen | Batch  | Start             | End               |  Sites | SNPs  
+-------|--------|-------------------|-------------------|--------|------    
+22326  | batch1 | 2023-02-21 @ 1320 | 2023-02-21 @ 1401 | 16103  | 972 
+18933  | batch2 | 2023-02-21 @ 1322 | 2023-02-21 @ 1322 | 15257  | 317 
+15417  | batch3 | 2023-02-21 @ 1325 | 2023-02-21 @ 1400 | 15853  | 453 
+15725  | batch4 | 2023-02-21 @ 1327 | 2023-02-21 @ 1406 | 16764  | 1034 
+  
+  
+I'm not sure why there are such small amounts in `batch3` and `batch4`, so I'm just going to do them all in a single lump and see how that goes.
+
+
+  
+  

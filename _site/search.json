@@ -476,6 +476,13 @@
     "text": "Here it is, time for student presentations all around! I thought it would be nice to send this presentation around again to remind everyone what make good (and sucky) presentations. More below the fold."
   },
   {
+    "objectID": "posts/2023-02-21-freebayes2/index.html",
+    "href": "posts/2023-02-21-freebayes2/index.html",
+    "title": "Second Run at FreeBayes",
+    "section": "",
+    "text": "So I have somewhere in the vicinity of 1117 samples left to do SNP calling. I thought that I’d just take them and randomly divide them up into 4 groups and then call SNPs on each group. This helps me overcome lack of variation within a particular population.\nHere is how I set it up. I have already called SNPs on individuals whose populations start with the letter S, P, J, K, R, and W, so I’m going to exclude all of them.\n\nlibrary( tidyverse )\nfiles <- list.files(\"../../samples/all005\", pattern=\"*.F.fq.gz\")\nfor( rem in c(\"^S\",\"^P\", \"^J\", \"^K\", \"^R\",\"^W\") ) { \n    files[ grepl(rem,files) ] <- NA \n}\nfiles <- str_replace( files[ !is.na(files) ], pattern = \".F.fq.gz\", replace=\"\") \nfolders <- c(\"batch1\",\"batch2\",\"batch3\",\"batch4\")\nmoveTo <- c(rep( folders, each = floor( length(files)/4) ), \"batch1\") \nmoveTo <- sample( moveTo, size=length(moveTo), replace=FALSE )\n\ndf <-data.frame( files, moveTo )\n\nhead( df )\n\n\n# Move the folders into random locations\nfor( i in 1:nrow(df) ) { \n    file <- df$files[i]\n    cmd <- paste( \"cp ../../samples/all005/\", file, \"* ./\", df$moveTo[i], \"/\", sep=\"\")\n    cat(paste(i, file, \"->\", df$moveTo[i], \"\\n\") )\n    system( cmd )\n}\n\nThis coppied over the raw forward and reverse directions for trimmed data, the .bam files for that were mapped onto the same reference, and the index files I recreated after moving stuff around.\nI then fired up a srun for each of the folders and ran dDocent on them with no trim, no assembly, no mapping, and yes FreeBayes.\n\n\n\n\n\n\n\n\n\n\n\nScreen\nBatch\nStart\nEnd\nSites\nSNPs\n\n\n\n\n22326\nbatch1\n2023-02-21 @ 1320\n2023-02-21 @ 1401\n16103\n972\n\n\n18933\nbatch2\n2023-02-21 @ 1322\n2023-02-21 @ 1322\n15257\n317\n\n\n15417\nbatch3\n2023-02-21 @ 1325\n2023-02-21 @ 1400\n15853\n453\n\n\n15725\nbatch4\n2023-02-21 @ 1327\n2023-02-21 @ 1406\n16764\n1034\n\n\n\nI’m not sure why there are such small amounts in batch3 and batch4, so I’m just going to do them all in a single lump and see how that goes."
+  },
+  {
     "objectID": "posts/2016-06-22-google-drive-038-git/google-drive-038-git.html",
     "href": "posts/2016-06-22-google-drive-038-git/google-drive-038-git.html",
     "title": "Google Drive 038 Git",
@@ -677,6 +684,13 @@
     "title": "Welcome to the Lab Bonnie",
     "section": "",
     "text": "As part of a collaboration with VDOT, I am pleased to announce that Ms. Bonnie Roderique has just joined the Dyer laboratory to work on a project around the endangered James River Spinymussel (Pleurobema collina). Not a plant, but at least not a vertebrate!"
+  },
+  {
+    "objectID": "posts/2023-02-20-screen-scrolling/index.html",
+    "href": "posts/2023-02-20-screen-scrolling/index.html",
+    "title": "Scrolling Back using ‘Screen’",
+    "section": "",
+    "text": "I use screen a lot to do stuff on remote servers and one of the things that annoyed me is that it appears that when you are in a screen session, and you flick the scroll wheel backwards, it simply goes back through the history of commands on the same command line. The indended behavior, would be like the normal terminal, when not in a screen session, and the terminal would scroll up/down..\nApparently screen has some kind of buffer that prevents this for reason I cannot tell you. To fix it, create a .screenrc file in your home directory (if it does not already exist) and put the following line of code in it.\ntermcapinfo xterm* ti@:te@\nMakes total sense, right? Sometimes I get so frustrated that things need to be so complicated. Simplicity people! Let’s focus on removing stuff that sucks from our lives!"
   },
   {
     "objectID": "posts/2023-02-14-Variant-Filtering/index.html#merging-vcf-files",
@@ -1510,12 +1524,5 @@
     "title": "Rodney J. Dyer",
     "section": "Professional Experience",
     "text": "Professional Experience\n2017 - Present: Full Professor, VCU\n2017 - Present: Director, CES\n2017 - 2018: Interim Director, CSBC\n2010 - 2017: Associate Professor, VCU\n2004 - 2010: Assistant Professor, VCU\n2002 - 2004: Postdoctoral Researcher, ISU\n1995 - 1995: Howard Hughes Research Fellow, UW"
-  },
-  {
-    "objectID": "posts/2023-02-20-screen-scrolling/index.html",
-    "href": "posts/2023-02-20-screen-scrolling/index.html",
-    "title": "Scrolling Back using ‘Screen’",
-    "section": "",
-    "text": "I use screen a lot to do stuff on remote servers and one of the things that annoyed me is that it appears that when you are in a screen session, and you flick the scroll wheel backwards, it simply goes back through the history of commands on the same command line. The indended behavior, would be like the normal terminal, when not in a screen session, and the terminal would scroll up/down..\nApparently screen has some kind of buffer that prevents this for reason I cannot tell you. To fix it, create a .screenrc file in your home directory (if it does not already exist) and put the following line of code in it.\ntermcapinfo xterm* ti@:te@\nMakes total sense, right? Sometimes I get so frustrated that things need to be so complicated. Simplicity people! Let’s focus on removing stuff that sucks from our lives!"
   }
 ]

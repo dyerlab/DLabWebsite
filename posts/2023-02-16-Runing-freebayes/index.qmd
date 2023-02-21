@@ -31,7 +31,7 @@ tribble( ~Population, ~N, ~Sites, ~SNPs,
          "O", 44, 11338, 282,
          "Q", 18, 7100, 188,
          "T", 81, 11986, 176,
-         "V", 21, 8586, 58) %>% 
+         "V", 21, 8586, 58) %>% View()
   ggplot( aes(N,SNPs,label=Population) ) + 
   geom_point()
   
@@ -107,4 +107,6 @@ After this, you can see that the batch job has been queued up (#34827) and waiti
   34828     basic freebaye   rjdyer PD       0:00      1 (Priority)
 ```
 
-So, now lets see if it actually works.  This run has 293 samples and the next one (#34828) has 270.  
+So, now lets see if it actually works.  This run has 293 samples and the next one (#34828) has 270.  **Failed because `sbatch` didn't work properly.**
+
+
