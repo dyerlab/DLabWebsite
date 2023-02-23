@@ -25,7 +25,7 @@ QUAL > 20   | 15,930
 MAC > 5     | 10,627
 Depth 10X   |  1,004
 
-From these, I set up 
+From these, I set up data set in 012 allele format and imported it into `R` using [gstudio](https://github.com/dyerlab/gstudio/).
 
 
 

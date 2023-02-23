@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "404 File Not Found"
 ---
 
 ![The file you requested is either **no longer** on this server, or **never existed** in the first place.](https://live.staticflickr.com/65535/52694989910_64562051d5_o_d.jpg)
