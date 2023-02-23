@@ -25,7 +25,10 @@ div.quarto-post .thumbnail img {
 }
 
 
-
-$theme-colors: (
- primary: #4677a7;
+h3 .listing-title { 
+  color: #d16f2a;
 }
+
+
+
+/* blue-color: #163364 */

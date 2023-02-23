@@ -1,0 +1,31 @@
+---
+title: "Full Data Run"
+date: "2023-02-23"
+image: "https://dyerlab.org/posts/2023-02-23-full-dataset/featured.png"
+description: | 
+  I reran the 5% mapping data, keeping all sites with greater than 3 individuals in them, through freebayes.  This last SNP calling finished on <tt>Feb 23 10:37:29 EST 2023</tt> yielding a potential of 19,879 identified sites across 1318 individuals.  This includes all the base individuals, all the confiscated individuals, and the extra sampels that were added to the analysis from the western portion of the species range.  There are some samples that did not process correctly, I think I may need to remap these individuals and throw them in with the few smaller singleton sites.  I'll start this today and should be finished by Monday.  However, this is a good start on what we are needing.
+---
+
+![](featured.png)
+
+```{r}
+#| label: setup
+#| echo: false
+library(tidyverse)
+theme_set( theme_bw() )
+```
+
+
+OK, so this morning the largest set of samples were processed and included all locales that I have with at least 4 individuals in them.  
+
+Filter      | Sites   
+------------|---------   
+Raw         | 19,879 
+QUAL > 20   | 15,930 
+MAC > 5     | 10,627
+Depth 10X   |  1,004
+
+From these, I set up 
+
+
+

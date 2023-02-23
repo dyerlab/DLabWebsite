@@ -10,7 +10,55 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Wed, 22 Feb 2023 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 23 Feb 2023 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Full Data Run</title>
+  <link>https://dyerlab.org/posts/2023-02-23-full-dataset/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-02-23-full-dataset/featured.png" class="img-fluid"></p>
+<div class="cell">
+
+</div>
+<p>OK, so this morning the largest set of samples were processed and included all locales that I have with at least 4 individuals in them.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Filter</th>
+<th>Sites</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Raw</td>
+<td>19,879</td>
+</tr>
+<tr class="even">
+<td>QUAL &gt; 20</td>
+<td>15,930</td>
+</tr>
+<tr class="odd">
+<td>MAC &gt; 5</td>
+<td>10,627</td>
+</tr>
+<tr class="even">
+<td>Depth 10X</td>
+<td>1,004</td>
+</tr>
+</tbody>
+</table>
+<p>From these, I set up</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-23-full-dataset/index.html</guid>
+  <pubDate>Thu, 23 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-23-full-dataset/featured.png" medium="image" type="image/png"/>
+</item>
 <item>
   <title>First Filtering Pass for SNP Calling</title>
   <link>https://dyerlab.org/posts/2023-02-22-first-pass/index.html</link>
@@ -50,7 +98,7 @@ Run Time = 6.00 seconds</code></pre>
 <pre><code>vcftools --vcf FirstRun.vcf --remove-indels --minQ 20 --min-meanDP 20 --max-meanDP 3700 --mac 5 --min-alleles 2 --max-alleles 2  --freq --out first_run</code></pre>
 <p>This gives me a distribution of loci whose allele frequencies are:</p>
 <p><img src="https://dyerlab.org/posts/2023-02-22-first-pass/filtered_maf.png" class="img-fluid"></p>
-<p>which leaves me with a reasonable number of loci to work with. At present, there are <img src="https://latex.codecogs.com/png.latex?663"> loci in the data set and if I were to filter at <img src="https://latex.codecogs.com/png.latex?p%3E=0.05"> that would still leave me with 234 to work with.</p>
+<p>which leaves me with a reasonable number of loci to work with. At present, there are <img src="https://latex.codecogs.com/png.latex?663"> loci in the data set and if I were to filter at <img src="https://latex.codecogs.com/png.latex?p%3E=0.05"> that would still leave me with 234 to work with. Now let’s convert these into genotypes and start looking at missing data.</p>
 
 
 
@@ -1965,55 +2013,6 @@ $ process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes
   <guid>https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/index.html</guid>
   <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
   <media:content url="https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/featured.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Irreversibility of Structure &amp; Diversity Statistics</title>
-  <link>https://dyerlab.org/posts/2022-09-30-Irreversibility/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://dyerlab.org/posts/2022-09-30-Irreversibility/pops.gif" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Non-uniqueness of frequency spectra resulting in identical among population (<img src="https://latex.codecogs.com/png.latex?F_%7Bst%7D">) and within population (<img src="https://latex.codecogs.com/png.latex?H_t">) estimates of genetic diversity as demonstrated from allele frequencies for twelve populations for the first two alleles from a three allele locus.</figcaption><p></p>
-</figure>
-</div>
-<p>The mapping of genotypes -&gt; estimates of both within locale diversity and among local structure are a fundamental component of population and landscape genetic analyses, and indeed the formulation for our understanding of how evolution proceeds.</p>
-<p>A common method for measuring structure is from Sewell Wright ’s <img src="https://latex.codecogs.com/png.latex?F_%7Bst%7D"> statistic and its offspring. At heart, the parameters is defined as the fraction of the total genetic variance that can be contributed to individuals being in different populations. This parameter has many offspring but in its most general form, it can be defined as the ratio of the among locale variance in allele frequencies standardized by the variance in the global allele frequencies. For a single locus, this becomes.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0AF_%7BST%7D%20=%20%5Cfrac%7B%5Csum_%7Bi=1%7D%5E%5Cell%20%5Csigma_%7Bq_%7BS(i)%7D%7D%5E2%7D%7B%5Csum_%7Bi=1%7D%5E%5Cell%20%5Cleft%5B%20%20q_%7BT(i)%7D%20(1%20-%20q_%7BT(i)%7D)%20%5Cright%5D%7D%0A"></p>
-<p>Originally, Wright suggested that this should probably not be thought of in the way that most of us see ‘differentiation’. Namely,</p>
-<blockquote class="blockquote">
-<p>The fixation index [Fst] is thus not a measure of the degree of differentiation in the sense implied in the extreme case by the absence of any common allele. It measures differentiation within the total array in the sense of the extent to which the process of fixation has gone toward completion.<sup>1</sup></p>
-</blockquote>
-<p>To demonstrate this, he showed the following examples. Of note, compare cases 1, 6, 7, &amp; 8 in the following table, all of which have the same value for Fst but have different allele spectra (in particular, see 7 &amp; 8, which have subsets of populations that have Fst = 0!</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://dyerlab.org/posts/2022-09-30-Irreversibility/Fst_table.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Table 3.1 from Wright’s 4th volume on the variability within and among natural populations.</figcaption><p></p>
-</figure>
-</div>
-<p>To view this in a more broad context, we can easily show that for any particular value of Fst, we can define a similarly large number of population configurations that results in both the same amount of overall genetic structure (<img src="https://latex.codecogs.com/png.latex?F_%7Bst%7D">) <em>and</em> the same amount of within strata diversity (<img src="https://latex.codecogs.com/png.latex?H_t">).</p>
-<p>There are two examples that highlight some of the challenges for this.</p>
-<ol type="1">
-<li><p>It is possible to fix the allele frequencies and shuffle the labels. For example, the identity of the specific locale relative to the inherent allele frequencies is not unique. Consider the case where Population A has <code>p=0.3</code> at a locus and Population B has <code>p=0.7</code> After some perturbation in the system or iterating across generations, we may have the situation where Population A has <code>p = 0.7</code> and Population B has <code>p = 0.3</code>. Measuring structure or diversity within and among these pairs of pops will yield identical values even though the relative positions of each population has been swapped in allele space.</p></li>
-<li><p>More generally, for any given value of diversity and structure, we can find an infinite set of populations that can yield the same estimates. The featured image on this page is an example with <code>K=12</code> populations for a single 3-allele locus. The plots are of the first two allele frequencies and the estimates of both diversity and differentiation are the same to the first 3 decimal points (n.b., we can be more stringent but I think this makes the point close enough).</p></li>
-</ol>
-<p>In both of these situations, the relative position and arrangements of the individual populations are not unique. Now, this may not be an issue, if the kinds of questions you are working with do not rely upon interpreting the relative positions of populations in allele space. However, for many population, conservation, and landscape type studies, it is exactly the relative positions of populations that are the focus of the study. As such, to ignore the <em>irreversibility of structure and diversity statistics</em> is to pass up on potentially valuable insights on the species and systems you are working with.</p>
-
-
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Wright, S. 1978. <a href="https://www.amazon.com/Evolution-Genetics-Populations-Variability-Natural-dp-0226910415/dp/0226910415/ref=mt_other?_encoding=UTF8&amp;me=&amp;qid=">Evolution &amp; the Genetics of Populations 4: Variability within and among natural populations.</a> University of Chicago Press. .↩︎</p></li>
-</ol>
-</section></div> ]]></description>
-  <guid>https://dyerlab.org/posts/2022-09-30-Irreversibility/index.html</guid>
-  <pubDate>Fri, 30 Sep 2022 04:00:00 GMT</pubDate>
-  <media:content url="https://dyerlab.org/posts/2022-09-30-Irreversibility/pops.gif" medium="image" type="image/gif"/>
 </item>
 </channel>
 </rss>

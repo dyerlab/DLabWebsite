@@ -10,7 +10,6 @@ description:  |
 library( tidyverse)
 ```
 
-
 First, I took the new data and made in index and then verged it with the previous VCF files (from [here](https://dyerlab.org/posts/2023-02-14-variant-filtering/)).  I set up filtering to have a minimum `QUAL` score of 20, no insertion/deletions, minimum allele count of 5 indiviudals posessing the alternative allele state to have the loci be considered, and only loci with 2 alleles present.
 
 ```
