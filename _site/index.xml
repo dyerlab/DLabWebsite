@@ -1,0 +1,2019 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>dyerlab</title>
+<link>https://dyerlab.org/index.html</link>
+<atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.2.269</generator>
+<lastBuildDate>Wed, 22 Feb 2023 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>First Filtering Pass for SNP Calling</title>
+  <link>https://dyerlab.org/posts/2023-02-22-first-pass/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>( tidyverse)</span></code></pre></div>
+</div>
+<p>First, I took the new data and made in index and then verged it with the previous VCF files (from <a href="https://dyerlab.org/posts/2023-02-14-variant-filtering/">here</a>). I set up filtering to have a minimum <code>QUAL</code> score of 20, no insertion/deletions, minimum allele count of 5 indiviudals posessing the alternative allele state to have the loci be considered, and only loci with 2 alleles present.</p>
+<pre><code>#| eval: false
+$ bgzip TotalRawSNPs.vcf 
+$ tabix -p vcf TotalRawSNPs.vcf.gz 
+$ vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz TotalRawSNPs.vcf.gz &gt; FirstRun.vcf
+$ vcftools --vcf FirstRun.vcf --remove-indels --minQ 20 --mac 5 --min-alleles 2 --max-alleles 2 --site-depth --out site_depth_summary
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+        --vcf FirstRun.vcf
+        --mac 2
+        --max-alleles 2
+        --min-alleles 2
+        --minQ 20
+        --out site_depth_summary
+        --site-depth
+        --remove-indels
+
+After filtering, kept 1410 out of 1410 Individuals
+Outputting Depth for Each Site
+After filtering, kept 1055 out of a possible 26395 Sites
+Run Time = 6.00 seconds</code></pre>
+<p>So, I then looked at the distribution of site depths and found the value to cut off the upper 25% percentile. I then filtered all the sites with depth greater than 20X and 3662X. From that I took a look at the distribution of allele frequencies.</p>
+<pre><code>vcftools --vcf FirstRun.vcf --remove-indels --minQ 20 --min-meanDP 20 --max-meanDP 3700 --mac 5 --min-alleles 2 --max-alleles 2  --freq --out first_run</code></pre>
+<p>This gives me a distribution of loci whose allele frequencies are:</p>
+<p><img src="https://dyerlab.org/posts/2023-02-22-first-pass/filtered_maf.png" class="img-fluid"></p>
+<p>which leaves me with a reasonable number of loci to work with. At present, there are <img src="https://latex.codecogs.com/png.latex?663"> loci in the data set and if I were to filter at <img src="https://latex.codecogs.com/png.latex?p%3E=0.05"> that would still leave me with 234 to work with.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-22-first-pass/index.html</guid>
+  <pubDate>Wed, 22 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-22-first-pass/filtered_maf.png" medium="image" type="image/png" height="79" width="144"/>
+</item>
+<item>
+  <title>Run FreeBayes, Run!!</title>
+  <link>https://dyerlab.org/posts/2023-02-21-freebayes2/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-02-21-freebayes2/featured.png" class="img-fluid"></p>
+<p>So I have somewhere in the vicinity of 1117 samples left to do SNP calling. I thought that I’d just take them and randomly divide them up into 4 groups and then call SNPs on each group. This helps me overcome lack of variation within a particular population.</p>
+<p>Here is how I set it up. I have already called SNPs on individuals whose populations start with the letter <em>S, P, J, K, R, and W</em>, so I’m going to exclude all of them.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>( tidyverse )</span>
+<span id="cb1-2">files <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list.files</span>(<span class="st" style="color: #20794D;">"../../samples/all005"</span>, <span class="at" style="color: #657422;">pattern=</span><span class="st" style="color: #20794D;">"*.F.fq.gz"</span>)</span>
+<span id="cb1-3"><span class="cf" style="color: #003B4F;">for</span>( rem <span class="cf" style="color: #003B4F;">in</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"^S"</span>,<span class="st" style="color: #20794D;">"^P"</span>, <span class="st" style="color: #20794D;">"^J"</span>, <span class="st" style="color: #20794D;">"^K"</span>, <span class="st" style="color: #20794D;">"^R"</span>,<span class="st" style="color: #20794D;">"^W"</span>) ) { </span>
+<span id="cb1-4">    files[ <span class="fu" style="color: #4758AB;">grepl</span>(rem,files) ] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cn" style="color: #8f5902;">NA</span> </span>
+<span id="cb1-5">}</span>
+<span id="cb1-6">files <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">str_replace</span>( files[ <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">is.na</span>(files) ], <span class="at" style="color: #657422;">pattern =</span> <span class="st" style="color: #20794D;">".F.fq.gz"</span>, <span class="at" style="color: #657422;">replace=</span><span class="st" style="color: #20794D;">""</span>) </span>
+<span id="cb1-7">folders <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"batch1"</span>,<span class="st" style="color: #20794D;">"batch2"</span>,<span class="st" style="color: #20794D;">"batch3"</span>,<span class="st" style="color: #20794D;">"batch4"</span>)</span>
+<span id="cb1-8">moveTo <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="fu" style="color: #4758AB;">rep</span>( folders, <span class="at" style="color: #657422;">each =</span> <span class="fu" style="color: #4758AB;">floor</span>( <span class="fu" style="color: #4758AB;">length</span>(files)<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">4</span>) ), <span class="st" style="color: #20794D;">"batch1"</span>) </span>
+<span id="cb1-9">moveTo <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sample</span>( moveTo, <span class="at" style="color: #657422;">size=</span><span class="fu" style="color: #4758AB;">length</span>(moveTo), <span class="at" style="color: #657422;">replace=</span><span class="cn" style="color: #8f5902;">FALSE</span> )</span>
+<span id="cb1-10"></span>
+<span id="cb1-11">df <span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">data.frame</span>( files, moveTo )</span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="fu" style="color: #4758AB;">head</span>( df )</span>
+<span id="cb1-14"></span>
+<span id="cb1-15"></span>
+<span id="cb1-16"><span class="co" style="color: #5E5E5E;"># Move the folders into random locations</span></span>
+<span id="cb1-17"><span class="cf" style="color: #003B4F;">for</span>( i <span class="cf" style="color: #003B4F;">in</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="fu" style="color: #4758AB;">nrow</span>(df) ) { </span>
+<span id="cb1-18">    file <span class="ot" style="color: #003B4F;">&lt;-</span> df<span class="sc" style="color: #5E5E5E;">$</span>files[i]</span>
+<span id="cb1-19">    cmd <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="st" style="color: #20794D;">"cp ../../samples/all005/"</span>, file, <span class="st" style="color: #20794D;">"* ./"</span>, df<span class="sc" style="color: #5E5E5E;">$</span>moveTo[i], <span class="st" style="color: #20794D;">"/"</span>, <span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">""</span>)</span>
+<span id="cb1-20">    <span class="fu" style="color: #4758AB;">cat</span>(<span class="fu" style="color: #4758AB;">paste</span>(i, file, <span class="st" style="color: #20794D;">"-&gt;"</span>, df<span class="sc" style="color: #5E5E5E;">$</span>moveTo[i], <span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\n</span><span class="st" style="color: #20794D;">"</span>) )</span>
+<span id="cb1-21">    <span class="fu" style="color: #4758AB;">system</span>( cmd )</span>
+<span id="cb1-22">}</span></code></pre></div>
+</div>
+<p>This coppied over the raw forward and reverse directions for trimmed data, the <code>.bam</code> files for that were mapped onto the same reference, and the index files I recreated after moving stuff around.</p>
+<p>I then fired up a <code>srun</code> for each of the folders and ran <code>dDocent</code> on them with no trim, no assembly, no mapping, and yes FreeBayes.</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 28%">
+<col style="width: 28%">
+<col style="width: 11%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Screen</th>
+<th>Batch</th>
+<th>Start</th>
+<th>End</th>
+<th>Sites</th>
+<th>SNPs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>22326</td>
+<td>batch1</td>
+<td>2023-02-21 @ 1320</td>
+<td>2023-02-21 @ 1401</td>
+<td>16103</td>
+<td>972</td>
+</tr>
+<tr class="even">
+<td>18933</td>
+<td>batch2</td>
+<td>2023-02-21 @ 1322</td>
+<td>2023-02-21 @ 1322</td>
+<td>15257</td>
+<td>317</td>
+</tr>
+<tr class="odd">
+<td>15417</td>
+<td>batch3</td>
+<td>2023-02-21 @ 1325</td>
+<td>2023-02-21 @ 1400</td>
+<td>15853</td>
+<td>453</td>
+</tr>
+<tr class="even">
+<td>15725</td>
+<td>batch4</td>
+<td>2023-02-21 @ 1327</td>
+<td>2023-02-21 @ 1406</td>
+<td>16764</td>
+<td>1034</td>
+</tr>
+</tbody>
+</table>
+<p>I’m not sure why there are such small amounts in <code>batch3</code> and <code>batch4</code>, so I’m just going to do them all in a single lump and see how that goes.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-21-freebayes2/index.html</guid>
+  <pubDate>Tue, 21 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-21-freebayes2/featured.png" medium="image" type="image/png" height="106" width="144"/>
+</item>
+<item>
+  <title>Running freebayes</title>
+  <link>https://dyerlab.org/posts/2023-02-16-Runing-freebayes/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-02-16-Runing-freebayes/featured.png" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>( tidyverse )</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>( ggrepel )</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">theme_set</span>( <span class="fu" style="color: #4758AB;">theme_minimal</span>() )</span></code></pre></div>
+</div>
+<p>As a first pass through the data, I split individual sequences into different groups to run <code>bwa</code>. This works on an individual-by-individual basis and with 5% of each individuals genome takes roughly 30 minutes per individual (*1419 individuals …). Doing it in smaller groups allows me to run multiple instances at the same time. See the table <a href="../../posts/2023-01-ddRADSeq-Progress/">here</a> for the groups and current status. At the time of this writing, this process is still waiting on the final 6 groups of samples to be processed.</p>
+<p>For a subset of the data, I did call SNPs at the same time that</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://dyerlab.org/posts/2023-02-16-Runing-freebayes/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="batching-freebayes" class="level2">
+<h2 class="anchored" data-anchor-id="batching-freebayes">Batching <code>freebayes</code></h2>
+<p>To batch these I made a new directory called <code>snpcalling</code> and linked the bam files from a set of indiviudals in several different populations to this folder.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="cf" style="color: #003B4F;">for</span> bam <span class="kw" style="color: #003B4F;">in</span> ../samples/O/<span class="pp" style="color: #AD0000;">*</span>.bam<span class="kw" style="color: #003B4F;">;</span> <span class="cf" style="color: #003B4F;">do</span>  </span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;">ln</span> <span class="at" style="color: #657422;">-s</span> <span class="va" style="color: #111111;">$bam</span><span class="kw" style="color: #003B4F;">;</span> </span>
+<span id="cb2-3"><span class="cf" style="color: #003B4F;">done</span></span></code></pre></div>
+</div>
+<p>I then made a small <code>runFreeBayes.sh</code> run file that would</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#!/bin/bash</span></span>
+<span id="cb3-2"><span class="va" style="color: #111111;">ref</span><span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"../samples/all005/reference.fasta"</span></span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;">ls</span> <span class="pp" style="color: #AD0000;">*</span>.bam <span class="op" style="color: #5E5E5E;">&gt;</span> bam.fofn</span>
+<span id="cb3-4"><span class="ex" style="color: null;">freebayes</span> <span class="at" style="color: #657422;">--fasta-reference</span> <span class="va" style="color: #111111;">${ref}</span> <span class="at" style="color: #657422;">--bam-list</span> bam.fofn <span class="at" style="color: #657422;">--vcf</span> Output.vcf</span></code></pre></div>
+</div>
+<p>I then made it executable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;">chmod</span> +x runFreeBayes.sh</span></code></pre></div>
+</div>
+<p>And made a slurm batch file <code>freebayes.sub</code> which contains</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;">#!/bin/bash</span></span>
+<span id="cb5-2"><span class="co" style="color: #5E5E5E;">#SBATCH -N 1</span></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;">#SBATCH -n 36</span></span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;">#SBATCH -t 96:00:00</span></span>
+<span id="cb5-5"><span class="co" style="color: #5E5E5E;">#SBATCH -J freebayesbaby</span></span>
+<span id="cb5-6"><span class="co" style="color: #5E5E5E;">#SBATCH -o freebayes.o%j</span></span>
+<span id="cb5-7"><span class="co" style="color: #5E5E5E;">#SBATCH -e freebayes.e%j</span></span>
+<span id="cb5-8"><span class="co" style="color: #5E5E5E;">#SBATCH --mail-user=rjdyer@vcu.edu</span></span>
+<span id="cb5-9"><span class="co" style="color: #5E5E5E;">#SBATCH --mail-type=ALL</span></span>
+<span id="cb5-10"><span class="bu" style="color: null;">ulimit</span> <span class="at" style="color: #657422;">-s</span> unlimited</span>
+<span id="cb5-11"><span class="ex" style="color: null;">./runFreeBayes.sh</span></span>
+<span id="cb5-12"><span class="ex" style="color: null;">scontrol</span> show job <span class="va" style="color: #111111;">$SLURM_JOB_ID</span></span></code></pre></div>
+</div>
+<p>and then dumped it off for batch processing</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;">sbatch</span> freebayes.sub</span></code></pre></div>
+</div>
+<p>After this, you can see that the batch job has been queued up (#34827) and waiting to go.</p>
+<pre><code>[rjdyer@huff snpcalling]$ squeue
+  JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
+<p>So, now lets see if it actually works.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-16-Runing-freebayes/index.html</guid>
+  <pubDate>Tue, 21 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-16-Runing-freebayes/featured.png" medium="image" type="image/png" height="105" width="144"/>
+</item>
+<item>
+  <title>Pre-Processing Bam Files 🐢</title>
+  <link>https://dyerlab.org/posts/2023-02-20-processing-bam-files/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-02-20-processing-bam-files/featured.png" class="img-fluid"></p>
+<p>For this, I wanted to sort, mark duplicates, and index each of the bam files we are working with. I softlinked all the bam files into a new folder called <code>processing</code> via <code>for file in ../samples/all005/*.bam; do ln -s $file; done</code>.</p>
+<p>Then I fired up R and loaded the latest modeule on the server <code>module load R/4.1.2</code> and then hooked up VSCode over SSH to write the following snippet.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>( tidyverse )</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">bam <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list.files</span>(<span class="st" style="color: #20794D;">"./processing"</span>, <span class="at" style="color: #657422;">pattern=</span><span class="st" style="color: #20794D;">".bam"</span>, <span class="at" style="color: #657422;">full.names=</span><span class="cn" style="color: #8f5902;">TRUE</span>)</span>
+<span id="cb1-4"><span class="cf" style="color: #003B4F;">for</span>( i <span class="cf" style="color: #003B4F;">in</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="fu" style="color: #4758AB;">length</span>(bam) ) { </span>
+<span id="cb1-5">    file <span class="ot" style="color: #003B4F;">&lt;-</span> bam[i]</span>
+<span id="cb1-6">    base <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">str_replace</span>( file, <span class="at" style="color: #657422;">pattern=</span><span class="st" style="color: #20794D;">"-RG.bam"</span>, <span class="at" style="color: #657422;">replacement=</span><span class="st" style="color: #20794D;">""</span>)</span>
+<span id="cb1-7"></span>
+<span id="cb1-8">    fsorted <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( base, <span class="st" style="color: #20794D;">"-sorted.bam"</span>, <span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">""</span>)</span>
+<span id="cb1-9">    cmd <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="st" style="color: #20794D;">"samtools sort"</span>, file, <span class="st" style="color: #20794D;">"-o"</span>, fsorted )</span>
+<span id="cb1-10">    <span class="fu" style="color: #4758AB;">system</span>( cmd )</span>
+<span id="cb1-11"></span>
+<span id="cb1-12">    mdfile <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( base, <span class="st" style="color: #20794D;">"-sorted-md.bam"</span>, <span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">""</span>)</span>
+<span id="cb1-13">    cmd <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="st" style="color: #20794D;">"samtools markdup"</span>, fsorted, mdfile )</span>
+<span id="cb1-14">    <span class="fu" style="color: #4758AB;">system</span>( cmd )</span>
+<span id="cb1-15"></span>
+<span id="cb1-16">    cmd <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="st" style="color: #20794D;">"samtools index"</span>, mdfile)</span>
+<span id="cb1-17">    <span class="fu" style="color: #4758AB;">system</span>( cmd )</span>
+<span id="cb1-18"></span>
+<span id="cb1-19">    <span class="fu" style="color: #4758AB;">cat</span>( i, base, <span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\n</span><span class="st" style="color: #20794D;">"</span>)</span>
+<span id="cb1-20">}</span></code></pre></div>
+</div>
+<p>Running this made several derivded files for each one, a sorted one, a one with marked duplicates, and one that had the index on it. So now each sample looks like this.</p>
+<pre><code>[rjdyer@huff10 4_processing]$ ls -1 Zoo_969*
+Zoo_969-RG.bam -&gt; ../samples/all005/Zoo_969-RG.bam
+Zoo_969-sorted.bam
+Zoo_969-sorted-md.bam
+Zoo_969-sorted-md.bam.bai</code></pre>
+<p>After testing to make sure the commands were properly set up, I ran the script in as a batch. It didn’t take that long to finish, maybe 3-4 seconds per sample.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-20-processing-bam-files/index.html</guid>
+  <pubDate>Mon, 20 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-20-processing-bam-files/featured.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
+<item>
+  <title>Scrolling Back using ‘Screen’</title>
+  <link>https://dyerlab.org/posts/2023-02-20-screen-scrolling/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-02-20-screen-scrolling/featured.png" class="img-fluid"></p>
+<p>I use <code>screen</code> a lot to do stuff on remote servers and one of the things that annoyed me is that it appears that when you are in a <code>screen</code> session, and you flick the scroll wheel backwards, it simply goes back through the history of commands on the same command line. The indended behavior, would be like the normal terminal, when not in a <code>screen</code> session, and the terminal would scroll up/down..</p>
+<p>Apparently <code>screen</code> has some kind of buffer that prevents this for reason I cannot tell you. To fix it, create a <code>.screenrc</code> file in your home directory (if it does not already exist) and put the following line of code in it.</p>
+<pre><code>termcapinfo xterm* ti@:te@</code></pre>
+<p>Makes total sense, right? Sometimes I get so frustrated that things need to be so complicated. Simplicity people! Let’s focus on <a href="../../posts/1969-10-14-Dyers-Philosophy-Of-Life">removing stuff that sucks</a> from our lives!</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-20-screen-scrolling/index.html</guid>
+  <pubDate>Mon, 20 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-20-screen-scrolling/featured.png" medium="image" type="image/png" height="80" width="144"/>
+</item>
+<item>
+  <title>Using R on VSCode Remotely</title>
+  <link>https://dyerlab.org/posts/2022-11-17-VSCode-Remote/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="seting-up-r-and-vscode" class="level2">
+<h2 class="anchored" data-anchor-id="seting-up-r-and-vscode">Seting up R and VSCode</h2>
+<p>First of all, we’ll need to install some stuff on the <code>R</code> side. The language serve is necessary for VSCode and the httpgd is helpful for viewing graphical output. The following code will check to see if you have them installed and if not, install them for you.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="cf" style="color: #003B4F;">if</span>( <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">require</span>(languageserver) ) { </span>
+<span id="cb1-2">  <span class="fu" style="color: #4758AB;">install.packages</span>(<span class="st" style="color: #20794D;">"languageserver"</span>)</span>
+<span id="cb1-3">}</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: languageserver</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="cf" style="color: #003B4F;">if</span>( <span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">require</span>(httpgd)) { </span>
+<span id="cb3-2">  remotes<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">install_github</span>(<span class="st" style="color: #20794D;">"nx10/httpgd"</span>)</span>
+<span id="cb3-3">}</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: httpgd</code></pre>
+</div>
+</div>
+<p>Now, download <a href="https://code.visualstudio.com/">VSCode</a> from the main server. You will also need to install the <a href="https://marketplace.visualstudio.com/items?itemName=REditorSupport.r">R Extension for Visual Studio Code</a>, which can be installed from inside VSCode.</p>
+<p>Now, you’ll need to install the following items for VSCode:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-ssh</a></li>
+</ul>
+<p>Once you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work. For me, after logging into the remot server, I created an <code>R</code> file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side. It was all locally done so no big deal.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2022-11-17-VSCode-Remote/index.html</guid>
+  <pubDate>Mon, 20 Feb 2023 05:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Variant Filtering</title>
+  <link>https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/featured.png" class="img-fluid"></p>
+<div class="cell">
+
+</div>
+<section id="merging-vcf-files" class="level2">
+<h2 class="anchored" data-anchor-id="merging-vcf-files">Merging VCF Files</h2>
+<p>The first thing we need to to is zip and then index the individual vcf files. As a reminder, these files have been created by individual <code>freebayes</code> SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected. So, in the following examples, the file <code>R.vcf</code> contains all the individuals in populations starting with the letter <code>R</code>. When there are not that many individuals in a group, they are clustered—below we have <code>JK.vcf</code> which has all the individuals from populations starting with the letters <code>J</code> and <code>K</code>.</p>
+<p>So, lets compress these raw files first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">%</span> bgzip JK.vcf</span>
+<span id="cb1-2"><span class="ex" style="color: null;">%</span> bgzip P.vcf </span>
+<span id="cb1-3"><span class="ex" style="color: null;">%</span> bgzip R.vcf </span>
+<span id="cb1-4"><span class="ex" style="color: null;">%</span> bgzip S.vcf </span>
+<span id="cb1-5"><span class="ex" style="color: null;">%</span> bgzip W.vcf</span>
+<span id="cb1-6"><span class="ex" style="color: null;">%</span> ls <span class="at" style="color: #657422;">-alh</span></span>
+<span id="cb1-7"><span class="ex" style="color: null;">total</span> 70032</span>
+<span id="cb1-8"><span class="ex" style="color: null;">drwxr-xr-x</span>   7 rodney  staff   224B Feb 16 14:22 .</span>
+<span id="cb1-9"><span class="ex" style="color: null;">drwxr-xr-x</span>  21 rodney  staff   672B Feb 16 14:10 ..</span>
+<span id="cb1-10"><span class="ex" style="color: null;">-rw-r--r--</span>   1 rodney  staff   3.1M Feb 16 14:20 JK.vcf.gz</span>
+<span id="cb1-11"><span class="ex" style="color: null;">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 P.vcf.gz</span>
+<span id="cb1-12"><span class="ex" style="color: null;">-rw-r--r--</span>   1 rodney  staff   4.6M Feb 16 14:22 R.vcf.gz</span>
+<span id="cb1-13"><span class="ex" style="color: null;">-rw-r--r--</span>   1 rodney  staff    14M Feb 16 14:22 S.vcf.gz</span>
+<span id="cb1-14"><span class="ex" style="color: null;">-rw-r--r--</span>   1 rodney  staff   5.8M Feb 16 14:22 W.vcf.gz</span></code></pre></div>
+</div>
+<p>Now we need to index these files.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">%</span> tabix <span class="at" style="color: #657422;">-p</span> vcf JK.vcf.gz </span>
+<span id="cb2-2"><span class="ex" style="color: null;">%</span> tabix <span class="at" style="color: #657422;">-p</span> vcf P.vcf.gz </span>
+<span id="cb2-3"><span class="ex" style="color: null;">%</span> tabix <span class="at" style="color: #657422;">-p</span> vcf R.vcf.gz</span>
+<span id="cb2-4"><span class="ex" style="color: null;">%</span> tabix <span class="at" style="color: #657422;">-p</span> vcf S.vcf.gz</span>
+<span id="cb2-5"><span class="ex" style="color: null;">%</span> tabix <span class="at" style="color: #657422;">-p</span> vcf W.vcf.gz</span></code></pre></div>
+</div>
+<p>Then we can merge the files together into a single file. Here, the output file indicates the populations that contribute to it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"> <span class="ex" style="color: null;">%</span> vcf-merge JK.vcf.gz P.vcf.gz R.vcf.gz S.vcf.gz W.vcf.gz <span class="op" style="color: #5E5E5E;">&gt;</span> JKPRSW.vcf</span></code></pre></div>
+</div>
+<p>So here are a few things that I’ve found that provide some insights into the data we are getting. Here is the sequencing depth per individual for only the SNP sites who have a minimum quality score of 20.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;">%</span> vcftools <span class="at" style="color: #657422;">--vcf</span> JKPRSW.vcf <span class="at" style="color: #657422;">--remove-indels</span> <span class="at" style="color: #657422;">--minQ</span> 20 <span class="at" style="color: #657422;">--depth</span> <span class="at" style="color: #657422;">-c</span> <span class="op" style="color: #5E5E5E;">&gt;</span> depth.txt</span></code></pre></div>
+</div>
+<p>This produced a distribution of sequencing depths for these individuals.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 1 Average sequencing depth across loci within each of the 302 individuals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Alternatively—and perhaps more important for us—we can look at the per-site depths. The goal here is to retain sites that have enough sequencing depth such that we are confident that it is a good site but not too much such that it is a reapeaty region in the geniome. For simplicity, I’ll drop the lower and upper standard deviation.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 2 Average sequencing depth per site across 302 individuals.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For simplicity, I’m just going to take the inner-50% of the data, dropping off the lower and upper quantiles.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">quantile</span>( site_depth<span class="sc" style="color: #5E5E5E;">$</span>SUM_DEPTH,</span>
+<span id="cb5-2">          <span class="at" style="color: #657422;">prob =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">0.10</span>,<span class="fl" style="color: #AD0000;">0.25</span>, <span class="fl" style="color: #AD0000;">0.5</span>, <span class="fl" style="color: #AD0000;">0.75</span>, <span class="fl" style="color: #AD0000;">0.90</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   10%    25%    50%    75%    90% 
+  60.0  110.0  278.0  964.0 3421.1 </code></pre>
+</div>
+</div>
+<p>This leaves us with 5047 sites.</p>
+<p>Now, we can go back to <code>vcftools</code> and use these values to select only sites with a quality score exceeding 20, and are in the middle 50 percentile of the depth coverage and have a minor allele frequency of at least 5%.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;">%</span> vcftools <span class="at" style="color: #657422;">--vcf</span> JKPRSW.vcf <span class="at" style="color: #657422;">--remove-indels</span> <span class="at" style="color: #657422;">--min-meanDP</span> 110 <span class="at" style="color: #657422;">--max-meanDP</span> 964 <span class="at" style="color: #657422;">--minQ</span> 20 <span class="at" style="color: #657422;">--maf</span> 0.05  <span class="at" style="color: #657422;">--min-alleles</span> 2 <span class="at" style="color: #657422;">--max-alleles</span> 2 <span class="at" style="color: #657422;">--freq</span></span>
+<span id="cb7-2"><span class="ex" style="color: null;">After</span> filtering, kept 302 out of 302 Individuals</span>
+<span id="cb7-3"><span class="ex" style="color: null;">Outputting</span> Frequency Statistics...</span>
+<span id="cb7-4"><span class="ex" style="color: null;">After</span> filtering, kept 120 out of a possible 22604 Sites</span>
+<span id="cb7-5"><span class="ex" style="color: null;">Run</span> Time = 1.00 seconds</span></code></pre></div>
+</div>
+<p>So, we have 120 loci to work with from this subset.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="filtering-out-sequncing-errors" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-out-sequncing-errors">Filtering out Sequncing Errors</h3>
+<p>Now, I’m going to look at the effects of filter different aspects. Here is the minor allele count (MAC). I’m doing this over frequency given that I have <img src="https://latex.codecogs.com/png.latex?N=1419"> individuals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">tribble</span>( <span class="sc" style="color: #5E5E5E;">~</span>MAC, <span class="sc" style="color: #5E5E5E;">~</span>SNPs, </span>
+<span id="cb8-2">         <span class="dv" style="color: #AD0000;">2</span>,  <span class="dv" style="color: #AD0000;">934</span>,</span>
+<span id="cb8-3">         <span class="dv" style="color: #AD0000;">5</span>,  <span class="dv" style="color: #AD0000;">843</span>,</span>
+<span id="cb8-4">         <span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">745</span>,</span>
+<span id="cb8-5">         <span class="dv" style="color: #AD0000;">25</span>, <span class="dv" style="color: #AD0000;">568</span>, </span>
+<span id="cb8-6">         <span class="dv" style="color: #AD0000;">50</span>, <span class="dv" style="color: #AD0000;">386</span>,</span>
+<span id="cb8-7">         <span class="dv" style="color: #AD0000;">75</span>, <span class="dv" style="color: #AD0000;">294</span>,</span>
+<span id="cb8-8">         <span class="dv" style="color: #AD0000;">100</span>, <span class="dv" style="color: #AD0000;">223</span>,</span>
+<span id="cb8-9">         <span class="dv" style="color: #AD0000;">150</span>, <span class="dv" style="color: #AD0000;">155</span>,</span>
+<span id="cb8-10">         <span class="dv" style="color: #AD0000;">200</span>, <span class="dv" style="color: #AD0000;">90</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb8-11">  <span class="fu" style="color: #4758AB;">mutate</span>( <span class="at" style="color: #657422;">p =</span> MAC<span class="sc" style="color: #5E5E5E;">/</span>(<span class="dv" style="color: #AD0000;">2</span><span class="sc" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">1419</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb8-12">  <span class="fu" style="color: #4758AB;">ggplot</span>( <span class="fu" style="color: #4758AB;">aes</span>(MAC, SNPs) ) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb8-13">  <span class="fu" style="color: #4758AB;">geom_line</span>() <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb8-14">  <span class="fu" style="color: #4758AB;">geom_point</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb8-15">  <span class="fu" style="color: #4758AB;">xlab</span>(<span class="st" style="color: #20794D;">"Minor Allele Count"</span>) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb8-16">  <span class="fu" style="color: #4758AB;">ylab</span>(<span class="st" style="color: #20794D;">"SNP Loci Identified"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Nubmer of filtered SNP loci across a range of stringency in the minimum number of times a minor allele is observed across the data set.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I am sure there is a probability example that could be used here to look at where you break even on sequencing errors and joint probability of the same allele being <em>incorrectly</em> identified. Don’t quite want to work it out right now but I think my 5% (putting it just shy of the MAC=150) may have been a bit too stringent…</p>
+</section>
+<section id="filtering-on-depth" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-on-depth">Filtering on Depth</h3>
+<p>Next lets look at sequencing depth. Here i am going to fix the MAC=5 and cut off all the loci that have a depths in excess of the 90% in depths (see above) and then look at how many loci are recovered going from 5X coverage up to 200X (the example above had it set at a minimum coverage of 110X).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;">tribble</span>( <span class="sc" style="color: #5E5E5E;">~</span><span class="st" style="color: #20794D;">`</span><span class="at" style="color: #657422;">Minimum Depth</span><span class="st" style="color: #20794D;">`</span>, <span class="sc" style="color: #5E5E5E;">~</span>SNPs, </span>
+<span id="cb9-2">         <span class="dv" style="color: #AD0000;">5</span>,  <span class="dv" style="color: #AD0000;">1519</span>,</span>
+<span id="cb9-3">         <span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">843</span>,</span>
+<span id="cb9-4">         <span class="dv" style="color: #AD0000;">25</span>, <span class="dv" style="color: #AD0000;">459</span>, </span>
+<span id="cb9-5">         <span class="dv" style="color: #AD0000;">50</span>, <span class="dv" style="color: #AD0000;">298</span>,</span>
+<span id="cb9-6">         <span class="dv" style="color: #AD0000;">75</span>, <span class="dv" style="color: #AD0000;">226</span>,</span>
+<span id="cb9-7">         <span class="dv" style="color: #AD0000;">100</span>, <span class="dv" style="color: #AD0000;">166</span>,</span>
+<span id="cb9-8">         <span class="dv" style="color: #AD0000;">150</span>, <span class="dv" style="color: #AD0000;">110</span>,</span>
+<span id="cb9-9">         <span class="dv" style="color: #AD0000;">200</span>, <span class="dv" style="color: #AD0000;">85</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb9-10">  <span class="fu" style="color: #4758AB;">ggplot</span>( <span class="fu" style="color: #4758AB;">aes</span>(<span class="st" style="color: #20794D;">`</span><span class="at" style="color: #657422;">Minimum Depth</span><span class="st" style="color: #20794D;">`</span>, SNPs) ) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb9-11">  <span class="fu" style="color: #4758AB;">geom_line</span>() <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb9-12">  <span class="fu" style="color: #4758AB;">geom_point</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-13">  <span class="fu" style="color: #4758AB;">xlab</span>(<span class="st" style="color: #20794D;">"Minor Allele Count"</span>) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb9-14">  <span class="fu" style="color: #4758AB;">ylab</span>(<span class="st" style="color: #20794D;">"SNP Loci Identified"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index.html</guid>
+  <pubDate>Fri, 17 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/featured.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
+  <title>Reset Github User for Push</title>
+  <link>https://dyerlab.org/posts/2023-02-16-github-reset-user/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="cell">
+
+</div>
+<p><img src="https://dyerlab.org/posts/2023-02-16-github-reset-user/featured.png" class="img-fluid"></p>
+<p>So I was working on a repository at home that I set up on another github acount, for another entity. In doing so, I clobbered my <code>global</code> github <code>user</code> and <code>user.email</code> values and as such when I tried to <code>git push</code> none of the changes would go because it could not authenticate. Instead I got this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">rodney$</span> git push</span>
+<span id="cb1-2"><span class="ex" style="color: null;">remote:</span> Permission to dyerlab/DLabWebsite.git denied to windbunny.</span>
+<span id="cb1-3"><span class="ex" style="color: null;">fatal:</span> unable to access <span class="st" style="color: #20794D;">'https://github.com/dyerlab/DLabWebsite.git/'</span>: The requested URL returned error: 403</span></code></pre></div>
+</div>
+<p>So, what you have to do is reconfigure the <code>username</code>, <code>user.email</code>, and <code>remote.origin.url</code> to reset your user name for ssh/https pushing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">rodney$</span> git config user.name dyerlab</span>
+<span id="cb2-2"><span class="ex" style="color: null;">rodney$</span> git config user.email rjdyer@vcu.edu</span>
+<span id="cb2-3"><span class="ex" style="color: null;">rodney$</span> git config remote.origin.url https://dyerlab@github.com/dyerlab/DLabWebsite.git</span></code></pre></div>
+</div>
+<p>Then the next time you <code>push</code> it (go Salt-n-Pepper), it will ask for your authentication token again. Enter it and you are good.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-16-github-reset-user/index.html</guid>
+  <pubDate>Thu, 16 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-16-github-reset-user/featured.png" medium="image" type="image/png" height="140" width="144"/>
+</item>
+<item>
+  <title>Turtle ddRADSeq Project</title>
+  <link>https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/featured.png" class="img-fluid"></p>
+<div class="cell">
+
+</div>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<div class="cell">
+
+</div>
+<p>We retrieved usable sequence data from at total of 1419 individuals. The number of sequence reads is depicted by file size (log base 10) below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">The distrubiton of sequence reads (denoted as log10 of file size) for all individuals sequenced.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The largest number of sequences was retrieved from a sample from Camp Edwards, MA, with 50,205,568 sequences. The median read size was 17,332,284.</p>
+</section>
+<section id="processing" class="level2">
+<h2 class="anchored" data-anchor-id="processing">Processing</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Progress of the main steps in processing raw sequence data.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="progress" class="level2">
+<h2 class="anchored" data-anchor-id="progress">Progress</h2>
+<p>The following logs document the initial attempts at implementing the <a href="https://www.ddocent.com">dDocent</a> workflow for processing NovoSEQ data on the spotted turtle.</p>
+<ul>
+<li><a href="../../posts/2022-10-05-ddradseq">Demultiplexing</a> is the process of taking all the data that is mixed together and turning it inot a a bunch of files, one for each individual, based upon the individual barcodes.</li>
+<li>The <a href="../../posts/2023-01-21-first-ddocent-run/">first run</a> of <a href="http://ddocent.com/">dDocent</a> crashed almost immediately.</li>
+<li>The <a href="../../2023-01-25-second-ddocent-run/">second run</a> of <a href="http://ddocent.com/">dDocent</a> also crashed, but this time it was for a different reason. Apparently, the node it was running on was failing. However, it still crashed.</li>
+<li>As a result of these attempts, it appears that the data are just <em>too big</em> and I need to take subsets of the data to work with so the computers can actually get something done. So, after talking with a colleague about it, I <a href="../../posts/2023-01-12-right-sizing-sequences/">right-sized</a> the data <em>first</em> in random samples and then ran a <a href="../../posts/2023-01-25-a-10percent-full-data-run/">third</a> run used a random subset of 10% of each individuals reads to make a synthetic “individual”. It ultimately failed at the end as well.</li>
+<li>So, lessons learned. I needed to create a random subset of my data and use that for <strong>just</strong> the assembly portion of this process. So I set out to do that and found results.
+<ul>
+<li>A <a href="../../posts/2023-01-30-2pt5pct-ddocent-run/">2.5% subset</a> finished with 7k contigs.</li>
+<li>A <a href="../../posts/2023-01-31-5pct-ddocent-run/">5% subset</a> finished with 58k contigs.</li>
+<li>A <a href="../../posts/2023-01-27-10pct-ddocent-run/">10% subset</a> finished with 400k contigs.</li>
+</ul></li>
+<li>So, I can now start mapping. At first, I took the reference genome from the <a href="../../posts/2023-01-30-2pt5pct-ddocent-run/">2.5% subset</a> and took the raw data again (all the reads for each indiviudal) and used <code>bwa</code> to assemble and <code>FreeBayes</code> to call SNPs. Unfortunately, since the number of reads for each individual is somewhere in the range of 3 - 33 million reads, it takes a bit of time. Right now, it is averaging 11 hours per individual * 1419 individuals which is 650.375 days (meaning it will be done on 2024-11-13). This run is still going and unless it dies at some point, I am going to allow it to keep running…</li>
+<li>Again, to take a random subset seems to be the way to go. In what follows is my current approach to this, which started on 2 February 2022.</li>
+</ul>
+<section id="workflow-progress" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-progress">Workflow Progress</h3>
+<p>So I started up a individuals processes to map and call SNPs. It is done using <a href="https://slurm.schedmd.com">slurm</a> on our clusters so I fire up an instance on one of the compute nodes as:</p>
+<div class="cell">
+
+</div>
+<p>As a first mapping run, I had a single process (that one used 64G of memory and was way too much for what <code>bwa</code> and <code>FreeBayes</code> seem to need). The data being used in this run include:</p>
+<ul>
+<li>A new random selection of 5% of each individuals genome.<br>
+</li>
+<li>The assembly created from the 2.5% random selection of each individual.</li>
+</ul>
+<p>This was started on 2 February 2023 and appears to be taking roughly 30 minutes per indivudal to allow <code>bwa</code> to map. Below is the progress to date.</p>
+<div class="cell fig-cap-location-top">
+<div class="cell-output-display">
+
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Population
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:left;">
+Demultiplexed
+</th>
+<th style="text-align:left;">
+Filtered
+</th>
+<th style="text-align:left;">
+Mapped
+</th>
+<th style="text-align:right;">
+Sites
+</th>
+<th style="text-align:left;">
+SNPs
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+9367
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1508</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+9367
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1508</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+11338
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">282</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+10730
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1660</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Q
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+7100
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">188</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+10294
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1348</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+15089
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1994</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+11986
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">176</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+8586
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">58</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:right;">
+10891
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1113</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 80.00%">80</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 24.00%">24</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 20.00%">20</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+
+</table>
+<p>Table 1 Current progress on bioinformatic workflows.</p>
+</div>
+</div>
+<p>At present, there are 114 samples remaining to be mapped.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/index.html</guid>
+  <pubDate>Wed, 15 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/featured.png" medium="image" type="image/png" height="77" width="144"/>
+</item>
+<item>
+  <title>A 5% Representation Run</title>
+  <link>https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/featured.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Let’s celebrate the small victories for what they are.</figcaption><p></p>
+</figure>
+</div>
+<p>So given the output from [[dDocent All Individuals 2.5%]] and [[dDocent All Individuals 10%]], I thought I’d run a 5% representation.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">screen</span> <span class="at" style="color: #657422;">-r</span> 3222</span></code></pre></div>
+<p>and sample them as:</p>
+<pre><code>rm(list=ls())
+files &lt;- list.files("all",pattern="F.fq.gz")
+
+for( i in 1:length(files) ) {&nbsp;
+    file &lt;- files[i]
+    tmp &lt;- strsplit(file, split="\\.")[[1]]
+    ofile &lt;- paste( &nbsp; paste(tmp[1],tmp[2],sep=""), tmp[3],tmp[4], sep=".")
+    cmd &lt;- paste( "seqtk sample ./all/",file," 0.025 &gt; ./all0025/", ofile, sep="")
+    system(cmd)
+    cmd &lt;- paste("gzip ", "./all0025/",ofile,sep="")
+    system(cmd)
+    cat( format(i/length(files), digits=3), " ", ofile, "\n")
+}</code></pre>
+<ul>
+<li>Started at 1040.
+<ul>
+<li>60 minute timer
+<ul>
+<li>start 0.012</li>
+<li>end 0.264</li>
+</ul></li>
+<li>Estimated finish: 1500</li>
+</ul></li>
+</ul>
+<p>Trimming reduced 5% representation: - Start: <code>Jan 31 18:51</code> - End: <code>Feb 1 00:21</code></p>
+<p><img src="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/image_1.png" class="img-fluid"></p>
+<p>I set it to only record sequences if they are in 10% of the individuals in the full dataset.</p>
+<p><img src="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/image_2.png" class="img-fluid"></p>
+<pre><code>At this point, all configuration information has been entered and dDocent may take several hours to run.
+
+It is recommended that you move this script to a background operation and disable terminal input and output.
+
+All data and logfiles will still be recorded.
+
+To do this:
+Press **control** and **Z** simultaneously
+Type **bg** and press enter
+Type **disown -h** and press enter
+Now sit back, relax, and wait for your analysis to finish
+dDocent assembled 88487 sequences (after cutoffs) into 57829 contigs
+
+dDocent has finished with an analysis in /lustre/home/rjdyer/clemgu/samples/all005  
+
+dDocent started Tue Jan 31 18:21:35 EST 2023
+
+dDocent finished Wed Feb 1 07:20:00 EST 2023</code></pre>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/index.html</guid>
+  <pubDate>Tue, 31 Jan 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/featured.png" medium="image" type="image/png" height="106" width="144"/>
+</item>
+<item>
+  <title>A 2.5% dDocent Run</title>
+  <link>https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>So, started again with a smaller amount of starting data. This time, I set the random sample to 2.5% of the sequences from each individual. Instructions for how I did that are <a href="../../posts/2023-01-12-Right-Sizing-Sequences/index.html">here</a>.</p>
+<p>It took about 3 hours to do this plus another 2 hours to gzip all the data files.</p>
+<section id="ddocent-run" class="level3">
+<h3 class="anchored" data-anchor-id="ddocent-run">dDocent Run</h3>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">[rjdyer@huff10</span> all0025]$ dDocent</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="ex" style="color: null;">dDocent</span> 2.9.4</span>
+<span id="cb1-4"><span class="ex" style="color: null;">Contact</span> jpuritz@uri.edu with any problems</span>
+<span id="cb1-5"></span>
+<span id="cb1-6"><span class="ex" style="color: null;">Checking</span> for required software</span>
+<span id="cb1-7"><span class="ex" style="color: null;">All</span> required software is installed!</span>
+<span id="cb1-8"><span class="ex" style="color: null;">dDocent</span> version 2.9.4 started Mon Jan 30 13:32:43 EST 2023</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="ex" style="color: null;">1416</span> individuals are detected. Is this correct<span class="pp" style="color: #AD0000;">?</span> Enter yes or no and press [ENTER]</span>
+<span id="cb1-11"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb1-12"><span class="ex" style="color: null;">Proceeding</span> with 1416 individuals</span>
+<span id="cb1-13"></span>
+<span id="cb1-14"><span class="ex" style="color: null;">dDocent</span> detects 256 processors available on this system.</span>
+<span id="cb1-15"><span class="ex" style="color: null;">Please</span> enter the maximum number of processors to use for this analysis.</span>
+<span id="cb1-16"><span class="ex" style="color: null;">256</span></span>
+<span id="cb1-17">  </span>
+<span id="cb1-18"></span>
+<span id="cb1-19"><span class="ex" style="color: null;">Do</span> you want to quality trim your reads<span class="pp" style="color: #AD0000;">?</span></span>
+<span id="cb1-20"><span class="ex" style="color: null;">Type</span> yes or no and press [ENTER]<span class="pp" style="color: #AD0000;">?</span></span>
+<span id="cb1-21"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb1-22"></span>
+<span id="cb1-23"><span class="ex" style="color: null;">Do</span> you want to perform an assembly<span class="pp" style="color: #AD0000;">?</span></span>
+<span id="cb1-24"><span class="ex" style="color: null;">Type</span> yes or no and press [ENTER].</span>
+<span id="cb1-25"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb1-26"></span>
+<span id="cb1-27"><span class="ex" style="color: null;">What</span> type of assembly would you like to perform<span class="pp" style="color: #AD0000;">?</span>&nbsp; Enter SE for single end, PE for paired-end, RPE for paired-end sequencing for RAD protocols with random shearing, or OL for paired-end sequencing that has substantial overlap.</span>
+<span id="cb1-28"><span class="ex" style="color: null;">Then</span> press [ENTER]</span>
+<span id="cb1-29"><span class="ex" style="color: null;">SE</span></span>
+<span id="cb1-30"></span>
+<span id="cb1-31"><span class="ex" style="color: null;">Reads</span> will be assembled with Rainbow</span>
+<span id="cb1-32"></span>
+<span id="cb1-33"><span class="ex" style="color: null;">CD-HIT</span> will cluster reference sequences by similarity. The <span class="at" style="color: #657422;">-c</span> parameter <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">%</span> similarity to cluster<span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">may</span> need to be changed for your taxa.</span>
+<span id="cb1-34"><span class="ex" style="color: null;">Would</span> you like to enter a new c parameter now<span class="pp" style="color: #AD0000;">?</span> Type yes or no and press [ENTER]</span>
+<span id="cb1-35"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb1-36"></span>
+<span id="cb1-37"><span class="ex" style="color: null;">Please</span> enter new value for c. Enter in decimal form <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">For</span> 90%, enter 0.9<span class="kw" style="color: #003B4F;">)</span></span>
+<span id="cb1-38"><span class="ex" style="color: null;">0.85</span></span>
+<span id="cb1-39"></span>
+<span id="cb1-40"><span class="ex" style="color: null;">Do</span> you want to map reads<span class="pp" style="color: #AD0000;">?</span>&nbsp; Type yes or no and press [ENTER]</span>
+<span id="cb1-41"><span class="ex" style="color: null;">no</span></span>
+<span id="cb1-42"></span>
+<span id="cb1-43"><span class="ex" style="color: null;">Mapping</span> will not be performed</span>
+<span id="cb1-44"></span>
+<span id="cb1-45"><span class="ex" style="color: null;">Do</span> you want to use FreeBayes to call SNPs<span class="pp" style="color: #AD0000;">?</span>&nbsp; Please type yes or no and press [ENTER]</span>
+<span id="cb1-46"><span class="ex" style="color: null;">no</span></span>
+<span id="cb1-47"></span>
+<span id="cb1-48"><span class="ex" style="color: null;">Please</span> enter your email address.&nbsp; dDocent will email you when it is finished running.</span>
+<span id="cb1-49"></span>
+<span id="cb1-50"><span class="ex" style="color: null;">Dont</span> worry<span class="kw" style="color: #003B4F;">;</span> <span class="ex" style="color: null;">dDocent</span> has no financial need to sell your email address to spammers.</span>
+<span id="cb1-51"><span class="ex" style="color: null;">rjdyer@vcu.edu</span></span>
+<span id="cb1-52"></span>
+<span id="cb1-53"></span>
+<span id="cb1-54"><span class="ex" style="color: null;">dDocent</span> will require input during the assembly stage.&nbsp; Please wait until prompt says it is safe to move program to the background.</span>
+<span id="cb1-55">  </span>
+<span id="cb1-56"></span>
+<span id="cb1-57"><span class="ex" style="color: null;">Trimming</span> reads and simultaneously assembling reference sequences</span></code></pre></div>
+<p>Ran into error</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">parallel:</span> Warning: Starting 32 processes took <span class="op" style="color: #5E5E5E;">&gt;</span> 2 sec.</span>
+<span id="cb2-2"><span class="ex" style="color: null;">parallel:</span> Warning: Consider adjusting <span class="at" style="color: #657422;">-j.</span> Press CTRL-C to stop.</span></code></pre></div>
+<p>Results were posted at 1725</p>
+<p><img src="https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/image_1.png" class="img-fluid"></p>
+<p>for the first question and 1528 for the next one</p>
+<p><img src="https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/image_2.png" class="img-fluid"></p>
+<p>I then put it into the background and let it run.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;">Now</span> sit back, relax, and wait for your analysis to finish</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="ex" style="color: null;">dDocent</span> assembled 13966 sequences <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">after</span> cutoffs<span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">into</span> 6676 contigs</span>
+<span id="cb3-4"></span>
+<span id="cb3-5"><span class="ex" style="color: null;">dDocent</span> has finished with an analysis in /lustre/home/rjdyer/clemgu/samples/all0025</span>
+<span id="cb3-6"></span>
+<span id="cb3-7"><span class="ex" style="color: null;">dDocent</span> started Mon Jan 30 13:32:43 EST 2023</span>
+<span id="cb3-8"><span class="ex" style="color: null;">dDocent</span> finished Mon Jan 30 17:30:02 EST 2023</span></code></pre></div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/index.html</guid>
+  <pubDate>Mon, 30 Jan 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/image_1.png" medium="image" type="image/png" height="73" width="144"/>
+</item>
+<item>
+  <title>A 10% dDocent Run</title>
+  <link>https://dyerlab.org/posts/2023-01-27-10pct-dDocent-Run/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-01-27-10pct-dDocent-Run/featured.png" class="img-fluid"></p>
+<p>So this time I made a small representation of the overall sequences, using: - 10% of each individual - Renamed to not have period in population name for each state (thinking that may be why I’ve had failures in the past). - Saved to different folder.</p>
+<pre><code>rm(list=ls())
+
+files &lt;- list.files("all",pattern="F.fq.gz")
+for( i in 1:length(files) ) {
+    file &lt;- files[i]
+    tmp &lt;- strsplit(file, split="\\.")[[1]]
+    ofile &lt;- paste( paste( tmp[1],
+                                 tmp[2],
+                                 sep=""), 
+                        tmp[3], tmp[4], tmp[5], sep=".")
+    cmd &lt;- paste("seqtk sample ./all/",
+                     file,
+                     " 0.10 | gzip &gt; ./all010/", 
+                     ofile, 
+                     sep="")
+    system(cmd)
+    cat( format(i/length(files), digits=3), " ", ofile, "\n")
+}</code></pre>
+<p>It ran for a while, then died. So I tried it again and there were some issues with dDocent not recognizing the the files as being <code>gz</code> files… So I had to unzip all the 10% individuals and redo them.</p>
+<p>Finally it went through but I got a few errors along the way.</p>
+<pre><code>Trimming reads and simultaneously assembling reference sequences
+
+Removing the _1 character and replacing with /1 in the name of every sequence
+parallel: Warning: Starting 16 processes took &gt; 2 sec.
+parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
+<p>Then it gave me the prompt for number of unique sequences per individual.</p>
+<p><img src="https://dyerlab.org/posts/2023-01-27-10pct-dDocent-Run/image_1.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">Please choose data cutoff. In essence, you are picking a <span class="fu" style="color: #4758AB;">minimum</span> (within individual) coverage level <span class="cf" style="color: #003B4F;">for</span> a <span class="fu" style="color: #4758AB;">read</span> (allele) to be used <span class="cf" style="color: #003B4F;">in</span> the reference assembly.</span>
+<span id="cb3-2"><span class="dv" style="color: #AD0000;">3</span></span></code></pre></div>
+<p><img src="https://dyerlab.org/posts/2023-01-27-10pct-dDocent-Run/image_2.png" class="img-fluid"></p>
+<p>I had hit the return button a few times and it ran using some ‘default’ value.</p>
+<p>This time it did finish and made contigs.</p>
+<pre><code>At this point, all configuration information has been entered and dDocent may take several hours to run.
+
+It is recommended that you move this script to a background operation and disable terminal input and output.
+
+All data and logfiles will still be recorded.
+To do this:
+Press **control** and **Z** simultaneously
+Type **bg** and press enter
+Type **disown -h** and press enter
+Now sit back, relax, and wait for your analysis to finish
+
+dDocent assembled 969927 sequences (after cutoffs) into 394146 contigs
+  
+Using BWA to map reads</code></pre>
+<p>So at this point, I let it run for a while longer and then realized I was not going to use the 10% representation and would be using another assembly. So I killed the mapping.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-27-10pct-dDocent-Run/index.html</guid>
+  <pubDate>Fri, 27 Jan 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-27-10pct-dDocent-Run/featured.png" medium="image" type="image/png" height="147" width="144"/>
+</item>
+<item>
+  <title>Crashing dDocent with Reduced Representations</title>
+  <link>https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Start a new screen session</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">[rjdyer@huff]$</span> screen</span></code></pre></div>
+<p>So this time I made a small representation of the overall sequences, using 10% of each individuals reads.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;">#!/bin/bash</span></span>
+<span id="cb2-2"><span class="cf" style="color: #003B4F;">for</span> FILE <span class="kw" style="color: #003B4F;">in</span> <span class="va" style="color: #111111;">$(</span><span class="fu" style="color: #4758AB;">ls</span> <span class="pp" style="color: #AD0000;">*</span>.fq.gz<span class="va" style="color: #111111;">)</span><span class="kw" style="color: #003B4F;">;</span></span>
+<span id="cb2-3"><span class="cf" style="color: #003B4F;">do</span></span>
+<span id="cb2-4">  <span class="ex" style="color: null;">seqtk</span> sample <span class="va" style="color: #111111;">$FILE</span> 0.10 <span class="op" style="color: #5E5E5E;">&gt;&gt;</span> POPULATION_01.fq </span>
+<span id="cb2-5">  <span class="bu" style="color: null;">echo</span> <span class="va" style="color: #111111;">$FILE</span></span>
+<span id="cb2-6"><span class="cf" style="color: #003B4F;">done</span> </span></code></pre></div>
+<p>Run this, it takes about 14 hours.</p>
+<p>Then I’ll fire up the <code>srun</code></p>
+<pre><code>[rjdyer@huff]$ srun --nodes=1 --mem=128G --export=ALL -J assembly --pty /bin/bash</code></pre>
+<p>After which I’m assigned to processor 13 and I’ll move the file to its own directory</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;">[rjdyer@huff13]$</span> scp PopA_010.fq ../small/</span></code></pre></div>
+<p>And zip it for [[dDocent]]</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;">[rjdyer@huff13]$</span> gzip PopA_010.fq</span></code></pre></div>
+<p><img src="https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/image_1.png" class="img-fluid"></p>
+<p>Took it down from 192G -&gt; 32G</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;">[rjdyer@huff</span> small]$ ls <span class="at" style="color: #657422;">-alh</span></span>
+<span id="cb6-2"><span class="ex" style="color: null;">total</span> 217G</span>
+<span id="cb6-3"><span class="ex" style="color: null;">drwxrwxr-x.</span> 2 rjdyer rjdyer 4.0K Jan 25 08:54 .</span>
+<span id="cb6-4"><span class="ex" style="color: null;">drwxr-x---.</span> 7 rjdyer rjdyer 4.0K Jan 25 08:51 ..</span>
+<span id="cb6-5"><span class="ex" style="color: null;">-rw-r-----.</span> 1 rjdyer rjdyer 192G Jan 24 17:53 PopA_010.fq</span>
+<span id="cb6-6"><span class="ex" style="color: null;">-rw-r-----.</span> 1 rjdyer rjdyer 32G Jan 24 17:53 PopA_010.fq.gz</span></code></pre></div>
+<section id="running-ddocent-again" class="level3">
+<h3 class="anchored" data-anchor-id="running-ddocent-again">Running dDocent Again</h3>
+</section>
+<section id="background-information" class="level3">
+<h3 class="anchored" data-anchor-id="background-information">Background Information</h3>
+<p>I talked to a graduate student who I have been working with and he said that he ran with the following values for mapping - 3x coverage. - SNPs in at least 10 (which is 5%) of the individuals</p>
+</section>
+<section id="my-actual-run" class="level3">
+<h3 class="anchored" data-anchor-id="my-actual-run">My Actual Run</h3>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;">[rjdyer@huff13</span> small]$ dDocent</span>
+<span id="cb7-2"></span>
+<span id="cb7-3"><span class="ex" style="color: null;">dDocent</span> 2.9.4</span>
+<span id="cb7-4"><span class="ex" style="color: null;">Contact</span> jpuritz@uri.edu with any problems</span>
+<span id="cb7-5"><span class="ex" style="color: null;">Checking</span> for required software</span>
+<span id="cb7-6"><span class="ex" style="color: null;">All</span> required software is installed!</span>
+<span id="cb7-7"><span class="ex" style="color: null;">dDocent</span> version 2.9.4 started Wed Jan 25 13:33:54 EST 2023</span>
+<span id="cb7-8"><span class="ex" style="color: null;">1</span> individuals are detected. Is this correct<span class="pp" style="color: #AD0000;">?</span> Enter yes or no and press [ENTER]</span>
+<span id="cb7-9"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb7-10"></span>
+<span id="cb7-11"><span class="ex" style="color: null;">Proceeding</span> with 1 individuals</span>
+<span id="cb7-12"></span>
+<span id="cb7-13"><span class="ex" style="color: null;">dDocent</span> detects 256 processors available on this system.</span>
+<span id="cb7-14"><span class="ex" style="color: null;">Please</span> enter the maximum number of processors to use for this analysis.</span>
+<span id="cb7-15"><span class="ex" style="color: null;">256</span></span>
+<span id="cb7-16"></span>
+<span id="cb7-17"><span class="ex" style="color: null;">Do</span> you want to quality trim your reads<span class="pp" style="color: #AD0000;">?</span></span>
+<span id="cb7-18"><span class="ex" style="color: null;">Type</span> yes or no and press [ENTER]<span class="pp" style="color: #AD0000;">?</span></span>
+<span id="cb7-19"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb7-20"></span>
+<span id="cb7-21"><span class="ex" style="color: null;">Do</span> you want to perform an assembly<span class="pp" style="color: #AD0000;">?</span></span>
+<span id="cb7-22"><span class="ex" style="color: null;">Type</span> yes or no and press [ENTER].</span>
+<span id="cb7-23"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb7-24"></span>
+<span id="cb7-25"><span class="ex" style="color: null;">What</span> type of assembly would you like to perform<span class="pp" style="color: #AD0000;">?</span> Enter SE for single end, PE for paired-end, RPE for paired-end sequencing for RAD protocols with random shearing, or OL for paired-end sequencing that has substantial overlap.</span>
+<span id="cb7-26"></span>
+<span id="cb7-27"><span class="ex" style="color: null;">Then</span> press [ENTER]</span>
+<span id="cb7-28"><span class="ex" style="color: null;">SE</span></span>
+<span id="cb7-29"></span>
+<span id="cb7-30"><span class="ex" style="color: null;">Reads</span> will be assembled with Rainbow</span>
+<span id="cb7-31"></span>
+<span id="cb7-32"><span class="ex" style="color: null;">CD-HIT</span> will cluster reference sequences by similarity. The <span class="at" style="color: #657422;">-c</span> parameter <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">%</span> similarity to cluster<span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">may</span> need to be changed for your taxa.</span>
+<span id="cb7-33"></span>
+<span id="cb7-34"><span class="ex" style="color: null;">Would</span> you like to enter a new c parameter now<span class="pp" style="color: #AD0000;">?</span> Type yes or no and press [ENTER]</span>
+<span id="cb7-35"><span class="fu" style="color: #4758AB;">yes</span></span>
+<span id="cb7-36"></span>
+<span id="cb7-37"><span class="ex" style="color: null;">Please</span> enter new value for c. Enter in decimal form <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">For</span> 90%, enter 0.9<span class="kw" style="color: #003B4F;">)</span></span>
+<span id="cb7-38"><span class="ex" style="color: null;">0.85</span></span>
+<span id="cb7-39"></span>
+<span id="cb7-40"><span class="ex" style="color: null;">Do</span> you want to map reads<span class="pp" style="color: #AD0000;">?</span> Type yes or no and press [ENTER]</span>
+<span id="cb7-41"><span class="ex" style="color: null;">no</span></span>
+<span id="cb7-42"></span>
+<span id="cb7-43"><span class="ex" style="color: null;">Mapping</span> will not be performed</span>
+<span id="cb7-44"></span>
+<span id="cb7-45"><span class="ex" style="color: null;">Do</span> you want to use FreeBayes to call SNPs<span class="pp" style="color: #AD0000;">?</span> Please type yes or no and press [ENTER]</span>
+<span id="cb7-46"><span class="ex" style="color: null;">no</span></span></code></pre></div>
+<p>The it ran for a while</p>
+<p><img src="https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/image_2.png" class="img-fluid"></p>
+<p><img src="https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/image_3.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;">Please</span> choose data cutoff. In essence, you are picking a minimum <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">within</span> individual<span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">coverage</span> level for a read <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">allele</span><span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">to</span> be used in the reference assembly</span>
+<span id="cb8-2"><span class="ex" style="color: null;">4</span></span></code></pre></div>
+<p>The next stage of the process was going to ask the cutoff for the number of unique sequences (I suspect it is because there is just one individual)</p>
+<pre><code>cat: ufile: No such file or directory
+
+rm: cannot remove ‘ufile’: No such file or directory
+
+    line 0: warning: Skipping data file with no valid points
+
+  
+
+gnuplot&gt; plot 'uniqseq.peri.data' with lines notitle
+
+                          ^
+
+    line 0: x range is invalid</code></pre>
+<p>So I looked at this file in the current directory.</p>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="ex" style="color: null;">[rjdyer@huff</span> small]$ cat uniqseq.data</span>
+<span id="cb10-2"><span class="ex" style="color: null;">2</span> 138883284</span>
+<span id="cb10-3"><span class="ex" style="color: null;">3</span> 116460741</span>
+<span id="cb10-4"><span class="ex" style="color: null;">4</span> 8475892</span>
+<span id="cb10-5"><span class="ex" style="color: null;">5</span> 8061201</span>
+<span id="cb10-6"><span class="ex" style="color: null;">6</span> 7019500</span>
+<span id="cb10-7"><span class="ex" style="color: null;">7</span> 4504290</span>
+<span id="cb10-8"><span class="ex" style="color: null;">8</span> 4303641</span>
+<span id="cb10-9"><span class="ex" style="color: null;">9</span> 3863620</span>
+<span id="cb10-10"><span class="ex" style="color: null;">10</span> 3125391</span>
+<span id="cb10-11"><span class="ex" style="color: null;">11</span> 2992229</span>
+<span id="cb10-12"><span class="ex" style="color: null;">12</span> 2744482</span>
+<span id="cb10-13"><span class="ex" style="color: null;">13</span> 2411858</span>
+<span id="cb10-14"><span class="ex" style="color: null;">14</span> 2311726</span>
+<span id="cb10-15"><span class="ex" style="color: null;">15</span> 2148356</span>
+<span id="cb10-16"><span class="ex" style="color: null;">16</span> 1962029</span>
+<span id="cb10-17"><span class="ex" style="color: null;">17</span> 1882155</span>
+<span id="cb10-18"><span class="ex" style="color: null;">18</span> 1766283</span>
+<span id="cb10-19"><span class="ex" style="color: null;">19</span> 1646612</span>
+<span id="cb10-20"><span class="ex" style="color: null;">20</span> 1580362</span></code></pre></div>
+<p>which is what I think it was trying to work with and it looks like the main inflection point is at <code>4</code> so that is what I used.</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;">Please</span> choose data cutoff. Pick point right before the assymptote. A good starting cutoff might be 10% of the total number of individuals</span>
+<span id="cb11-2"><span class="ex" style="color: null;">4</span></span>
+<span id="cb11-3"></span>
+<span id="cb11-4"><span class="ex" style="color: null;">At</span> this point, all configuration information has been entered and dDocent may take several hours to run.</span>
+<span id="cb11-5"></span>
+<span id="cb11-6"><span class="ex" style="color: null;">It</span> is recommended that you move this script to a background operation and disable terminal input and output.</span>
+<span id="cb11-7"></span>
+<span id="cb11-8"><span class="ex" style="color: null;">All</span> data and logfiles will still be recorded.</span>
+<span id="cb11-9"></span>
+<span id="cb11-10"><span class="ex" style="color: null;">To</span> do this:</span>
+<span id="cb11-11"><span class="ex" style="color: null;">Press</span> <span class="pp" style="color: #AD0000;">**</span>control<span class="pp" style="color: #AD0000;">**</span> and <span class="pp" style="color: #AD0000;">**</span>Z<span class="pp" style="color: #AD0000;">**</span> simultaneously</span>
+<span id="cb11-12"><span class="ex" style="color: null;">Type</span> <span class="pp" style="color: #AD0000;">**</span>bg<span class="pp" style="color: #AD0000;">**</span> and press enter</span>
+<span id="cb11-13"><span class="ex" style="color: null;">Type</span> <span class="pp" style="color: #AD0000;">**</span>disown <span class="at" style="color: #657422;">-h</span><span class="pp" style="color: #AD0000;">**</span> and press enter</span>
+<span id="cb11-14"><span class="ex" style="color: null;">Now</span> sit back, relax, and wait for your analysis to finish</span></code></pre></div>
+<p>then it crashed on this.</p>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;">dDocent</span> line 1002: <span class="pp" style="color: #AD0000;">*</span> 3 / 4: syntax error: operand expected <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">error</span> token is <span class="st" style="color: #20794D;">"* 3 / 4"</span><span class="kw" style="color: #003B4F;">)</span></span></code></pre></div>
+<p>I went to look up what the code was that died and it was:</p>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="va" style="color: #111111;">$sort</span> <span class="at" style="color: #657422;">-k1</span> <span class="at" style="color: #657422;">-r</span> <span class="at" style="color: #657422;">-n</span> <span class="at" style="color: #657422;">--parallel</span><span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">$NUMProc</span> <span class="at" style="color: #657422;">-S</span> 2G uniq.k.<span class="va" style="color: #111111;">$CUTOFF</span>.c.<span class="va" style="color: #111111;">$CUTOFF2</span>.seqs <span class="kw" style="color: #003B4F;">|</span><span class="fu" style="color: #4758AB;">cut</span> <span class="at" style="color: #657422;">-f2</span> <span class="op" style="color: #5E5E5E;">&gt;</span> totaluniqseq</span>
+<span id="cb13-2"></span>
+<span id="cb13-3"><span class="ex" style="color: null;">mawk</span> <span class="st" style="color: #20794D;">'{c= c + 1; print "&gt;dDocent_Contig_" c "\n" $1}'</span> totaluniqseq <span class="op" style="color: #5E5E5E;">&gt;</span> uniq.full.fasta</span>
+<span id="cb13-4"></span>
+<span id="cb13-5"><span class="va" style="color: #111111;">LENGTH</span><span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">$(</span><span class="ex" style="color: null;">mawk</span> <span class="st" style="color: #20794D;">'!/&gt;/'</span> uniq.full.fasta <span class="kw" style="color: #003B4F;">|</span> <span class="ex" style="color: null;">mawk</span> <span class="st" style="color: #20794D;">'(NR==1||length&lt;shortest){shortest=length} END {print shortest}'</span><span class="va" style="color: #111111;">)</span></span>
+<span id="cb13-6"></span>
+<span id="cb13-7"><span class="va" style="color: #111111;">LENGTH</span><span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">$(($LENGTH</span> <span class="op" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">3</span> <span class="op" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">4</span><span class="va" style="color: #111111;">))</span></span>
+<span id="cb13-8"></span>
+<span id="cb13-9"><span class="ex" style="color: null;">seqtk</span> seq <span class="at" style="color: #657422;">-F</span> I uniq.full.fasta <span class="op" style="color: #5E5E5E;">&gt;</span> uniq.fq</span></code></pre></div>
+<p>Let’s go look through these data and see where the problem is with our current output. If you look at the first line, it is looking for a file</p>
+<pre><code>$sort -k1 -r -n --parallel=$NUMProc -S 2G uniq.k.$CUTOFF.c.$CUTOFF2.seqs |cut -f2 &gt; totaluniqseq</code></pre>
+<p>which in our case has no data in it. Here are our data files.</p>
+<pre><code>-rw-rw-r--. 1 rjdyer rjdyer  0 Jan 26 09:18 totaluniqseq
+-rw-rw-r--. 1 rjdyer rjdyer  0 Jan 25 13:34 trim.log
+drwxrwxr-x. 2 rjdyer rjdyer 4.0K Jan 25 15:20 trim_reports
+-rw-rw-r--. 1 rjdyer rjdyer 1.2G Jan 26 09:16 uniqCperindv
+-rw-rw-r--. 1 rjdyer rjdyer  0 Jan 26 09:18 uniq.full.fasta
+-rw-rw-r--. 1 rjdyer rjdyer  0 Jan 26 09:16 uniq.k.4.c.4.seqs
+-rw-rw-r--. 1 rjdyer rjdyer 205 Jan 25 17:09 uniqseq.data
+-rw-rw-r--. 1 rjdyer rjdyer  0 Jan 26 09:08 uniqseq.peri.data</code></pre>
+<p>So, there is nothing in <code>uniq.k.4.c.4.seqs</code> to look at. I think when we are doing this ‘synthetic use 10% of all individuals’ we cannot say that we would like it to be in X&gt;1 individual, because we only have 1 individual.</p>
+<p><strong>So lets start dDocent over, without trimming, and select 1X for the number of individuals…</strong></p>
+<p><img src="https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/image_4.png" class="img-fluid"></p>
+<p>So I ran it again, this time I’ll do 3X</p>
+<p><img src="https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/image_5.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="ex" style="color: null;">Please</span> choose data cutoff. In essence, you are picking a minimum <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">within</span> individual<span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">coverage</span> level for a read <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">allele</span><span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">to</span> be used in the reference assembly</span>
+<span id="cb16-2"><span class="ex" style="color: null;">3</span></span></code></pre></div>
+</section>
+<section id="failed---died-again" class="level2">
+<h2 class="anchored" data-anchor-id="failed---died-again">Failed - Died again</h2>
+<blockquote class="blockquote">
+<p>Look ma! No Contigs.</p>
+</blockquote>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="ex" style="color: null;">Now</span> sit back, relax, and wait for your analysis to finish</span>
+<span id="cb17-2"><span class="ex" style="color: null;">sed:</span> can<span class="dt" style="color: #AD0000;">\'</span>t read reference.fasta.original: No such file or directory</span>
+<span id="cb17-3"></span>
+<span id="cb17-4"><span class="ex" style="color: null;">dDocent</span> assembled 116460741 sequences <span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">after</span> cutoffs<span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">into</span> 0 contigs</span>
+<span id="cb17-5"><span class="ex" style="color: null;">dDocent</span> has finished with an analysis in /lustre/home/rjdyer/clemgu/samples/small</span>
+<span id="cb17-6"></span>
+<span id="cb17-7"><span class="ex" style="color: null;">dDocent</span> started Thu Jan 26 09:30:49 EST 2023</span>
+<span id="cb17-8"><span class="ex" style="color: null;">dDocent</span> finished Thu Jan 26 18:34:36 EST 2023</span>
+<span id="cb17-9"></span>
+<span id="cb17-10"><span class="ex" style="color: null;">dDocent</span> 2.9.4</span>
+<span id="cb17-11"><span class="ex" style="color: null;">The</span> <span class="st" style="color: #20794D;">'d'</span> is silent, hillbilly.</span></code></pre></div>
+<p>So, the problem here is that I’ve been putting all the random sequences into a single individual and the assembly is dying because it is looking for stuff that is present in more than <em>X</em> number of individuals.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/index.html</guid>
+  <pubDate>Wed, 25 Jan 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-25-A-10Percent-Full-Data-Run/image_1.png" medium="image" type="image/png" height="84" width="144"/>
+</item>
+<item>
+  <title>Second dDocent Run</title>
+  <link>https://dyerlab.org/posts/2023-01-25-Second-dDocent-Run/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-01-25-Second-dDocent-Run/featured.jpg" class="img-fluid"></p>
+<p>This time, I made discussed things with Mike Davis and then tried this.</p>
+<pre><code>[rjdyer@huff all]$ srun --nodes=1 --mem=128G --export=ALL -J assembly --pty /bin/bash</code></pre>
+<p>I was able to get onto the compute node and then start up a run of dDocent with the following data: - All the samples. - 256 processors per node - Trim - Assemble as Single End (SE) reads - Map the individual to the assembly - SNP call on individuals.</p>
+<section id="the-printout." class="level2">
+<h2 class="anchored" data-anchor-id="the-printout.">The Printout.</h2>
+<pre><code>[rjdyer@huff12 all]$ dDocent
+dDocent 2.9.4
+
+Contact jpuritz@uri.edu with any problems
+
+
+Checking for required software
+
+All required software is installed!
+
+dDocent version 2.9.4 started Tue Jan 24 10:11:43 EST 2023
+
+1419 individuals are detected. Is this correct? Enter yes or no and press [ENTER]
+yes
+Proceeding with 1419 individuals
+dDocent detects 256 processors available on this system.
+Please enter the maximum number of processors to use for this analysis.
+256
+
+Do you want to quality trim your reads?
+Type yes or no and press [ENTER]?
+yes
+
+Do you want to perform an assembly?
+Type yes or no and press [ENTER].
+yes
+What type of assembly would you like to perform?  Enter SE for single end, PE for paired-end, RPE for paired-end sequencing for RAD protocols with random shearing, or OL for paired-end sequencing that has substantial overlap.
+Then press [ENTER]
+SE
+Reads will be assembled with Rainbow
+CD-HIT will cluster reference sequences by similarity. The -c parameter (% similarity to cluster) may need to be changed for your taxa.
+Would you like to enter a new c parameter now? Type yes or no and press [ENTER]
+yes
+Please enter new value for c. Enter in decimal form (For 90%, enter 0.9)
+.85
+Do you want to map reads?  Type yes or no and press [ENTER]
+yes
+BWA will be used to map reads.  You may need to adjust -A -B and -O parameters for your taxa.
+Would you like to enter a new parameters now? Type yes or no and press [ENTER]
+yes
+Please enter new value for A (match score).  It should be an integer.  Default is 1.
+1
+Please enter new value for B (mismatch score).  It should be an integer.  Default is 4.
+4
+Please enter new value for O (gap penalty).  It should be an integer.  Default is 6.
+6
+Do you want to use FreeBayes to call SNPs?  Please type yes or no and press [ENTER]
+yes
+
+Please enter your email address.  dDocent will email you when it is finished running.
+Dont worry; dDocent has no financial need to sell your email address to spammers.
+rjdyer@vcu.edu
+
+
+dDocent will require input during the assembly stage.  Please wait until prompt says it is safe to move program to the background.
+
+Trimming reads and simultaneously assembling reference sequences
+parallel: Warning: Starting 30 processes took &gt; 2 sec.
+parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
+<p>So, again, I am experiencing some problems on the servers. Our server admin person, Mike Davis, did follow up with some comments that one of the servers we were running on was experiencing some odd behaviors…</p>
+<p>Try again.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-25-Second-dDocent-Run/index.html</guid>
+  <pubDate>Tue, 24 Jan 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-25-Second-dDocent-Run/featured.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>First dDocent Run</title>
+  <link>https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/featured.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>You crash all the time, and sometimes it’s a really bad one, but sometimes it’s not so bad. - Lindsay Vonn</p>
+</blockquote>
+<p>So I set this one up with all the data to make an assembly, map, and then call SNPs for all the individuals.</p>
+<p>It crashed so bad that I didn’t even make a log of it.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/index.html</guid>
+  <pubDate>Sat, 21 Jan 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/featured.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
+<item>
+  <title>Right Sizing the Sequences</title>
+  <link>https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/featured.png" class="img-fluid"></p>
+<p>There is a necessity to figure out how much of your data you should be using for each step. It is a balancing act where we need to simultaneously:</p>
+<ol type="1">
+<li>Capture as much of the underlying genetic information as we can so that we have a good representation across the species distribution -&gt; <em>more data</em></li>
+<li>Make sure that the data we are using is conservative enough such that we can have a sufficient level of confidence that what we are working with is actually good data. -&gt; <em>less overall data</em></li>
+<li>Be able to do the bioinformatics parts in a reasonable timeframe -&gt; <em>smaller data sets</em></li>
+</ol>
+<p>However, it is not always <em>a priori</em> knowable how much of the data to use.</p>
+<section id="smaller-subsets" class="level2">
+<h2 class="anchored" data-anchor-id="smaller-subsets">Smaller Subsets</h2>
+<p>So it appears that taking all the data to make an assembly may be problematic for a few different reasons:</p>
+<ol type="1">
+<li>It will take a <em>shit ton</em> of time (that is technical measure of quantity reserved for only the most important and magnificently large collections of items).</li>
+<li>It may produce a much too many contigs to be generally informative.</li>
+</ol>
+<p>So I set up some subsets of the data to see how long it will take to do smaller amounts.</p>
+<p>Here some <code>R</code> code that I wrote to just take a fractional subset of the sequences from each individual and, using the program <code>seqtk</code> make a new set of data in a different folder.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list=</span><span class="fu" style="color: #4758AB;">ls</span>())</span>
+<span id="cb1-2">pct <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"0.025"</span></span>
+<span id="cb1-3">folder <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"./all0025/"</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5">files <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list.files</span>(<span class="st" style="color: #20794D;">"all"</span>,<span class="at" style="color: #657422;">pattern=</span><span class="st" style="color: #20794D;">"F.fq.gz"</span>)</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="cf" style="color: #003B4F;">for</span>( i <span class="cf" style="color: #003B4F;">in</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="fu" style="color: #4758AB;">length</span>(files) ) {</span>
+<span id="cb1-8">    file <span class="ot" style="color: #003B4F;">&lt;-</span> files[i]</span>
+<span id="cb1-9">    tmp <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">strsplit</span>(file, <span class="at" style="color: #657422;">split=</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">."</span>)[[<span class="dv" style="color: #AD0000;">1</span>]]</span>
+<span id="cb1-10">    ofile <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="fu" style="color: #4758AB;">paste</span>(tmp[<span class="dv" style="color: #AD0000;">1</span>],tmp[<span class="dv" style="color: #AD0000;">2</span>],<span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">""</span>), tmp[<span class="dv" style="color: #AD0000;">3</span>],tmp[<span class="dv" style="color: #AD0000;">4</span>], <span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">"."</span>)</span>
+<span id="cb1-11">    cmd <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="st" style="color: #20794D;">"seqtk sample ./all/"</span>,file,<span class="st" style="color: #20794D;">" "</span>, </span>
+<span id="cb1-12">                  pct, <span class="st" style="color: #20794D;">" &gt; "</span>, folder, <span class="st" style="color: #20794D;">" "</span>, ofile, <span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">""</span>)</span>
+<span id="cb1-13">    <span class="fu" style="color: #4758AB;">system</span>(cmd)</span>
+<span id="cb1-14">    <span class="fu" style="color: #4758AB;">cat</span>( <span class="fu" style="color: #4758AB;">format</span>(i<span class="sc" style="color: #5E5E5E;">/</span><span class="fu" style="color: #4758AB;">length</span>(files), <span class="at" style="color: #657422;">digits=</span><span class="dv" style="color: #AD0000;">3</span>), <span class="st" style="color: #20794D;">" "</span>, ofile, <span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\n</span><span class="st" style="color: #20794D;">"</span>)</span>
+<span id="cb1-15">}</span></code></pre></div>
+</div>
+<p>Using this, I set up random subsets of the data for:</p>
+<ul>
+<li>10% of each individuals genome.</li>
+<li>5% of each individuals genome.</li>
+<li>2.5% of each individuals genome.</li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/index.html</guid>
+  <pubDate>Fri, 20 Jan 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/featured.png" medium="image" type="image/png" height="156" width="144"/>
+</item>
+<item>
+  <title>Demultiplexing</title>
+  <link>https://dyerlab.org/posts/2023-01-16-Demultiplexing/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-01-16-Demultiplexing/index.html</guid>
+  <pubDate>Mon, 16 Jan 2023 05:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Resources in Swift Package Manager</title>
+  <link>https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/featured.png" class="img-fluid"></p>
+<div class="cell">
+
+</div>
+<p>The <a href="https://www.swift.org/package-manager/">Swift Package Manager</a> is a great tool to wrap up code and help compartmentalize some of your data. It is still evolving but is really powerful. I ran into a few issues when trying to figure out how to add image resources to a package.</p>
+<p>Here are the ways that I used to figure this out.</p>
+<section id="resources-folder" class="level3">
+<h3 class="anchored" data-anchor-id="resources-folder">Resources Folder</h3>
+<p>There is no <code>Resources</code> folder (by default), so you’ll have to make one for yourself. Put it into:</p>
+<p><code>Sources/PROJECTNAME/Resources</code></p>
+</section>
+<section id="creating-a-copy-phase" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-copy-phase">Creating a Copy Phase</h3>
+<p>You’ll have to automatically set up a copy phase in your <code>Package.swift</code> file. It should be in the targets section for the main target. Mine looks like this by default.</p>
+<pre><code>        .target(
+            name: "DLab",
+            dependencies: []
+        ),
+        .testTarget(
+            name: "DLabTests",
+            dependencies: ["DLab"]
+        ),</code></pre>
+<p>You need to add a <code>resources: [.copy("Resources") ]</code> to the main target section so it looks like this.</p>
+<pre><code>        .target(
+            name: "DLab",
+            dependencies: [],
+            resources: [
+                .copy("Resources")
+            ]
+        ),
+        .testTarget(
+            name: "DLabTests",
+            dependencies: ["DLab"]
+        ),</code></pre>
+<p>Now, if you *do not have anything in the <code>Resources</code> folder at this time, you’ll get a CodeSign error, which makes absolutely no sense (and will have you doing a lot of googling to no end). So put something (an image for example) into this folder and it will go away.</p>
+</section>
+<section id="still-not-working" class="level2">
+<h2 class="anchored" data-anchor-id="still-not-working">Still Not Working</h2>
+<p>OK, so this is still not working. I didn’t get the error when compiling and testing on MacOS target, but I do when compiling for iOS. Apparetly, the best way to do it is to specify the items in the <code>Resources</code> directly explicitly.</p>
+<p>The following does actually work!</p>
+<pre><code>        .target(
+            name: "DLab",
+            dependencies: [],
+            resources: [
+                .copy("Resources/tree.png")
+            ]
+        ),</code></pre>
+<p>Now it does work. And if you need to have additional items, they need to go into their own <code>.copy()</code> framework.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/index.html</guid>
+  <pubDate>Fri, 28 Oct 2022 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/featured.png" medium="image" type="image/png" height="14" width="144"/>
+</item>
+<item>
+  <title>ddRADSeq Demultiplexing</title>
+  <link>https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="getting-components" class="level1">
+<h1>Getting Components</h1>
+<p>Your sequencing facility will let you provide to you a ftp link to download compressed fasta files (ending in <code>.fa.gz</code> in my case). We are getting these data in raw form and will do own own demultiplexing and creating a <em>de novo</em> assembly from which to call SNPs.</p>
+<section id="setting-up-ssh" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-ssh">Setting up SSH</h2>
+<p>One pain point in doing this is that you’ll have to do all the work on a remote server and logging in each time can lead to a pain point (because <em>you are</em> using unique, long, and complicated passwords for each of your accounts, right?).</p>
+<p>To overcome this, set up your public/private SSH key pair. First, check if you have one setup.</p>
+<pre><code>rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*.pub
+.ssh/id_rsa.pub</code></pre>
+<p>If there is nothing there, then you need to generate a new public key.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">rodney<span class="sc" style="color: #5E5E5E;">@</span>Rodneys<span class="sc" style="color: #5E5E5E;">-</span>Mac<span class="sc" style="color: #5E5E5E;">-</span>Studio <span class="sc" style="color: #5E5E5E;">~</span> % ssh<span class="sc" style="color: #5E5E5E;">-</span>keygen <span class="sc" style="color: #5E5E5E;">-</span>t rsa <span class="sc" style="color: #5E5E5E;">-</span>b <span class="dv" style="color: #AD0000;">4096</span> <span class="sc" style="color: #5E5E5E;">-</span>C <span class="st" style="color: #20794D;">"your_email@domain.com"</span></span></code></pre></div>
+</div>
+<p>and follow the online instructions. If you do use a <em>passphrase</em> <strong>MAKE SURE</strong> you have it written down somewhere (like in your password manager).</p>
+<p>After this, you should see both the public and private versions in your local repository.</p>
+<pre><code>rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*    
+.ssh/id_rsa     .ssh/id_rsa.pub</code></pre>
+<p>Now, what you need to do is to copy your identity over to the new server.</p>
+<pre><code>ssh-copy-id remoteUserID@remote.server.com</code></pre>
+<p>You should get some message like:</p>
+<pre><code>remoteUserID@remote.server.com's password: 
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   
+"ssh 'remoteUserID@remote.server.com'"
+and check to make sure that only the key(s) you 
+wanted were added.</code></pre>
+<p>Now you should be able to log into the remote server without needing to copy over a password all the time.</p>
+<p>One last thing that I find to help out. If your remote server has some long name to it, you can make a shortcut by adding an entry to the <code>/etc/hosts</code> file.</p>
+<pre><code>sudo vim /etc/hosts</code></pre>
+<p>To this file, add a line that has the full name of the server, a tab, and then a nickname you give it.</p>
+<pre><code>rodney@Rodneys-Mac-Studio ~ % cat /etc/hosts
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1   localhost
+255.255.255.255 broadcasthost
+::1             localhost
+my.server.with.long.name    nickname</code></pre>
+<p>Now, you should be able to log into your remote server as:</p>
+<pre><code>ssh user@nickname</code></pre>
+<p>much easier.</p>
+</section>
+<section id="getting-stacks" class="level2">
+<h2 class="anchored" data-anchor-id="getting-stacks">Getting STACKS</h2>
+<p>Stacks is a set of programs that are used to assemble sequence data. I use it commonly for demultiplexing. Go grab the link to the latest version <a href="https://catchenlab.life.illinois.edu/stacks/">here</a>.</p>
+<p>When I did it for this document it was version 2.62. Grab it from your server. I typically put all the source code into a <code>src</code> folder.</p>
+<pre><code>$ mkdir src
+$ cd src
+$ wget http://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz
+$ tar zxvf stacks-2.62.tar.gz
+$ cd stacks-2.62</code></pre>
+<p>Then you need to install it.</p>
+<p>On my current server, they use a Module system for loading various development environments. You can find the documentation <a href="https://wiki.vcu.edu/display/unix/Modules+at+HPRC">here</a>. To load up the most recent version of the gcc compiler set, you enter.</p>
+<pre><code>$ module load gcc
+$ module list
+Currently Loaded Modules:
+  1) gcc/10.2.1</code></pre>
+<p>Then you can configure the compiliation and environment.</p>
+<pre><code>$ ./configure --prefix=/home/user/</code></pre>
+<p>And if all the stuff is there, you should get a long list of stuff ending with:</p>
+<pre><code>checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating htslib/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands</code></pre>
+<p>Now, compile the components (and go grab a cup of coffee)</p>
+<pre><code>$ make </code></pre>
+<p>If it died for some reason, you’ll have to do some spelunking and figure out why it died (probably due to a missing dependency) and then grab the components that you were missing.</p>
+<p>After that, you can install it (to your local directories).</p>
+<pre><code>$ make install</code></pre>
+<p>And everything should be good.</p>
+</section>
+<section id="screen" class="level2">
+<h2 class="anchored" data-anchor-id="screen">Screen</h2>
+<p>Doing anything with this large amount of data will take time. It is good to remember that the vast majority of what you’ll be working with is actually stuff you are going to throw away in the end anyways. That being said, our first main tool will be <code>screen</code>. This is a program that allows you to create a “sub shell” for a process, do something that is going to take a long time, log out of the shell and continue on your daily routine. Then, at various times in the near (or distant) future, you can log back in and see how things are going.</p>
+<p>You can run screen on your machine or on the remote server where things are happening. I’m going to run it on the other end.</p>
+<pre><code>$ screen --help </code></pre>
+<p>To start a new screen session, invoke it as:</p>
+<pre><code>$ screen</code></pre>
+<p>And you will be entered into a new session. To exit, hit <code>CTRL-A D</code> and you will be pooped out of the screen session.</p>
+<p>To reattach to an existing session, you can list the current active ones</p>
+<pre><code>$ screen -list 
+There are screens on:
+    12892.pts-10.server (Detached)
+    12775.pts-10.server (Detached)
+    12658.pts-10.server (Detached)
+3 Sockets in /var/run/screen/S-user.</code></pre>
+<p>Then reattach to one, you need to specify it by the id.</p>
+<pre><code>$ screen -r 12892</code></pre>
+<p>To exit a session you are in (and no longer retain it), type</p>
+<pre><code>$ exit</code></pre>
+</section>
+<section id="process-radtags" class="level2">
+<h2 class="anchored" data-anchor-id="process-radtags">Process Radtags</h2>
+<p>Last time I tried this, I ran it with this configuration on a single linux box.</p>
+<pre><code>process_radtags -p ./raw/ -o ./samples/run_13_2/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI</code></pre>
+<p>Now I am on a cluster and we need to submit our jobs through SLURM. Here is a config file to run a batch run.</p>
+<pre><code>#!/bin/bash
+#SBATCH --time=72:00:00
+#SBATCH --chdir=./
+#SBATCH --mem=16G
+#SBATCH --mail-user=rjdyer@vcu.edu
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-type=REQUEUE
+#SBATCH --mail-type=ALL
+#SBATCH -J "radtags"
+#SBATCH --ntasks=1
+
+
+START=$(date +%s.%N)
+echo "Starting process radtags" 
+
+# for the run, you need to change the lane
+process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -D -e ecoRI 
+
+
+END=$(date +%s.%N)
+DIFF=$(echo "($END - $START)/60" | bc)
+echo "Processing radtags took ${DIFF} minutes to complete."</code></pre>
+<p>To run it, I saved the script as <code>01-process_radtags_slurm.sh</code>, made it executable as</p>
+<pre><code>$ chmod +x 01-process_radtags_slurm.sh</code></pre>
+<p>and ran it as:</p>
+<pre><code>$ sbatch ./01-process_radtags_slurm.sh</code></pre>
+<p>Actually I was not able to get <code>sbatch</code> to run, so I just did a quick bash srun job.</p>
+<pre><code>$ srun -A rjdyer --nodes=1 --time=48:00:00 --mem=16G --pty /bin/bash
+$ process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI </code></pre>
+<p>Some pages of interest</p>
+<ul>
+<li>https://slurm.schedmd.com/quickstart.html</li>
+<li>https://gist.github.com/andersgs/4aa1c19f7cd8a2db49a26f06efe7492d</li>
+</ul>
+<hr>
+<p>Cover Photo by <a href="https://unsplash.com/@sangharsh_l?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Sangharsh Lohakare</a> on <a href="https://unsplash.com/s/photos/dna?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/index.html</guid>
+  <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/featured.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Irreversibility of Structure &amp; Diversity Statistics</title>
+  <link>https://dyerlab.org/posts/2022-09-30-Irreversibility/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2022-09-30-Irreversibility/pops.gif" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Non-uniqueness of frequency spectra resulting in identical among population (<img src="https://latex.codecogs.com/png.latex?F_%7Bst%7D">) and within population (<img src="https://latex.codecogs.com/png.latex?H_t">) estimates of genetic diversity as demonstrated from allele frequencies for twelve populations for the first two alleles from a three allele locus.</figcaption><p></p>
+</figure>
+</div>
+<p>The mapping of genotypes -&gt; estimates of both within locale diversity and among local structure are a fundamental component of population and landscape genetic analyses, and indeed the formulation for our understanding of how evolution proceeds.</p>
+<p>A common method for measuring structure is from Sewell Wright ’s <img src="https://latex.codecogs.com/png.latex?F_%7Bst%7D"> statistic and its offspring. At heart, the parameters is defined as the fraction of the total genetic variance that can be contributed to individuals being in different populations. This parameter has many offspring but in its most general form, it can be defined as the ratio of the among locale variance in allele frequencies standardized by the variance in the global allele frequencies. For a single locus, this becomes.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AF_%7BST%7D%20=%20%5Cfrac%7B%5Csum_%7Bi=1%7D%5E%5Cell%20%5Csigma_%7Bq_%7BS(i)%7D%7D%5E2%7D%7B%5Csum_%7Bi=1%7D%5E%5Cell%20%5Cleft%5B%20%20q_%7BT(i)%7D%20(1%20-%20q_%7BT(i)%7D)%20%5Cright%5D%7D%0A"></p>
+<p>Originally, Wright suggested that this should probably not be thought of in the way that most of us see ‘differentiation’. Namely,</p>
+<blockquote class="blockquote">
+<p>The fixation index [Fst] is thus not a measure of the degree of differentiation in the sense implied in the extreme case by the absence of any common allele. It measures differentiation within the total array in the sense of the extent to which the process of fixation has gone toward completion.<sup>1</sup></p>
+</blockquote>
+<p>To demonstrate this, he showed the following examples. Of note, compare cases 1, 6, 7, &amp; 8 in the following table, all of which have the same value for Fst but have different allele spectra (in particular, see 7 &amp; 8, which have subsets of populations that have Fst = 0!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2022-09-30-Irreversibility/Fst_table.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Table 3.1 from Wright’s 4th volume on the variability within and among natural populations.</figcaption><p></p>
+</figure>
+</div>
+<p>To view this in a more broad context, we can easily show that for any particular value of Fst, we can define a similarly large number of population configurations that results in both the same amount of overall genetic structure (<img src="https://latex.codecogs.com/png.latex?F_%7Bst%7D">) <em>and</em> the same amount of within strata diversity (<img src="https://latex.codecogs.com/png.latex?H_t">).</p>
+<p>There are two examples that highlight some of the challenges for this.</p>
+<ol type="1">
+<li><p>It is possible to fix the allele frequencies and shuffle the labels. For example, the identity of the specific locale relative to the inherent allele frequencies is not unique. Consider the case where Population A has <code>p=0.3</code> at a locus and Population B has <code>p=0.7</code> After some perturbation in the system or iterating across generations, we may have the situation where Population A has <code>p = 0.7</code> and Population B has <code>p = 0.3</code>. Measuring structure or diversity within and among these pairs of pops will yield identical values even though the relative positions of each population has been swapped in allele space.</p></li>
+<li><p>More generally, for any given value of diversity and structure, we can find an infinite set of populations that can yield the same estimates. The featured image on this page is an example with <code>K=12</code> populations for a single 3-allele locus. The plots are of the first two allele frequencies and the estimates of both diversity and differentiation are the same to the first 3 decimal points (n.b., we can be more stringent but I think this makes the point close enough).</p></li>
+</ol>
+<p>In both of these situations, the relative position and arrangements of the individual populations are not unique. Now, this may not be an issue, if the kinds of questions you are working with do not rely upon interpreting the relative positions of populations in allele space. However, for many population, conservation, and landscape type studies, it is exactly the relative positions of populations that are the focus of the study. As such, to ignore the <em>irreversibility of structure and diversity statistics</em> is to pass up on potentially valuable insights on the species and systems you are working with.</p>
+
+
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Wright, S. 1978. <a href="https://www.amazon.com/Evolution-Genetics-Populations-Variability-Natural-dp-0226910415/dp/0226910415/ref=mt_other?_encoding=UTF8&amp;me=&amp;qid=">Evolution &amp; the Genetics of Populations 4: Variability within and among natural populations.</a> University of Chicago Press. .↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <guid>https://dyerlab.org/posts/2022-09-30-Irreversibility/index.html</guid>
+  <pubDate>Fri, 30 Sep 2022 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2022-09-30-Irreversibility/pops.gif" medium="image" type="image/gif"/>
+</item>
+</channel>
+</rss>

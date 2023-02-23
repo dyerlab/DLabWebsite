@@ -8,9 +8,11 @@ listing:
   sort-ui: false
   filter-ui: false
   fields: [date,title,categories,description,image]
+  feed: true
 page-layout: full
 title-block-banner: true
 ---
+
 
 The Dyer laboratory is a research lab at [Virginia Commonwealth University](https://vcu.edu) that focuses on developing and testing tools to aid in understand how landscape features influence genetic connectivity. This requires a mix of theory development, software creation, and evaluation using (largely) non-model systems in the field.
 
