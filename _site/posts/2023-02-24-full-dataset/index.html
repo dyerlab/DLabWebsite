@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-02-23">
-<meta name="description" content="I reran the 5% mapping data, keeping all sites with greater than 3 individuals in them, through freebayes. This last SNP calling finished on Feb 23 10:37:29 EST 2023 yielding a potential of 19,879 identified sites across 1318 individuals. This includes all the base individuals, all the confiscated individuals, and the extra sampels that were added to the analysis from the western portion of the species range. There are some samples that did not process correctly, I think I may need to remap these individuals and throw them in with the few smaller singleton sites. I’ll start this today and should be finished by Monday. However, this is a good start on what we are needing.">
+<meta name="dcterms.date" content="2023-02-24">
+<meta name="description" content="I reran the 5% mapping data, keeping all sites with greater than 3 individuals in them, through freebayes. This last SNP calling finished on Feb 24 10:37:29 EST 2023 yielding a potential of 19,879 identified sites across 1318 individuals. This includes all the base individuals, all the confiscated individuals, and the extra sampels that were added to the analysis from the western portion of the species range. There are some samples that did not process correctly, I think I may need to remap these individuals and throw them in with the few smaller singleton sites. I’ll start this today and should be finished by Monday. However, this is a good start on what we are needing.">
 
 <title>dyerlab - Full Data Run</title>
 <style>
@@ -67,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 <meta name="twitter:title" content="dyerlab - Full Data Run">
 <meta name="twitter:description" content="I reran the 5% mapping data, keeping all sites with greater than 3 individuals in them, through freebayes.">
-<meta name="twitter:image" content="https://dyerlab.org/posts/2023-02-23-full-dataset/featured.png">
+<meta name="twitter:image" content="https://dyerlab.org/posts/2023-02-24-full-dataset/featured.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">Full Data Run</h1>
                   <div>
         <div class="description">
-          <p>I reran the 5% mapping data, keeping all sites with greater than 3 individuals in them, through freebayes. This last SNP calling finished on <tt>Feb 23 10:37:29 EST 2023</tt> yielding a potential of 19,879 identified sites across 1318 individuals. This includes all the base individuals, all the confiscated individuals, and the extra sampels that were added to the analysis from the western portion of the species range. There are some samples that did not process correctly, I think I may need to remap these individuals and throw them in with the few smaller singleton sites. I’ll start this today and should be finished by Monday. However, this is a good start on what we are needing.</p>
+          <p>I reran the 5% mapping data, keeping all sites with greater than 3 individuals in them, through freebayes. This last SNP calling finished on <tt>Feb 24 10:37:29 EST 2023</tt> yielding a potential of 19,879 identified sites across 1318 individuals. This includes all the base individuals, all the confiscated individuals, and the extra sampels that were added to the analysis from the western portion of the species range. There are some samples that did not process correctly, I think I may need to remap these individuals and throw them in with the few smaller singleton sites. I’ll start this today and should be finished by Monday. However, this is a good start on what we are needing.</p>
         </div>
       </div>
                 </div>
@@ -134,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 23, 2023</p>
+        <p class="date">February 24, 2023</p>
       </div>
     </div>
     
@@ -156,7 +156,16 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>OK, so this morning the largest set of samples were processed and included all locales that I have with at least 4 individuals in them.</p>
+<p>At present, we have 1318 individuals processed and I am waiting on the final 120~ish to finish up this weekend. While these last few are processed and SNPs are called, I am starting to get them configured for analysis (as in actually being able to get answers to this tremendously drawn out process).</p>
+<p>This is not the full data set, this is a random subset of the data that has been derived due to time constraints. These data consist of:</p>
+<ul>
+<li>A 5% random sample of each individuals sequences.</li>
+<li>Mapped onto a conservative <em>de novo</em> reference genome assembly that contains only 6,676 contigs. This reference genome was created from 2.5% random sample of each individuals genome as well. See <a href="https://dyerlab.org/posts/2023-01-ddradseq-progress/">this post</a> for more about the assembly and why we chose to use this sized assembly as a reference.</li>
+</ul>
+<section id="filtering" class="level2">
+<h2 class="anchored" data-anchor-id="filtering">Filtering</h2>
+<p>To start with, we need to filter the loci. In the current data, we have identified 19,879 sites of potential interest. Next, we filter these down by throwing away ones that do not conform to some rigid tests designed to minimize errors (sequencing errors, etc.). Using <code>vcftools</code>, the first pass of the data was done considering only SNP loci (no sites in insertion/deletion locations), sites with sufficiently high sequencing quality scores (to ensure confidence in identity of nucleotide called by the sequencing machine), sites that have at least 5 individuals possesing a copy of the minor allele (to ignore singletons and rare variants), and with enough sequencing depth (e.g., multiple sequences that are identical) to ensure that we’ve got good genomic regions that are free from any sequencing errors, and have only 2 alleles at the locus.</p>
+<p>The table below shows how these filtering options reduced the number of potential sites.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -181,11 +190,23 @@ ul.task-list li input[type="checkbox"] {
 <td>Depth 10X</td>
 <td>1,004</td>
 </tr>
+<tr class="odd">
+<td>2 - alleles</td>
+<td>926</td>
+</tr>
 </tbody>
 </table>
-<p>From these, I set up data set in 012 allele format and imported it into <code>R</code> using <a href="https://github.com/dyerlab/gstudio/">gstudio</a>.</p>
+<p>From these, I extracted the following derivative components. - site Allele frequencies - site Sequencing depth - site HWE estimates</p>
+<p>Then I finished by exporting the filtered data in <code>012</code> allele format and imported it into <code>R</code> using <a href="https://github.com/dyerlab/gstudio/">gstudio</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="filesystem.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Looks good!</figcaption><p></p>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

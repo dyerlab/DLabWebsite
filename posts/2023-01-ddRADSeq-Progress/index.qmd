@@ -73,10 +73,7 @@ save(progress, file="progress.rda")
 ```{r}
 #| fig-cap: Progress of the main steps in processing raw sequence data.  
 data.frame( Step = c("Demultiplexed", "Filtered", "Mapped", "SNPs"),
-            Progress = 100.0 * c( 1.0 - (sum( is.na(progress$Demultiplexed) ) / nrow(progress)),
-                                  1.0 - (sum( is.na(progress$Filtered) ) / nrow(progress)),
-                                  1.0 - (sum( is.na(progress$Mapped) ) / nrow(progress)),
-                                  1.0 - (sum( is.na(progress$SNPs) ) / nrow(progress)))
+            Progress = 100.0 
             ) %>%
   ggplot( aes(Step, Progress) ) + 
   geom_col()
@@ -118,14 +115,13 @@ This was started on 2 February 2023 and appears to be taking roughly 30 minutes 
 #| fig-cap: Table 1 Current progress on bioinformatic workflows.
 #| fig-cap-location: top
 
-tmp <- progress %>% select( Population, N, Sites, SNPs) 
+tmp <- progress %>% select( Population, N) 
 tmp$Demultiplexed <- 100
 tmp$Filtered <- 100
 tmp$Mapped <- 100
 tmp %>%
   select( Population, N, Demultiplexed, Filtered, Mapped, everything()) -> tmp
 
-tmp$Mapped[ tmp$Population == "L" ] <- round( (9+51+37) / tmp$N[ tmp$Population == "L"] * 100.0)
 
 left2Do <- round(sum(tmp$N) - sum(tmp$Mapped/100 * tmp$N))
 
@@ -136,9 +132,6 @@ tmp$Mapped <- color_bar("lightgreen")(tmp$Mapped)
 tmp$Demultiplexed <- color_bar( "lightgreen")(tmp$Demultiplexed)
 tmp$Filtered <- color_bar( "lightgreen")(tmp$Filtered)
 
-tmp$SNPs <- ifelse( tmp$SNPs > 1000, 
-                    cell_spec( tmp$SNPs, color = "green", bold=TRUE),
-                    cell_spec( tmp$SNPs, color = "red", italic=TRUE))
 
 tmp %>% 
   kbl( escape = F, digits=0) %>%
@@ -147,5 +140,5 @@ tmp %>%
 ```
 
 
-At present, there are `r left2Do` samples remaining to be mapped.
+At present, there are `r left2Do` samples remaining to be initially mapped.  Reruns on mapping will not be tracked here.
 

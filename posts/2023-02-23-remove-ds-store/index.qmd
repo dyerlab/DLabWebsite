@@ -1,0 +1,55 @@
+---
+title: "Removing .DS_Store"
+date: "2023-02-23"
+description: |
+  Working with .git on Mac will always result in those pesky .DS_Store files that the OS uses to keep track of folder related metadata.  Here are two things you need to do to make sure they do not pollute your repositories.
+---
+
+On MacOS, an invisible file named `.DS_Store` (it is invisible because it starts with a period) can be found in any folder that has some modifications to basic layouts.  This is where the metadata is stored that governs view preferences to this folder, icon placement, and other things related to how a user may have customized or modified the appearance of a folder or any manipulation in the Finder.app.  
+
+This is all find and dandy until you start doing things like keeping repositories of folders of work in `R` or other languages using a versioning system like `git`.  As it turns out, these files often change and as such will end up being archived in your add-commit-push workflow.  Here is how I get rid of them.
+
+First change to the directory of your repository in the `Terminal.app` or if you are using `RStudio`, open the Terminal there in your project (you are using projects, right?).
+
+```
+cd MY_REPO
+```
+
+Next, we can find any and all of them that are currently in the directory tree using the `find` command.  Here are the results of my blog repository.
+
+```
+$ find . -name ".DS_Store"
+./manuscripts/apsit-et-al-2002/.DS_Store
+./manuscripts/tassone-et-al-2020/.DS_Store
+./manuscripts/friedline-et-al-2019/.DS_Store
+./manuscripts/flores-manzanero-et-al-2019/.DS_Store
+./manuscripts/baker-dyer-2011/.DS_Store
+./manuscripts/kelly-dyer-2002/.DS_Store
+./manuscripts/smouse-et-al-2001/.DS_Store
+./posts/2023-02-20-processing-bam-files/.DS_Store
+./posts/2023-02-23-full-dataset/.DS_Store
+./posts/.DS_Store
+./posts/2022-09-01-markdown/.DS_Store
+./posts/2023-02-20-screen-scrolling/.DS_Store
+./posts/2023-02-14-Variant-Filtering/.DS_Store
+./posts/2022-09-07-Rendering-R-Helpfiles/.DS_Store
+./images/.DS_Store
+```
+
+If you have some (such as I did) delete them in a similar manner by appending `-delete` to the find command.
+
+```
+find . -iname ".DS_Store" -delte
+```
+
+Next, if had previously add any of these into your repository, you will see them as deleted in your git status output.  If they are are there, commit the change for deletion as you would normally.
+
+Now, open up your `.gitignore` file, which should be in the root directory of your repository.  If you do not have one, then create one.  This file tells `git` which file patterns to ignore in the future (cryptic naming scheme, no?).  
+
+Add `.DS_Store` on its own line then commit its change. Here is what my `.gitignore` looks like for this blog repository. 
+
+![](featured.png)
+
+Add your messages and push these commits up to your repository.   
+
+You should never have to deal with this again, .DS_Store files will show up but git will never see them.

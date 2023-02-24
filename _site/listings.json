@@ -52,7 +52,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2023-02-23-full-dataset/index.html",
+      "/posts/2023-02-24-full-dataset/index.html",
+      "/posts/2023-02-23-remove-ds-store/index.html",
       "/posts/2023-02-22-first-pass/index.html",
       "/posts/2023-02-21-freebayes2/index.html",
       "/posts/2023-02-16-Runing-freebayes/index.html",

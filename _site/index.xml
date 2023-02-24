@@ -10,20 +10,29 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Thu, 23 Feb 2023 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 24 Feb 2023 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Full Data Run</title>
-  <link>https://dyerlab.org/posts/2023-02-23-full-dataset/index.html</link>
+  <link>https://dyerlab.org/posts/2023-02-24-full-dataset/index.html</link>
   <description><![CDATA[ 
 
 
 
 
-<p><img src="https://dyerlab.org/posts/2023-02-23-full-dataset/featured.png" class="img-fluid"></p>
+<p><img src="https://dyerlab.org/posts/2023-02-24-full-dataset/featured.png" class="img-fluid"></p>
 <div class="cell">
 
 </div>
-<p>OK, so this morning the largest set of samples were processed and included all locales that I have with at least 4 individuals in them.</p>
+<p>At present, we have 1318 individuals processed and I am waiting on the final 120~ish to finish up this weekend. While these last few are processed and SNPs are called, I am starting to get them configured for analysis (as in actually being able to get answers to this tremendously drawn out process).</p>
+<p>This is not the full data set, this is a random subset of the data that has been derived due to time constraints. These data consist of:</p>
+<ul>
+<li>A 5% random sample of each individuals sequences.</li>
+<li>Mapped onto a conservative <em>de novo</em> reference genome assembly that contains only 6,676 contigs. This reference genome was created from 2.5% random sample of each individuals genome as well. See <a href="https://dyerlab.org/posts/2023-01-ddradseq-progress/">this post</a> for more about the assembly and why we chose to use this sized assembly as a reference.</li>
+</ul>
+<section id="filtering" class="level2">
+<h2 class="anchored" data-anchor-id="filtering">Filtering</h2>
+<p>To start with, we need to filter the loci. In the current data, we have identified 19,879 sites of potential interest. Next, we filter these down by throwing away ones that do not conform to some rigid tests designed to minimize errors (sequencing errors, etc.). Using <code>vcftools</code>, the first pass of the data was done considering only SNP loci (no sites in insertion/deletion locations), sites with sufficiently high sequencing quality scores (to ensure confidence in identity of nucleotide called by the sequencing machine), sites that have at least 5 individuals possesing a copy of the minor allele (to ignore singletons and rare variants), and with enough sequencing depth (e.g., multiple sequences that are identical) to ensure that we’ve got good genomic regions that are free from any sequencing errors, and have only 2 alleles at the locus.</p>
+<p>The table below shows how these filtering options reduced the number of potential sites.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -48,16 +57,73 @@
 <td>Depth 10X</td>
 <td>1,004</td>
 </tr>
+<tr class="odd">
+<td>2 - alleles</td>
+<td>926</td>
+</tr>
 </tbody>
 </table>
-<p>From these, I set up data set in 012 allele format and imported it into <code>R</code> using <a href="https://github.com/dyerlab/gstudio/">gstudio</a>.</p>
+<p>From these, I extracted the following derivative components. - site Allele frequencies - site Sequencing depth - site HWE estimates</p>
+<p>Then I finished by exporting the filtered data in <code>012</code> allele format and imported it into <code>R</code> using <a href="https://github.com/dyerlab/gstudio/">gstudio</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-02-24-full-dataset/filesystem.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Looks good!</figcaption><p></p>
+</figure>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-02-24-full-dataset/index.html</guid>
+  <pubDate>Fri, 24 Feb 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-02-24-full-dataset/featured.png" medium="image" type="image/png"/>
+</item>
+<item>
+  <title>Removing .DS_Store</title>
+  <link>https://dyerlab.org/posts/2023-02-23-remove-ds-store/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>On MacOS, an invisible file named <code>.DS_Store</code> (it is invisible because it starts with a period) can be found in any folder that has some modifications to basic layouts. This is where the metadata is stored that governs view preferences to this folder, icon placement, and other things related to how a user may have customized or modified the appearance of a folder or any manipulation in the Finder.app.</p>
+<p>This is all find and dandy until you start doing things like keeping repositories of folders of work in <code>R</code> or other languages using a versioning system like <code>git</code>. As it turns out, these files often change and as such will end up being archived in your add-commit-push workflow. Here is how I get rid of them.</p>
+<p>First change to the directory of your repository in the <code>Terminal.app</code> or if you are using <code>RStudio</code>, open the Terminal there in your project (you are using projects, right?).</p>
+<pre><code>cd MY_REPO</code></pre>
+<p>Next, we can find any and all of them that are currently in the directory tree using the <code>find</code> command. Here are the results of my blog repository.</p>
+<pre><code>$ find . -name ".DS_Store"
+./manuscripts/apsit-et-al-2002/.DS_Store
+./manuscripts/tassone-et-al-2020/.DS_Store
+./manuscripts/friedline-et-al-2019/.DS_Store
+./manuscripts/flores-manzanero-et-al-2019/.DS_Store
+./manuscripts/baker-dyer-2011/.DS_Store
+./manuscripts/kelly-dyer-2002/.DS_Store
+./manuscripts/smouse-et-al-2001/.DS_Store
+./posts/2023-02-20-processing-bam-files/.DS_Store
+./posts/2023-02-23-full-dataset/.DS_Store
+./posts/.DS_Store
+./posts/2022-09-01-markdown/.DS_Store
+./posts/2023-02-20-screen-scrolling/.DS_Store
+./posts/2023-02-14-Variant-Filtering/.DS_Store
+./posts/2022-09-07-Rendering-R-Helpfiles/.DS_Store
+./images/.DS_Store</code></pre>
+<p>If you have some (such as I did) delete them in a similar manner by appending <code>-delete</code> to the find command.</p>
+<pre><code>find . -iname ".DS_Store" -delte</code></pre>
+<p>Next, if had previously add any of these into your repository, you will see them as deleted in your git status output. If they are are there, commit the change for deletion as you would normally.</p>
+<p>Now, open up your <code>.gitignore</code> file, which should be in the root directory of your repository. If you do not have one, then create one. This file tells <code>git</code> which file patterns to ignore in the future (cryptic naming scheme, no?).</p>
+<p>Add <code>.DS_Store</code> on its own line then commit its change. Here is what my <code>.gitignore</code> looks like for this blog repository.</p>
+<p><img src="https://dyerlab.org/posts/2023-02-23-remove-ds-store/featured.png" class="img-fluid"></p>
+<p>Add your messages and push these commits up to your repository.</p>
+<p>You should never have to deal with this again, .DS_Store files will show up but git will never see them.</p>
 
 
 
  ]]></description>
-  <guid>https://dyerlab.org/posts/2023-02-23-full-dataset/index.html</guid>
+  <guid>https://dyerlab.org/posts/2023-02-23-remove-ds-store/index.html</guid>
   <pubDate>Thu, 23 Feb 2023 05:00:00 GMT</pubDate>
-  <media:content url="https://dyerlab.org/posts/2023-02-23-full-dataset/featured.png" medium="image" type="image/png"/>
+  <media:content url="https://dyerlab.org/posts/2023-02-23-remove-ds-store/featured.png" medium="image" type="image/png" height="123" width="144"/>
 </item>
 <item>
   <title>First Filtering Pass for SNP Calling</title>
@@ -675,12 +741,6 @@ Filtered
 <th style="text-align:left;">
 Mapped
 </th>
-<th style="text-align:right;">
-Sites
-</th>
-<th style="text-align:left;">
-SNPs
-</th>
 </tr>
 </thead>
 <tbody>
@@ -700,10 +760,6 @@ A
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -720,10 +776,6 @@ B
 </td>
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -742,10 +794,6 @@ C
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -762,10 +810,6 @@ D
 </td>
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -784,10 +828,6 @@ E
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -804,10 +844,6 @@ F
 </td>
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -826,9 +862,39 @@ G
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-</td>
+</tr>
+<tr>
 <td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 </tr>
 <tr>
@@ -847,12 +913,6 @@ J
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-9367
-</td>
-<td style="text-align:left;">
-<span style=" font-weight: bold;    color: green !important;">1508</span>
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -870,11 +930,22 @@ K
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-9367
-</td>
+</tr>
+<tr>
 <td style="text-align:left;">
-<span style=" font-weight: bold;    color: green !important;">1508</span>
+L
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 </tr>
 <tr>
@@ -893,10 +964,6 @@ M
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -913,10 +980,6 @@ N
 </td>
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -935,12 +998,6 @@ O
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-11338
-</td>
-<td style="text-align:left;">
-<span style="  font-style: italic;   color: red !important;">282</span>
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -957,12 +1014,6 @@ P
 </td>
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:right;">
-10730
-</td>
-<td style="text-align:left;">
-<span style=" font-weight: bold;    color: green !important;">1660</span>
 </td>
 </tr>
 <tr>
@@ -981,12 +1032,6 @@ Q
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-7100
-</td>
-<td style="text-align:left;">
-<span style="  font-style: italic;   color: red !important;">188</span>
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1003,12 +1048,6 @@ R
 </td>
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:right;">
-10294
-</td>
-<td style="text-align:left;">
-<span style=" font-weight: bold;    color: green !important;">1348</span>
 </td>
 </tr>
 <tr>
@@ -1027,12 +1066,6 @@ S
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-15089
-</td>
-<td style="text-align:left;">
-<span style=" font-weight: bold;    color: green !important;">1994</span>
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1049,12 +1082,6 @@ T
 </td>
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:right;">
-11986
-</td>
-<td style="text-align:left;">
-<span style="  font-style: italic;   color: red !important;">176</span>
 </td>
 </tr>
 <tr>
@@ -1073,12 +1100,6 @@ V
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-8586
-</td>
-<td style="text-align:left;">
-<span style="  font-style: italic;   color: red !important;">58</span>
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -1096,75 +1117,6 @@ W
 <td style="text-align:left;width: 3cm; ">
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
-<td style="text-align:right;">
-10891
-</td>
-<td style="text-align:left;">
-<span style=" font-weight: bold;    color: green !important;">1113</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-H
-</td>
-<td style="text-align:right;">
-66
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 80.00%">80</span>
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-I
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 24.00%">24</span>
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-L
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 20.00%">20</span>
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:left;">
-</td>
 </tr>
 </tbody>
 
@@ -1172,7 +1124,7 @@ L
 <p>Table 1 Current progress on bioinformatic workflows.</p>
 </div>
 </div>
-<p>At present, there are 114 samples remaining to be mapped.</p>
+<p>At present, there are 0 samples remaining to be mapped.</p>
 
 
 </section>
@@ -1854,165 +1806,6 @@ parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
   <guid>https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/index.html</guid>
   <pubDate>Fri, 28 Oct 2022 04:00:00 GMT</pubDate>
   <media:content url="https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/featured.png" medium="image" type="image/png" height="14" width="144"/>
-</item>
-<item>
-  <title>ddRADSeq Demultiplexing</title>
-  <link>https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="getting-components" class="level1">
-<h1>Getting Components</h1>
-<p>Your sequencing facility will let you provide to you a ftp link to download compressed fasta files (ending in <code>.fa.gz</code> in my case). We are getting these data in raw form and will do own own demultiplexing and creating a <em>de novo</em> assembly from which to call SNPs.</p>
-<section id="setting-up-ssh" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-ssh">Setting up SSH</h2>
-<p>One pain point in doing this is that you’ll have to do all the work on a remote server and logging in each time can lead to a pain point (because <em>you are</em> using unique, long, and complicated passwords for each of your accounts, right?).</p>
-<p>To overcome this, set up your public/private SSH key pair. First, check if you have one setup.</p>
-<pre><code>rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*.pub
-.ssh/id_rsa.pub</code></pre>
-<p>If there is nothing there, then you need to generate a new public key.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">rodney<span class="sc" style="color: #5E5E5E;">@</span>Rodneys<span class="sc" style="color: #5E5E5E;">-</span>Mac<span class="sc" style="color: #5E5E5E;">-</span>Studio <span class="sc" style="color: #5E5E5E;">~</span> % ssh<span class="sc" style="color: #5E5E5E;">-</span>keygen <span class="sc" style="color: #5E5E5E;">-</span>t rsa <span class="sc" style="color: #5E5E5E;">-</span>b <span class="dv" style="color: #AD0000;">4096</span> <span class="sc" style="color: #5E5E5E;">-</span>C <span class="st" style="color: #20794D;">"your_email@domain.com"</span></span></code></pre></div>
-</div>
-<p>and follow the online instructions. If you do use a <em>passphrase</em> <strong>MAKE SURE</strong> you have it written down somewhere (like in your password manager).</p>
-<p>After this, you should see both the public and private versions in your local repository.</p>
-<pre><code>rodney@Rodneys-Mac-Studio ~ % ls .ssh/id*    
-.ssh/id_rsa     .ssh/id_rsa.pub</code></pre>
-<p>Now, what you need to do is to copy your identity over to the new server.</p>
-<pre><code>ssh-copy-id remoteUserID@remote.server.com</code></pre>
-<p>You should get some message like:</p>
-<pre><code>remoteUserID@remote.server.com's password: 
-
-Number of key(s) added:        1
-
-Now try logging into the machine, with:   
-"ssh 'remoteUserID@remote.server.com'"
-and check to make sure that only the key(s) you 
-wanted were added.</code></pre>
-<p>Now you should be able to log into the remote server without needing to copy over a password all the time.</p>
-<p>One last thing that I find to help out. If your remote server has some long name to it, you can make a shortcut by adding an entry to the <code>/etc/hosts</code> file.</p>
-<pre><code>sudo vim /etc/hosts</code></pre>
-<p>To this file, add a line that has the full name of the server, a tab, and then a nickname you give it.</p>
-<pre><code>rodney@Rodneys-Mac-Studio ~ % cat /etc/hosts
-##
-# Host Database
-#
-# localhost is used to configure the loopback interface
-# when the system is booting.  Do not change this entry.
-##
-127.0.0.1   localhost
-255.255.255.255 broadcasthost
-::1             localhost
-my.server.with.long.name    nickname</code></pre>
-<p>Now, you should be able to log into your remote server as:</p>
-<pre><code>ssh user@nickname</code></pre>
-<p>much easier.</p>
-</section>
-<section id="getting-stacks" class="level2">
-<h2 class="anchored" data-anchor-id="getting-stacks">Getting STACKS</h2>
-<p>Stacks is a set of programs that are used to assemble sequence data. I use it commonly for demultiplexing. Go grab the link to the latest version <a href="https://catchenlab.life.illinois.edu/stacks/">here</a>.</p>
-<p>When I did it for this document it was version 2.62. Grab it from your server. I typically put all the source code into a <code>src</code> folder.</p>
-<pre><code>$ mkdir src
-$ cd src
-$ wget http://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz
-$ tar zxvf stacks-2.62.tar.gz
-$ cd stacks-2.62</code></pre>
-<p>Then you need to install it.</p>
-<p>On my current server, they use a Module system for loading various development environments. You can find the documentation <a href="https://wiki.vcu.edu/display/unix/Modules+at+HPRC">here</a>. To load up the most recent version of the gcc compiler set, you enter.</p>
-<pre><code>$ module load gcc
-$ module list
-Currently Loaded Modules:
-  1) gcc/10.2.1</code></pre>
-<p>Then you can configure the compiliation and environment.</p>
-<pre><code>$ ./configure --prefix=/home/user/</code></pre>
-<p>And if all the stuff is there, you should get a long list of stuff ending with:</p>
-<pre><code>checking that generated files are newer than configure... done
-configure: creating ./config.status
-config.status: creating Makefile
-config.status: creating htslib/Makefile
-config.status: creating config.h
-config.status: executing depfiles commands</code></pre>
-<p>Now, compile the components (and go grab a cup of coffee)</p>
-<pre><code>$ make </code></pre>
-<p>If it died for some reason, you’ll have to do some spelunking and figure out why it died (probably due to a missing dependency) and then grab the components that you were missing.</p>
-<p>After that, you can install it (to your local directories).</p>
-<pre><code>$ make install</code></pre>
-<p>And everything should be good.</p>
-</section>
-<section id="screen" class="level2">
-<h2 class="anchored" data-anchor-id="screen">Screen</h2>
-<p>Doing anything with this large amount of data will take time. It is good to remember that the vast majority of what you’ll be working with is actually stuff you are going to throw away in the end anyways. That being said, our first main tool will be <code>screen</code>. This is a program that allows you to create a “sub shell” for a process, do something that is going to take a long time, log out of the shell and continue on your daily routine. Then, at various times in the near (or distant) future, you can log back in and see how things are going.</p>
-<p>You can run screen on your machine or on the remote server where things are happening. I’m going to run it on the other end.</p>
-<pre><code>$ screen --help </code></pre>
-<p>To start a new screen session, invoke it as:</p>
-<pre><code>$ screen</code></pre>
-<p>And you will be entered into a new session. To exit, hit <code>CTRL-A D</code> and you will be pooped out of the screen session.</p>
-<p>To reattach to an existing session, you can list the current active ones</p>
-<pre><code>$ screen -list 
-There are screens on:
-    12892.pts-10.server (Detached)
-    12775.pts-10.server (Detached)
-    12658.pts-10.server (Detached)
-3 Sockets in /var/run/screen/S-user.</code></pre>
-<p>Then reattach to one, you need to specify it by the id.</p>
-<pre><code>$ screen -r 12892</code></pre>
-<p>To exit a session you are in (and no longer retain it), type</p>
-<pre><code>$ exit</code></pre>
-</section>
-<section id="process-radtags" class="level2">
-<h2 class="anchored" data-anchor-id="process-radtags">Process Radtags</h2>
-<p>Last time I tried this, I ran it with this configuration on a single linux box.</p>
-<pre><code>process_radtags -p ./raw/ -o ./samples/run_13_2/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI</code></pre>
-<p>Now I am on a cluster and we need to submit our jobs through SLURM. Here is a config file to run a batch run.</p>
-<pre><code>#!/bin/bash
-#SBATCH --time=72:00:00
-#SBATCH --chdir=./
-#SBATCH --mem=16G
-#SBATCH --mail-user=rjdyer@vcu.edu
-#SBATCH --mail-type=BEGIN
-#SBATCH --mail-type=END
-#SBATCH --mail-type=FAIL
-#SBATCH --mail-type=REQUEUE
-#SBATCH --mail-type=ALL
-#SBATCH -J "radtags"
-#SBATCH --ntasks=1
-
-
-START=$(date +%s.%N)
-echo "Starting process radtags" 
-
-# for the run, you need to change the lane
-process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -D -e ecoRI 
-
-
-END=$(date +%s.%N)
-DIFF=$(echo "($END - $START)/60" | bc)
-echo "Processing radtags took ${DIFF} minutes to complete."</code></pre>
-<p>To run it, I saved the script as <code>01-process_radtags_slurm.sh</code>, made it executable as</p>
-<pre><code>$ chmod +x 01-process_radtags_slurm.sh</code></pre>
-<p>and ran it as:</p>
-<pre><code>$ sbatch ./01-process_radtags_slurm.sh</code></pre>
-<p>Actually I was not able to get <code>sbatch</code> to run, so I just did a quick bash srun job.</p>
-<pre><code>$ srun -A rjdyer --nodes=1 --time=48:00:00 --mem=16G --pty /bin/bash
-$ process_radtags -p ./raw/lane3/ -o ./samples/land3/ -b ./barcodes/all/barcodes_all.csv --inline-null --disable-rad-check -i gzfastq -r -e ecoRI </code></pre>
-<p>Some pages of interest</p>
-<ul>
-<li>https://slurm.schedmd.com/quickstart.html</li>
-<li>https://gist.github.com/andersgs/4aa1c19f7cd8a2db49a26f06efe7492d</li>
-</ul>
-<hr>
-<p>Cover Photo by <a href="https://unsplash.com/@sangharsh_l?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Sangharsh Lohakare</a> on <a href="https://unsplash.com/s/photos/dna?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/index.html</guid>
-  <pubDate>Wed, 05 Oct 2022 04:00:00 GMT</pubDate>
-  <media:content url="https://dyerlab.org/posts/2022-10-05-ddRADSeq-I/featured.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
