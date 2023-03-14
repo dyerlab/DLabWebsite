@@ -1,0 +1,31 @@
+---
+title: "ChatGPT in My Obsidian Vault"
+date: "2023-03-14"
+draft: true
+execute:
+  exec: false
+description: |
+  After a really interesting conversation with a colleague of mine here at work, I thought I'd step beyond using mem.ai and tana+chatgpt to develop a quick tutorial of how you may like to index a local text repository, in this case my Obsidian Notes directory, using the most recent OpenAI build and not have to get into the weeds using R and lexers, etc.  
+---
+
+```{r}
+#| echo: false
+#| eval: false
+library(stringr)
+```
+
+
+So for this we are going to use their `python` interface.
+
+
+```
+rodney@Rodneys-Mac-Studio ~ % python3 --version 
+Python 3.11.2
+```
+
+```
+rodney@Rodneys-Mac-Studio ~ % pip3 --version   
+pip 22.3.1 from /opt/homebrew/lib/python3.11/site-packages/pip (python 3.11)
+```
+
+
