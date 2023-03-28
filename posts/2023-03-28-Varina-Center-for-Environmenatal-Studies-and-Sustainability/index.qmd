@@ -1,0 +1,29 @@
+---
+title: "ENVS Presenatation at VCESS"
+description: |
+  I got the opportuntity to go out and visit the new Varina Center for Environmental Studies and Sustainabilty and meet with the students and facutly.  Very exciting to have a new program so close to the Center.
+image: featured.png
+date: "2023-03-28"
+---
+
+![](featured.png){width=200px,height=200px}
+
+From their website, they are:
+
+- Comprehensive, student-centered curriculum focusing on the scientific, social, political and historical elements of environmental studies and sustainability. 
+- Participation in cutting-edge aquatic, terrestrial, and climate studies   
+- Experiential and place-based learning in the environmentally and historically rich Varina community 
+
+- Dual enrollment credit opportunities available to all students
+Industry Certification available to all students
+
+---
+
+## Center for Environemntal Studies
+
+The following slides provide a general overview of our undergraduate programs at VCU.
+
+[![](slides.png)](https://docs.google.com/presentation/d/1hPTA-FHR5Pdq4l5rJu0isfjSIILtkdose3Y2xNaaa94/edit?usp=sharing)
+
+
+

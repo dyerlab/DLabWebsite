@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-02-16">
-<meta name="description" content="Now we need to start calling more SNPs on the indiviudals that have been mapped to the reference genome. I’m breaking this up into groups of individuals (200-300) across many populations. I’m also submitting this via sbatch rather than spinning up a srun /bin/bash approach… Fingers crossed.">
+<meta name="dcterms.date" content="2023-02-21">
+<meta name="description" content="Now we need to start calling more SNPs on the indiviudals that have been mapped to the reference genome. I’m breaking this up into groups of individuals (200-300) across many populations. I’m also submitting this via sbatch rather than spinning up a srun /bin/bash approach… Failed.">
 
 <title>dyerlab - Running freebayes</title>
 <style>
@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <h1 class="title">Running freebayes</h1>
                   <div>
         <div class="description">
-          <p>Now we need to start calling more SNPs on the indiviudals that have been mapped to the reference genome. I’m breaking this up into groups of individuals (200-300) across many populations. I’m also submitting this via <tt>sbatch</tt> rather than spinning up a <tt>srun /bin/bash</tt> approach… Fingers crossed.</p>
+          <p>Now we need to start calling more SNPs on the indiviudals that have been mapped to the reference genome. I’m breaking this up into groups of individuals (200-300) across many populations. I’m also submitting this via <tt>sbatch</tt> rather than spinning up a <tt>srun /bin/bash</tt> approach… Failed.</p>
         </div>
       </div>
                 </div>
@@ -199,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 16, 2023</p>
+        <p class="date">February 21, 2023</p>
       </div>
     </div>
     
@@ -271,8 +271,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>After this, you can see that the batch job has been queued up (#34827) and waiting to go.</p>
 <pre><code>[rjdyer@huff snpcalling]$ squeue
   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
-<p>So, now lets see if it actually works.</p>
+  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)
+  34828     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
+<p>So, now lets see if it actually works. This run has 293 samples and the next one (#34828) has 270. <strong>Failed because <code>sbatch</code> didn’t work properly.</strong></p>
 
 
 </section>

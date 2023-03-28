@@ -10,7 +10,42 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Fri, 24 Feb 2023 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Mar 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>ENVS Presenatation at VCESS</title>
+  <link>https://dyerlab.org/posts/2023-03-28-Varina-Center-for-Environmenatal-Studies-and-Sustainability/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-03-28-Varina-Center-for-Environmenatal-Studies-and-Sustainability/featured.png" class="img-fluid"></p>
+<p>From their website, they are:</p>
+<ul>
+<li><p>Comprehensive, student-centered curriculum focusing on the scientific, social, political and historical elements of environmental studies and sustainability.</p></li>
+<li><p>Participation in cutting-edge aquatic, terrestrial, and climate studies<br>
+</p></li>
+<li><p>Experiential and place-based learning in the environmentally and historically rich Varina community</p></li>
+<li><p>Dual enrollment credit opportunities available to all students Industry Certification available to all students</p></li>
+</ul>
+<hr>
+<section id="center-for-environemntal-studies" class="level2">
+<h2 class="anchored" data-anchor-id="center-for-environemntal-studies">Center for Environemntal Studies</h2>
+<p>The following slides provide a general overview of our undergraduate programs at VCU.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://docs.google.com/presentation/d/1hPTA-FHR5Pdq4l5rJu0isfjSIILtkdose3Y2xNaaa94/edit?usp=sharing"><img src="https://dyerlab.org/posts/2023-03-28-Varina-Center-for-Environmenatal-Studies-and-Sustainability/slides.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-03-28-Varina-Center-for-Environmenatal-Studies-and-Sustainability/index.html</guid>
+  <pubDate>Tue, 28 Mar 2023 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-03-28-Varina-Center-for-Environmenatal-Studies-and-Sustainability/featured.png" medium="image" type="image/png" height="131" width="144"/>
+</item>
 <item>
   <title>Full Data Run</title>
   <link>https://dyerlab.org/posts/2023-02-24-full-dataset/index.html</link>
@@ -335,8 +370,9 @@ Run Time = 6.00 seconds</code></pre>
 <p>After this, you can see that the batch job has been queued up (#34827) and waiting to go.</p>
 <pre><code>[rjdyer@huff snpcalling]$ squeue
   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
-<p>So, now lets see if it actually works.</p>
+  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)
+  34828     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
+<p>So, now lets see if it actually works. This run has 293 samples and the next one (#34828) has 270. <strong>Failed because <code>sbatch</code> didn’t work properly.</strong></p>
 
 
 </section>
@@ -446,6 +482,8 @@ Zoo_969-sorted-md.bam.bai</code></pre>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-ssh</a></li>
 </ul>
 <p>Once you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work. For me, after logging into the remot server, I created an <code>R</code> file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side. It was all locally done so no big deal.</p>
+<p>The only problem that I did run into is that for some reason, <code>jsonlite</code> would not install because of some python dependency problem.</p>
+<pre><code>Failed to get list of R functions. Make sure that `jsonlite` is installed and r.rpath.linux points to a valid R executable.</code></pre>
 
 
 </section>
@@ -1124,7 +1162,7 @@ W
 <p>Table 1 Current progress on bioinformatic workflows.</p>
 </div>
 </div>
-<p>At present, there are 0 samples remaining to be mapped.</p>
+<p>At present, there are 0 samples remaining to be initially mapped. Reruns on mapping will not be tracked here.</p>
 
 
 </section>
@@ -1686,6 +1724,14 @@ parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
 <li>Be able to do the bioinformatics parts in a reasonable timeframe -&gt; <em>smaller data sets</em></li>
 </ol>
 <p>However, it is not always <em>a priori</em> knowable how much of the data to use.</p>
+<section id="full-data" class="level2">
+<h2 class="anchored" data-anchor-id="full-data">Full Data</h2>
+<p>So I started by running on the full data set. It took me a few runs to figure out that this is probably not going to work. A more complete discussion of these can be found:</p>
+<ul>
+<li><a href="../../posts/2023-01-21-First-dDocent-Run/index.html">First dDocent Run</a></li>
+<li><a href="../../posts/2023-01-25-Second-dDocent-Run/index.html">Second dDocent Run</a></li>
+</ul>
+</section>
 <section id="smaller-subsets" class="level2">
 <h2 class="anchored" data-anchor-id="smaller-subsets">Smaller Subsets</h2>
 <p>So it appears that taking all the data to make an assembly may be problematic for a few different reasons:</p>
@@ -1712,11 +1758,11 @@ parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
 <span id="cb1-14">    <span class="fu" style="color: #4758AB;">cat</span>( <span class="fu" style="color: #4758AB;">format</span>(i<span class="sc" style="color: #5E5E5E;">/</span><span class="fu" style="color: #4758AB;">length</span>(files), <span class="at" style="color: #657422;">digits=</span><span class="dv" style="color: #AD0000;">3</span>), <span class="st" style="color: #20794D;">" "</span>, ofile, <span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\n</span><span class="st" style="color: #20794D;">"</span>)</span>
 <span id="cb1-15">}</span></code></pre></div>
 </div>
-<p>Using this, I set up random subsets of the data for:</p>
+<p>Using this, I set up random subsets of the data for the following partitions. For each of these, I actually did a singular.</p>
 <ul>
 <li>10% of each individuals genome.</li>
 <li>5% of each individuals genome.</li>
-<li>2.5% of each individuals genome.</li>
+<li><a href="../../posts/2023-01-30-2pt5pct-dDocent-Run/index.html">2.5% of each individuals genome.</a></li>
 </ul>
 
 
@@ -1741,71 +1787,6 @@ parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
  ]]></description>
   <guid>https://dyerlab.org/posts/2023-01-16-Demultiplexing/index.html</guid>
   <pubDate>Mon, 16 Jan 2023 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Resources in Swift Package Manager</title>
-  <link>https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><img src="https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/featured.png" class="img-fluid"></p>
-<div class="cell">
-
-</div>
-<p>The <a href="https://www.swift.org/package-manager/">Swift Package Manager</a> is a great tool to wrap up code and help compartmentalize some of your data. It is still evolving but is really powerful. I ran into a few issues when trying to figure out how to add image resources to a package.</p>
-<p>Here are the ways that I used to figure this out.</p>
-<section id="resources-folder" class="level3">
-<h3 class="anchored" data-anchor-id="resources-folder">Resources Folder</h3>
-<p>There is no <code>Resources</code> folder (by default), so you’ll have to make one for yourself. Put it into:</p>
-<p><code>Sources/PROJECTNAME/Resources</code></p>
-</section>
-<section id="creating-a-copy-phase" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-copy-phase">Creating a Copy Phase</h3>
-<p>You’ll have to automatically set up a copy phase in your <code>Package.swift</code> file. It should be in the targets section for the main target. Mine looks like this by default.</p>
-<pre><code>        .target(
-            name: "DLab",
-            dependencies: []
-        ),
-        .testTarget(
-            name: "DLabTests",
-            dependencies: ["DLab"]
-        ),</code></pre>
-<p>You need to add a <code>resources: [.copy("Resources") ]</code> to the main target section so it looks like this.</p>
-<pre><code>        .target(
-            name: "DLab",
-            dependencies: [],
-            resources: [
-                .copy("Resources")
-            ]
-        ),
-        .testTarget(
-            name: "DLabTests",
-            dependencies: ["DLab"]
-        ),</code></pre>
-<p>Now, if you *do not have anything in the <code>Resources</code> folder at this time, you’ll get a CodeSign error, which makes absolutely no sense (and will have you doing a lot of googling to no end). So put something (an image for example) into this folder and it will go away.</p>
-</section>
-<section id="still-not-working" class="level2">
-<h2 class="anchored" data-anchor-id="still-not-working">Still Not Working</h2>
-<p>OK, so this is still not working. I didn’t get the error when compiling and testing on MacOS target, but I do when compiling for iOS. Apparetly, the best way to do it is to specify the items in the <code>Resources</code> directly explicitly.</p>
-<p>The following does actually work!</p>
-<pre><code>        .target(
-            name: "DLab",
-            dependencies: [],
-            resources: [
-                .copy("Resources/tree.png")
-            ]
-        ),</code></pre>
-<p>Now it does work. And if you need to have additional items, they need to go into their own <code>.copy()</code> framework.</p>
-
-
-</section>
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/index.html</guid>
-  <pubDate>Fri, 28 Oct 2022 04:00:00 GMT</pubDate>
-  <media:content url="https://dyerlab.org/posts/2022-10-28-SwiftPackageManagerResources/featured.png" medium="image" type="image/png" height="14" width="144"/>
 </item>
 </channel>
 </rss>

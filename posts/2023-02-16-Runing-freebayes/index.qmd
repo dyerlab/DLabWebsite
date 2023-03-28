@@ -8,7 +8,6 @@ description:  |
 ![](featured.png)
 
 ```{r}
-#| label: startup
 library( tidyverse )
 library( ggrepel )
 theme_set( theme_minimal() )
@@ -31,11 +30,9 @@ tribble( ~Population, ~N, ~Sites, ~SNPs,
          "O", 44, 11338, 282,
          "Q", 18, 7100, 188,
          "T", 81, 11986, 176,
-         "V", 21, 8586, 58) %>% View()
+         "V", 21, 8586, 58) %>% 
   ggplot( aes(N,SNPs,label=Population) ) + 
   geom_point()
-  
-  
 ```
 
 

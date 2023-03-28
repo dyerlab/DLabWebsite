@@ -237,6 +237,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-ssh</a></li>
 </ul>
 <p>Once you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work. For me, after logging into the remot server, I created an <code>R</code> file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side. It was all locally done so no big deal.</p>
+<p>The only problem that I did run into is that for some reason, <code>jsonlite</code> would not install because of some python dependency problem.</p>
+<pre><code>Failed to get list of R functions. Make sure that `jsonlite` is installed and r.rpath.linux points to a valid R executable.</code></pre>
 
 
 </section>
