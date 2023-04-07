@@ -15,14 +15,14 @@ description: |
 categories: 
 - population genetics
 - ddradseq
-image: featured.jpg
+image: featured.png
 
 doi:  10.1111/mec.15083
 ---
 
  [![ DOI 10.1111/mec.15083](https://img.shields.io/badge/DOI-474747.svg)](https://doi.org/10.1111/mec.15083)
 
-![]( featured.jpg )
+![]( featured.png )
 
 ## Abstract
 
