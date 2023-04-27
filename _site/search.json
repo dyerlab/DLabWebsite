@@ -688,7 +688,7 @@
   {
     "objectID": "posts/2023-04-27-Population-Assignment/index.html",
     "href": "posts/2023-04-27-Population-Assignment/index.html",
-    "title": "Population Assignemnt for Spotted Turtles",
+    "title": "Population Assignment for Confiscated Spotted Turtles",
     "section": "",
     "text": "Population assignment is the process of determining the likelihood of an individual from originating from a set of \\(K\\) populations.\n\nIn reality though, confiscated animals are probably not collected from any of the locales from which you’ve sampled to get the allele frequency spectra. So, one goes about the process by using the sample locations to create an assignment surface, showing where in general the samples probably came from. Here is just such an application for the endangered turtle species Clemmys guttata."
   },
