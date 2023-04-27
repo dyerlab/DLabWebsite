@@ -1,0 +1,13 @@
+---
+title: "Population Assignemnt for Spotted Turtles"
+description: |
+  Here is the interface for a population assignment app that I made for some confiscated spotted turtles. 
+image: featured.png
+date: "2023-04-27"
+---
+
+Population assignment is the process of determining the likelihood of an individual from originating from a set of $K$ populations.  
+
+![](featured.png)
+
+In reality though, confiscated animals are probably not collected from any of the locales from which you've sampled to get the allele frequency spectra.  So, one goes about the process by using the sample locations to create an assignment surface, showing where **in general** the samples probably came from.  Here is just such an application for the endangered turtle species *Clemmys guttata*.

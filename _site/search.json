@@ -686,6 +686,13 @@
     "text": "The program STRUCTURE is an ubiquitous feature of many population genetic studies these days—if it is appropriate is another question. Today, while covering model based clustering in population genetics, we ran into a problem where STRUCTURE was unable to run and the OS said it was Corrupted and should be thrown away. Jump below for our fix, it really is an easy one.\n\nThe most recent version of the GUI STRUCTURE java package dates from 2012. This is getting a bit long in the tooth, but when teaching it is not that far fetched to have aged laptops…\nThe error we were running into is the prompted with the following dialog box when attempting to start the program.\n\n\n\nLies about damaged\n\n\nAs it turns out, sometime between 2012 and now, OSX has moved towards digitally signing applications and in this case, it is not that it is “damaged” it just won’t allow the Java Runtime to run it unless we make a small change in the preferences panel and select the Security & Privacy option.\n\n\n\nSecurity Settings\n\n\nThen authenticate on the bottom by clicking on the lock and entering your password.\n\n\n\nClick to Authenticate\n\n\nNow, change the setting on the Allow apps downloaded from to the Anywhere option.\n\n\n\nChange to Allow from Anyone Temporarily\n\n\nThis should allow you to start STRUCTURE and run it. Do that and then close it. Go back to the System Preferences and turn it back to what you had it before.\n\n\n\nChange back\n\n\nOnce you run it once, you will be able to run it again without lowering your security. Happy clustering!"
   },
   {
+    "objectID": "posts/2023-04-27-Population-Assignment/index.html",
+    "href": "posts/2023-04-27-Population-Assignment/index.html",
+    "title": "Population Assignemnt for Spotted Turtles",
+    "section": "",
+    "text": "Population assignment is the process of determining the likelihood of an individual from originating from a set of \\(K\\) populations.\n\nIn reality though, confiscated animals are probably not collected from any of the locales from which you’ve sampled to get the allele frequency spectra. So, one goes about the process by using the sample locations to create an assignment surface, showing where in general the samples probably came from. Here is just such an application for the endangered turtle species Clemmys guttata."
+  },
+  {
     "objectID": "posts/2016-03-18-raster-plotting/raster-plotting.html",
     "href": "posts/2016-03-18-raster-plotting/raster-plotting.html",
     "title": "Raster Plotting",

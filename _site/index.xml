@@ -10,7 +10,26 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Tue, 18 Apr 2023 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 27 Apr 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Population Assignemnt for Spotted Turtles</title>
+  <link>https://dyerlab.org/posts/2023-04-27-Population-Assignment/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Population assignment is the process of determining the likelihood of an individual from originating from a set of <img src="https://latex.codecogs.com/png.latex?K"> populations.</p>
+<p><img src="https://dyerlab.org/posts/2023-04-27-Population-Assignment/featured.png" class="img-fluid"></p>
+<p>In reality though, confiscated animals are probably not collected from any of the locales from which you’ve sampled to get the allele frequency spectra. So, one goes about the process by using the sample locations to create an assignment surface, showing where <strong>in general</strong> the samples probably came from. Here is just such an application for the endangered turtle species <em>Clemmys guttata</em>.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-04-27-Population-Assignment/index.html</guid>
+  <pubDate>Thu, 27 Apr 2023 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-04-27-Population-Assignment/featured.png" medium="image" type="image/png" height="109" width="144"/>
+</item>
 <item>
   <title>ENVS Presenatation at VCESS</title>
   <link>https://dyerlab.org/posts/2023-04-18-Varina-Center-for-Environmenatal-Studies-and-Sustainability/index.html</link>
@@ -1804,21 +1823,6 @@ parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
   <guid>https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/index.html</guid>
   <pubDate>Fri, 20 Jan 2023 05:00:00 GMT</pubDate>
   <media:content url="https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/featured.png" medium="image" type="image/png" height="156" width="144"/>
-</item>
-<item>
-  <title>Demultiplexing</title>
-  <link>https://dyerlab.org/posts/2023-01-16-Demultiplexing/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2023-01-16-Demultiplexing/index.html</guid>
-  <pubDate>Mon, 16 Jan 2023 05:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
