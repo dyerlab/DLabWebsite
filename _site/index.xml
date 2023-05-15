@@ -9,8 +9,42 @@
 <link>https://dyerlab.org/index.html</link>
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.2.269</generator>
-<lastBuildDate>Thu, 27 Apr 2023 04:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.475</generator>
+<lastBuildDate>Mon, 15 May 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>gstudio 1.6.0</title>
+  <link>https://dyerlab.org/posts/2023-05-15-gstudio-1.6.0/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-05-15-gstudio-1.6.0/featured.png" class="img-fluid"></p>
+<section id="version-1.6.0" class="level2">
+<h2 class="anchored" data-anchor-id="version-1.6.0">Version 1.6.0</h2>
+<p>The fixes in this latest version include:</p>
+<ul>
+<li><p>[REQ] Test for HWP and LD similar to that implemented in Genepop? I work with microsatellite loci that have many rare alleles, so a HWP/LD test with a MC algorithm similar to that used in Genepop would be ideal</p></li>
+<li><p>[ADD] Added heirfstat to <code>genetic_structure()</code> to allow functional calling</p></li>
+<li><p>[ADD] Added hooks into genetic distances from pegas through <code>genetic_distance()</code> for other distance measures.</p></li>
+<li><p>[FIX] stratum He/Ho genetic_diversity <code>Hs()</code></p></li>
+<li><p>[FIX] Add permutation to <code>Fst()</code> for significance</p></li>
+<li><p>[FIX] <code>pies_on_map</code> apparently is broken</p></li>
+<li><p>[FIX] Problem with having a missing genotype for <code>type="column"</code> in first row. Odd problem.</p></li>
+<li><p>[ADD] Feedback for reading in columns for <code>read_population()</code> when &gt; 500 loci to provide some level of feedback to the user showing it is doing something and not just sitting there.</p></li>
+<li><p>[ADD] Added <code>Hi()</code> (individual heterozygosity) function.</p></li>
+<li><p>[FIX] Change ‘locus’ to ‘loci’ in <code>frequency_matrix()</code> to be consistent with the frequencies() function argument list.</p></li>
+<li><p>[FIX] Catching problem where empty (instead of <code>NA</code>) data was causing <code>locus(.,type="separated")</code> to fail.</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-05-15-gstudio-1.6.0/index.html</guid>
+  <pubDate>Mon, 15 May 2023 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-05-15-gstudio-1.6.0/featured.png" medium="image" type="image/png" height="26" width="144"/>
+</item>
 <item>
   <title>Population Assignment for Confiscated Spotted Turtles</title>
   <link>https://dyerlab.org/posts/2023-04-27-Population-Assignment/index.html</link>
@@ -1766,63 +1800,6 @@ parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
   <guid>https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/index.html</guid>
   <pubDate>Sat, 21 Jan 2023 05:00:00 GMT</pubDate>
   <media:content url="https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/featured.png" medium="image" type="image/png" height="96" width="144"/>
-</item>
-<item>
-  <title>Right Sizing the Sequences</title>
-  <link>https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><img src="https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/featured.png" class="img-fluid"></p>
-<p>There is a necessity to figure out how much of your data you should be using for each step. It is a balancing act where we need to simultaneously:</p>
-<ol type="1">
-<li>Capture as much of the underlying genetic information as we can so that we have a good representation across the species distribution -&gt; <em>more data</em></li>
-<li>Make sure that the data we are using is conservative enough such that we can have a sufficient level of confidence that what we are working with is actually good data. -&gt; <em>less overall data</em></li>
-<li>Be able to do the bioinformatics parts in a reasonable timeframe -&gt; <em>smaller data sets</em></li>
-</ol>
-<p>However, it is not always <em>a priori</em> knowable how much of the data to use.</p>
-<section id="smaller-subsets" class="level2">
-<h2 class="anchored" data-anchor-id="smaller-subsets">Smaller Subsets</h2>
-<p>So it appears that taking all the data to make an assembly may be problematic for a few different reasons:</p>
-<ol type="1">
-<li>It will take a <em>shit ton</em> of time (that is technical measure of quantity reserved for only the most important and magnificently large collections of items).</li>
-<li>It may produce a much too many contigs to be generally informative.</li>
-</ol>
-<p>So I set up some subsets of the data to see how long it will take to do smaller amounts.</p>
-<p>Here some <code>R</code> code that I wrote to just take a fractional subset of the sequences from each individual and, using the program <code>seqtk</code> make a new set of data in a different folder.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">rm</span>(<span class="at" style="color: #657422;">list=</span><span class="fu" style="color: #4758AB;">ls</span>())</span>
-<span id="cb1-2">pct <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"0.025"</span></span>
-<span id="cb1-3">folder <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"./all0025/"</span></span>
-<span id="cb1-4"></span>
-<span id="cb1-5">files <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list.files</span>(<span class="st" style="color: #20794D;">"all"</span>,<span class="at" style="color: #657422;">pattern=</span><span class="st" style="color: #20794D;">"F.fq.gz"</span>)</span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="cf" style="color: #003B4F;">for</span>( i <span class="cf" style="color: #003B4F;">in</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="fu" style="color: #4758AB;">length</span>(files) ) {</span>
-<span id="cb1-8">    file <span class="ot" style="color: #003B4F;">&lt;-</span> files[i]</span>
-<span id="cb1-9">    tmp <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">strsplit</span>(file, <span class="at" style="color: #657422;">split=</span><span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">."</span>)[[<span class="dv" style="color: #AD0000;">1</span>]]</span>
-<span id="cb1-10">    ofile <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="fu" style="color: #4758AB;">paste</span>(tmp[<span class="dv" style="color: #AD0000;">1</span>],tmp[<span class="dv" style="color: #AD0000;">2</span>],<span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">""</span>), tmp[<span class="dv" style="color: #AD0000;">3</span>],tmp[<span class="dv" style="color: #AD0000;">4</span>], <span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">"."</span>)</span>
-<span id="cb1-11">    cmd <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste</span>( <span class="st" style="color: #20794D;">"seqtk sample ./all/"</span>,file,<span class="st" style="color: #20794D;">" "</span>, </span>
-<span id="cb1-12">                  pct, <span class="st" style="color: #20794D;">" &gt; "</span>, folder, <span class="st" style="color: #20794D;">" "</span>, ofile, <span class="at" style="color: #657422;">sep=</span><span class="st" style="color: #20794D;">""</span>)</span>
-<span id="cb1-13">    <span class="fu" style="color: #4758AB;">system</span>(cmd)</span>
-<span id="cb1-14">    <span class="fu" style="color: #4758AB;">cat</span>( <span class="fu" style="color: #4758AB;">format</span>(i<span class="sc" style="color: #5E5E5E;">/</span><span class="fu" style="color: #4758AB;">length</span>(files), <span class="at" style="color: #657422;">digits=</span><span class="dv" style="color: #AD0000;">3</span>), <span class="st" style="color: #20794D;">" "</span>, ofile, <span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\n</span><span class="st" style="color: #20794D;">"</span>)</span>
-<span id="cb1-15">}</span></code></pre></div>
-</div>
-<p>Using this, I set up random subsets of the data for:</p>
-<ul>
-<li>10% of each individuals genome.</li>
-<li>5% of each individuals genome.</li>
-<li>2.5% of each individuals genome.</li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/index.html</guid>
-  <pubDate>Fri, 20 Jan 2023 05:00:00 GMT</pubDate>
-  <media:content url="https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/featured.png" medium="image" type="image/png" height="156" width="144"/>
 </item>
 </channel>
 </rss>
