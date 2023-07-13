@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -37,12 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,11 +91,14 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 <meta name="twitter:title" content="dyerlab - Manuscripts">
-<meta name="twitter:image" content="https://dyerlab.org/manuscripts/tassone-et-al-2020/featured.jpeg">
+<meta name="twitter:image" content="https://dyerlab.org/manuscripts/lozada-gobilard-et-al-2021/featured.png">
+<meta name="twitter:image-height" content="374">
+<meta name="twitter:image-width" content="518">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -112,34 +113,33 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">dyerlab</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./people.html">
+    <a class="nav-link" href="./people.html" rel="" target="">
  <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./manuscripts.html" aria-current="page">
+    <a class="nav-link active" href="./manuscripts.html" rel="" target="" aria-current="page">
  <span class="menu-text">Manuscripts</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/dyerlab/"><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/dyerlab/" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/dyerlab/"><i class="bi bi-twitter" role="img" aria-label="Twitter">
+    <a class="nav-link" href="https://twitter.com/dyerlab/" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="Twitter">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -179,13 +179,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1623384000000" data-listing-file-modified-sort="1660659912025" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1623384000000" data-listing-file-modified-sort="1680000318432" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<a href="./manuscripts/dyer-roderique-2021/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./manuscripts/dyer-roderique-2021/index.html"></a></p>
+<p><a href="./manuscripts/dyer-roderique-2021/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-roderique-2021/index.html">
@@ -211,9 +207,9 @@ Rodney Dyer, Bonnie Roderique
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="gene flow,urbanization" data-listing-date-sort="1617249600000" data-listing-file-modified-sort="1660659912052" data-listing-reading-time-sort="1.365">
+<div class="quarto-post image-right" data-index="1" data-categories="gene flow,urbanization" data-listing-date-sort="1617249600000" data-listing-file-modified-sort="1680000318463" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/tassone-et-al-2020/tassone-et-al-2020.html"> <img src="./manuscripts/tassone-et-al-2020/featured.jpeg" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/tassone-et-al-2020/tassone-et-al-2020.html"> <p class="card-img-top"><img src="manuscripts/tassone-et-al-2020/featured.jpeg"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/tassone-et-al-2020/tassone-et-al-2020.html">
@@ -249,9 +245,9 @@ Erica Tassone, Lindsay Miles, Rodney Dyer, Michael Rosenberg, Richard Cowling, B
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="dispersal,clonal growth,metapopulation,genetic divergence,genetic diversity" data-listing-date-sort="1612760400000" data-listing-file-modified-sort="1660659912044" data-listing-reading-time-sort="1.235">
+<div class="quarto-post image-right" data-index="2" data-categories="dispersal,clonal growth,metapopulation,genetic divergence,genetic diversity" data-listing-date-sort="1612760400000" data-listing-file-modified-sort="1680000318452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/lozada-gobilard-et-al-2021/index.html"> <img src="./manuscripts/lozada-gobilard-et-al-2021/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/lozada-gobilard-et-al-2021/index.html"> <img src="./manuscripts/lozada-gobilard-et-al-2021/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/lozada-gobilard-et-al-2021/index.html">
@@ -296,9 +292,9 @@ Sissi Lozada-Gobilard, Christian Schwarzer, Rodney Dyer, Ralph Tiedemann, Jasmin
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="population genetics,ddradseq" data-listing-date-sort="1581656400000" data-listing-file-modified-sort="1681820798278" data-listing-reading-time-sort="1.165">
+<div class="quarto-post image-right" data-index="3" data-categories="population genetics,ddradseq" data-listing-date-sort="1581656400000" data-listing-file-modified-sort="1683109144756" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/desaix-2019/index.html"> <img src="./manuscripts/desaix-2019/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/desaix-2019/index.html"> <img src="./manuscripts/desaix-2019/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/desaix-2019/index.html">
@@ -331,9 +327,9 @@ Feb 14, 2020
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="population genetics,gene flow,genetic structure" data-listing-date-sort="1553659200000" data-listing-file-modified-sort="1660659912046" data-listing-reading-time-sort="1.195">
+<div class="quarto-post image-right" data-index="4" data-categories="population genetics,gene flow,genetic structure" data-listing-date-sort="1553659200000" data-listing-file-modified-sort="1680000318454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/ritchie-et-al-2019/index.html"> <img src="./manuscripts/ritchie-et-al-2019/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/ritchie-et-al-2019/index.html"> <img src="./manuscripts/ritchie-et-al-2019/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/ritchie-et-al-2019/index.html">
@@ -369,9 +365,9 @@ Mar 27, 2019
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="population genetics,ddradseq,gypsy moth" data-listing-date-sort="1551675600000" data-listing-file-modified-sort="1673031966667" data-listing-reading-time-sort="1.255">
+<div class="quarto-post image-right" data-index="5" data-categories="population genetics,ddradseq,gypsy moth" data-listing-date-sort="1551675600000" data-listing-file-modified-sort="1680000318442" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/friedline-et-al-2019/index.html"> <img src="./manuscripts/friedline-et-al-2019/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/friedline-et-al-2019/index.html"> <img src="./manuscripts/friedline-et-al-2019/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/friedline-et-al-2019/index.html">
@@ -407,10 +403,10 @@ Mar 4, 2019
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="desert ecosystems,dipodomys merriami,functional connectivity,landscape genetics,merriam" s="" kangaroo="" rat,resistance="" surfaces'="" data-listing-date-sort="1546318800000" data-listing-file-modified-sort="1673031940379" data-listing-reading-time-sort="1.315">
+<div class="quarto-post image-right" data-index="6" data-categories="desert ecosystems,dipodomys merriami,functional connectivity,landscape genetics,merriam" s="" kangaroo="" rat,resistance="" surfaces'="" data-listing-date-sort="1546318800000" data-listing-file-modified-sort="1680000318438" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <a href="./manuscripts/flores-manzanero-et-al-2019/index.html">
-<img src="./manuscripts/flores-manzanero-et-al-2019/featured.png" class="thumnail-image">
+<img src="./manuscripts/flores-manzanero-et-al-2019/featured.png" class="thumbnail-image">
 </a>
 </div>
 <div class="body"><a href="./manuscripts/flores-manzanero-et-al-2019/index.html">
@@ -431,12 +427,12 @@ ECOLOGY AND EVOLUTION. 2019.
 </div>
 </a></div>
 <div class="metadata"><a href="./manuscripts/flores-manzanero-et-al-2019/index.html">
-<div class="listing-date">Jan 1, 2019</div>
+<div class="listing-date">`Jan 1, 2019`{=html}</div>
 </a></div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="pollination network,correlated random walk,agent-based model,pollen carryover,tree density" data-listing-date-sort="1533096000000" data-listing-file-modified-sort="1660659912010" data-listing-reading-time-sort="0.74">
+<div class="quarto-post image-right" data-index="7" data-categories="pollination network,correlated random walk,agent-based model,pollen carryover,tree density" data-listing-date-sort="1533096000000" data-listing-file-modified-sort="1680000318410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/chan-lee-dyer-2018/index.html"> <img src="./manuscripts/chan-lee-dyer-2018/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/chan-lee-dyer-2018/index.html"> <img src="./manuscripts/chan-lee-dyer-2018/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/chan-lee-dyer-2018/index.html">
@@ -478,9 +474,9 @@ Aug 1, 2018
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="urbanization,genetic connectivity,population genetics,urban pest" data-listing-date-sort="1533096000000" data-listing-file-modified-sort="1660659912046" data-listing-reading-time-sort="0.94">
+<div class="quarto-post image-right" data-index="8" data-categories="urbanization,genetic connectivity,population genetics,urban pest" data-listing-date-sort="1533096000000" data-listing-file-modified-sort="1680000318454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/miles-et-al-2019-proc-roy-soc/index.html"> <img src="./manuscripts/miles-et-al-2019-proc-roy-soc/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/miles-et-al-2019-proc-roy-soc/index.html"> <img src="./manuscripts/miles-et-al-2019-proc-roy-soc/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/miles-et-al-2019-proc-roy-soc/index.html">
@@ -519,9 +515,9 @@ Aug 1, 2018
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="pest,popgraph,social network,spider,urban facilitation" data-listing-date-sort="1533096000000" data-listing-file-modified-sort="1660659912046" data-listing-reading-time-sort="1.31">
+<div class="quarto-post image-right" data-index="9" data-categories="pest,popgraph,social network,spider,urban facilitation" data-listing-date-sort="1533096000000" data-listing-file-modified-sort="1680000318454" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/miles-et-al-2018-mol-ecol/index.html"> <img src="./manuscripts/miles-et-al-2018-mol-ecol/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/miles-et-al-2018-mol-ecol/index.html"> <img src="./manuscripts/miles-et-al-2018-mol-ecol/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/miles-et-al-2018-mol-ecol/index.html">
@@ -563,9 +559,9 @@ Aug 1, 2018
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="bald eagle,chesapeake bay,communal roost,haliaeetus leucocephalus,networks,resiliency" data-listing-date-sort="1527825600000" data-listing-file-modified-sort="1660659912054" data-listing-reading-time-sort="1.67">
+<div class="quarto-post image-right" data-index="10" data-categories="bald eagle,chesapeake bay,communal roost,haliaeetus leucocephalus,networks,resiliency" data-listing-date-sort="1527825600000" data-listing-file-modified-sort="1680000318465" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/watts-dyer-2018/index.html"> <img src="./manuscripts/watts-dyer-2018/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/watts-dyer-2018/index.html"> <img src="./manuscripts/watts-dyer-2018/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/watts-dyer-2018/index.html">
@@ -610,9 +606,9 @@ Jun 1, 2018
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="landscape genetics,landscape genomics,next generation sequencing,spatial genetics,ecological genetics" data-listing-date-sort="1527825600000" data-listing-file-modified-sort="1660659912010" data-listing-reading-time-sort="0.57">
+<div class="quarto-post image-right" data-index="11" data-categories="landscape genetics,landscape genomics,next generation sequencing,spatial genetics,ecological genetics" data-listing-date-sort="1527825600000" data-listing-file-modified-sort="1680000318411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/cushman-et-al-2018/index.html"> <img src="./manuscripts/cushman-et-al-2018/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/cushman-et-al-2018/index.html"> <img src="./manuscripts/cushman-et-al-2018/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/cushman-et-al-2018/index.html">
@@ -654,9 +650,9 @@ Jun 1, 2018
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="genetic network,pekania pennanti,population graph,sex-biased dispersal,sex-specific graphs" data-listing-date-sort="1501560000000" data-listing-file-modified-sort="1660659912009" data-listing-reading-time-sort="1.065">
+<div class="quarto-post image-right" data-index="12" data-categories="genetic network,pekania pennanti,population graph,sex-biased dispersal,sex-specific graphs" data-listing-date-sort="1501560000000" data-listing-file-modified-sort="1680000318410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/bertrand-et-al-2017/index.html"> <img src="./manuscripts/bertrand-et-al-2017/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/bertrand-et-al-2017/index.html"> <img src="./manuscripts/bertrand-et-al-2017/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/bertrand-et-al-2017/index.html">
@@ -698,9 +694,9 @@ Aug 1, 2017
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="gene flow,agent based modelling,correlated random walk,pollen" data-listing-date-sort="1475294400000" data-listing-file-modified-sort="1660659912032" data-listing-reading-time-sort="0.45">
+<div class="quarto-post image-right" data-index="13" data-categories="gene flow,agent based modelling,correlated random walk,pollen" data-listing-date-sort="1475294400000" data-listing-file-modified-sort="1680000318438" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/foster-chan-dyer-2016/index.html"> <img src="./manuscripts/foster-chan-dyer-2016/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/foster-chan-dyer-2016/index.html"> <img src="./manuscripts/foster-chan-dyer-2016/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/foster-chan-dyer-2016/index.html">
@@ -739,9 +735,9 @@ Oct 1, 2016
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="breeding ecology,cavity nesters,conspecific brood parasitism,protonotaria citrea" data-listing-date-sort="1459483200000" data-listing-file-modified-sort="1660659912053" data-listing-reading-time-sort="1.345">
+<div class="quarto-post image-right" data-index="14" data-categories="breeding ecology,cavity nesters,conspecific brood parasitism,protonotaria citrea" data-listing-date-sort="1459483200000" data-listing-file-modified-sort="1680000318464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/tucker-et-al-2016/index.html"> <img src="./manuscripts/tucker-et-al-2016/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/tucker-et-al-2016/index.html"> <img src="./manuscripts/tucker-et-al-2016/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/tucker-et-al-2016/index.html">
@@ -780,9 +776,9 @@ Apr 1, 2016
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="landscape genetics,population graphs,spatial structure,connectivity" data-listing-date-sort="1444104000000" data-listing-file-modified-sort="1660659912018" data-listing-reading-time-sort="0.68">
+<div class="quarto-post image-right" data-index="15" data-categories="landscape genetics,population graphs,spatial structure,connectivity" data-listing-date-sort="1444104000000" data-listing-file-modified-sort="1680000318425" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-2015-AREES/index.html"> <img src="./manuscripts/dyer-2015-AREES/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-2015-AREES/index.html"> <img src="./manuscripts/dyer-2015-AREES/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-2015-AREES/index.html">
@@ -821,9 +817,9 @@ Oct 6, 2015
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="cpssr,genetic structure,geographical boundary,pinus henryi,pinus tabuliformis" data-listing-date-sort="1438401600000" data-listing-file-modified-sort="1660659912055" data-listing-reading-time-sort="0.985">
+<div class="quarto-post image-right" data-index="16" data-categories="cpssr,genetic structure,geographical boundary,pinus henryi,pinus tabuliformis" data-listing-date-sort="1438401600000" data-listing-file-modified-sort="1680000318467" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/yang-et-al-2015/index.html"> <img src="./manuscripts/yang-et-al-2015/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/yang-et-al-2015/index.html"> <img src="./manuscripts/yang-et-al-2015/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/yang-et-al-2015/index.html">
@@ -865,9 +861,9 @@ Aug 1, 2015
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="landscape genetics,landscape ecology,population genetics" data-listing-date-sort="1435723200000" data-listing-file-modified-sort="1660659912018" data-listing-reading-time-sort="0.865">
+<div class="quarto-post image-right" data-index="17" data-categories="landscape genetics,landscape ecology,population genetics" data-listing-date-sort="1435723200000" data-listing-file-modified-sort="1680000318426" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-2015/index.html"> <img src="./manuscripts/dyer-2015/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-2015/index.html"> <img src="./manuscripts/dyer-2015/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-2015/index.html">
@@ -903,9 +899,9 @@ Jul 1, 2015
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-listing-date-sort="1433131200000" data-listing-file-modified-sort="1660659912042" data-listing-reading-time-sort="1.01">
+<div class="quarto-post image-right" data-index="18" data-listing-date-sort="1433131200000" data-listing-file-modified-sort="1680000318450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/garrick-et-al-2015/index.html"> <img src="./manuscripts/garrick-et-al-2015/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/garrick-et-al-2015/index.html"> <img src="./manuscripts/garrick-et-al-2015/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/garrick-et-al-2015/index.html">
@@ -928,9 +924,9 @@ Jun 1, 2015
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="cornus florida,gene flow,gravity models,landscape genetics,population graphs" data-listing-date-sort="1406865600000" data-listing-file-modified-sort="1660659912013" data-listing-reading-time-sort="1.115">
+<div class="quarto-post image-right" data-index="19" data-categories="cornus florida,gene flow,gravity models,landscape genetics,population graphs" data-listing-date-sort="1406865600000" data-listing-file-modified-sort="1680000318420" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/di-leo-et-al-2014/index.html"> <img src="./manuscripts/di-leo-et-al-2014/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/di-leo-et-al-2014/index.html"> <img src="./manuscripts/di-leo-et-al-2014/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/di-leo-et-al-2014/index.html">
@@ -972,9 +968,9 @@ Aug 1, 2014
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="adaptive genetic variation,climate change,environmental association,forest genetics,genomics,landscape genetics" data-listing-date-sort="1375329600000" data-listing-file-modified-sort="1660659912051" data-listing-reading-time-sort="0.96">
+<div class="quarto-post image-right" data-index="20" data-categories="adaptive genetic variation,climate change,environmental association,forest genetics,genomics,landscape genetics" data-listing-date-sort="1375329600000" data-listing-file-modified-sort="1680000318459" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/sork-et-al-2013/index.html"> <img src="./manuscripts/sork-et-al-2013/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/sork-et-al-2013/index.html"> <img src="./manuscripts/sork-et-al-2013/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/sork-et-al-2013/index.html">
@@ -1019,9 +1015,9 @@ Aug 1, 2013
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="baja california,coleoptera,landscape history,population genetics,range expansion,vicariance" data-listing-date-sort="1370059200000" data-listing-file-modified-sort="1660659912041" data-listing-reading-time-sort="1.45">
+<div class="quarto-post image-right" data-index="21" data-categories="baja california,coleoptera,landscape history,population genetics,range expansion,vicariance" data-listing-date-sort="1370059200000" data-listing-file-modified-sort="1680000318449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/garrick-et-al-2013/index.html"> <img src="./manuscripts/garrick-et-al-2013/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/garrick-et-al-2013/index.html"> <img src="./manuscripts/garrick-et-al-2013/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/garrick-et-al-2013/index.html">
@@ -1066,9 +1062,9 @@ Jun 1, 2013
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="adaptive traits,conifers,fitness landscape,genome-wide association,serotiny" data-listing-date-sort="1338523200000" data-listing-file-modified-sort="1660659912026" data-listing-reading-time-sort="1.065">
+<div class="quarto-post image-right" data-index="22" data-categories="adaptive traits,conifers,fitness landscape,genome-wide association,serotiny" data-listing-date-sort="1338523200000" data-listing-file-modified-sort="1680000318433" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/eckert-dyer-2012/index.html"> <img src="./manuscripts/eckert-dyer-2012/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/eckert-dyer-2012/index.html"> <img src="./manuscripts/eckert-dyer-2012/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/eckert-dyer-2012/index.html">
@@ -1110,9 +1106,9 @@ Jun 1, 2012
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="reissita simonyi,microsatellites,isolatuion by distance,isolatuion by altitude,landscape connectivity,null alleles" data-listing-date-sort="1328072400000" data-listing-file-modified-sort="1660659912044" data-listing-reading-time-sort="1.245">
+<div class="quarto-post image-right" data-index="23" data-categories="reissita simonyi,microsatellites,isolatuion by distance,isolatuion by altitude,landscape connectivity,null alleles" data-listing-date-sort="1328072400000" data-listing-file-modified-sort="1680000318452" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/kluetsch-dyer-misof-2012/index.html"> <img src="./manuscripts/kluetsch-dyer-misof-2012/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/kluetsch-dyer-misof-2012/index.html"> <img src="./manuscripts/kluetsch-dyer-misof-2012/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/kluetsch-dyer-misof-2012/index.html">
@@ -1157,9 +1153,9 @@ Feb 1, 2012
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="24" data-categories="pollination graph,connectivity,conditional genetic distance,gene flow,cornus florida" data-listing-date-sort="1328072400000" data-listing-file-modified-sort="1660659912024" data-listing-reading-time-sort="1.31">
+<div class="quarto-post image-right" data-index="24" data-categories="pollination graph,connectivity,conditional genetic distance,gene flow,cornus florida" data-listing-date-sort="1328072400000" data-listing-file-modified-sort="1680000318431" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-et-al-2012/index.html"> <img src="./manuscripts/dyer-et-al-2012/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-et-al-2012/index.html"> <img src="./manuscripts/dyer-et-al-2012/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-et-al-2012/index.html">
@@ -1201,9 +1197,9 @@ Feb 1, 2012
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="25" data-categories="microstegium vimineum,invasive species,genetic structure,founder effects,secondary contact" data-listing-date-sort="1306900800000" data-listing-file-modified-sort="1676647754713" data-listing-reading-time-sort="0.86">
+<div class="quarto-post image-right" data-index="25" data-categories="microstegium vimineum,invasive species,genetic structure,founder effects,secondary contact" data-listing-date-sort="1306900800000" data-listing-file-modified-sort="1680000318409" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/baker-dyer-2011/index.html"> <img data-src="./manuscripts/baker-dyer-2011/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/baker-dyer-2011/index.html"> <img data-src="./manuscripts/baker-dyer-2011/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/baker-dyer-2011/index.html">
@@ -1245,9 +1241,9 @@ Jun 1, 2011
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="26" data-categories="gene flow,genetic ovariance,landscape genetics" data-listing-date-sort="1283313600000" data-listing-file-modified-sort="1660659912020" data-listing-reading-time-sort="1.02">
+<div class="quarto-post image-right" data-index="26" data-categories="gene flow,genetic ovariance,landscape genetics" data-listing-date-sort="1283313600000" data-listing-file-modified-sort="1680000318427" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-et-al-2010/index.html"> <img data-src="./manuscripts/dyer-et-al-2010/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-et-al-2010/index.html"> <img data-src="./manuscripts/dyer-et-al-2010/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-et-al-2010/index.html">
@@ -1283,9 +1279,9 @@ Sep 1, 2010
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="27" data-listing-date-sort="1270094400000" data-listing-file-modified-sort="1660659912040" data-listing-reading-time-sort="1.55">
+<div class="quarto-post image-right" data-index="27" data-listing-date-sort="1270094400000" data-listing-file-modified-sort="1680000318448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/garrick-et-al-2010/index.html"> <img data-src="./manuscripts/garrick-et-al-2010/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/garrick-et-al-2010/index.html"> <img data-src="./manuscripts/garrick-et-al-2010/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/garrick-et-al-2010/index.html">
@@ -1308,9 +1304,9 @@ Apr 1, 2010
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="28" data-categories="baja california,codominant loci,coleoptera,introns,population structure" data-listing-date-sort="1249099200000" data-listing-file-modified-sort="1660659912037" data-listing-reading-time-sort="0.36">
+<div class="quarto-post image-right" data-index="28" data-categories="baja california,codominant loci,coleoptera,introns,population structure" data-listing-date-sort="1249099200000" data-listing-file-modified-sort="1680000318445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/garrick-et-al-2010-con-gen/index.html"> <img data-src="./manuscripts/garrick-et-al-2010-con-gen/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/garrick-et-al-2010-con-gen/index.html"> <img data-src="./manuscripts/garrick-et-al-2010-con-gen/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/garrick-et-al-2010-con-gen/index.html">
@@ -1352,9 +1348,9 @@ Aug 1, 2009
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="29" data-categories="baja california,euphorbia,landscape history,population structure,statistical phylogeography" data-listing-date-sort="1241150400000" data-listing-file-modified-sort="1660659912036" data-listing-reading-time-sort="1.18">
+<div class="quarto-post image-right" data-index="29" data-categories="baja california,euphorbia,landscape history,population structure,statistical phylogeography" data-listing-date-sort="1241150400000" data-listing-file-modified-sort="1680000318444" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/garrick-et-al-2009-mol-ecol/index.html"> <img data-src="./manuscripts/garrick-et-al-2009-mol-ecol/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/garrick-et-al-2009-mol-ecol/index.html"> <img data-src="./manuscripts/garrick-et-al-2009-mol-ecol/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/garrick-et-al-2009-mol-ecol/index.html">
@@ -1396,9 +1392,9 @@ May 1, 2009
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="30" data-categories="genetic structure,population graphs,spatial structure" data-listing-date-sort="1230786000000" data-listing-file-modified-sort="1660659912018" data-listing-reading-time-sort="0.56">
+<div class="quarto-post image-right" data-index="30" data-categories="genetic structure,population graphs,spatial structure" data-listing-date-sort="1230786000000" data-listing-file-modified-sort="1680000318425" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-2009/index.html"> <img data-src="./manuscripts/dyer-2009/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-2009/index.html"> <img data-src="./manuscripts/dyer-2009/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-2009/index.html">
@@ -1434,9 +1430,9 @@ Jan 1, 2009
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="31" data-categories="codominant loci,euphorbiaceae,population structure,phylogeny,sonoran desert" data-listing-date-sort="1228107600000" data-listing-file-modified-sort="1660659912035" data-listing-reading-time-sort="0.285">
+<div class="quarto-post image-right" data-index="31" data-categories="codominant loci,euphorbiaceae,population structure,phylogeny,sonoran desert" data-listing-date-sort="1228107600000" data-listing-file-modified-sort="1680000318443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/garrick-et-al-2008-con-gen/index.html"> <img data-src="./manuscripts/garrick-et-al-2008-con-gen/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/garrick-et-al-2008-con-gen/index.html"> <img data-src="./manuscripts/garrick-et-al-2008-con-gen/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/garrick-et-al-2008-con-gen/index.html">
@@ -1478,9 +1474,9 @@ Dec 1, 2008
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="32" data-categories="cross-validation,hypothesis testing,integrative analyses,multiple loci" data-listing-date-sort="1204347600000" data-listing-file-modified-sort="1660659912036" data-listing-reading-time-sort="0.04">
+<div class="quarto-post image-right" data-index="32" data-categories="cross-validation,hypothesis testing,integrative analyses,multiple loci" data-listing-date-sort="1204347600000" data-listing-file-modified-sort="1680000318444" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/garrick-et-al-2008-mol-ecol/index.html"> <img data-src="./manuscripts/garrick-et-al-2008-mol-ecol/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/garrick-et-al-2008-mol-ecol/index.html"> <img data-src="./manuscripts/garrick-et-al-2008-mol-ecol/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/garrick-et-al-2008-mol-ecol/index.html">
@@ -1519,9 +1515,9 @@ Mar 1, 2008
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="33" data-listing-date-sort="1196485200000" data-listing-file-modified-sort="1660659912017" data-listing-reading-time-sort="0.355">
+<div class="quarto-post image-right" data-index="33" data-listing-date-sort="1196485200000" data-listing-file-modified-sort="1680000318424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-2007/index.html"> <img data-src="./manuscripts/dyer-2007/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-2007/index.html"> <img data-src="./manuscripts/dyer-2007/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-2007/index.html">
@@ -1544,9 +1540,9 @@ Dec 1, 2007
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="34" data-categories="population graphs,genetic structure,isolation by distance,graph theory,centrality,graph diameter" data-listing-date-sort="1170306000000" data-listing-file-modified-sort="1660659912016" data-listing-reading-time-sort="0.76">
+<div class="quarto-post image-right" data-index="34" data-categories="population graphs,genetic structure,isolation by distance,graph theory,centrality,graph diameter" data-listing-date-sort="1170306000000" data-listing-file-modified-sort="1680000318424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-2007-tpb/index.html"> <img data-src="./manuscripts/dyer-2007-tpb/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-2007-tpb/index.html"> <img data-src="./manuscripts/dyer-2007-tpb/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-2007-tpb/index.html">
@@ -1591,9 +1587,9 @@ Feb 1, 2007
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="35" data-categories="fragmentation,pollen gene flow,trillium,twogener" data-listing-date-sort="1151726400000" data-listing-file-modified-sort="1660659912043" data-listing-reading-time-sort="1.17">
+<div class="quarto-post image-right" data-index="35" data-categories="fragmentation,pollen gene flow,trillium,twogener" data-listing-date-sort="1151726400000" data-listing-file-modified-sort="1680000318451" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/gonzales-et-al-2006/index.html"> <img data-src="./manuscripts/gonzales-et-al-2006/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/gonzales-et-al-2006/index.html"> <img data-src="./manuscripts/gonzales-et-al-2006/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/gonzales-et-al-2006/index.html">
@@ -1632,9 +1628,9 @@ Jul 1, 2006
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="36" data-categories="gene flow,pollen structure,two-generation analysis" data-listing-date-sort="1133413200000" data-listing-file-modified-sort="1660659912015" data-listing-reading-time-sort="0.535">
+<div class="quarto-post image-right" data-index="36" data-categories="gene flow,pollen structure,two-generation analysis" data-listing-date-sort="1133413200000" data-listing-file-modified-sort="1680000318422" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-2005/index.html"> <img data-src="./manuscripts/dyer-2005/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-2005/index.html"> <img data-src="./manuscripts/dyer-2005/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-2005/index.html">
@@ -1670,9 +1666,9 @@ Dec 1, 2005
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="37" data-categories="california,cornaceae,gene flown,genetic structure,landscape change,pollen movement,silvicultural treatment,2gener" data-listing-date-sort="1107234000000" data-listing-file-modified-sort="1660659912049" data-listing-reading-time-sort="1.36">
+<div class="quarto-post image-right" data-index="37" data-categories="california,cornaceae,gene flown,genetic structure,landscape change,pollen movement,silvicultural treatment,2gener" data-listing-date-sort="1107234000000" data-listing-file-modified-sort="1680000318457" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/sork-et-al-2005/index.html"> <img data-src="./manuscripts/sork-et-al-2005/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/sork-et-al-2005/index.html"> <img data-src="./manuscripts/sork-et-al-2005/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/sork-et-al-2005/index.html">
@@ -1723,9 +1719,9 @@ Feb 1, 2005
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="38" data-categories="genetic structure,graph theory,networks,phylogeography" data-listing-date-sort="1088654400000" data-listing-file-modified-sort="1660659912025" data-listing-reading-time-sort="0.865">
+<div class="quarto-post image-right" data-index="38" data-categories="genetic structure,graph theory,networks,phylogeography" data-listing-date-sort="1088654400000" data-listing-file-modified-sort="1680000318432" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-nason-2004/index.html"> <img data-src="./manuscripts/dyer-nason-2004/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-nason-2004/index.html"> <img data-src="./manuscripts/dyer-nason-2004/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-nason-2004/index.html">
@@ -1764,9 +1760,9 @@ Jul 1, 2004
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="39" data-categories="pollen movement,2gener,gene flow,stamova" data-listing-date-sort="1078117200000" data-listing-file-modified-sort="1660659912019" data-listing-reading-time-sort="1.055">
+<div class="quarto-post image-right" data-index="39" data-categories="pollen movement,2gener,gene flow,stamova" data-listing-date-sort="1078117200000" data-listing-file-modified-sort="1680000318426" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-et-al-2004/index.html"> <img data-src="./manuscripts/dyer-et-al-2004/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-et-al-2004/index.html"> <img data-src="./manuscripts/dyer-et-al-2004/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-et-al-2004/index.html">
@@ -1805,9 +1801,9 @@ Mar 1, 2004
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="40" data-categories="california valley oak,genetic isolation,pollen flow,quercus lobata,2gener" data-listing-date-sort="1030852800000" data-listing-file-modified-sort="1660659912048" data-listing-reading-time-sort="1.355">
+<div class="quarto-post image-right" data-index="40" data-categories="california valley oak,genetic isolation,pollen flow,quercus lobata,2gener" data-listing-date-sort="1030852800000" data-listing-file-modified-sort="1680000318456" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/sork-et-al-2002/index.html"> <img data-src="./manuscripts/sork-et-al-2002/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/sork-et-al-2002/index.html"> <img data-src="./manuscripts/sork-et-al-2002/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/sork-et-al-2002/index.html">
@@ -1849,9 +1845,9 @@ Sep 1, 2002
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="41" data-categories="experimental insect exclusion,individual-based population models,inflorescence-feeding insects,iteroparous perennial,population growth rate" data-listing-date-sort="1028174400000" data-listing-file-modified-sort="1673032014946" data-listing-reading-time-sort="1.295">
+<div class="quarto-post image-right" data-index="41" data-categories="experimental insect exclusion,individual-based population models,inflorescence-feeding insects,iteroparous perennial,population growth rate" data-listing-date-sort="1028174400000" data-listing-file-modified-sort="1680000318451" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/kelly-dyer-2002/index.html"> <img data-src="./manuscripts/kelly-dyer-2002/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/kelly-dyer-2002/index.html"> <img data-src="./manuscripts/kelly-dyer-2002/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/kelly-dyer-2002/index.html">
@@ -1893,9 +1889,9 @@ Aug 1, 2002
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="42" data-listing-date-sort="1009861200000" data-listing-file-modified-sort="1673032287368" data-listing-reading-time-sort="1.92">
+<div class="quarto-post image-right" data-index="42" data-listing-date-sort="1009861200000" data-listing-file-modified-sort="1680000318408" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/apsit-et-al-2002/index.html"> <img data-src="./manuscripts/apsit-et-al-2002/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/apsit-et-al-2002/index.html"> <img data-src="./manuscripts/apsit-et-al-2002/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/apsit-et-al-2002/index.html">
@@ -1918,9 +1914,9 @@ Jan 1, 2002
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="43" data-categories="cpssr,density,genetic,pinus,pollen,structure" data-listing-date-sort="986101200000" data-listing-file-modified-sort="1660659912026" data-listing-reading-time-sort="1.285">
+<div class="quarto-post image-right" data-index="43" data-categories="cpssr,density,genetic,pinus,pollen,structure" data-listing-date-sort="986101200000" data-listing-file-modified-sort="1680000318433" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/dyer-sork-2001/index.html"> <img data-src="./manuscripts/dyer-sork-2001/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/dyer-sork-2001/index.html"> <img data-src="./manuscripts/dyer-sork-2001/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/dyer-sork-2001/index.html">
@@ -1965,9 +1961,9 @@ Apr 1, 2001
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="44" data-categories="amova,gene flow,genetic structure,parentage analysis,phi statistics,pollen movement,quercus alba,2gener" data-listing-date-sort="981003600000" data-listing-file-modified-sort="1673032032216" data-listing-reading-time-sort="1.45">
+<div class="quarto-post image-right" data-index="44" data-categories="amova,gene flow,genetic structure,parentage analysis,phi statistics,pollen movement,quercus alba,2gener" data-listing-date-sort="981003600000" data-listing-file-modified-sort="1680000318456" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./manuscripts/smouse-et-al-2001/index.html"> <img data-src="./manuscripts/smouse-et-al-2001/featured.png" class="thumnail-image"> </a></p>
+<p><a href="./manuscripts/smouse-et-al-2001/index.html"> <img data-src="./manuscripts/smouse-et-al-2001/featured.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./manuscripts/smouse-et-al-2001/index.html">
@@ -2046,121 +2042,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -2168,9 +2049,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2235,6 +2130,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

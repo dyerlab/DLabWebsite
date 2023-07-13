@@ -10,7 +10,34 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.353</generator>
-<lastBuildDate>Mon, 15 May 2023 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 11 Jul 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Emydine Conservation Symposium</title>
+  <link>https://dyerlab.org/posts/2023-07-11-Emydine_Conservation_Symposium/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>It was the first time that I attended and presented at a herp meeting, and it was a great experience. Such a great group of reserachers, agency people, law enforcement, and zoo personnel, all working on projects related to this group of turtles. Really cool experience.</p>
+<p><img src="https://dyerlab.org/posts/2023-07-11-Emydine_Conservation_Symposium/heading.png" class="img-fluid"></p>
+<p>I was asked to provide an overview of what we’ve been doing in the spotted turtle genetic work. The conference had a tremendously wide variety of topics surrounding these species. Here is the <a href="https://drive.google.com/file/d/1aWJoShwHJGKQt-I4wdEfj1YY2jxm0Khg/view?usp=sharing">agenda</a>.</p>
+<p>In addition to myself, there were two other genetics presentations by <a href="https://www.pfw.edu/about-pfw/who-we-are/directories/mark-jordan">Mark Jordan</a> talking about <em>Patterns of standing Genetic variation and Effective population size in Blanding’s Turtle Populations</em> and another by <a href="https://www.umt.edu/environment/personnel/faculty.php?ID=4461">Andrew Whitley</a> on <em>Population genetic analysis of the wood turtle across its us native range.</em> Both of these talks were really well delivered, informative and inspiring.</p>
+<p>Here are my slides that I presented along with co-authors <a href="https://dyerlab.org/people">Madison Whitehurst</a> and <a href="https://www.canr.msu.edu/people/caleb-krueger">Caleb Krueger</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://drive.google.com/file/d/1-ZD9zUKUEwVvL8NSWaEiI5SAMrlHBAvh/view?usp=sharing"><img src="https://dyerlab.org/posts/2023-07-11-Emydine_Conservation_Symposium/featured.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>It was really nice to get up into the semi-mountainous areas in Pennsylvania (and out of the more humid piedmont of Virginia) for a while.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-07-11-Emydine_Conservation_Symposium/index.html</guid>
+  <pubDate>Tue, 11 Jul 2023 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-07-11-Emydine_Conservation_Symposium/featured.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>gstudio 1.6.0</title>
   <link>https://dyerlab.org/posts/2023-05-15-gstudio-1.6.0/index.html</link>
@@ -151,9 +178,6 @@
 
 
 <p><img src="https://dyerlab.org/posts/2023-02-24-full-dataset/featured.png" class="img-fluid"></p>
-<div class="cell">
-
-</div>
 <p>At present, we have 1318 individuals processed and I am waiting on the final 120~ish to finish up this weekend. While these last few are processed and SNPs are called, I am starting to get them configured for analysis (as in actually being able to get answers to this tremendously drawn out process).</p>
 <p>This is not the full data set, this is a random subset of the data that has been derived due to time constraints. These data consist of:</p>
 <ul>
@@ -199,7 +223,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://dyerlab.org/posts/2023-02-24-full-dataset/filesystem.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Looks good!</figcaption><p></p>
+<figcaption class="figure-caption">Looks good!</figcaption>
 </figure>
 </div>
 
@@ -697,8 +721,9 @@ font-style: inherit;">sbatch</span> freebayes.sub</span></code></pre></div>
 <p>After this, you can see that the batch job has been queued up (#34827) and waiting to go.</p>
 <pre><code>[rjdyer@huff snpcalling]$ squeue
   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
-<p>So, now lets see if it actually works.</p>
+  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)
+  34828     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
+<p>So, now lets see if it actually works. This run has 293 samples and the next one (#34828) has 270. <strong>Failed because <code>sbatch</code> didn’t work properly.</strong></p>
 
 
 </section>
@@ -921,6 +946,8 @@ font-style: inherit;">"nx10/httpgd"</span>)</span>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-ssh</a></li>
 </ul>
 <p>Once you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work. For me, after logging into the remot server, I created an <code>R</code> file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side. It was all locally done so no big deal.</p>
+<p>The only problem that I did run into is that for some reason, <code>jsonlite</code> would not install because of some python dependency problem.</p>
+<pre><code>Failed to get list of R functions. Make sure that `jsonlite` is installed and r.rpath.linux points to a valid R executable.</code></pre>
 
 
 </section>
@@ -938,9 +965,6 @@ font-style: inherit;">"nx10/httpgd"</span>)</span>
 
 
 <p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/featured.png" class="img-fluid"></p>
-<div class="cell">
-
-</div>
 <section id="merging-vcf-files" class="level2">
 <h2 class="anchored" data-anchor-id="merging-vcf-files">Merging VCF Files</h2>
 <p>The first thing we need to to is zip and then index the individual vcf files. As a reminder, these files have been created by individual <code>freebayes</code> SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected. So, in the following examples, the file <code>R.vcf</code> contains all the individuals in populations starting with the letter <code>R</code>. When there are not that many individuals in a group, they are clustered—below we have <code>JK.vcf</code> which has all the individuals from populations starting with the letters <code>J</code> and <code>K</code>.</p>
@@ -1051,7 +1075,7 @@ font-style: inherit;">&gt;</span> depth.txt</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure 1 Average sequencing depth across loci within each of the 302 individuals.</figcaption><p></p>
+<figcaption class="figure-caption">Figure 1 Average sequencing depth across loci within each of the 302 individuals.</figcaption>
 </figure>
 </div>
 </div>
@@ -1062,7 +1086,7 @@ font-style: inherit;">&gt;</span> depth.txt</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure 2 Average sequencing depth per site across 302 individuals.</figcaption><p></p>
+<figcaption class="figure-caption">Figure 2 Average sequencing depth per site across 302 individuals.</figcaption>
 </figure>
 </div>
 </div>
@@ -1243,7 +1267,7 @@ font-style: inherit;">"SNP Loci Identified"</span>)</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Nubmer of filtered SNP loci across a range of stringency in the minimum number of times a minor allele is observed across the data set.</figcaption><p></p>
+<figcaption class="figure-caption">Nubmer of filtered SNP loci across a range of stringency in the minimum number of times a minor allele is observed across the data set.</figcaption>
 </figure>
 </div>
 </div>
@@ -1365,9 +1389,6 @@ font-style: inherit;">"SNP Loci Identified"</span>)</span></code></pre></div>
 
 
 
-<div class="cell">
-
-</div>
 <p><img src="https://dyerlab.org/posts/2023-02-16-github-reset-user/featured.png" class="img-fluid"></p>
 <p>So I was working on a repository at home that I set up on another github acount, for another entity. In doing so, I clobbered my <code>global</code> github <code>user</code> and <code>user.email</code> values and as such when I tried to <code>git push</code> none of the changes would go because it could not authenticate. Instead I got this:</p>
 <div class="cell">
@@ -1412,21 +1433,15 @@ font-style: inherit;">rodney$</span> git config remote.origin.url https://dyerla
 
 
 <p><img src="https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/featured.png" class="img-fluid"></p>
-<div class="cell">
-
-</div>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<div class="cell">
-
-</div>
 <p>We retrieved usable sequence data from at total of 1419 individuals. The number of sequence reads is depicted by file size (log base 10) below.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">The distrubiton of sequence reads (denoted as log10 of file size) for all individuals sequenced.</figcaption><p></p>
+<figcaption class="figure-caption">The distrubiton of sequence reads (denoted as log10 of file size) for all individuals sequenced.</figcaption>
 </figure>
 </div>
 </div>
@@ -1436,14 +1451,11 @@ font-style: inherit;">rodney$</span> git config remote.origin.url https://dyerla
 <section id="processing" class="level2">
 <h2 class="anchored" data-anchor-id="processing">Processing</h2>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Progress of the main steps in processing raw sequence data.</figcaption><p></p>
+<figcaption class="figure-caption">Progress of the main steps in processing raw sequence data.</figcaption>
 </figure>
 </div>
 </div>
@@ -1469,9 +1481,6 @@ font-style: inherit;">rodney$</span> git config remote.origin.url https://dyerla
 <section id="workflow-progress" class="level3">
 <h3 class="anchored" data-anchor-id="workflow-progress">Workflow Progress</h3>
 <p>So I started up a individuals processes to map and call SNPs. It is done using <a href="https://slurm.schedmd.com">slurm</a> on our clusters so I fire up an instance on one of the compute nodes as:</p>
-<div class="cell">
-
-</div>
 <p>As a first mapping run, I had a single process (that one used 64G of memory and was way too much for what <code>bwa</code> and <code>FreeBayes</code> seem to need). The data being used in this run include:</p>
 <ul>
 <li>A new random selection of 5% of each individuals genome.<br>
@@ -1883,7 +1892,7 @@ W
 <p>Table 1 Current progress on bioinformatic workflows.</p>
 </div>
 </div>
-<p>At present, there are 0 samples remaining to be mapped.</p>
+<p>At present, there are 0 samples remaining to be initially mapped. Reruns on mapping will not be tracked here.</p>
 
 
 </section>
@@ -1904,7 +1913,7 @@ W
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/featured.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Let’s celebrate the small victories for what they are.</figcaption><p></p>
+<figcaption class="figure-caption">Let’s celebrate the small victories for what they are.</figcaption>
 </figure>
 </div>
 <p>So given the output from [[dDocent All Individuals 2.5%]] and [[dDocent All Individuals 10%]], I thought I’d run a 5% representation.</p>
@@ -2004,7 +2013,13 @@ font-style: inherit;">dDocent</span> version 2.9.4 started Mon Jan 30 13:32:43 E
 background-color: null;
 font-style: inherit;">1416</span> individuals are detected. Is this correct<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span> Enter yes or no and press [ENTER]</span>
+font-style: inherit;">?</span> Enter yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb1-11"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2030,9 +2045,13 @@ background-color: null;
 font-style: inherit;">?</span></span>
 <span id="cb1-20"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">Type</span> yes or no and press [ENTER]<span class="pp" style="color: #AD0000;
+font-style: inherit;">Type</span> yes or no and press <span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span></span>
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]?</span></span>
 <span id="cb1-21"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2044,7 +2063,13 @@ background-color: null;
 font-style: inherit;">?</span></span>
 <span id="cb1-24"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">Type</span> yes or no and press [ENTER].</span>
+font-style: inherit;">Type</span> yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span>.</span>
 <span id="cb1-25"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2056,7 +2081,13 @@ background-color: null;
 font-style: inherit;">?</span>&nbsp; Enter SE for single end, PE for paired-end, RPE for paired-end sequencing for RAD protocols with random shearing, or OL for paired-end sequencing that has substantial overlap.</span>
 <span id="cb1-28"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">Then</span> press [ENTER]</span>
+font-style: inherit;">Then</span> press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb1-29"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">SE</span></span>
@@ -2082,7 +2113,13 @@ font-style: inherit;">may</span> need to be changed for your taxa.</span>
 background-color: null;
 font-style: inherit;">Would</span> you like to enter a new c parameter now<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span> Type yes or no and press [ENTER]</span>
+font-style: inherit;">?</span> Type yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb1-35"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2104,7 +2141,13 @@ font-style: inherit;">0.85</span></span>
 background-color: null;
 font-style: inherit;">Do</span> you want to map reads<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span>&nbsp; Type yes or no and press [ENTER]</span>
+font-style: inherit;">?</span>&nbsp; Type yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb1-41"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">no</span></span>
@@ -2117,7 +2160,13 @@ font-style: inherit;">Mapping</span> will not be performed</span>
 background-color: null;
 font-style: inherit;">Do</span> you want to use FreeBayes to call SNPs<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span>&nbsp; Please type yes or no and press [ENTER]</span>
+font-style: inherit;">?</span>&nbsp; Please type yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb1-46"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">no</span></span>
@@ -2384,7 +2433,13 @@ font-style: inherit;">dDocent</span> version 2.9.4 started Wed Jan 25 13:33:54 E
 background-color: null;
 font-style: inherit;">1</span> individuals are detected. Is this correct<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span> Enter yes or no and press [ENTER]</span>
+font-style: inherit;">?</span> Enter yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb7-9"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2410,9 +2465,13 @@ background-color: null;
 font-style: inherit;">?</span></span>
 <span id="cb7-18"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">Type</span> yes or no and press [ENTER]<span class="pp" style="color: #AD0000;
+font-style: inherit;">Type</span> yes or no and press <span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span></span>
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]?</span></span>
 <span id="cb7-19"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2424,7 +2483,13 @@ background-color: null;
 font-style: inherit;">?</span></span>
 <span id="cb7-22"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">Type</span> yes or no and press [ENTER].</span>
+font-style: inherit;">Type</span> yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span>.</span>
 <span id="cb7-23"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2437,7 +2502,13 @@ font-style: inherit;">?</span> Enter SE for single end, PE for paired-end, RPE f
 <span id="cb7-26"></span>
 <span id="cb7-27"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">Then</span> press [ENTER]</span>
+font-style: inherit;">Then</span> press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb7-28"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">SE</span></span>
@@ -2464,7 +2535,13 @@ font-style: inherit;">may</span> need to be changed for your taxa.</span>
 background-color: null;
 font-style: inherit;">Would</span> you like to enter a new c parameter now<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span> Type yes or no and press [ENTER]</span>
+font-style: inherit;">?</span> Type yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb7-35"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">yes</span></span>
@@ -2486,7 +2563,13 @@ font-style: inherit;">0.85</span></span>
 background-color: null;
 font-style: inherit;">Do</span> you want to map reads<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span> Type yes or no and press [ENTER]</span>
+font-style: inherit;">?</span> Type yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb7-41"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">no</span></span>
@@ -2499,7 +2582,13 @@ font-style: inherit;">Mapping</span> will not be performed</span>
 background-color: null;
 font-style: inherit;">Do</span> you want to use FreeBayes to call SNPs<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">?</span> Please type yes or no and press [ENTER]</span>
+font-style: inherit;">?</span> Please type yes or no and press <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">[</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">]</span></span>
 <span id="cb7-46"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">no</span></span></code></pre></div>
@@ -2928,27 +3017,6 @@ parallel: Warning: Consider adjusting -j. Press CTRL-C to stop.</code></pre>
  ]]></description>
   <guid>https://dyerlab.org/posts/2023-01-25-Second-dDocent-Run/index.html</guid>
   <pubDate>Tue, 24 Jan 2023 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>First dDocent Run</title>
-  <link>https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><img src="https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/featured.png" class="img-fluid"></p>
-<blockquote class="blockquote">
-<p>You crash all the time, and sometimes it’s a really bad one, but sometimes it’s not so bad. - Lindsay Vonn</p>
-</blockquote>
-<p>So I set this one up with all the data to make an assembly, map, and then call SNPs for all the individuals.</p>
-<p>It crashed so bad that I didn’t even make a log of it.</p>
-
-
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2023-01-21-First-dDocent-Run/index.html</guid>
-  <pubDate>Sat, 21 Jan 2023 05:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

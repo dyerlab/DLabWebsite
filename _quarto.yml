@@ -24,9 +24,7 @@ execute:
 
 format:
   html:
-    theme: 
-      light: cosmo
-      dark: cyborg
+    theme: sandstone
     css: styles.css
 
 
