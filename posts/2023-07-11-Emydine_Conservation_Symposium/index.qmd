@@ -1,0 +1,26 @@
+---
+title: "Emydine Conservation Symposium"
+description: |
+  I had the privilege of being invited up to Juniata College in Huntingdon Pennsylvania to give a talk at the 3rd Emydine Conservation Conference about the work we've been doing on Spotted turtles.  Here are my slides.
+image: featured.jpg
+date: "2023-07-11"
+---
+
+It was the first time that I attended and presented at a herp meeting, and it was a great experience.  Such a great group of reserachers, agency people, law enforcement, and zoo personnel, all working on projects related to this group of turtles.  Really cool experience.
+
+![](./heading.png)
+
+I was asked to provide an overview of what we've been doing in the spotted turtle genetic work.  The conference had a tremendously wide variety of topics surrounding these species.  Here is the [agenda](https://drive.google.com/file/d/1aWJoShwHJGKQt-I4wdEfj1YY2jxm0Khg/view?usp=sharing).
+
+In addition to myself, there were two other genetics presentations by [Mark Jordan](https://www.pfw.edu/about-pfw/who-we-are/directories/mark-jordan) talking about *Patterns of standing Genetic variation and Effective population size in Blanding’s Turtle Populations* and another by [Andrew Whitley](https://www.umt.edu/environment/personnel/faculty.php?ID=4461) on *Population genetic analysis of the wood turtle across its us native range.*  Both of these talks were really well delivered, informative and inspiring.
+
+Here are my slides that I presented along with co-authors [Madison Whitehurst](https://dyerlab.org/people) and [Caleb Krueger](https://www.canr.msu.edu/people/caleb-krueger).
+
+
+[![](./featured.jpg)](https://drive.google.com/file/d/1-ZD9zUKUEwVvL8NSWaEiI5SAMrlHBAvh/view?usp=sharing)
+
+
+It was really nice to get up into the semi-mountainous areas in Pennsylvania (and out of the more humid piedmont of Virginia) for a while.
+
+
+
