@@ -1,0 +1,137 @@
+---
+title: "Coagulating Samples By Hydrologic Units; or<br/>'<i>How I learned to HUC my data...</i>'"
+date: "2023-07-20"
+image: featured.png
+description: |
+  It is not uncommon in data analysis to need to coagulate samples together based upon some spatial feature of your landscape. Here is an example of how I did this for some spotted turtle sampling locations based upon hydrologic units.
+---
+
+> The Watershed Boundary Dataset (WBD) maps the full areal extent of surface water drainage for the U.S. using a hierarchical system of nesting hydrologic units at various scales, each with an assigned hydrologic unit code ([HUC](https://enviroatlas.epa.gov/enviroatlas/glossary/glossary.html#huc)). HUCs are delineated and georeferenced to U.S. Geological Survey (USGS) 1:24,000 scale topographic base maps according to compilation criteria monitored by the national [Subcommittee on Spatial Water Data](https://acwi.gov/spatial/).
+
+For this exercise I'm going to use a the hydrologic regions that represent "large river basins" designated as `HUC4`.  So, how do we get these spatial extents?
+
+1. We could go to the WBD website and download fileGDB for each state and then go from there, or...
+2. We could look and see that someone in the `R` community has already done this for us and we can use their package.
+
+I'm going to go with the second option.
+
+## Getting HUC Representation
+
+So for this, I found a utility package by Mazama Science that has a function `getHUCName(lat,lon)` that seems to be exactly what I need.  So, I'll use this.  If you do not have this package already installed, execute the following:
+
+```{r}
+#| eval: false
+install.packages("MAZAMASpatialUtils")
+```
+
+Then load it into your workspace as:
+
+```{r}
+#| cache: true
+library(MazamaSpatialUtils)
+```
+
+The library comes with a few spatial data sets already installed, which you can see:
+
+```{r}
+#| cache: true
+setSpatialDataDir("./data/")
+installedSpatialData()
+```
+
+unfortunately, this does not include the WBD data set for HUC4, so we'll have to install it locally.  To do this, we designate a location for them to be stored (n.b., they are semi-large entities) and I'll use a folder I created right under this file named (aptly) `data` and then have it installed there.  It took me a bit of snooping around to find the right location of the data sets. As of the writing of this document, the folder is [here](http://data.mazamascience.com/MazamaSpatialUtils/Spatial_0.8/) and you can go look in there to see the coding.  The WBD files are not part of the documentation of the package (at least in the help file for the `getHUCName()` or the vignettes).
+
+```{r}
+#| cache: true
+installSpatialData( dataset="WBDHU4" )
+```
+
+Now, we can verify that the HUC4 data is installed.
+
+```{r}
+#| cache: true
+installedSpatialData()
+```
+
+Now, we can figure out what HUC4 is for a specific locale.  We need to first load in the data set and then we can query values (here is the designation for Richmond VA).
+
+```{r}
+#| cache: true
+loadSpatialData("WBDHU4")
+getHUCName( longitude = -77.4360, latitude = 37.5407, dataset = "WBDHU4")
+```
+
+Cool (though it is a bit slow).
+
+
+## Applying to Genetic Data Sets
+
+So let's apply this to the larger turtle data set.  Here I have a 1400 indivduals genotyped for 930 SNP loci.  The meta data for each individual is
+
+```{r}
+#| cache: true
+load("all_data.rda")
+names(data)[1:6]
+```
+
+Where the values in `Population` are the ones that I'm going to collapse samples into.  So, what I want is to be able to find the HUC-4 designation for all Population values.  
+
+So, there are some functions in my `gstudio` package that will help out.  The `strata_coordinates()` function takes the barycenter of a set of samples and returns a `data.frame` with the coordinates.
+
+```{r}
+#| warning: false
+#| cache: true
+library( gstudio )
+coords <- strata_coordinates( data, stratum = "Population")
+names(coords)
+```
+
+The function seems to take a bit of time to run.  For example, to do the single coordinate above, on my MacStudio desktop, it takes.
+
+```{r}
+#| cache: true
+start <- Sys.time()
+getHUCName( longitude = -77.4360, latitude = 37.5407, dataset = "WBDHU4")
+end <- Sys.time()
+print( end - start )
+```
+
+It turns out that at the current speed, it should take (`nrow(coords) * difftime(end,start,units="mins")`), which is about perfect for me to go grab a cup of tea while it is running.
+
+```{r}
+#| cache: true
+coords$HUC4 <- factor( getHUCName( longitude = coords$Longitude,
+                           latitude = coords$Latitude,
+                           dataset = "WBDHU4") )
+```
+
+which I can now map back onto my original data file.
+
+```{r}
+#| warning: false 
+#| message: false
+#| error: false 
+#| cache: true
+library( tidyverse )
+data |> 
+  left_join(  coords |>  select( Population = Stratum, HUC4) ) |>
+  select( Locale, HUC4 ) |> 
+  summary()
+```
+
+Now I can clean up and get rid of the data sets in my blog folder.
+
+```{r}
+#| cache: true
+unlink("./data/*")
+```
+
+
+Perfect. Hope this helps.
+
+
+
+
+
+
+

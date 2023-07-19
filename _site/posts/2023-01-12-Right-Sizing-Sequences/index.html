@@ -193,14 +193,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Be able to do the bioinformatics parts in a reasonable timeframe -&gt; <em>smaller data sets</em></li>
 </ol>
 <p>However, it is not always <em>a priori</em> knowable how much of the data to use.</p>
-<section id="full-data" class="level2">
-<h2 class="anchored" data-anchor-id="full-data">Full Data</h2>
-<p>So I started by running on the full data set. It took me a few runs to figure out that this is probably not going to work. A more complete discussion of these can be found:</p>
-<ul>
-<li><a href="../../posts/2023-01-21-First-dDocent-Run/index.html">First dDocent Run</a></li>
-<li><a href="../../posts/2023-01-25-Second-dDocent-Run/index.html">Second dDocent Run</a></li>
-</ul>
-</section>
 <section id="smaller-subsets" class="level2">
 <h2 class="anchored" data-anchor-id="smaller-subsets">Smaller Subsets</h2>
 <p>So it appears that taking all the data to make an assembly may be problematic for a few different reasons:</p>
@@ -227,11 +219,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>( <span class="fu">format</span>(i<span class="sc">/</span><span class="fu">length</span>(files), <span class="at">digits=</span><span class="dv">3</span>), <span class="st">" "</span>, ofile, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Using this, I set up random subsets of the data for the following partitions. For each of these, I actually did a singular.</p>
+<p>Using this, I set up random subsets of the data for:</p>
 <ul>
 <li>10% of each individuals genome.</li>
 <li>5% of each individuals genome.</li>
-<li><a href="../../posts/2023-01-30-2pt5pct-dDocent-Run/index.html">2.5% of each individuals genome.</a></li>
+<li>2.5% of each individuals genome.</li>
 </ul>
 
 
