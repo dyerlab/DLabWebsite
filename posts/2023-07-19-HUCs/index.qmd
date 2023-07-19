@@ -2,6 +2,8 @@
 title: "Coagulating Samples By Hydrologic Units; or<br/>'<i>How I learned to HUC my data...</i>'"
 date: "2023-07-20"
 image: featured.png
+execute:
+  cache: true
 description: |
   It is not uncommon in data analysis to need to coagulate samples together based upon some spatial feature of your landscape. Here is an example of how I did this for some spotted turtle sampling locations based upon hydrologic units.
 ---
