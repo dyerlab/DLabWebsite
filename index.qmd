@@ -16,8 +16,51 @@ title-block-banner: true
 
 The Dyer laboratory is a research lab at [Virginia Commonwealth University](https://vcu.edu) that focuses on developing and testing tools to aid in understand how landscape features influence genetic connectivity. This requires a mix of theory development, software creation, and evaluation using (largely) non-model systems in the field.
 
+
+::: {.grid}
+
+::: {.g-col-4}
+
+<center>
+<h4>Pollen Movement</h4>
+![](images/pollen-movement.png)
+</center>
+
+Developing models and applications of how to quantify how landscape features, structure, and architecture impacts real-time pollen mediated gene flow in temprate tree species.  
+:::
+
+
+::: {.g-col-4}
+
+<center>
+<h4>Administravia</h4>
+![](images/ProgramDetailView.png)
+</center>
+Software designed to aid in the planning, implementation, and monitoring or data-driven curricular change for academic units.  
+
+[More Info](https://dyerlab.github.io/Administravia/)
+:::
+
+
+::: {.g-col-4}
+
+<center>
+  <h4>Conservation Genetics</h4>
+  ![](images/spotted_turtle.png)
+</center>
+
+Range-wide assessment of standing genetic structure in spotted turtles with derivative applications to watershed-level assignment of animals confiscated from the illegal trade.
+
+:::
+
+
+
+
+
+:::
+
+
 &nbsp;
 
-
-## Recent Posts
+## Recent Blog Posts
 

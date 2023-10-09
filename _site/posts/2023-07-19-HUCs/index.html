@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,7 +91,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -197,17 +198,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="getting-huc-representation" class="level2">
 <h2 class="anchored" data-anchor-id="getting-huc-representation">Getting HUC Representation</h2>
 <p>So for this, I found a utility package by Mazama Science that has a function <code>getHUCName(lat,lon)</code> that seems to be exactly what I need. So, I’ll use this. If you do not have this package already installed, execute the following:</p>
-<div class="cell">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_0b8bda1286845a05f6500fd18cfba0fc">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"MAZAMASpatialUtils"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then load it into your workspace as:</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_a7d0d272e83c6867ef01f66eb992d8bc">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MazamaSpatialUtils)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: sf</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
+</div>
 </div>
 <p>The library comes with a few spatial data sets already installed, which you can see:</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_aaa1ecd21495d24a04c1b3675c5ad7f3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setSpatialDataDir</span>(<span class="st">"./data/"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">installedSpatialData</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setSpatialDataDir</span>(<span class="st">"./data/"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">installedSpatialData</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   SimpleCountries -- Simplified version of the TMWorldBorders 
 SimpleCountriesEEZ -- Simplified version of EEZCountries 
@@ -216,11 +223,11 @@ SimpleCountriesEEZ -- Simplified version of EEZCountries
 </div>
 <p>unfortunately, this does not include the WBD data set for HUC4, so we’ll have to install it locally. To do this, we designate a location for them to be stored (n.b., they are semi-large entities) and I’ll use a folder I created right under this file named (aptly) <code>data</code> and then have it installed there. It took me a bit of snooping around to find the right location of the data sets. As of the writing of this document, the folder is <a href="http://data.mazamascience.com/MazamaSpatialUtils/Spatial_0.8/">here</a> and you can go look in there to see the coding. The WBD files are not part of the documentation of the package (at least in the help file for the <code>getHUCName()</code> or the vignettes).</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_6953501db0f241b3aa7862f4b3119fb1">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installSpatialData</span>( <span class="at">dataset=</span><span class="st">"WBDHU4"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installSpatialData</span>( <span class="at">dataset=</span><span class="st">"WBDHU4"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can verify that the HUC4 data is installed.</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_8d2a3feda6ea18dff7ca8827c118e27f">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installedSpatialData</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installedSpatialData</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   SimpleCountries -- Simplified version of the TMWorldBorders 
 SimpleCountriesEEZ -- Simplified version of EEZCountries 
@@ -233,8 +240,8 @@ SimpleCountriesEEZ -- Simplified version of EEZCountries
 </div>
 <p>Now, we can figure out what HUC4 is for a specific locale. We need to first load in the data set and then we can query values (here is the designation for Richmond VA).</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-6_14ff7b1e54e558887fe6303816f798cb">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loadSpatialData</span>(<span class="st">"WBDHU4"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getHUCName</span>( <span class="at">longitude =</span> <span class="sc">-</span><span class="fl">77.4360</span>, <span class="at">latitude =</span> <span class="fl">37.5407</span>, <span class="at">dataset =</span> <span class="st">"WBDHU4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loadSpatialData</span>(<span class="st">"WBDHU4"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getHUCName</span>( <span class="at">longitude =</span> <span class="sc">-</span><span class="fl">77.4360</span>, <span class="at">latitude =</span> <span class="fl">37.5407</span>, <span class="at">dataset =</span> <span class="st">"WBDHU4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Lower Chesapeake"</code></pre>
 </div>
@@ -245,8 +252,8 @@ SimpleCountriesEEZ -- Simplified version of EEZCountries
 <h2 class="anchored" data-anchor-id="applying-to-genetic-data-sets">Applying to Genetic Data Sets</h2>
 <p>So let’s apply this to the larger turtle data set. Here I have a 1400 indivduals genotyped for 930 SNP loci. The meta data for each individual is</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-7_e0335a25a2615e1158580335a4a2eee7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"all_data.rda"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"all_data.rda"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Locale"     "Population" "ID"         "Target"     "Longitude" 
 [6] "Latitude"  </code></pre>
@@ -255,39 +262,39 @@ SimpleCountriesEEZ -- Simplified version of EEZCountries
 <p>Where the values in <code>Population</code> are the ones that I’m going to collapse samples into. So, what I want is to be able to find the HUC-4 designation for all Population values.</p>
 <p>So, there are some functions in my <code>gstudio</code> package that will help out. The <code>strata_coordinates()</code> function takes the barycenter of a set of samples and returns a <code>data.frame</code> with the coordinates.</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-8_7002c0c991ebe398288bba3cdc7bf14a">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( gstudio )</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">strata_coordinates</span>( data, <span class="at">stratum =</span> <span class="st">"Population"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( gstudio )</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">strata_coordinates</span>( data, <span class="at">stratum =</span> <span class="st">"Population"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Stratum"   "Longitude" "Latitude" </code></pre>
 </div>
 </div>
 <p>The function seems to take a bit of time to run. For example, to do the single coordinate above, on my MacStudio desktop, it takes.</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-9_55167e8042879cf6f40ed884db617f4b">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getHUCName</span>( <span class="at">longitude =</span> <span class="sc">-</span><span class="fl">77.4360</span>, <span class="at">latitude =</span> <span class="fl">37.5407</span>, <span class="at">dataset =</span> <span class="st">"WBDHU4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getHUCName</span>( <span class="at">longitude =</span> <span class="sc">-</span><span class="fl">77.4360</span>, <span class="at">latitude =</span> <span class="fl">37.5407</span>, <span class="at">dataset =</span> <span class="st">"WBDHU4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Lower Chesapeake"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( end <span class="sc">-</span> start )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( end <span class="sc">-</span> start )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 8.060695 secs</code></pre>
+<pre><code>Time difference of 8.015462 secs</code></pre>
 </div>
 </div>
 <p>It turns out that at the current speed, it should take (<code>nrow(coords) * difftime(end,start,units="mins")</code>), which is about perfect for me to go grab a cup of tea while it is running.</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-10_80540d99ac8047f6b3d2b7cc08bc73a8">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>coords<span class="sc">$</span>HUC4 <span class="ot">&lt;-</span> <span class="fu">factor</span>( <span class="fu">getHUCName</span>( <span class="at">longitude =</span> coords<span class="sc">$</span>Longitude,</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">latitude =</span> coords<span class="sc">$</span>Latitude,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">dataset =</span> <span class="st">"WBDHU4"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>coords<span class="sc">$</span>HUC4 <span class="ot">&lt;-</span> <span class="fu">factor</span>( <span class="fu">getHUCName</span>( <span class="at">longitude =</span> coords<span class="sc">$</span>Longitude,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">latitude =</span> coords<span class="sc">$</span>Latitude,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">dataset =</span> <span class="st">"WBDHU4"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>which I can now map back onto my original data file.</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-11_e86a23c4e8105fed388b72b541c9e62f">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( tidyverse )</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(  coords <span class="sc">|&gt;</span>  <span class="fu">select</span>( <span class="at">Population =</span> Stratum, HUC4) ) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( Locale, HUC4 ) <span class="sc">|&gt;</span> </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( tidyverse )</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(  coords <span class="sc">|&gt;</span>  <span class="fu">select</span>( <span class="at">Population =</span> Stratum, HUC4) ) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( Locale, HUC4 ) <span class="sc">|&gt;</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Locale                                          HUC4    
  Length:1318        Delaware-Mid Atlantic Coastal     :159  
@@ -301,7 +308,7 @@ SimpleCountriesEEZ -- Simplified version of EEZCountries
 </div>
 <p>Now I can clean up and get rid of the data sets in my blog folder.</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-12_ef3f0618de636698c15cb4b0a58ab0a0">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">"./data/*"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">"./data/*"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Perfect. Hope this helps.</p>
 
