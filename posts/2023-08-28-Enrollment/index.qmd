@@ -6,7 +6,7 @@ description: |
   Despite the ever present 'demograhic cliff in college enrollment' that we continue to prepare for, enrollment in courses offered by the Center for Environmental Studies continues to increase.  
 ---
 
-Despite the ever present threat of the *Demographic Cliff* in incoming student engagemnet that is propsed to be right around the corner every year by some in the academy, the [Center for Environmental Studies](https://ces.vcu.edu) continues to increase enrollment numbers.  
+Despite the ever present threat of the *Demographic Cliff* in incoming student engagement that is proposed to be right around the corner every year by some in the academy, the [Center for Environmental Studies](https://ces.vcu.edu) continues to increase enrollment numbers.  
 
 ![Historical trends in the number of seats filled in both core ENVS courses (blue) as well as across all the courses offered by the unit (green).](featured.png)
 
