@@ -1,0 +1,67 @@
+---
+title: "Administravia"
+description: |
+  This software has been designed to aid in the planning, implementation, and monitoring or data-driven curricular change for academic units. Our unit has recently gone through the process of doing an entire overhaul of the curriculum for minors, certificate programs, bachelors degrees, and graduate programs. These are the kinds of data we found both necessary and foundational in understand how the changes we implemented impacted learning and success for our students. 
+---
+
+![](TitlePage.png)
+
+
+This software has been designed to aid in the planning, implementation, and monitoring or data-driven curricular change for academic units.  Our unit has recently gone through the process of doing an entire overhaul of the curriculum for minors, certificate programs, bachelors degrees, and graduate programs.  These are the kinds of data we found both necessary and foundational in understand how the changes we implemented impacted learning and success for our students.  
+
+Below are some general summaries of the general modules.  If you would like to be added to list of individuals currently conducting beta-testing on this software, please email [administravia@dyerlab.org](mailto:administravia@dyerlab.org).
+
+### Faculty Management
+
+![](FacultyOutput.png)
+
+Faculty are the key component of any curricular academic program and are the source of both domain-specific expertise as well as the primary contact with your students.  The faculty management module contains the following materials:  
+
+- General faculty information including email, webpage, and scholarly output as reported by Google Scholar.   
+- A chronology of *effective teaching output* as defined by the number of student contact hours—a measure of the number of credits for each course times the number of filled seats—through time.  
+- A historical list of all courses taught, course size, and the number of contact hours generated.
+
+
+### Academic Program Management
+
+![](ProgramDetail.png)
+
+Each academic program is defined by not only the courses that contribute to it but by how these courses are aligned with pre-defined Program Learning Objectives.  In fact, every course-level learning objectives need to be mapped directly onto the Program Learning Objectives.  
+
+One criteria for success in program development is provided by the number of students in the program and their generation of contact hours through time.  Students are drawn to programs that are dynamic and that provide the skills, knowledge, and hands on experiences that they see as critical for their professional trajectory.  They will vote with their feet and as a consequence program change that generates more interest are those that have indications of success. 
+
+![](ProgramContactHours.png)
+
+
+### Program Learning Objectives
+
+Program learning objectives are the CORE component of any academic program.  These *must* be defined first and set the expected and anticipated outcomes for any academic program.  Each course that resides within an academic program as CORE (e.g., required by all students) must also have course-level learning objectives that directly map onto the Program Learning Objectives.  Furthermore each assessment in the course *must* also unambiguously map onto the course-level learning objectives.
+
+![](LearningObjectiveMapping.png)
+
+Incomplete or missing links within this 3-level mapping suggest discongruence with outcomes, objectives, and expectations.  
+
+- Course assessments that do not map onto course learning objectives suggest that students are being evaluated for some content that is not the specified domain of this course.  This may be evidence of busy work or incomplete coverage of what the course is intended to provide.  
+- Courses learning objectives that do not map onto programmatic level expected outcomes raise raise questions such as, "Is this course really CORE to our program?" and "Do we need to re-evaluate what our learning outcomes should really be since these courses are developing learning that we are not saying is CORE?"  
+
+
+### Individual Course 
+
+### Course Scheduling
+
+Let's face it, scheduling is a nightmare.  Moreover, historical 
+
+
+### Assessment  
+
+Assessment is a continuous process, often likened to painting the Golden Gate Bridge.  
+
+
+
+### Reporting 
+
+
+
+
+
+

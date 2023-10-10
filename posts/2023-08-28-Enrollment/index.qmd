@@ -1,0 +1,21 @@
+---
+title: "Continued Enrollment Increases"
+date: "2023-08-28"
+image: featured.png
+description: |
+  Despite the ever present 'demograhic cliff in college enrollment' that we continue to prepare for, enrollment in courses offered by the Center for Environmental Studies continues to increase.  
+---
+
+Despite the ever present threat of the *Demographic Cliff* in incoming student engagemnet that is propsed to be right around the corner every year by some in the academy, the [Center for Environmental Studies](https://ces.vcu.edu) continues to increase enrollment numbers.  
+
+![Historical trends in the number of seats filled in both core ENVS courses (blue) as well as across all the courses offered by the unit (green).](featured.png)
+
+
+Starting in 2015, when I had the privilege of becoming the Director of Undergraduate Programs, and building momentum since 2017 when I became the Director of the Center, I've worked directly with the faculty and administration to take a curriculum that had sat fallow since its inception and began to modernize it.   
+
+```{r}
+priorSCH <- c(1229,2977,3287,3547,3785,4132,4168,4023,4079)
+postSCH <- c(4788,4613,5182,5029,5700,5723,5163,5425)
+```
+
+The data show the consequences of these decisions with historical averages in the number of student contact hours generated as `r format(mean(priorSCH),digits=5)` and those following the initiation of full curriculum changes as `r format(mean(postSCH), digits=5)`—an increase of `r format(mean(postSCH)/mean(priorSCH)*100, digits=5)`%!

@@ -36,7 +36,7 @@ Developing models and applications of how to quantify how landscape features, st
 <h4>Administravia</h4>
 ![](images/ProgramDetailView.png)
 </center>
-Software designed to aid in the planning, implementation, and monitoring or data-driven curricular change for academic units.  
+Developing software to aid in the planning, implementation, and monitoring of data-driven curricular change for academic units.  
 
 [More Info](https://dyerlab.github.io/Administravia/)
 :::
