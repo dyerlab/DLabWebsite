@@ -1,0 +1,12 @@
+---
+title: "Student Orientation"
+editor: source
+date: "2023-10-21"
+description: |
+  A key process in developing and expanding our academic programs in VCU Life Sciences broadly, and the Center for Environmental Studies specifically, is recruitment.  This time of year, new students and their families are looking at options for their graduating seniors and it is critical that we are able to show off the opportunities that exist in our units.  Here are the slides from this mornings presentations.
+image: featured.png
+---
+
+Here are the slides I provided for today's presentations.
+
+[![](featured.png)](https://docs.google.com/presentation/d/e/2PACX-1vTBi_dhh06JMgR2E-0N-MhBrTyodJG2oRSX04w8SfX-1TBGUlNMHbqxG1UtB-C69GXKSz9WYy2JSm42/pub?start=false&loop=false&delayms=3000)

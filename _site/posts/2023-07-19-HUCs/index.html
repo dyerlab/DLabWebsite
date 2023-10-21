@@ -279,7 +279,7 @@ SimpleCountriesEEZ -- Simplified version of EEZCountries
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( end <span class="sc">-</span> start )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 9.182024 secs</code></pre>
+<pre><code>Time difference of 8.015462 secs</code></pre>
 </div>
 </div>
 <p>It turns out that at the current speed, it should take (<code>nrow(coords) * difftime(end,start,units="mins")</code>), which is about perfect for me to go grab a cup of tea while it is running.</p>

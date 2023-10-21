@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-01-20">
-<meta name="description" content="OK, so we finally received all the data (after the financials office was able to pay the bill) and here it is as a large chunk.">
+<meta name="dcterms.date" content="2023-10-21">
+<meta name="description" content="A key process in developing and expanding our academic programs in VCU Life Sciences broadly, and the Center for Environmental Studies specifically, is recruitment. This time of year, new students and their families are looking at options for their graduating seniors and it is critical that we are able to show off the opportunities that exist in our units. Here are the slides from this mornings presentations.">
 
-<title>dyerlab - Right Sizing the Sequences</title>
+<title>dyerlab - Student Orientation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -98,11 +64,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="dyerlab - Right Sizing the Sequences">
-<meta name="twitter:description" content="OK, so we finally received all the data (after the financials office was able to pay the bill) and here it is as a large chunk.">
-<meta name="twitter:image" content="https://dyerlab.org/posts/2023-01-12-Right-Sizing-Sequences/featured.png">
-<meta name="twitter:image-height" content="354">
-<meta name="twitter:image-width" content="327">
+<meta name="twitter:title" content="dyerlab - Student Orientation">
+<meta name="twitter:description" content="A key process in developing and expanding our academic programs in VCU Life Sciences broadly, and the Center for Environmental Studies specifically, is recruitment. This time of year, new students and their families are looking at options for their graduating seniors and it is critical that we are able to show off the opportunities that exist in our units. Here are the slides from this mornings presentations.">
+<meta name="twitter:image" content="https://dyerlab.org/posts/2023-10-21-Orientation/featured.png">
+<meta name="twitter:image-height" content="639">
+<meta name="twitter:image-width" content="800">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -152,10 +118,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Right Sizing the Sequences</h1>
+      <h1 class="title">Student Orientation</h1>
                   <div>
         <div class="description">
-          <p>OK, so we finally received all the data (after the financials office was able to pay the bill) and here it is as a large chunk.</p>
+          <p>A key process in developing and expanding our academic programs in VCU Life Sciences broadly, and the Center for Environmental Studies specifically, is recruitment. This time of year, new students and their families are looking at options for their graduating seniors and it is critical that we are able to show off the opportunities that exist in our units. Here are the slides from this mornings presentations.</p>
         </div>
       </div>
                 </div>
@@ -168,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 20, 2023</p>
+        <p class="date">October 21, 2023</p>
       </div>
     </div>
     
@@ -186,49 +152,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><img src="featured.png" class="img-fluid"></p>
-<p>There is a necessity to figure out how much of your data you should be using for each step. It is a balancing act where we need to simultaneously:</p>
-<ol type="1">
-<li>Capture as much of the underlying genetic information as we can so that we have a good representation across the species distribution -&gt; <em>more data</em></li>
-<li>Make sure that the data we are using is conservative enough such that we can have a sufficient level of confidence that what we are working with is actually good data. -&gt; <em>less overall data</em></li>
-<li>Be able to do the bioinformatics parts in a reasonable timeframe -&gt; <em>smaller data sets</em></li>
-</ol>
-<p>However, it is not always <em>a priori</em> knowable how much of the data to use.</p>
-<section id="smaller-subsets" class="level2">
-<h2 class="anchored" data-anchor-id="smaller-subsets">Smaller Subsets</h2>
-<p>So it appears that taking all the data to make an assembly may be problematic for a few different reasons:</p>
-<ol type="1">
-<li>It will take a <em>shit ton</em> of time (that is technical measure of quantity reserved for only the most important and magnificently large collections of items).</li>
-<li>It may produce a much too many contigs to be generally informative.</li>
-</ol>
-<p>So I set up some subsets of the data to see how long it will take to do smaller amounts.</p>
-<p>Here some <code>R</code> code that I wrote to just take a fractional subset of the sequences from each individual and, using the program <code>seqtk</code> make a new set of data in a different folder.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pct <span class="ot">&lt;-</span> <span class="st">"0.025"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>folder <span class="ot">&lt;-</span> <span class="st">"./all0025/"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"all"</span>,<span class="at">pattern=</span><span class="st">"F.fq.gz"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(files) ) {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    file <span class="ot">&lt;-</span> files[i]</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(file, <span class="at">split=</span><span class="st">"</span><span class="sc">\\</span><span class="st">."</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    ofile <span class="ot">&lt;-</span> <span class="fu">paste</span>( <span class="fu">paste</span>(tmp[<span class="dv">1</span>],tmp[<span class="dv">2</span>],<span class="at">sep=</span><span class="st">""</span>), tmp[<span class="dv">3</span>],tmp[<span class="dv">4</span>], <span class="at">sep=</span><span class="st">"."</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    cmd <span class="ot">&lt;-</span> <span class="fu">paste</span>( <span class="st">"seqtk sample ./all/"</span>,file,<span class="st">" "</span>, </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                  pct, <span class="st">" &gt; "</span>, folder, <span class="st">" "</span>, ofile, <span class="at">sep=</span><span class="st">""</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">system</span>(cmd)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>( <span class="fu">format</span>(i<span class="sc">/</span><span class="fu">length</span>(files), <span class="at">digits=</span><span class="dv">3</span>), <span class="st">" "</span>, ofile, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here are the slides I provided for today’s presentations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://docs.google.com/presentation/d/e/2PACX-1vTBi_dhh06JMgR2E-0N-MhBrTyodJG2oRSX04w8SfX-1TBGUlNMHbqxG1UtB-C69GXKSz9WYy2JSm42/pub?start=false&amp;loop=false&amp;delayms=3000"><img src="featured.png" class="img-fluid figure-img"></a></p>
+</figure>
 </div>
-<p>Using this, I set up random subsets of the data for:</p>
-<ul>
-<li>10% of each individuals genome.</li>
-<li>5% of each individuals genome.</li>
-<li>2.5% of each individuals genome.</li>
-</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
