@@ -10,7 +10,25 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 21 Oct 2023 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 03 Nov 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Population Graphs Re-Incarnated</title>
+  <link>https://dyerlab.org/posts/2023-11-03-PopulationGraphs_Reincarnated/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-11-03-PopulationGraphs_Reincarnated/featured.png" class="img-fluid" alt="GUI interface for PopulationGraphs"></p>
+<p>Time to get some basic one-graph analytics put together. I’ll update as progress is made.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-11-03-PopulationGraphs_Reincarnated/index.html</guid>
+  <pubDate>Fri, 03 Nov 2023 04:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-11-03-PopulationGraphs_Reincarnated/featured.png" medium="image" type="image/png" height="136" width="144"/>
+</item>
 <item>
   <title>Student Orientation</title>
   <link>https://dyerlab.org/posts/2023-10-21-Orientation/index.html</link>
@@ -297,7 +315,7 @@ font-style: inherit;">print</span>( end <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> start )</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 8.015462 secs</code></pre>
+<pre><code>Time difference of 9.182024 secs</code></pre>
 </div>
 </div>
 <p>It turns out that at the current speed, it should take (<code>nrow(coords) * difftime(end,start,units="mins")</code>), which is about perfect for me to go grab a cup of tea while it is running.</p>
@@ -958,11 +976,21 @@ font-style: inherit;">system</span>( cmd )</span>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>( tidyverse )</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
+font-style: inherit;">library</span>( tidyverse )</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+✔ readr   2.1.3      ✔ forcats 0.5.2 
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>( ggrepel )</span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_set</span>( <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -979,7 +1007,7 @@ font-style: inherit;">theme_minimal</span>() )</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="batching-freebayes">Batching <code>freebayes</code></h2>
 <p>To batch these I made a new directory called <code>snpcalling</code> and linked the bam files from a set of indiviudals in several different populations to this folder.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> bam <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -990,7 +1018,7 @@ background-color: null;
 font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span>  </span>
-<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ln</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -999,30 +1027,30 @@ background-color: null;
 font-style: inherit;">$bam</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">;</span> </span>
-<span id="cb2-3"><span class="cf" style="color: #003B4F;
+<span id="cb4-3"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">done</span></span></code></pre></div>
 </div>
 <p>I then made a small <code>runFreeBayes.sh</code> run file that would</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#!/bin/bash</span></span>
-<span id="cb3-2"><span class="va" style="color: #111111;
+<span id="cb5-2"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">ref</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../samples/all005/reference.fasta"</span></span>
-<span id="cb3-3"><span class="fu" style="color: #4758AB;
+<span id="cb5-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ls</span> <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">*</span>.bam <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span> bam.fofn</span>
-<span id="cb3-4"><span class="ex" style="color: null;
+<span id="cb5-4"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">freebayes</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -1036,48 +1064,48 @@ font-style: inherit;">--vcf</span> Output.vcf</span></code></pre></div>
 </div>
 <p>I then made it executable</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">chmod</span> +x runFreeBayes.sh</span></code></pre></div>
 </div>
 <p>And made a slurm batch file <code>freebayes.sub</code> which contains</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#!/bin/bash</span></span>
-<span id="cb5-2"><span class="co" style="color: #5E5E5E;
+<span id="cb7-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -N 1</span></span>
-<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -n 36</span></span>
-<span id="cb5-4"><span class="co" style="color: #5E5E5E;
+<span id="cb7-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -t 96:00:00</span></span>
-<span id="cb5-5"><span class="co" style="color: #5E5E5E;
+<span id="cb7-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -J freebayesbaby</span></span>
-<span id="cb5-6"><span class="co" style="color: #5E5E5E;
+<span id="cb7-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -o freebayes.o%j</span></span>
-<span id="cb5-7"><span class="co" style="color: #5E5E5E;
+<span id="cb7-7"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -e freebayes.e%j</span></span>
-<span id="cb5-8"><span class="co" style="color: #5E5E5E;
+<span id="cb7-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH --mail-user=rjdyer@vcu.edu</span></span>
-<span id="cb5-9"><span class="co" style="color: #5E5E5E;
+<span id="cb7-9"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH --mail-type=ALL</span></span>
-<span id="cb5-10"><span class="bu" style="color: null;
+<span id="cb7-10"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">ulimit</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-s</span> unlimited</span>
-<span id="cb5-11"><span class="ex" style="color: null;
+<span id="cb7-11"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">./runFreeBayes.sh</span></span>
-<span id="cb5-12"><span class="ex" style="color: null;
+<span id="cb7-12"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">scontrol</span> show job <span class="va" style="color: #111111;
 background-color: null;
@@ -1085,15 +1113,16 @@ font-style: inherit;">$SLURM_JOB_ID</span></span></code></pre></div>
 </div>
 <p>and then dumped it off for batch processing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">sbatch</span> freebayes.sub</span></code></pre></div>
 </div>
 <p>After this, you can see that the batch job has been queued up (#34827) and waiting to go.</p>
 <pre><code>[rjdyer@huff snpcalling]$ squeue
   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
-<p>So, now lets see if it actually works.</p>
+  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)
+  34828     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
+<p>So, now lets see if it actually works. This run has 293 samples and the next one (#34828) has 270.</p>
 
 
 </section>
@@ -1311,11 +1340,12 @@ font-style: inherit;">"nx10/httpgd"</span>)</span>
 </div>
 </div>
 <p>Now, download <a href="https://code.visualstudio.com/">VSCode</a> from the main server. You will also need to install the <a href="https://marketplace.visualstudio.com/items?itemName=REditorSupport.r">R Extension for Visual Studio Code</a>, which can be installed from inside VSCode.</p>
-<p>Now, you’ll need to install the following items for VSCode:</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-ssh</a></li>
-</ul>
-<p>Once you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work. For me, after logging into the remot server, I created an <code>R</code> file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side. It was all locally done so no big deal.</p>
+</section>
+<section id="making-secure-connections" class="level2">
+<h2 class="anchored" data-anchor-id="making-secure-connections">Making Secure Connections</h2>
+</section>
+<section id="remote-work" class="level2">
+<h2 class="anchored" data-anchor-id="remote-work">Remote Work</h2>
 
 
 </section>
@@ -1332,7 +1362,6 @@ font-style: inherit;">"nx10/httpgd"</span>)</span>
 
 
 
-<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/featured.png" class="img-fluid"></p>
 <section id="merging-vcf-files" class="level2">
 <h2 class="anchored" data-anchor-id="merging-vcf-files">Merging VCF Files</h2>
 <p>The first thing we need to to is zip and then index the individual vcf files. As a reminder, these files have been created by individual <code>freebayes</code> SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected. So, in the following examples, the file <code>R.vcf</code> contains all the individuals in populations starting with the letter <code>R</code>. When there are not that many individuals in a group, they are clustered—below we have <code>JK.vcf</code> which has all the individuals from populations starting with the letters <code>J</code> and <code>K</code>.</p>
@@ -1472,18 +1501,12 @@ font-style: inherit;">prob =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.10</span>,<span class="fl" style="color: #AD0000;
+font-style: inherit;">0.25</span>,<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.25</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.75</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.90</span>))</span></code></pre></div>
+font-style: inherit;">0.75</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   10%    25%    50%    75%    90% 
-  60.0  110.0  278.0  964.0 3421.1 </code></pre>
+<pre><code>25% 75% 
+110 964 </code></pre>
 </div>
 </div>
 <p>This leaves us with 5047 sites.</p>
@@ -1529,220 +1552,8 @@ font-style: inherit;">Run</span> Time = 1.00 seconds</span></code></pre></div>
 <p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="filtering-out-sequncing-errors" class="level3">
-<h3 class="anchored" data-anchor-id="filtering-out-sequncing-errors">Filtering out Sequncing Errors</h3>
-<p>Now, I’m going to look at the effects of filter different aspects. Here is the minor allele count (MAC). I’m doing this over frequency given that I have <img src="https://latex.codecogs.com/png.latex?N=1419"> individuals.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tribble</span>( <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>MAC, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>SNPs, </span>
-<span id="cb8-2">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>,  <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">934</span>,</span>
-<span id="cb8-3">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>,  <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">843</span>,</span>
-<span id="cb8-4">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">745</span>,</span>
-<span id="cb8-5">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">25</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">568</span>, </span>
-<span id="cb8-6">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">386</span>,</span>
-<span id="cb8-7">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">75</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">294</span>,</span>
-<span id="cb8-8">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">223</span>,</span>
-<span id="cb8-9">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">155</span>,</span>
-<span id="cb8-10">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">90</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb8-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>( <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">p =</span> MAC<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1419</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb8-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>( <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(MAC, SNPs) ) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb8-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb8-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb8-15">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Minor Allele Count"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb8-16">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SNP Loci Identified"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Nubmer of filtered SNP loci across a range of stringency in the minimum number of times a minor allele is observed across the data set.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>I am sure there is a probability example that could be used here to look at where you break even on sequencing errors and joint probability of the same allele being <em>incorrectly</em> identified. Don’t quite want to work it out right now but I think my 5% (putting it just shy of the MAC=150) may have been a bit too stringent…</p>
-</section>
-<section id="filtering-on-depth" class="level3">
-<h3 class="anchored" data-anchor-id="filtering-on-depth">Filtering on Depth</h3>
-<p>Next lets look at sequencing depth. Here i am going to fix the MAC=5 and cut off all the loci that have a depths in excess of the 90% in depths (see above) and then look at how many loci are recovered going from 5X coverage up to 200X (the example above had it set at a minimum coverage of 110X).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tribble</span>( <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Minimum Depth</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span>, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">~</span>SNPs, </span>
-<span id="cb9-2">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>,  <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1519</span>,</span>
-<span id="cb9-3">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">843</span>,</span>
-<span id="cb9-4">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">25</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">459</span>, </span>
-<span id="cb9-5">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">298</span>,</span>
-<span id="cb9-6">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">75</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">226</span>,</span>
-<span id="cb9-7">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">166</span>,</span>
-<span id="cb9-8">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">110</span>,</span>
-<span id="cb9-9">         <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">85</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%&gt;%</span></span>
-<span id="cb9-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>( <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">Minimum Depth</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span>, SNPs) ) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb9-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb9-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb9-13">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Minor Allele Count"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> </span>
-<span id="cb9-14">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"SNP Loci Identified"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
 
 
-</section>
 </section>
 
  ]]></description>
@@ -1877,9 +1688,36 @@ Filtered
 <th style="text-align:left;">
 Mapped
 </th>
+<th style="text-align:right;">
+Sites
+</th>
+<th style="text-align:left;">
+SNPs
+</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+</td>
+<td style="text-align:left;width: 3cm; ">
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">102</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 A
@@ -1894,7 +1732,11 @@ A
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -1911,7 +1753,11 @@ B
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -1928,7 +1774,11 @@ C
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -1945,7 +1795,11 @@ D
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -1962,7 +1816,11 @@ E
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -1979,7 +1837,11 @@ F
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -1996,7 +1858,11 @@ G
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -2013,7 +1879,11 @@ H
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -2030,7 +1900,11 @@ I
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -2047,7 +1921,13 @@ J
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+9367
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1508</span>
 </td>
 </tr>
 <tr>
@@ -2064,24 +1944,13 @@ K
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-L
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
 </td>
 <td style="text-align:right;">
-95
+9367
 </td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
-</td>
-<td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1508</span>
 </td>
 </tr>
 <tr>
@@ -2098,7 +1967,11 @@ M
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -2115,7 +1988,11 @@ N
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 <tr>
@@ -2132,7 +2009,13 @@ O
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+11338
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">282</span>
 </td>
 </tr>
 <tr>
@@ -2149,7 +2032,13 @@ P
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+10730
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1660</span>
 </td>
 </tr>
 <tr>
@@ -2166,7 +2055,13 @@ Q
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+7100
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">188</span>
 </td>
 </tr>
 <tr>
@@ -2183,7 +2078,13 @@ R
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+10294
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1348</span>
 </td>
 </tr>
 <tr>
@@ -2200,7 +2101,13 @@ S
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+15089
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1994</span>
 </td>
 </tr>
 <tr>
@@ -2217,7 +2124,13 @@ T
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+11986
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">176</span>
 </td>
 </tr>
 <tr>
@@ -2234,7 +2147,13 @@ V
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+8586
+</td>
+<td style="text-align:left;">
+<span style="  font-style: italic;   color: red !important;">58</span>
 </td>
 </tr>
 <tr>
@@ -2251,7 +2170,13 @@ W
 <span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
 </td>
 <td style="text-align:left;width: 3cm; ">
-<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 100.00%">100</span>
+<span style="display: inline-block; direction: rtl; unicode-bidi: plaintext; border-radius: 4px; padding-right: 2px; background-color: lightgreen; width: 98.04%">100</span>
+</td>
+<td style="text-align:right;">
+10891
+</td>
+<td style="text-align:left;">
+<span style=" font-weight: bold;    color: green !important;">1113</span>
 </td>
 </tr>
 </tbody>
@@ -2260,7 +2185,7 @@ W
 <p>Table 1 Current progress on bioinformatic workflows.</p>
 </div>
 </div>
-<p>At present, there are 0 samples remaining to be mapped.</p>
+<p>At present, there are -2 samples remaining to be mapped.</p>
 
 
 </section>
@@ -2343,275 +2268,6 @@ dDocent finished Wed Feb 1 07:20:00 EST 2023</code></pre>
  ]]></description>
   <guid>https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/index.html</guid>
   <pubDate>Tue, 31 Jan 2023 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>A 2.5% dDocent Run</title>
-  <link>https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>So, started again with a smaller amount of starting data. This time, I set the random sample to 2.5% of the sequences from each individual. Instructions for how I did that are <a href="../../posts/2023-01-12-Right-Sizing-Sequences/index.html">here</a>.</p>
-<p>It took about 3 hours to do this plus another 2 hours to gzip all the data files.</p>
-<section id="ddocent-run" class="level3">
-<h3 class="anchored" data-anchor-id="ddocent-run">dDocent Run</h3>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">[rjdyer@huff10</span> all0025]$ dDocent</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> 2.9.4</span>
-<span id="cb1-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Contact</span> jpuritz@uri.edu with any problems</span>
-<span id="cb1-5"></span>
-<span id="cb1-6"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Checking</span> for required software</span>
-<span id="cb1-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">All</span> required software is installed!</span>
-<span id="cb1-8"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> version 2.9.4 started Mon Jan 30 13:32:43 EST 2023</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">1416</span> individuals are detected. Is this correct<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">?</span> Enter yes or no and press <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb1-11"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">yes</span></span>
-<span id="cb1-12"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Proceeding</span> with 1416 individuals</span>
-<span id="cb1-13"></span>
-<span id="cb1-14"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> detects 256 processors available on this system.</span>
-<span id="cb1-15"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Please</span> enter the maximum number of processors to use for this analysis.</span>
-<span id="cb1-16"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">256</span></span>
-<span id="cb1-17">  </span>
-<span id="cb1-18"></span>
-<span id="cb1-19"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Do</span> you want to quality trim your reads<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">?</span></span>
-<span id="cb1-20"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Type</span> yes or no and press <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]?</span></span>
-<span id="cb1-21"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">yes</span></span>
-<span id="cb1-22"></span>
-<span id="cb1-23"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Do</span> you want to perform an assembly<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">?</span></span>
-<span id="cb1-24"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Type</span> yes or no and press <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]</span>.</span>
-<span id="cb1-25"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">yes</span></span>
-<span id="cb1-26"></span>
-<span id="cb1-27"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">What</span> type of assembly would you like to perform<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">?</span>&nbsp; Enter SE for single end, PE for paired-end, RPE for paired-end sequencing for RAD protocols with random shearing, or OL for paired-end sequencing that has substantial overlap.</span>
-<span id="cb1-28"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Then</span> press <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb1-29"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">SE</span></span>
-<span id="cb1-30"></span>
-<span id="cb1-31"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Reads</span> will be assembled with Rainbow</span>
-<span id="cb1-32"></span>
-<span id="cb1-33"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">CD-HIT</span> will cluster reference sequences by similarity. The <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> parameter <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">%</span> similarity to cluster<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">may</span> need to be changed for your taxa.</span>
-<span id="cb1-34"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Would</span> you like to enter a new c parameter now<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">?</span> Type yes or no and press <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb1-35"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">yes</span></span>
-<span id="cb1-36"></span>
-<span id="cb1-37"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Please</span> enter new value for c. Enter in decimal form <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">For</span> 90%, enter 0.9<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span id="cb1-38"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">0.85</span></span>
-<span id="cb1-39"></span>
-<span id="cb1-40"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Do</span> you want to map reads<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">?</span>&nbsp; Type yes or no and press <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb1-41"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">no</span></span>
-<span id="cb1-42"></span>
-<span id="cb1-43"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Mapping</span> will not be performed</span>
-<span id="cb1-44"></span>
-<span id="cb1-45"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Do</span> you want to use FreeBayes to call SNPs<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">?</span>&nbsp; Please type yes or no and press <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">[</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">ENTER</span><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb1-46"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">no</span></span>
-<span id="cb1-47"></span>
-<span id="cb1-48"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Please</span> enter your email address.&nbsp; dDocent will email you when it is finished running.</span>
-<span id="cb1-49"></span>
-<span id="cb1-50"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Dont</span> worry<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> has no financial need to sell your email address to spammers.</span>
-<span id="cb1-51"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">rjdyer@vcu.edu</span></span>
-<span id="cb1-52"></span>
-<span id="cb1-53"></span>
-<span id="cb1-54"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> will require input during the assembly stage.&nbsp; Please wait until prompt says it is safe to move program to the background.</span>
-<span id="cb1-55">  </span>
-<span id="cb1-56"></span>
-<span id="cb1-57"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Trimming</span> reads and simultaneously assembling reference sequences</span></code></pre></div>
-<p>Ran into error</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">parallel:</span> Warning: Starting 32 processes took <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> 2 sec.</span>
-<span id="cb2-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">parallel:</span> Warning: Consider adjusting <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-j.</span> Press CTRL-C to stop.</span></code></pre></div>
-<p>Results were posted at 1725</p>
-<p><img src="https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/image_1.png" class="img-fluid"></p>
-<p>for the first question and 1528 for the next one</p>
-<p><img src="https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/image_2.png" class="img-fluid"></p>
-<p>I then put it into the background and let it run.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Now</span> sit back, relax, and wait for your analysis to finish</span>
-<span id="cb3-2"></span>
-<span id="cb3-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> assembled 13966 sequences <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">after</span> cutoffs<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">into</span> 6676 contigs</span>
-<span id="cb3-4"></span>
-<span id="cb3-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> has finished with an analysis in /lustre/home/rjdyer/clemgu/samples/all0025</span>
-<span id="cb3-6"></span>
-<span id="cb3-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> started Mon Jan 30 13:32:43 EST 2023</span>
-<span id="cb3-8"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">dDocent</span> finished Mon Jan 30 17:30:02 EST 2023</span></code></pre></div>
-
-
-</section>
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2023-01-30-2pt5pct-dDocent-Run/index.html</guid>
-  <pubDate>Mon, 30 Jan 2023 05:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

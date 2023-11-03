@@ -1,0 +1,11 @@
+---
+title: "Population Graphs Re-Incarnated"
+date: "2023-11-03"
+image: featured.png
+description: |
+  At long last my administration duties have been satiated and there is a little time to prioritieze my research activities.  Time to FINALLY get the popgraph network analysis software out and ready so that in the near future, we can extend that to the Chromosome Walking algorithms...  
+---
+
+![](featured.png){fig-alt="GUI interface for PopulationGraphs"}
+
+Time to get some basic one-graph analytics put together. I'll update as progress is made.
