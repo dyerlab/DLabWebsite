@@ -1,0 +1,11 @@
+---
+title: "Spotted Turtel Assignment Presentation"
+date: "2023-11-20"
+image: featured.png
+description: |
+  This is a short presentation that I gave to several state managers about the spotted turtle genetic assignemnt data and interface that I made to help them make decisions on how/if/where animal relocation should proceed.
+---
+
+![](featured.png){fig-alt="Population Assignment for Spotted Turtles"}
+
+[Here](TurtleMeeting20231120/index.html) is a link to the presentation that I gave to the state managers.

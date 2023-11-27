@@ -10,7 +10,25 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 03 Nov 2023 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 20 Nov 2023 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Spotted Turtel Assignment Presentation</title>
+  <link>https://dyerlab.org/posts/2023-11-20-Turtle-Assignment/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2023-11-20-Turtle-Assignment/featured.png" class="img-fluid" alt="Population Assignment for Spotted Turtles"></p>
+<p><a href="TurtleMeeting20231120/index.html">Here</a> is a link to the presentation that I gave to the state managers.</p>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2023-11-20-Turtle-Assignment/index.html</guid>
+  <pubDate>Mon, 20 Nov 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://dyerlab.org/posts/2023-11-20-Turtle-Assignment/featured.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
 <item>
   <title>Population Graphs Re-Incarnated</title>
   <link>https://dyerlab.org/posts/2023-11-03-PopulationGraphs_Reincarnated/index.html</link>
@@ -2194,80 +2212,6 @@ W
  ]]></description>
   <guid>https://dyerlab.org/posts/2023-01-ddRADSeq-Progress/index.html</guid>
   <pubDate>Wed, 15 Feb 2023 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>A 5% Representation Run</title>
-  <link>https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/featured.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Let’s celebrate the small victories for what they are.</figcaption>
-</figure>
-</div>
-<p>So given the output from [[dDocent All Individuals 2.5%]] and [[dDocent All Individuals 10%]], I thought I’d run a 5% representation.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">screen</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-r</span> 3222</span></code></pre></div>
-<p>and sample them as:</p>
-<pre><code>rm(list=ls())
-files &lt;- list.files("all",pattern="F.fq.gz")
-
-for( i in 1:length(files) ) {&nbsp;
-    file &lt;- files[i]
-    tmp &lt;- strsplit(file, split="\\.")[[1]]
-    ofile &lt;- paste( &nbsp; paste(tmp[1],tmp[2],sep=""), tmp[3],tmp[4], sep=".")
-    cmd &lt;- paste( "seqtk sample ./all/",file," 0.025 &gt; ./all0025/", ofile, sep="")
-    system(cmd)
-    cmd &lt;- paste("gzip ", "./all0025/",ofile,sep="")
-    system(cmd)
-    cat( format(i/length(files), digits=3), " ", ofile, "\n")
-}</code></pre>
-<ul>
-<li>Started at 1040.
-<ul>
-<li>60 minute timer
-<ul>
-<li>start 0.012</li>
-<li>end 0.264</li>
-</ul></li>
-<li>Estimated finish: 1500</li>
-</ul></li>
-</ul>
-<p>Trimming reduced 5% representation: - Start: <code>Jan 31 18:51</code> - End: <code>Feb 1 00:21</code></p>
-<p><img src="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/image_1.png" class="img-fluid"></p>
-<p>I set it to only record sequences if they are in 10% of the individuals in the full dataset.</p>
-<p><img src="https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/image_2.png" class="img-fluid"></p>
-<pre><code>At this point, all configuration information has been entered and dDocent may take several hours to run.
-
-It is recommended that you move this script to a background operation and disable terminal input and output.
-
-All data and logfiles will still be recorded.
-
-To do this:
-Press **control** and **Z** simultaneously
-Type **bg** and press enter
-Type **disown -h** and press enter
-Now sit back, relax, and wait for your analysis to finish
-dDocent assembled 88487 sequences (after cutoffs) into 57829 contigs
-
-dDocent has finished with an analysis in /lustre/home/rjdyer/clemgu/samples/all005  
-
-dDocent started Tue Jan 31 18:21:35 EST 2023
-
-dDocent finished Wed Feb 1 07:20:00 EST 2023</code></pre>
-
-
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2023-01-31-5pct-dDocent-Run/index.html</guid>
-  <pubDate>Tue, 31 Jan 2023 05:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
