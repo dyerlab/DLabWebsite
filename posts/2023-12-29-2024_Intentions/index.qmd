@@ -1,0 +1,18 @@
+---
+title: "2024 A Year for Tool Deployment"
+editor: source
+draft: true
+date: "2023-12-29"
+description: |
+  This is the time of the year to reconfigure and figure out what is on the front burner for 2024! Finals are (finally) finished, projects are wrapping up for the year, and the university is going into the short torpor that allows the passing of the calendar year before rushing into the spring semester.  So here are some of my intentions for 2024 from the Dyerlab.
+image: featured.png
+---
+
+The full article is posted on [Medium](https://medium.com/@rodneydyer/2024-a-year-for-tool-deployment-6b8149e19854).
+
+[![](medium.png)](https://medium.com/@rodneydyer/2024-a-year-for-tool-deployment-6b8149e19854)
+
+
+
+
+

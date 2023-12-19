@@ -355,7 +355,7 @@ font-style: inherit;">print</span>( end <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> start )</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 9.182024 secs</code></pre>
+<pre><code>Time difference of 8.015462 secs</code></pre>
 </div>
 </div>
 <p>It turns out that at the current speed, it should take (<code>nrow(coords) * difftime(end,start,units="mins")</code>), which is about perfect for me to go grab a cup of tea while it is running.</p>
@@ -1016,21 +1016,11 @@ font-style: inherit;">system</span>( cmd )</span>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>( tidyverse )</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
-✔ tibble  3.1.8      ✔ dplyr   1.0.10
-✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-✔ readr   2.1.3      ✔ forcats 0.5.2 
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+font-style: inherit;">library</span>( tidyverse )</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>( ggrepel )</span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_set</span>( <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1047,7 +1037,7 @@ font-style: inherit;">theme_minimal</span>() )</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="batching-freebayes">Batching <code>freebayes</code></h2>
 <p>To batch these I made a new directory called <code>snpcalling</code> and linked the bam files from a set of indiviudals in several different populations to this folder.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> bam <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1058,7 +1048,7 @@ background-color: null;
 font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">do</span>  </span>
-<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ln</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -1067,30 +1057,30 @@ background-color: null;
 font-style: inherit;">$bam</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">;</span> </span>
-<span id="cb4-3"><span class="cf" style="color: #003B4F;
+<span id="cb2-3"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">done</span></span></code></pre></div>
 </div>
 <p>I then made a small <code>runFreeBayes.sh</code> run file that would</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#!/bin/bash</span></span>
-<span id="cb5-2"><span class="va" style="color: #111111;
+<span id="cb3-2"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">ref</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"../samples/all005/reference.fasta"</span></span>
-<span id="cb5-3"><span class="fu" style="color: #4758AB;
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ls</span> <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">*</span>.bam <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&gt;</span> bam.fofn</span>
-<span id="cb5-4"><span class="ex" style="color: null;
+<span id="cb3-4"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">freebayes</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -1104,48 +1094,48 @@ font-style: inherit;">--vcf</span> Output.vcf</span></code></pre></div>
 </div>
 <p>I then made it executable</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">chmod</span> +x runFreeBayes.sh</span></code></pre></div>
 </div>
 <p>And made a slurm batch file <code>freebayes.sub</code> which contains</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#!/bin/bash</span></span>
-<span id="cb7-2"><span class="co" style="color: #5E5E5E;
+<span id="cb5-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -N 1</span></span>
-<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -n 36</span></span>
-<span id="cb7-4"><span class="co" style="color: #5E5E5E;
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -t 96:00:00</span></span>
-<span id="cb7-5"><span class="co" style="color: #5E5E5E;
+<span id="cb5-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -J freebayesbaby</span></span>
-<span id="cb7-6"><span class="co" style="color: #5E5E5E;
+<span id="cb5-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -o freebayes.o%j</span></span>
-<span id="cb7-7"><span class="co" style="color: #5E5E5E;
+<span id="cb5-7"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH -e freebayes.e%j</span></span>
-<span id="cb7-8"><span class="co" style="color: #5E5E5E;
+<span id="cb5-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH --mail-user=rjdyer@vcu.edu</span></span>
-<span id="cb7-9"><span class="co" style="color: #5E5E5E;
+<span id="cb5-9"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#SBATCH --mail-type=ALL</span></span>
-<span id="cb7-10"><span class="bu" style="color: null;
+<span id="cb5-10"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">ulimit</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-s</span> unlimited</span>
-<span id="cb7-11"><span class="ex" style="color: null;
+<span id="cb5-11"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">./runFreeBayes.sh</span></span>
-<span id="cb7-12"><span class="ex" style="color: null;
+<span id="cb5-12"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">scontrol</span> show job <span class="va" style="color: #111111;
 background-color: null;
@@ -1153,16 +1143,15 @@ font-style: inherit;">$SLURM_JOB_ID</span></span></code></pre></div>
 </div>
 <p>and then dumped it off for batch processing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">sbatch</span> freebayes.sub</span></code></pre></div>
 </div>
 <p>After this, you can see that the batch job has been queued up (#34827) and waiting to go.</p>
 <pre><code>[rjdyer@huff snpcalling]$ squeue
   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)
-  34828     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
-<p>So, now lets see if it actually works. This run has 293 samples and the next one (#34828) has 270.</p>
+  34827     basic freebaye   rjdyer PD       0:00      1 (Priority)</code></pre>
+<p>So, now lets see if it actually works.</p>
 
 
 </section>
@@ -1380,12 +1369,11 @@ font-style: inherit;">"nx10/httpgd"</span>)</span>
 </div>
 </div>
 <p>Now, download <a href="https://code.visualstudio.com/">VSCode</a> from the main server. You will also need to install the <a href="https://marketplace.visualstudio.com/items?itemName=REditorSupport.r">R Extension for Visual Studio Code</a>, which can be installed from inside VSCode.</p>
-</section>
-<section id="making-secure-connections" class="level2">
-<h2 class="anchored" data-anchor-id="making-secure-connections">Making Secure Connections</h2>
-</section>
-<section id="remote-work" class="level2">
-<h2 class="anchored" data-anchor-id="remote-work">Remote Work</h2>
+<p>Now, you’ll need to install the following items for VSCode:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-ssh</a></li>
+</ul>
+<p>Once you have this set up, it is a pretty stratight forward exercise to follow VSCode prompts to get to work. For me, after logging into the remot server, I created an <code>R</code> file and basically followed the instructions given by VSCode on what needed to be instlled on the server instance side. It was all locally done so no big deal.</p>
 
 
 </section>
@@ -1402,6 +1390,7 @@ font-style: inherit;">"nx10/httpgd"</span>)</span>
 
 
 
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/featured.png" class="img-fluid"></p>
 <section id="merging-vcf-files" class="level2">
 <h2 class="anchored" data-anchor-id="merging-vcf-files">Merging VCF Files</h2>
 <p>The first thing we need to to is zip and then index the individual vcf files. As a reminder, these files have been created by individual <code>freebayes</code> SNP calling of chunks of individuals partitioned into groups based upon the first letter of the popualtion from which they were collected. So, in the following examples, the file <code>R.vcf</code> contains all the individuals in populations starting with the letter <code>R</code>. When there are not that many individuals in a group, they are clustered—below we have <code>JK.vcf</code> which has all the individuals from populations starting with the letters <code>J</code> and <code>K</code>.</p>
@@ -1541,12 +1530,18 @@ font-style: inherit;">prob =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.25</span>,<span class="fl" style="color: #AD0000;
+font-style: inherit;">0.10</span>,<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.75</span>))</span></code></pre></div>
+font-style: inherit;">0.25</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.75</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.90</span>))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>25% 75% 
-110 964 </code></pre>
+<pre><code>   10%    25%    50%    75%    90% 
+  60.0  110.0  278.0  964.0 3421.1 </code></pre>
 </div>
 </div>
 <p>This leaves us with 5047 sites.</p>
@@ -1592,8 +1587,220 @@ font-style: inherit;">Run</span> Time = 1.00 seconds</span></code></pre></div>
 <p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<section id="filtering-out-sequncing-errors" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-out-sequncing-errors">Filtering out Sequncing Errors</h3>
+<p>Now, I’m going to look at the effects of filter different aspects. Here is the minor allele count (MAC). I’m doing this over frequency given that I have <img src="https://latex.codecogs.com/png.latex?N=1419"> individuals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tribble</span>( <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>MAC, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>SNPs, </span>
+<span id="cb8-2">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">934</span>,</span>
+<span id="cb8-3">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">843</span>,</span>
+<span id="cb8-4">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">745</span>,</span>
+<span id="cb8-5">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">568</span>, </span>
+<span id="cb8-6">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">386</span>,</span>
+<span id="cb8-7">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">75</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">294</span>,</span>
+<span id="cb8-8">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">223</span>,</span>
+<span id="cb8-9">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">155</span>,</span>
+<span id="cb8-10">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>( <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">p =</span> MAC<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1419</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb8-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>( <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(MAC, SNPs) ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Minor Allele Count"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SNP Loci Identified"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Nubmer of filtered SNP loci across a range of stringency in the minimum number of times a minor allele is observed across the data set.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>I am sure there is a probability example that could be used here to look at where you break even on sequencing errors and joint probability of the same allele being <em>incorrectly</em> identified. Don’t quite want to work it out right now but I think my 5% (putting it just shy of the MAC=150) may have been a bit too stringent…</p>
+</section>
+<section id="filtering-on-depth" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-on-depth">Filtering on Depth</h3>
+<p>Next lets look at sequencing depth. Here i am going to fix the MAC=5 and cut off all the loci that have a depths in excess of the 90% in depths (see above) and then look at how many loci are recovered going from 5X coverage up to 200X (the example above had it set at a minimum coverage of 110X).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tribble</span>( <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Minimum Depth</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>SNPs, </span>
+<span id="cb9-2">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1519</span>,</span>
+<span id="cb9-3">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">843</span>,</span>
+<span id="cb9-4">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">459</span>, </span>
+<span id="cb9-5">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">298</span>,</span>
+<span id="cb9-6">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">75</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">226</span>,</span>
+<span id="cb9-7">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">166</span>,</span>
+<span id="cb9-8">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">110</span>,</span>
+<span id="cb9-9">         <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">85</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb9-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>( <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">Minimum Depth</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>, SNPs) ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">xlab</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Minor Allele Count"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ylab</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SNP Loci Identified"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://dyerlab.org/posts/2023-02-14-Variant-Filtering/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
  ]]></description>
