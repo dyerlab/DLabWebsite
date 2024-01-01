@@ -287,25 +287,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>OK. Now, lets take a look at how we can make a random population. The <code>make_population()</code> function takes a frequency matrix and creates random individuals. Here is an example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fake101 <span class="ot">&lt;-</span> <span class="fu">make_population</span>( sim_freqs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Stratum<span class="sc">==</span><span class="st">"101"</span>), <span class="at">N=</span><span class="dv">100</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in make_loci(f, N, F): Your allele frequencies do not add to 1.0. The
-difference of 3.70074341541719e-17 will be partioned across all noted alleles</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fake101)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fake101 <span class="ot">&lt;-</span> <span class="fu">make_population</span>( sim_freqs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Stratum<span class="sc">==</span><span class="st">"101"</span>), <span class="at">N=</span><span class="dv">100</span> )</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fake101)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Population ID   AML  ATPS    EF    EN  LTRS  MP20   WNT   ZMP
-1        101  1 08:08 02:02 01:01 01:03 01:02 02:13 01:01 01:01
-2        101  2 08:11 02:02 01:01 01:01 02:02 13:13 01:01 01:01
-3        101  3 08:11 02:09 01:02 01:03 01:02 12:12 01:01 01:01
-4        101  4 08:11 02:04 01:01 01:01 02:02 12:14 01:01 01:01
-5        101  5 08:11 02:02 01:01 01:03 02:02 12:12 01:01 01:01
-6        101  6 11:11 02:04 01:02 01:01 01:02 12:12 01:01 01:01</code></pre>
+1        101  1 08:08 02:02 01:02 01:03 02:02 13:14 01:01 01:01
+2        101  2 08:11 02:02 01:02 01:03 01:02 11:11 01:01 01:01
+3        101  3 08:08 02:02 01:02 01:03 02:02 12:13 01:01 01:01
+4        101  4 08:08 02:02 01:01 01:03 02:02 12:13 01:01 01:01
+5        101  5 08:11 02:09 01:02 01:03 02:02 12:13 01:01 01:01
+6        101  6 08:11 09:09 01:02 03:03 02:02 12:13 01:01 01:01</code></pre>
 </div>
 </div>
 <p>The frequencies should be pretty close to the real ones. Compare the <code>LTRS</code> locus allele frequencies from the simualted data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frequencies</span>( fake101,<span class="at">loci =</span> <span class="st">"LTRS"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frequencies</span>( fake101,<span class="at">loci =</span> <span class="st">"LTRS"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Locus Allele Frequency
 1  LTRS     01      0.28
@@ -314,7 +310,7 @@ difference of 3.70074341541719e-17 will be partioned across all noted alleles</c
 </div>
 <p>and the real data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sim_freqs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Locus<span class="sc">==</span><span class="st">"LTRS"</span>, Stratum<span class="sc">==</span><span class="st">"101"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sim_freqs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Locus<span class="sc">==</span><span class="st">"LTRS"</span>, Stratum<span class="sc">==</span><span class="st">"101"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Stratum Locus Allele Frequency
 1     101  LTRS     01 0.2777778
