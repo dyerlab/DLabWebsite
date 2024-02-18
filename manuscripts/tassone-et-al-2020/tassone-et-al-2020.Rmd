@@ -18,7 +18,7 @@ doi: 10.1111/eva.13185
  Applications
 issue: 14
 pages: 1109-1123
-preview: featured.jpeg
+preview: featured.png
 categories: 
  - gene flow
  - urbanization
@@ -28,7 +28,7 @@ output:
 title-block-banner: true
 ---
 
-![Figure 5: Popgraph of genetic connectivity among 51 sampled locales of Leucadendron salignum chloroplast DNA (see Figure 1 for geographic sampling, Table S1 for locale information). Color-coding reflects the five major phylogenetic tree clusters.](featured.jpeg)
+![Figure 5: Popgraph of genetic connectivity among 51 sampled locales of Leucadendron salignum chloroplast DNA (see Figure 1 for geographic sampling, Table S1 for locale information). Color-coding reflects the five major phylogenetic tree clusters.](featured.png)
 
 ## Abstract 
 
