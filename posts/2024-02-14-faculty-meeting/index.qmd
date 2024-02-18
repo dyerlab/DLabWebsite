@@ -1,0 +1,26 @@
+---
+title: "Spring Semester Faculty Meeting"
+description: |
+  This first facutly meeting has some input from the National Scholarship Office, the first meeting with our Faculty Training Consultant (this year will focus on Assessment Tools), introduces some proposed changes in CORE curriculum, and opens up a larger discussion on the recent discussion with the Provost about the reorganization and dissolution of our unit.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+date: 2024-02-15
+preview: featured.png
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+[![First Slide](./featured.png)](https://docs.google.com/presentation/d/1NUVEB276BKYjkCe7CH2iccA7gLlorhnspYF1kFiV4Zc/edit?usp=sharing)
+
+
+The agenda and notes for the meeting are [here](https://docs.google.com/document/d/1E5SiGGyWUkTa9i1NV-Vrp4-RumVzFF6aeim9ToLhzAs/edit?usp=sharing), and the general schedule of topics included:  
+  - NSO Update  
+  - Faculty Workshop on Assessment  
+  - Recruitment & Persistence  
+  - PLO 4: GeoSpatial, Quantitative, & Field Skills curriculum issues     
+  - Open Forum to discuss the Provost's Meeting on Unit Reorganization  

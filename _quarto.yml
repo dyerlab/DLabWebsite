@@ -1,6 +1,5 @@
 project:
   type: website
-
 website:
   title: "dyerlab"
   site-url: "https://dyerlab.org"
@@ -17,11 +16,8 @@ website:
         href: https://twitter.com/dyerlab/
         aria-label: Twitter
   twitter-card: true
-
-
 execute:
   freeze: auto
-
 format:
   html:
     theme: sandstone

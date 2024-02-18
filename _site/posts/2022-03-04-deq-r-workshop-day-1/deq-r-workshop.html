@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-03-04">
+<meta name="description" content="The lecture content from a 2-day workshop I delivered for individuals working at the Virginia Department of Environmental Quality tht focused on building a foundation of data analysis using R.">
+
+<title>dyerlab - Workshop on R Data Literacy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="dyerlab - Workshop on R Data Literacy">
+<meta name="twitter:description" content="The lecture content from a 2-day workshop I delivered for individuals working at the Virginia Department of Environmental Quality tht focused on building a foundation of data analysis using R.">
+<meta name="twitter:image" content="https://dyerlab.org/posts/2022-03-04-deq-r-workshop-day-1/venti-views-2zKt6Zcc1UU-unsplash.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">dyerlab</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html" rel="" target="">
+ <span class="menu-text">People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../manuscripts.html" rel="" target="">
+ <span class="menu-text">Manuscripts</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/dyerlab/" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/dyerlab/" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Workshop on R Data Literacy</h1>
+                  <div>
+        <div class="description">
+          <p>The lecture content from a 2-day workshop I delivered for individuals working at the Virginia Department of Environmental Quality tht focused on building a foundation of data analysis using R.</p>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 4, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="venti-views-2zKt6Zcc1UU-unsplash.jpg" class="roundedImg img-fluid figure-img"></p>
+<figcaption class="figure-caption">Venti Views Image from Unspalsh</figcaption>
+</figure>
+</div>
+<section id="workshop-logistics" class="level2">
+<h2 class="anchored" data-anchor-id="workshop-logistics">Workshop Logistics</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>When:</em></td>
+<td>March 7-8, 2022</td>
+</tr>
+<tr class="even">
+<td><em>Where:</em></td>
+<td>1111 East Main Street, Richmond Virginia <a href="https://www.google.com/maps/place/1111+E+Main+St,+Richmond,+VA+23219/@37.5365814,-77.4372005,17z/data=!3m1!4b1!4m5!3m4!1s0x89b111183eed8707:0x24b3c78b6da63e39!8m2!3d37.5365772!4d-77.4350118">37.5367, -77.4350</a></td>
+</tr>
+<tr class="odd">
+<td><em>Impetus:</em></td>
+<td>Build internal capacity at for using R as an analysis platform to increase efficiency of data management.</td>
+</tr>
+<tr class="even">
+<td><em>Instructor:</em></td>
+<td><a href="https://dyerlab.org/dyerprofile/dyerprofile"><img src="https://live.staticflickr.com/65535/51278950913_17e0f63c25_w_d.jpg" class="img-fluid" alt="Rodney Dyer"></a></td>
+</tr>
+<tr class="odd">
+<td><em>Data Sets</em>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="introduction-to-r-and-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-to-r-and-rstudio">Introduction to R and RStudio</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/1_r_environment/slides.html#1"><img src="https://live.staticflickr.com/65535/51918328672_a036cccc64_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Learning about the R environment,<br>
+- Understand differences between coding to the Console versus making scripts,<br>
+- Use a Project to organize code, data, analyses, &amp; narratives,<br>
+- Personalize the RStudio GUI for success.</p>
+<hr>
+</section>
+<section id="character-data-and-basic-function-usage" class="level3">
+<h3 class="anchored" data-anchor-id="character-data-and-basic-function-usage">Character Data and Basic Function Usage</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/2_functions_strings/slides.html#1"><img src="https://live.staticflickr.com/65535/51920091958_05b2b3d335_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Learn about basic function structure,<br>
+- Explore the built-in help system,<br>
+- Practice operations using the fundamental data type <code>character</code>,<br>
+- Manipulate data in <code>vector</code> formats,<br>
+- Perform textual analyses using the <code>stringr</code> library.</p>
+<p><a href="https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf">stringr Cheatsheet</a></p>
+<hr>
+</section>
+<section id="numeric-data-and-data-frames" class="level3">
+<h3 class="anchored" data-anchor-id="numeric-data-and-data-frames">Numeric Data and Data Frames</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/3_numeric_dataframes/slides.html#1"><img src="https://live.staticflickr.com/65535/51920323369_e11f07482c_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Explore numeric data and mathematical operations.<br>
+- Create and manipulate data within <code>data.frame</code> objects.</p>
+<hr>
+</section>
+<section id="basic-data-manipulation---tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="basic-data-manipulation---tidyverse">Basic Data Manipulation - Tidyverse</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/4_data_manipulations/slides.html#1"><img src="https://live.staticflickr.com/65535/51920874490_ffbe78cd17_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Understand data manipulation verbs,<br>
+- Pipe data through several modifier functions to derive inferences,<br>
+- Filter and select subsets of a larger data set,<br>
+- Group and summarize measurements to derive summary parameters</p>
+<p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data Wrangling Cheatsheet</a></p>
+<hr>
+</section>
+<section id="non-character-character-data" class="level3">
+<h3 class="anchored" data-anchor-id="non-character-character-data">Non-Character Character Data</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/5_dates_factors/slides.html#1"><img src="https://live.staticflickr.com/65535/51919286977_d51edafdcd_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Apply the <code>mutate</code> operator to create derived data columns.<br>
+- Demonstrate the use of unordered and ordered factor data.<br>
+- Convert textual representations of dates and times into date objects.<br>
+- Derive temporal inferences from date objects</p>
+<p><a href="http://www.flutterbys.com.au/stats/downloads/slides/figure/factors.pdf">forcats Cheatsheet</a></p>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf">lubridate Cheatsheet</a></p>
+<p>&nbsp;</p>
+<hr>
+</section>
+<section id="visualizing-data---basic-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-data---basic-ggplot">Visualizing Data - Basic &amp; GGPlot</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/6_visualizations/slides.html#1"><img src="https://live.staticflickr.com/65535/51921177672_fc98325ac5_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Learn about joins to merge data from two or more data.frames. - Develop your first function for consistent data formatting prior to visualization.<br>
+- Understand and implement basic plotting routines provided in <code>R::graphics</code><br>
+- Convert raw data into high-quality graphical output using a variety of <code>ggplot2</code> routines.</p>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">visualization Cheatsheet</a></p>
+<hr>
+</section>
+<section id="interactive-mapping" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-mapping">Interactive Mapping</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/7_mapping/slides.html#1"><img src="https://live.staticflickr.com/65535/51922384318_7e0579398d_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Understand how to create a viable map display.<br>
+- Apply differential tile providers to an interactive map.<br>
+- Create markers on a map representing data found within the data frame.</p>
+<p><a href="https://ugoproto.github.io/ugo_r_doc/pdf/leaflet-cheat-sheet.pdf">leaflet Cheatsheet</a></p>
+<hr>
+</section>
+<section id="markdown" class="level3">
+<h3 class="anchored" data-anchor-id="markdown">Markdown</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://dyerlab.github.io/ENVS-Lectures/deq/9_markdown/slides.html#1"><img src="https://live.staticflickr.com/65535/51921199347_3ec6b4e7c5_w_d.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Learning Objectives:<br>
+- Understand basic markup to represent common textual components.<br>
+- Insert graphical output (figures, maps, etc) into a markdown document.<br>
+- Inject components of statistical inferences into the text of a markdown document.</p>
+<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rmarkdown.pdf">markdown Cheatsheet</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
