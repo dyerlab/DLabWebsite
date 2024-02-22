@@ -10,7 +10,39 @@
 <atom:link href="https://dyerlab.org/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 17 Feb 2024 05:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 22 Feb 2024 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Characteristics of Successful Academic Leadership</title>
+  <dc:creator>Rodney Dyer</dc:creator>
+  <link>https://dyerlab.org/posts/2024-02-22-Characteristics-of-Successful-Leadership/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://dyerlab.org/posts/2024-02-22-Characteristics-of-Successful-Leadership/featured.png" class="img-fluid" alt="Photo by @markusspiske from unsplash."></p>
+<p>As our own units go through complete reorganization, I’ve been thinking about the kinds of signals that will indicate to me that upper administration has made these changes based upon increasing excellence in academic programs, student experiences, and faculty success.</p>
+<p>One set of criteria I feel is important is the character of the individuals they put into leadership positions. Are these individuals simply surrogates for the Dean or is their focus on advocating for unit-level excellence?</p>
+<p>Academic leadership requires a unique blend of skills and qualities. Here are some key traits that I associate with leaders who have had transformational impacts on their units, faculty, students, and academic programs.</p>
+<ol type="1">
+<li><strong>Visionary:</strong> Successful academic leaders have a clear vision for their unit. They are able to articulate this vision to others and inspire them to work towards it.</li>
+<li><strong>Student-Centric</strong>: They keep the success of students at the forefront of their decision-making. They are committed to improving student outcomes and enhancing the student experience.</li>
+<li><strong>Data Intensive</strong>: They understand that the real effectiveness of the faculty and associated academic program can only be evaluated by collecting and analyzing real data.</li>
+<li><strong>Knowledgeable</strong>: They have a deep understanding of their field and the broader landscape of higher education. This knowledge allows them to make informed decisions and provide effective leadership.</li>
+<li><strong>Creativity</strong>: They realize that there are times when the solution requires thinking outside the box instead of how conforming to historical institutional approaches.</li>
+<li><strong>Strong Communicator:</strong>&nbsp;They are able to effectively communicate with a variety of stakeholders including faculty, students, staff, and external partners. This includes both listening to others and clearly conveying their own ideas.</li>
+<li><strong>Enriching:</strong> They increase the effectiveness of the faculty and staff by providing unit-wide opportunities for self-development and training.</li>
+<li><strong>Collaborative:</strong> They understand the importance of collaboration and are able to build strong teams. They value the input of others and are able to foster a sense of community and shared purpose.</li>
+<li><strong>Adaptable</strong>: The world of academia is constantly changing, and successful leaders are those who can adapt to these changes. They are open to new ideas and are willing to change course when necessary.</li>
+<li><strong>Resilient</strong>: Leading in academia can be challenging, and resilience is a key trait for success. This includes the ability to handle criticism, overcome setbacks, and continue to move forward in the face of adversity.</li>
+</ol>
+
+
+
+ ]]></description>
+  <guid>https://dyerlab.org/posts/2024-02-22-Characteristics-of-Successful-Leadership/index.html</guid>
+  <pubDate>Thu, 22 Feb 2024 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Population Graphs on Vision Pro</title>
   <dc:creator>Rodney Dyer</dc:creator>
@@ -1397,26 +1429,6 @@ Zoo_969-sorted-md.bam.bai</code></pre>
 
  ]]></description>
   <guid>https://dyerlab.org/posts/2023-02-20-processing-bam-files/index.html</guid>
-  <pubDate>Mon, 20 Feb 2023 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Scrolling Back using ‘Screen’</title>
-  <link>https://dyerlab.org/posts/2023-02-20-screen-scrolling/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><img src="https://dyerlab.org/posts/2023-02-20-screen-scrolling/featured.png" class="img-fluid"></p>
-<p>I use <code>screen</code> a lot to do stuff on remote servers and one of the things that annoyed me is that it appears that when you are in a <code>screen</code> session, and you flick the scroll wheel backwards, it simply goes back through the history of commands on the same command line. The indended behavior, would be like the normal terminal, when not in a <code>screen</code> session, and the terminal would scroll up/down..</p>
-<p>Apparently <code>screen</code> has some kind of buffer that prevents this for reason I cannot tell you. To fix it, create a <code>.screenrc</code> file in your home directory (if it does not already exist) and put the following line of code in it.</p>
-<pre><code>termcapinfo xterm* ti@:te@</code></pre>
-<p>Makes total sense, right? Sometimes I get so frustrated that things need to be so complicated. Simplicity people! Let’s focus on <a href="../../posts/1969-10-14-Dyers-Philosophy-Of-Life">removing stuff that sucks</a> from our lives!</p>
-
-
-
- ]]></description>
-  <guid>https://dyerlab.org/posts/2023-02-20-screen-scrolling/index.html</guid>
   <pubDate>Mon, 20 Feb 2023 05:00:00 GMT</pubDate>
 </item>
 </channel>

@@ -1,0 +1,35 @@
+---
+title: "Characteristics of Successful Academic Leadership"
+description: |
+  The process of academic program revision is something that takes 
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+date: 2024-02-22
+preview: featured.png
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+![](featured.png){fig-alt="Photo by @markusspiske from unsplash."}
+
+As our own units go through complete reorganization, I've been thinking about the kinds of signals that will indicate to me that upper administration has made these changes based upon increasing excellence in academic programs, student experiences, and faculty success.
+
+One set of criteria I feel is important is the character of the individuals they put into leadership positions. Are these individuals simply surrogates for the Dean or is their focus on advocating for unit-level excellence?
+
+Academic leadership requires a unique blend of skills and qualities. Here are some key traits that I associate with leaders who have had transformational impacts on their units, faculty, students, and academic programs.
+
+1.  **Visionary:** Successful academic leaders have a clear vision for their unit. They are able to articulate this vision to others and inspire them to work towards it.
+2.  **Student-Centric**: They keep the success of students at the forefront of their decision-making. They are committed to improving student outcomes and enhancing the student experience.
+3.  **Data Intensive**: They understand that the real effectiveness of the faculty and associated academic program can only be evaluated by collecting and analyzing real data.
+4.  **Knowledgeable**: They have a deep understanding of their field and the broader landscape of higher education. This knowledge allows them to make informed decisions and provide effective leadership.
+5.  **Creativity**: They realize that there are times when the solution requires thinking outside the box instead of how conforming to historical institutional approaches.
+6.  **Strong Communicator:** They are able to effectively communicate with a variety of stakeholders including faculty, students, staff, and external partners. This includes both listening to others and clearly conveying their own ideas.
+7.  **Enriching:** They increase the effectiveness of the faculty and staff by providing unit-wide opportunities for self-development and training.
+8.  **Collaborative:** They understand the importance of collaboration and are able to build strong teams. They value the input of others and are able to foster a sense of community and shared purpose.
+9.  **Adaptable**: The world of academia is constantly changing, and successful leaders are those who can adapt to these changes. They are open to new ideas and are willing to change course when necessary.
+10. **Resilient**: Leading in academia can be challenging, and resilience is a key trait for success. This includes the ability to handle criticism, overcome setbacks, and continue to move forward in the face of adversity.
