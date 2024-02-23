@@ -1,7 +1,7 @@
 ---
 title: "Characteristics of Successful Academic Leadership"
 description: |
-  The process of academic program revision is something that takes 
+  Academic leadership requires a unique blend of skills and qualities. Here are some key traits that I associate with leaders who have had transformational impacts on their units, faculty, students, and academic programs.
 author:
   - name: Rodney Dyer
     url: https://dyerlab.org
