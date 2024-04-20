@@ -3,6 +3,7 @@ project:
 website:
   title: "dyerlab"
   site-url: "https://dyerlab.org"
+  description: "Work from the dyerlab."
   navbar:
     right:
       - href: people.qmd
