@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rodney Dyer">
+<meta name="dcterms.date" content="2013-10-10">
+<meta name="description" content="A short description of the post.">
+
+<title>dyerlab - Unix Basics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="dyerlab - Unix Basics">
+<meta name="twitter:description" content="A short description of the post.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">dyerlab</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text">People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../manuscripts.html"> 
+<span class="menu-text">Manuscripts</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/dyerlab/"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/dyerlab/"> <i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Unix Basics</h1>
+                  <div>
+        <div class="description">
+          <p>A short description of the post.</p>
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="https://dyerlab.org">Rodney Dyer</a> </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Center for Environmental Studies
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 10, 2013</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>This covers some basic unix commands so that you can log into a machine and move around in it with ease. It is by no means comprehensive.</p>
+<section id="logging-in" class="level1">
+<h1>Logging In</h1>
+<p>To log into a machine you must use SSH. This is a secure shell and is encrypted on both ends so that others cannot snoop on your passwords or activities. If you are a windows person (shudder), you will have to use a GUI application to log into the server. Download one and install it. The server we will be using in this exercise is:</p>
+<section id="chesapeake.envs.vcu.edu" class="level6">
+<h6 class="anchored" data-anchor-id="chesapeake.envs.vcu.edu">chesapeake.envs.vcu.edu</h6>
+<p>and can also be referenced by the raw IP address as:</p>
+</section>
+<section id="section" class="level6">
+<h6 class="anchored" data-anchor-id="section">128.172.178.27</h6>
+<p>Both of these addresses are the same. You will need both a user name and password on the server before you can log into it.</p>
+<p>If you are outside VCU network, you will have to log into our VPN (see vcu.edu and search for webvpn if you do not know how to do this). On a mac/unix/linux box, you can use the terminal application to log into the server as:</p>
+</section>
+<section id="ssh-chesapeake.envs.vcu.edu" class="level6">
+<h6 class="anchored" data-anchor-id="ssh-chesapeake.envs.vcu.edu">ssh chesapeake.envs.vcu.edu</h6>
+<p>or with the raw IP address. Note: if you have a user name that is different on your local machine than it is on the server, you need to specify that in the ssh call as:</p>
+</section>
+<section id="ssh-server_user_idchesapeake.envs.vcu.edu" class="level6">
+<h6 class="anchored" data-anchor-id="ssh-server_user_idchesapeake.envs.vcu.edu">ssh server_user_id@chesapeake.envs.vcu.edu</h6>
+<p>Once you log into the remote server you will be greeted with a prompt from which you will be able to interact with the computer directly (e.g., no need for gui-pointy-clicky stuff).</p>
+</section>
+</section>
+<section id="bash" class="level1">
+<h1>Bash</h1>
+<p>When you are logged into the server, you are actually working in an interactive programming environment. By default, the dyerlab servers run the Bash Shell. This is a command line interface that has the ability to do quite a few things that reduce the amount of tedium in your computational life. The entire philosophy of unix is to provide an environment where:</p>
+<ol type="1">
+<li>There is a strict partition between the stuff that you do in your own account and the stuff others do. Security at the OS level is priority number one and as such has a fairly strict set of requirements for what you as a user can see and do. This is good.</li>
+<li>Things work well together. Programs are small. There is no monolithic program that tries to do everything (except emacs but that is a flamewar of a different type). Programs do one type of task and do not try to multitask. This is very good because we have evolved an ecosystem of programs that are very efficient.</li>
+<li>It is assumed that unix programs read and write text files, not binary files. It goes against the philosophy of the OS for a program to sequester its data into formats that are unreachable by other programs. If a program does this then it is no longer a citizen of the unix program community and as such has cut itself off from the breadth of opportunities that such an interaction entails. This is a very very good thing because you as a user can build complicated workflows in the environment that achieve things that would take much longer in the normal clickity-clickity mouse world we typically inhabit.</li>
+</ol>
+</section>
+<section id="basic-commands" class="level1">
+<h1>Basic Commands</h1>
+<p>To move around a unix box on a server you are not in front of, you must do it from the command line. You will always be logged into your ‘home’ account. This is literally at the location in the file system /home/your_user_name. Everyone has their own home directory and you cannot see what is in other peoples home directories unless they do some rather severe hacks (violating #1 above). However, there are places you can put stuff to share materials between users, it is just not within the home directory. Here is an overview of some basic commands. You can always find out where you are by typing:</p>
+<hr>
+<table>
+<tbody><tr>
+<td>
+<b>Program</b>
+</td>
+<td>
+<b>Description</b>
+</td>
+</tr>
+<tr>
+<td>
+pwd
+</td>
+<td>
+Prints out the current directory you are in.
+</td>
+</tr>
+<tr>
+<td>
+ls
+</td>
+<td>
+Lists the files and folders in that directory (see ls -l for a long listing)
+</td>
+</tr>
+<tr>
+<td>
+cd
+</td>
+<td>
+Change to your home directory
+</td>
+</tr>
+<tr>
+<td>
+cd ..
+</td>
+<td>
+Changes to directory that is the immediate parent of the current one
+</td>
+</tr>
+<tr>
+<td>
+cd folder
+</td>
+<td>
+Changes the directory to ‘folder’
+</td>
+</tr>
+<tr>
+<td>
+exit
+</td>
+<td>
+Logs you out of the computer
+</td>
+</tr>
+<tr>
+<td>
+chmod
+</td>
+<td>
+Changes the permission/privileges for files.
+</td>
+</tr>
+<tr>
+<td>
+echo
+</td>
+<td>
+Prints out variables/content to the shell output
+</td>
+</tr>
+<tr>
+<td>
+cat
+</td>
+<td>
+Concatenates text to the terminal output
+</td>
+</tr>
+<tr>
+<td>
+head
+</td>
+<td>
+Prints out the top lines of a file
+</td>
+</tr>
+<tr>
+<td>
+wc
+</td>
+<td>
+Counts words (default) or lines (-l) in a file
+</td>
+</tr>
+<tr>
+<td>
+grep
+</td>
+<td>
+Gets a regular expression (e.g., used for text searching)
+</td>
+</tr>
+</tbody></table>
+<p>Almost all programs (pwd, ls, cd, etc.) have a manual associated with them. This is because there are often many options to modify the behavior of the output. You can get to the manual for any program by:</p>
+<section id="man-prog" class="level6">
+<h6 class="anchored" data-anchor-id="man-prog">man prog</h6>
+<p>All manual entries have the same format and go through all the options available.</p>
+</section>
+</section>
+<section id="editing-files" class="level1">
+<h1>Editing Files</h1>
+<p>There is a plethora of editors available to the unix user. Perhaps the easiest one on the servers you’ll be using is nano. This is a simple editor that allows you to open, change, and save text files. Given that this is a command-line environment, the menu-like options are available via keyboard combinations indicated at the bottom of the screen. In most unix environments the symbol ‘^’ denotes the control key (e.g., ^-Q would be holding down the control key and typing Q), and ‘M’ denotes the key labelled ‘alt’ (the modifier key). In nano these combinations act as the menu functionality.</p>
+<p>To start an editing session type:</p>
+<section id="nano" class="level6">
+<h6 class="anchored" data-anchor-id="nano">nano</h6>
+<p>and it will make a new file. If you have an existing file, you can edit it as:</p>
+</section>
+<section id="nano-myfile.fasta" class="level6">
+<h6 class="anchored" data-anchor-id="nano-myfile.fasta">nano myfile.fasta</h6>
+<p>for example and it will open it up and start you on an editing session.</p>
+</section>
+</section>
+<section id="putting-and-getting-files" class="level1">
+<h1>Putting and Getting Files</h1>
+<p>To move documents from your computer to a remote server, we use the SSH Copy command ‘scp’. This is built into the ssh software itself.</p>
+<section id="scp-file-remoteserver" class="level6">
+<h6 class="anchored" data-anchor-id="scp-file-remoteserver">scp file remoteserver:~/</h6>
+<p>The last part, ‘:~/’ is required as it tells scp that the remoteserver is a server and you want the file to go into your home directory ‘~/’</p>
+</section>
+<section id="scp-myremoteserverthefile-." class="level6">
+<h6 class="anchored" data-anchor-id="scp-myremoteserverthefile-.">scp myremoteserver:~/thefile .</h6>
+<p>This will pull a file from the remote server to your current directory. Again notice that the period is there, a period in the options to a program specifically means ‘this place in the directory heirarchy.’</p>
+<p>If you are using windows, there is a GUI drag and drop interface with your SSH client.</p>
+</section>
+</section>
+<section id="running-a-command-line-program" class="level1">
+<h1>Running a Command Line Program</h1>
+<p>On a server all programs are run from the command line. You have already seen that you can run a program by typing its name and hitting return. The only reason this works is because there are executable binary files located in specific directories on the machine. These directories are all called ‘bin’ and they are located in parts of the folder heirarchy dictating who can access them. If you type at the command prompt:</p>
+<section id="echo-path" class="level6">
+<h6 class="anchored" data-anchor-id="echo-path">echo $PATH</h6>
+<p>it will return all the bin files that you are, by default, able to search for programs. The program echo prints out the value of a variable and all Bash Shell variables are indicated by a dollar sign (and by convention are typed in all upcase).</p>
+<p>If a program is not in a ‘bin’ folder you access it will not run when you simply type its name. What you have to do is to tell the Bash Shell the location of the program specifically, even if it is in the same directory as you are.</p>
+<p>There is one more requirement to execute a program. The program must be labelled as something that can be executed! In unix, scripts such as Bash Scripts, perl, python, lua, and many other languages can be used to make programs but these programs are just text files containing the instructions necessary to perform a task. To designate a program as a specific one that can be executed (if its contents actually can do something) you need to set the executable bit on the file by changing the mode of the file. This is done using chmod and telling it to add executable privileges.</p>
+</section>
+<section id="chmod-x-program_file" class="level6">
+<h6 class="anchored" data-anchor-id="chmod-x-program_file">chmod +x program_file</h6>
+<p>Many things have executable privileges, try a ls -l and look at the far left column to see the privileges, the last digit is either x or – indicating executable status or not (n.b., folders are executable, if you turn it off you will not be able to change directory into that folder).</p>
+</section>
+</section>
+<section id="redirecting-output" class="level1">
+<h1>Redirecting Output</h1>
+<p>As mentioned above, programs are small and do specialized things but can work together in ways that are quite dynamic. This is done by redirecting output. Here are some examples. In the directory /usr/share/velvet_1.2.10/data, there are several example fasta files that come with velvet. Copy the test_reference.fa file to your directory as:</p>
+<section id="cp-usrsharevelvet_1.2.10datatest_reads.fa-." class="level6">
+<h6 class="anchored" data-anchor-id="cp-usrsharevelvet_1.2.10datatest_reads.fa-.">cp /usr/share/velvet_1.2.10/data/test_reads.fa .</h6>
+<p>You should be able to see this file in your directory (via ls). Lets count how many lines are in that file. I see the following output (yours will be a bit different because you are not in my home directory (all the stuff to the left of the $ is not typed and is part of the bash prompt).</p>
+</section>
+<section id="rodneychesapeake-wc--l-test_reads.fa" class="level6">
+<h6 class="anchored" data-anchor-id="rodneychesapeake-wc--l-test_reads.fa">rodney@chesapeake ~ $ wc -l test_reads.fa</h6>
+</section>
+<section id="test_reads.fa" class="level6">
+<h6 class="anchored" data-anchor-id="test_reads.fa">285716 test_reads.fa</h6>
+<p>So this file has 285,716 lines in it. Lets now look at the first few lines:</p>
+</section>
+<section id="sequence_0_length_35" class="level6">
+<h6 class="anchored" data-anchor-id="sequence_0_length_35">&gt;SEQUENCE_0_length_35</h6>
+</section>
+<section id="ggatatagggccaacccaactcaacggcctgtctt" class="level6">
+<h6 class="anchored" data-anchor-id="ggatatagggccaacccaactcaacggcctgtctt">GGATATAGGGCCAACCCAACTCAACGGCCTGTCTT</h6>
+</section>
+<section id="sequence_1_length_35" class="level6">
+<h6 class="anchored" data-anchor-id="sequence_1_length_35">&gt;SEQUENCE_1_length_35</h6>
+</section>
+<section id="cgacgaatgacaggtcacgaatttggcggggatta" class="level6">
+<h6 class="anchored" data-anchor-id="cgacgaatgacaggtcacgaatttggcggggatta">CGACGAATGACAGGTCACGAATTTGGCGGGGATTA</h6>
+</section>
+<section id="sequence_2_length_35" class="level6">
+<h6 class="anchored" data-anchor-id="sequence_2_length_35">&gt;SEQUENCE_2_length_35</h6>
+</section>
+<section id="ccaaataggtccttacatcatgagacgggccaaat" class="level6">
+<h6 class="anchored" data-anchor-id="ccaaataggtccttacatcatgagacgggccaaat">CCAAATAGGTCCTTACATCATGAGACGGGCCAAAT</h6>
+</section>
+<section id="sequence_3_length_35" class="level6">
+<h6 class="anchored" data-anchor-id="sequence_3_length_35">&gt;SEQUENCE_3_length_35</h6>
+</section>
+<section id="cgagatgtatacctctaacactgtgttccaagtac" class="level6">
+<h6 class="anchored" data-anchor-id="cgagatgtatacctctaacactgtgttccaagtac">CGAGATGTATACCTCTAACACTGTGTTCCAAGTAC</h6>
+</section>
+<section id="sequence_4_length_35" class="level6">
+<h6 class="anchored" data-anchor-id="sequence_4_length_35">&gt;SEQUENCE_4_length_35</h6>
+</section>
+<section id="aagctcccgcaatggatcttgtgacgggctgctcg" class="level6">
+<h6 class="anchored" data-anchor-id="aagctcccgcaatggatcttgtgacgggctgctcg">AAGCTCCCGCAATGGATCTTGTGACGGGCTGCTCG</h6>
+<p>This output is dumped to the terminal. To redirect this output to another place, say a file, we use the redirect operator ‘&gt;’ otherwise known as the greater than sign.</p>
+</section>
+<section id="rodneychesapeake-head-test_reads.fa-firstfew.fa" class="level6">
+<h6 class="anchored" data-anchor-id="rodneychesapeake-head-test_reads.fa-firstfew.fa">rodney@chesapeake ~ $ head test_reads.fa &gt; firstfew.fa</h6>
+</section>
+<section id="rodneychesapeake-wc--l-firstfew.fa" class="level6">
+<h6 class="anchored" data-anchor-id="rodneychesapeake-wc--l-firstfew.fa">rodney@chesapeake ~ $ wc -l firstfew.fa</h6>
+</section>
+<section id="firstfew.fa" class="level6">
+<h6 class="anchored" data-anchor-id="firstfew.fa">10 firstfew.fa</h6>
+</section>
+</section>
+<section id="piping-between-programs" class="level1">
+<h1>Piping Between Programs</h1>
+<p>Hooking together programs is the next step and it is called piping. It is accomplished by hooking together the output of one program with the input of another using the pipe character ‘|’ (the vertical line on the slash key on US english keyboards). Lets say I wanted to search for a particular sequence in the test_reads.fa file. I’ll use GATACA because it was a good movie. I use the grep command to find it by passing first what I am looking for and then the file I am looking for it in. I will then pipe this through the wc program to see how many lines have that sequence of nucleotides within it.</p>
+<section id="rodneychesapeake-grep-gataca-test_reads.fa-wc--l" class="level6">
+<h6 class="anchored" data-anchor-id="rodneychesapeake-grep-gataca-test_reads.fa-wc--l">rodney@chesapeake ~ $ grep GATACA test_reads.fa | wc -l</h6>
+</section>
+<section id="section-1" class="level6">
+<h6 class="anchored" data-anchor-id="section-1">790</h6>
+<p>So there are almost 800 reads with that sequence in it. We can continue to combine commands together beyond just these two. See if you can figure out what these commands do:</p>
+</section>
+<section id="rodneychesapeake-cat-test_reads.fa-sort-head--100-sortedfirstfew.fa" class="level6">
+<h6 class="anchored" data-anchor-id="rodneychesapeake-cat-test_reads.fa-sort-head--100-sortedfirstfew.fa">rodney@chesapeake ~ $ cat test_reads.fa | sort | head -100 &gt; sortedfirstfew.fa</h6>
+</section>
+<section id="rodneychesapeake-head-sortedfirstfew.fa" class="level6">
+<h6 class="anchored" data-anchor-id="rodneychesapeake-head-sortedfirstfew.fa">rodney@chesapeake ~ $ head sortedfirstfew.fa</h6>
+</section>
+<section id="aaaaaaaacgggcttatagaccatgcaggcttcat" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaaacgggcttatagaccatgcaggcttcat">AAAAAAAACGGGCTTATAGACCATGCAGGCTTCAT</h6>
+</section>
+<section id="aaaaaaacactatacagccagagttccttcttctt" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaacactatacagccagagttccttcttctt">AAAAAAACACTATACAGCCAGAGTTCCTTCTTCTT</h6>
+</section>
+<section id="aaaaaaacccttctgtgtttgatctacctactata" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaacccttctgtgtttgatctacctactata">AAAAAAACCCTTCTGTGTTTGATCTACCTACTATA</h6>
+</section>
+<section id="aaaaaaacgggcttatagaccatgcaggcttcatg" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaacgggcttatagaccatgcaggcttcatg">AAAAAAACGGGCTTATAGACCATGCAGGCTTCATG</h6>
+</section>
+<section id="aaaaaaacgtaaggagcgtttatgccaaacgaaga" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaacgtaaggagcgtttatgccaaacgaaga">AAAAAAACGTAAGGAGCGTTTATGCCAAACGAAGA</h6>
+</section>
+<section id="aaaaaaaggctcgtgactgtcatcatcgagacgcc" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaaggctcgtgactgtcatcatcgagacgcc">AAAAAAAGGCTCGTGACTGTCATCATCGAGACGCC</h6>
+</section>
+<section id="aaaaaaagtggggttcaaacactctatccatgaag" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaagtggggttcaaacactctatccatgaag">AAAAAAAGTGGGGTTCAAACACTCTATCCATGAAG</h6>
+</section>
+<section id="aaaaaaattgactgttaatggcaatttcaagttat" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaaattgactgttaatggcaatttcaagttat">AAAAAAATTGACTGTTAATGGCAATTTCAAGTTAT</h6>
+</section>
+<section id="aaaaaacagcgaaccagatcttattttgcttctac" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaacagcgaaccagatcttattttgcttctac">AAAAAACAGCGAACCAGATCTTATTTTGCTTCTAC</h6>
+</section>
+<section id="aaaaaacatgacaacgagagcaacccgggcatttg" class="level6">
+<h6 class="anchored" data-anchor-id="aaaaaacatgacaacgagagcaacccgggcatttg">AAAAAACATGACAACGAGAGCAACCCGGGCATTTG</h6>
+</section>
+</section>
+<section id="screen" class="level1">
+<h1>Screen</h1>
+<p>OK, so when working on long-running programs, there is the need to be able to log in and out of a session without the various things you have running stopping each time. When you log into a unix machine, you start a ‘session’ and you can log in many times using the same user ID. When you log out, every process (running program) is purged from the memory and thus lost. So unless you plan on being logged into a terminal until a long running process is done running (some may take months), a better solution is needed. This is where a program called ‘screen’ comes in handy.</p>
+<p>Screen is a program that is run after you log into the server. What this does is to then make a ‘virtual session’ (or many of them) that you can attach and detach your terminal session to. You start screen by typing:</p>
+<section id="screen-1" class="level6">
+<h6 class="anchored" data-anchor-id="screen-1">screen</h6>
+<p>and then a read the verbage and continue (via space bar or hitting return). After that it will look like your normal terminal session and you’ll be able to do whatever you want to do just like before. Screen is running in the background</p>
+<p>So lets say you start a long running process like:</p>
+</section>
+<section id="velvetoptimiser.pl--s-16--e-31--f--short--raw-datapedimapedimasnps.fasta" class="level6">
+<h6 class="anchored" data-anchor-id="velvetoptimiser.pl--s-16--e-31--f--short--raw-datapedimapedimasnps.fasta">./VelvetOptimiser.pl -s 16 -e 31 -f “-short -raw ~/data/pedima/pedimaSNPs.fasta”</h6>
+<p>This can take a while to run. Now that you are already within a screen session, you can run it and then detach your terminal from that screen session. After you detach, the program will continue running just as before and you can re-attach at a later time to check on progress.</p>
+<p>Here are the commands for listing, attaching, and detaching from screen sessions (n.b., they all start with CTRL+a followed by another letter.</p>
+<table>
+<tbody><tr>
+<td>
+Keys
+</td>
+<td>
+Description
+</td>
+</tr>
+<tr>
+<td>
+CTRL+a c
+</td>
+<td>
+Creates a new shell window
+</td>
+</tr>
+<tr>
+<td>
+CTRL+a k
+</td>
+<td>
+Kills the current window
+</td>
+</tr>
+<tr>
+<td>
+CTRL+a w
+</td>
+<td>
+Lists all windows (the current session is marked with an ’*’)
+</td>
+</tr>
+<tr>
+<td>
+CTRL+a d
+</td>
+<td>
+Detach from current session
+</td>
+</tr>
+<tr>
+<td>
+CTRL+a D
+</td>
+<td>
+Detach from current session and close the shell as well
+</td>
+</tr>
+<tr>
+<td>
+CTRL+a 0-9
+</td>
+<td>
+Go to session 0, 1, … 9
+</td>
+</tr>
+</tbody></table>
+<p>After you detach (CTRL+a d) you can exit the server and when you come back, you can reattach as:</p>
+</section>
+<section id="screen--r" class="level6">
+<h6 class="anchored" data-anchor-id="screen--r">screen -r</h6>
+<p>if you only have one screen session going, otherwise you can just start screen, list the open sessions, and then come back at that time.</p>
+</section>
+</section>
+<section id="velvet" class="level1">
+<h1>Velvet</h1>
+<p>Link to UMissouri</p>
+<p><a href="http://umbc.rnet.missouri.edu/resources/How2RunVELVETonClark.html" class="uri">http://umbc.rnet.missouri.edu/resources/How2RunVELVETonClark.html</a></p>
+<p>From NCBI: A basic protocol</p>
+<p><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2952100/" class="uri">http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2952100/</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dyerlab\.org");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

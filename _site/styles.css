@@ -1,0 +1,34 @@
+/* css styles */
+.roundedImg { 
+  border-radius: 8px;
+}
+
+img.thumbnail-image { 
+  border-radius: 8px;
+}
+
+
+td { 
+  spacing: 10px;
+}
+
+
+div.quarto-post .thumbnail img {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+
+.img-fluid { 
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+
+h3 .listing-title { 
+  color: #d16f2a;
+}
+
+
+
+/* blue-color: #163364 */

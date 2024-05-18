@@ -1,0 +1,26 @@
+---
+title: "FOTJ in the AppStore"
+description: |
+  There are a series of applications/tools that I've been developing in my off 
+  that are reaching the point of deployment.  The first, FOTJ, is an appliation 
+  focused on helping develop Belonging, Participation, and Teamwork in STEM-field
+  courses and has just be released to deploy in a course this summer.
+author:
+  - name: Rodney Dyer
+    url: https://dyerlab.org
+    affiliation: Center for Environmental Studies
+    affiliation_url: https://ces.vcu.edu
+    orcid_id: 0000-0003-4707-3453
+date: 2024-03-18
+preview: featured.png
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+<center>
+![](featured.png){fig-alt="FOTJ main interface with example entries from Charles Darwin's visit to the Galapagos."}
+</center>
+
+The main interface for FOTJ.app.  You can see additional screenshots at [dyerlab.com](https://dyerlab.com/software/fotj) and it is available for download on up-to-date iOS devices (iPhone & iPadOS) from the [Apple App Store](https://apps.apple.com/us/app/fotj/id6502670309).
+
