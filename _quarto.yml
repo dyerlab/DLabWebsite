@@ -21,6 +21,7 @@ execute:
   freeze: auto
 format:
   html:
+    self-contained: true
     theme: sandstone
     css: styles.css
 
